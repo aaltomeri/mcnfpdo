@@ -24,6 +24,8 @@ window.application = {
 		
 		//this.initWebcam();
 		
+		//this.initTestVideoSeek();
+		
 		this.initTestSwitchVideos();
 
 	},
@@ -188,6 +190,7 @@ window.application = {
 		src = 'test_1280x720_1Mbs.mp4';
 
 		v = Popcorn.smart('#v', ['data/' + src])
+
 		var _seek = function() {
 
 			var rdmt = Math.round(Math.random() * v.duration());
@@ -201,8 +204,10 @@ window.application = {
 		v.on('canplay', function(e) { 
 			console.log(e);
 			console.log('CAN PLAY');
+			itvl = setInterval(_seek, seek_itvl);
 		});
 
+		v.on('click', function() { 
 
 			total = delays.reduce(function(a, b) {
 			    return a + b;
@@ -231,7 +236,9 @@ window.application = {
 
 
 
+
 	},
+
 	initTestSwitchVideos: function() {
 
 		var debug = ((window.location.hash == '#debug')? true : false)
@@ -245,6 +252,10 @@ window.application = {
 			left: '0px'
 
 		}
+		,	_transparency = 0
+		, 	_easing_a = 'in'
+		, 	_easing_b = 'out'
+
 
 		va_container.css(containers_css);
 		vb_container.css(containers_css);
@@ -267,10 +278,10 @@ window.application = {
 		$('#videos').append(va_container);
 
 		if(!debug)
-			vb_container.transition({ opacity: 0 });
+			vb_container.transition({ opacity: _transparency });
 		
 
-		$('#videos').click(function() {
+		$('#videos').on('click', function() {
 
 			if(v_active == 'a') {
 
@@ -280,11 +291,11 @@ window.application = {
 				
 				var _do = function() {
 
-					va.pause();
+					va.pause(time);
 
 					if(!debug) {
-						va_container.transition({ opacity: 0 }, 500);
-						vb_container.transition({ opacity: 1 }, 500);
+						va_container.transition({ opacity: _transparency }, 500, _easing_a);
+						vb_container.transition({ opacity: 1 }, 500, _easing_b);
 					}
 
 					v_active = 'b';
@@ -297,8 +308,8 @@ window.application = {
 			else {
 
 				if(!debug) {
-					va_container.transition({ opacity: 1 }, 500);
-					vb_container.transition({ opacity: 0 }, 500);
+					va_container.transition({ opacity: 1 }, 500, _easing_b);
+					vb_container.transition({ opacity: _transparency }, 500, _easing_a);
 				}
 				
 				va.play();
@@ -310,8 +321,8 @@ window.application = {
 
 		});
 
-		var va = Popcorn.smart('#va', ['data/test_switch_a.mp4','data/test_switch_a.webm'])
-		,	vb = Popcorn.smart('#vb', ['data/test_switch_b.mp4','data/test_switch_b.webm']);
+		var va = Popcorn.smart('#va', ['data/test_640x360_1Mbs.mp4','data/test_switch_a.webm'])
+		,	vb = Popcorn.smart('#vb', ['data/test_640x360_1Mbs_NB.mp4','data/test_switch_b.webm']);
 		
 		va.play();
 		//vb.play();
