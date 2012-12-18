@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Google Maps JavaScript API v3 Example: Info Window Simple</title>
+    <style>
+
+        html, body {
+          height: 100%;
+          margin: 0;
+          padding: 0;
+        }
+
+        #map_canvas {
+          height: 100%;
+        }
+        
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <script>
+      function initialize() {
+        var myLatlng = new google.maps.LatLng(44.822395,20.460835);
+        var mapOptions = {
+          zoom: 40,
+          center: myLatlng,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+
+        var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+
+        var contentString = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Belgrade</h1>'+
+            '<div id="bodyContent">'+
+            '<p>This is where description goes</p>'+
+            '</div>'+
+            '</div>';
+
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString
+        });
+
+        var marker = new google.maps.Marker({
+            position: myLatlng,
+            map: map,
+            title: 'Belgrade'
+        });
+        google.maps.event.addListener(marker, 'click', function() {
+          infowindow.open(map,marker);
+          alert('BELGRADE');
+        });
+      }
+
+    </script>
+  </head>
+  <body onload="initialize()">
+    <div id="map_canvas"></div>
+  </body>
+</html>

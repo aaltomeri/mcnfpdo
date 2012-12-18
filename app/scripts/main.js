@@ -160,6 +160,78 @@ window.application = {
 
 	},
 
+	initTestVideoSeek: function() {
+
+		var src
+		,	container = '<div id="v"></div>'
+		, 	videos_container = $('#videos')
+		,	v
+		,	seek_itvl = 1000
+		,	t1 = new Date().getTime()
+		,	t2
+		,	itvl
+		,	d
+		,	delays = new Array()
+		,	total 
+		,	average
+		,	prev_position = 0;
+
+		videos_container.append(container);
+
+		src = 'test_640x360_9Mbs.mp4';
+		src = 'test_640x360_240kbs.mp4';
+		src = 'test_640x360_4Mbs.mp4';
+		src = 'test_640x360_1Mbs.mp4';
+		
+		src = 'test_1280x720_5Mbs.mp4';
+		src = 'test_1280x720_735kbs.mp4';
+		src = 'test_1280x720_1Mbs.mp4';
+
+		v = Popcorn.smart('#v', ['data/' + src])
+		var _seek = function() {
+
+			var rdmt = Math.round(Math.random() * v.duration());
+
+			t1 = new Date().getTime();
+			//v.pause(Math.round(rdmt);
+			v.media.currentTime = rdmt;
+
+		}
+
+		v.on('canplay', function(e) { 
+			console.log(e);
+			console.log('CAN PLAY');
+		});
+
+
+			total = delays.reduce(function(a, b) {
+			    return a + b;
+			})
+			average = Math.round(total/delays.length);
+
+			clearInterval(itvl);
+
+			console.log('Average seek time: ' + average);
+
+		});
+
+		v.on('seeked', function() {
+
+			t2 = new Date().getTime();
+			var d = t2-t1
+			,	p = v.media.currentTime;
+
+			console.log("jump length: " + Math.abs(p-prev_position) + " - time: " + d);
+
+			prev_position = p;
+
+			delays.push(d);
+			
+		});
+
+
+
+	},
 	initTestSwitchVideos: function() {
 
 		var debug = ((window.location.hash == '#debug')? true : false)
