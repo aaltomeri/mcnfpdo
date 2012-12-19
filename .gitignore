@@ -1,10 +1,5 @@
 temp
 dist
-*.webm
-*.mp4
-*.mp3
-components
-data
 *.sublime-project
 *.sublime-workspace
 .sass-cache
