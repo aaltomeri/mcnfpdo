@@ -20,37 +20,52 @@
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
     <script>
       function initialize() {
-        var myLatlng = new google.maps.LatLng(44.822395,20.460835);
+
+        var marker_1_LatLng = new google.maps.LatLng(44.815667,20.460641)
+        ,   marker_2_LatLng = new google.maps.LatLng(44.818278,20.468355)
+
         var mapOptions = {
-          zoom: 40,
-          center: myLatlng,
+          zoom: 13,
+          center: marker_1_LatLng,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         }
 
         var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
 
-        var contentString = '<div id="content">'+
-            '<div id="siteNotice">'+
-            '</div>'+
-            '<h1 id="firstHeading" class="firstHeading">Belgrade</h1>'+
-            '<div id="bodyContent">'+
-            '<p>This is where description goes</p>'+
-            '</div>'+
-            '</div>';
+        var video_1 = '<iframe src="http://player.vimeo.com/video/55932126?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;color=ffffff&amp;autoplay=1" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>';
 
-        var infowindow = new google.maps.InfoWindow({
-            content: contentString
+        var video_2 = '<iframe src="http://player.vimeo.com/video/55932236?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;color=ffffff&amp;autoplay=1" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>';
+
+        var video_window_1 = new google.maps.InfoWindow({
+            content: video_1
         });
 
-        var marker = new google.maps.Marker({
-            position: myLatlng,
+        var video_window_2 = new google.maps.InfoWindow({
+            content: video_2
+        });
+
+        var marker_1 = new google.maps.Marker({
+            position: marker_1_LatLng,
             map: map,
-            title: 'Belgrade'
+            title: 'Kolarceva 4'
         });
-        google.maps.event.addListener(marker, 'click', function() {
-          infowindow.open(map,marker);
-          alert('BELGRADE');
+
+        var marker_2 = new google.maps.Marker({
+            position: marker_2_LatLng,
+            map: map,
+            title: 'Skver Mire Trailovic'
         });
+
+        google.maps.event.addListener(marker_1, 'click', function() {
+          video_window_2.close();
+          video_window_1.open(map,marker_1);
+        });
+
+        google.maps.event.addListener(marker_2, 'click', function() {
+          video_window_1.close();
+          video_window_2.open(map,marker_2);
+        });
+
       }
 
     </script>
