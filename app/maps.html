@@ -27,7 +27,9 @@
         var mapOptions = {
           zoom: 13,
           center: marker_1_LatLng,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
+          mapTypeId: google.maps.MapTypeId.ROADMAP,
+          disableDefaultUI: true,
+          mapTypeControl: false
         }
 
         var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
@@ -44,26 +46,40 @@
             content: video_2
         });
 
+        var icon_image_on = 'images/mapicons_on/video.png'
+        ,   icon_image_off = 'images/mapicons_off/video.png'
+
         var marker_1 = new google.maps.Marker({
             position: marker_1_LatLng,
             map: map,
-            title: 'Kolarceva 4'
+            title: 'Kolarceva 4',
+            icon: icon_image_on
         });
 
         var marker_2 = new google.maps.Marker({
             position: marker_2_LatLng,
             map: map,
-            title: 'Skver Mire Trailovic'
+            title: 'Skver Mire Trailovic',
+            icon: icon_image_on
         });
 
         google.maps.event.addListener(marker_1, 'click', function() {
           video_window_2.close();
           video_window_1.open(map,marker_1);
+          map.setZoom(16);
+          this.setIcon(icon_image_off);
+        });
+
+        google.maps.event.addListener(marker_1, 'close', function() {
+          alert('close');
         });
 
         google.maps.event.addListener(marker_2, 'click', function() {
           video_window_1.close();
           video_window_2.open(map,marker_2);
+          map.setZoom(16);
+          this.setIcon(icon_image_off);
+
         });
 
       }
