@@ -403,13 +403,18 @@ window.application = {
 
         // listening to event that indicates the info window has been attached to the dom
       	google.maps.event.addListener(iw1, 'domready', function() {
-      		//map.setCenter(this.anchor.getPosition());
-      		//map.setZoom(18);
       		
       		var vw_content = this.getContent()
       		,	_this = this;
+      		
+      		// remove previous vimeo iframe
+  			if($(vw_content).find('iframe').length) {
+  				$(vw_content).find('iframe').remove(); 
+  			}
+
       		this.player = Popcorn.smart(vw_content, 'http://player.vimeo.com/video/55932126');
       		this.player.play();
+      		
       		var next = function() {
       			// remove previous vimeo iframe
       			$(vw_content).find('iframe').remove();
@@ -417,26 +422,42 @@ window.application = {
 				this.destroy();
 				iw2.open(map,marker_2);
 			};
+
       		this.player.on('pause', next);
       		this.player.on('ended', next);
+
+      		google.maps.event.addListener(this, 'closeclick', function() {
+	          map.setZoom(13);
+	        });
+
       	});
 
       	google.maps.event.addListener(iw2, 'domready', function() {
-      		//map.setCenter(this.anchor.getPosition());
-      		//map.setZoom(18);
+
       		var vw_content = this.getContent()
       		,	_this = this;
+
+  			// remove previous vimeo iframe
+  			if($(vw_content).find('iframe').length) {
+  				$(vw_content).find('iframe').remove(); 
+  			}
+
       		this.player = Popcorn.smart(vw_content, 'http://player.vimeo.com/video/55932236');
       		this.player.play();
+
       		var next = function() {
-      			// remove previous vimeo iframe
-      			$(vw_content).find('iframe').remove();
 				_this.close();
 				this.destroy();
 				iw1.open(map,marker_1);
 			};
+
       		this.player.on('pause', next);
       		this.player.on('ended', next);
+
+      		google.maps.event.addListener(this, 'closeclick', function() {
+	          map.setZoom(13);
+	        });
+
       	});
 
       	
@@ -469,14 +490,8 @@ window.application = {
 
         });
 
-        google.maps.event.addListener(iw1, 'closeclick', function() {
-          map.setZoom(13);
-        });google.maps.event.addListener(iw2, 'closeclick', function() {
-          map.setZoom(13);
-        });
-
         google.maps.event.addListener(marker_2, 'click', function() {
-        	
+
           iw1.close();
           iw2.open(map,marker_2);
           map.setZoom(16);
