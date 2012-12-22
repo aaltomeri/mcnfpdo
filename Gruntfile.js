@@ -143,8 +143,9 @@ module.exports = function( grunt ) {
 
     // update references in HTML/CSS to revved files
     usemin: {
-      html: ['**/*.html'],
-      css: ['**/*.css']
+      html: ['**/*.html', '**/*.js'],
+      css: ['**/*.css'],
+      js: ['**/*.js']
     },
 
     // HTML minification

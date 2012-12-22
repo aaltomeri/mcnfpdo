@@ -12,6 +12,9 @@ window.application = {
 	videos: [],
 	max_instances: 6,
 
+	google_api_key: 'AIzaSyCZyjGSINj8G5wX1RnCX-si_9xptWYRdnU',
+	gmaps_api_url: 'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=application.initBgdMap',
+
 	scPlayer: null,
 
 	init: function() {
@@ -26,7 +29,29 @@ window.application = {
 		
 		//this.initTestVideoSeek();
 		
-		this.initTestSwitchVideos();
+		//this.initTestSwitchVideos();
+		
+		this.loadGMapsAPI();
+		
+		//this.testVimeoDestroy();
+
+
+
+	},
+
+	testVimeoDestroy: function() {
+
+		var _player = Popcorn.smart('#videos', 'http://player.vimeo.com/video/55932126?autoplay=1');
+
+		setTimeout(function() {
+			_player.destroy();
+			document.getElementById('videos').innerHTML = '';
+		}, 4000);
+
+		setTimeout(function() {
+			var _player = Popcorn.smart('#videos', 'http://player.vimeo.com/video/55932126?autoplay=1');
+		}, 6000);	
+		
 
 	},
 
@@ -326,6 +351,138 @@ window.application = {
 		
 		va.play();
 		//vb.play();
+
+	},
+
+	loadGMapsAPI: function() {
+
+		var script = document.createElement("script");
+		script.type = "text/javascript";
+
+		// the src for the api contains a callback parameter to trigger initBgdMap when API is ready to use
+		script.src = this.gmaps_api_url;
+		
+		document.body.appendChild(script);
+
+	},
+
+	initBgdMap: function() {
+
+		var map_div = $('<div id="bgd-map"></div>');
+		//var map_div = $('#bgd-map');
+		map_div.css({
+			width: '100%',
+			height: '100%'
+		});
+		$('#main').css({height: '100%'});
+		$('#main').html(map_div);
+
+		var marker_1_LatLng = new google.maps.LatLng(44.815667,20.460641)
+        ,   marker_2_LatLng = new google.maps.LatLng(44.818278,20.468355)
+
+        var mapOptions = {
+          zoom: 13,
+          center: marker_1_LatLng,
+          mapTypeId: google.maps.MapTypeId.ROADMAP,
+          disableDefaultUI: false,
+          mapTypeControl: false
+        }
+
+        var map = new google.maps.Map(map_div.get(0), mapOptions);
+
+        var iw1 = new google.maps.InfoWindow({});
+        var iw2 = new google.maps.InfoWindow({});
+
+        // create info window content div as a DOM element
+      	// so we can reference it easily
+      	var iw1_content = $('<div style="width: 500px; height:281px; overflow: hidden"></div>').get(0);
+      	iw1.setContent(iw1_content);
+
+      	var iw2_content = $('<div style="width: 500px; height:281px; overflow: hidden"></div>').get(0);
+      	iw2.setContent(iw2_content);
+
+        // listening to event that indicates the info window has been attached to the dom
+      	google.maps.event.addListener(iw1, 'domready', function() {
+      		//map.setCenter(this.anchor.getPosition());
+      		//map.setZoom(18);
+      		
+      		var vw_content = this.getContent()
+      		,	_this = this;
+      		this.player = Popcorn.smart(vw_content, 'http://player.vimeo.com/video/55932126');
+      		this.player.play();
+      		var next = function() {
+      			// remove previous vimeo iframe
+      			$(vw_content).find('iframe').remove();
+				_this.close();
+				this.destroy();
+				iw2.open(map,marker_2);
+			};
+      		this.player.on('pause', next);
+      		this.player.on('ended', next);
+      	});
+
+      	google.maps.event.addListener(iw2, 'domready', function() {
+      		//map.setCenter(this.anchor.getPosition());
+      		//map.setZoom(18);
+      		var vw_content = this.getContent()
+      		,	_this = this;
+      		this.player = Popcorn.smart(vw_content, 'http://player.vimeo.com/video/55932236');
+      		this.player.play();
+      		var next = function() {
+      			// remove previous vimeo iframe
+      			$(vw_content).find('iframe').remove();
+				_this.close();
+				this.destroy();
+				iw1.open(map,marker_1);
+			};
+      		this.player.on('pause', next);
+      		this.player.on('ended', next);
+      	});
+
+      	
+
+        var icon_image_on = 'images/mapicons_on/video.png'
+        ,   icon_image_off = 'images/mapicons_off/video.png'
+
+        var marker_1 = new google.maps.Marker({
+            position: marker_1_LatLng,
+            map: map,
+            title: 'Kolarceva 4',
+            icon: icon_image_on
+        });
+
+        var marker_2 = new google.maps.Marker({
+            position: marker_2_LatLng,
+            map: map,
+            title: 'Skver Mire Trailovic',
+            icon: icon_image_on
+        });
+
+
+
+        google.maps.event.addListener(marker_1, 'click', function() {
+
+        	map.setZoom(16);
+         	iw2.close();
+          	iw1.open(map,marker_1);
+        	this.setIcon(icon_image_off);
+
+        });
+
+        google.maps.event.addListener(iw1, 'closeclick', function() {
+          map.setZoom(13);
+        });google.maps.event.addListener(iw2, 'closeclick', function() {
+          map.setZoom(13);
+        });
+
+        google.maps.event.addListener(marker_2, 'click', function() {
+        	
+          iw1.close();
+          iw2.open(map,marker_2);
+          map.setZoom(16);
+          this.setIcon(icon_image_off);
+
+        });
 
 	}
 
