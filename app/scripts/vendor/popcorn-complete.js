@@ -4505,6 +4505,7 @@
     }
 
     function updateDuration( newDuration ) {
+
       var oldDuration = impl.duration;
 
       if( oldDuration !== newDuration ) {
@@ -4532,8 +4533,11 @@
           var i = playerReadyCallbacks.length;
           while( i-- ) {
             playerReadyCallbacks[ i ]();
-            delete playerReadyCallbacks[ i ];
           }
+
+          delete playerReadyCallbacks;
+          playerReadyCallbacks = [];
+          
         }
       }
     }
@@ -4778,6 +4782,7 @@
         return;
       }
 
+      impl.duration = NaN;
       impl.src = aSrc;
 
       if( playerReady ) {
