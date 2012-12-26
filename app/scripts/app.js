@@ -14,7 +14,7 @@ function($, _, Backbone) {
   // creation.
   var app = {
     // The root path to run the application.
-    root: "/"
+    root: "/",
   };
 
   // Localize or create a new JavaScript Template object.
@@ -23,8 +23,8 @@ function($, _, Backbone) {
   // Configure LayoutManager with Backbone Boilerplate defaults.
   Backbone.LayoutManager.configure({
     paths: {
-      layout: "app/templates/layouts/",
-      template: "app/templates/"
+      layout: "templates/layouts/",
+      template: "b = require(templates/"
     },
 
     fetch: function(path) {

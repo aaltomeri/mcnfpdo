@@ -2,23 +2,30 @@ define([
   // Application.
   "app",
 
-  // Mdules
-  "modules/BgdMap"
+  // Modules
+  
 ],
 
-function(app, bgdMap) {
+function(app, BgdMap) {
 
   // Defining the application router, you can attach sub routers here.
   var Router = Backbone.Router.extend({
+
     routes: {
-      "": "index"
+      "": "index",
+      "bgd-map": "bgdMap"
     },
 
     index: function() {
 
-      console.log(bgdMap);
+    },
+
+    bgdMap: function() {
+
+      require(["modules/BgdMap"]);
 
     }
+
   });
 
   return Router;
