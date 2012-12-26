@@ -41,16 +41,33 @@ window.application = {
 
 	testVimeo: function() {
 
-		var vimeo_id_1 = 55932236
-		,	vimeo_id_2 = 55932126;
+		var vimeo_id_1 = 53786471
+		,	vimeo_id_2 = 55932236;
 
-		window._player = Popcorn.smart('#videos', 'http://player.vimeo.com/video/'+vimeo_id_1);
-		_player.play();
+		var $container = $('#videos > video');
+		window._player = Popcorn.smart($container.get(0), 'http://player.vimeo.com/video/'+vimeo_id_1);
+
+		_player.on('canplay', function() { 
+			console.log('CAN PLAY: ' + this.media.src);
+			this.play(); 
+		});
 
 		setTimeout(function() {
-			_player.media.src = 'http://player.vimeo.com/video/'+vimeo_id_2;
-			_player.play();
+			$container.remove();
+			//_player.media.src = 'http://player.vimeo.com/video/'+vimeo_id_2;
+			console.log(_player.currentTime());
+			//_player.play();
 		}, 6000);
+
+		setTimeout(function() {
+			$('#main').prepend($container);
+			//_player.media.src = 'http://player.vimeo.com/video/'+vimeo_id_2;
+			console.log(_player.currentTime());
+			_player.play();
+		}, 8000);
+
+
+
 		
 
 	},
@@ -395,12 +412,13 @@ window.application = {
 
         // create info window content div as a DOM element
       	// so we can reference it easily
-      	var infoWindow_content = $('<div style="width: 500px; height:281px; overflow: hidden"></div>').get(0);
+      	var infoWindow_content = $('<div width="640" height="360" style="width: 640px; height:360px; overflow: hidden"></div>').get(0);
       	infoWindow.setContent(infoWindow_content);
 
       	// marker icons images
       	var icon_image_on = 'images/mapicons_on/video.png'
         ,   icon_image_off = 'images/mapicons_off/video.png'
+        ,   icon_image_missing = 'images/mapicons_missing/video.png'
 
         // places (called mcnfpdo_places out of saturday night poetry frenzy)
       	var mcnfpdo_places = {
@@ -423,326 +441,326 @@ window.application = {
 					Lat: 44.832652,
 					Lng: 20.420018
 				},
-				vimeo_id: 55932126
+				vimeo_id: 56203538
 			},
 			'BIGZ': {
 				coordinates: {
 					Lat: 44.797246,
 					Lng: 20.446338
 				},
-				vimeo_id: 55932236
+				vimeo_id: null
 			},
 			'Sava Centar': {
 				coordinates: {
 					Lat: 44.809441,
 					Lng: 20.431442
 				},
-				vimeo_id: 55932126
+				vimeo_id: null
 			},
 			'Bus Novi Beograd (73)': {
 				coordinates: {
 					Lat: 44.804402,
 					Lng: 20.405774
 				},
-				vimeo_id: 55932236
+				vimeo_id: 56203539
 			},
 			'Câbles de tram dans la nuit (Slavija)': {
 				coordinates: {
 					Lat: 44.802221,
 					Lng: 20.466654
 				},
-				vimeo_id: 55932126
+				vimeo_id: 56203540
 			},
 			'Saul Leiter: voitures derrière parpaing plastique': {
 				coordinates: {
 					Lat: 44.805441,
 					Lng: 20.477984
 				},
-				vimeo_id: 55932236
+				vimeo_id: null
 			},
 			'Auberge Karadjordjeva': {
 				coordinates: {
 					Lat: 44.801373,
 					Lng: 20.476036
 				},
-				vimeo_id: 55932126
+				vimeo_id: null
 			},
 			'Bateau Sava à Ada': {
 				coordinates: {
 					Lat: 44.793927,
 					Lng: 20.406028
 				},
-				vimeo_id: 55932236
+				vimeo_id: null
 			},
 			'Atelier Zika': {
 				coordinates: {
 					Lat: 44.77457,
 					Lng: 20.413327
 				},
-				vimeo_id: 55932126
+				vimeo_id: 56203541
 			},
 			'Cordage bateau': {
 				coordinates: {
 					Lat: 44.838374,
 					Lng: 20.419248
 				},
-				vimeo_id: 55932236
+				vimeo_id: 56203542
 			},
 			'Carrefour hôtel PRESIDENT': {
 				coordinates: {
 					Lat: 44.810758,
 					Lng: 20.455136
 				},
-				vimeo_id: 55932126
+				vimeo_id: null
 			},
 			'Colleur d\'affiches': {
 				coordinates: {
 					Lat: 44.811276,
 					Lng: 20.454524
 				},
-				vimeo_id: 55932236
+				vimeo_id: null
 			},
 			'Trg Republike: flashmob': {
 				coordinates: {
 					Lat: 44.816398,
 					Lng: 20.460286
 				},
-				vimeo_id: 55932126
+				vimeo_id: null
 			},
 			'Danube Savane (Casino)': {
 				coordinates: {
 					Lat: 44.833375,
 					Lng: 20.424988
 				},
-				vimeo_id: 55932236
+				vimeo_id: 56204355
 			},
 			'Musée de la révolution (tableaux etc.)': {
 				coordinates: {
 					Lat: 44.788133,
 					Lng: 20.45181
 				},
-				vimeo_id: 55932126
+				vimeo_id: null
 			},
 			'Escalier extérieur à Novi Beograd': {
 				coordinates: {
 					Lat: 44.804303,
 					Lng: 20.379873
 				},
-				vimeo_id: 55932236
+				vimeo_id: null
 			},
 			'Par la fenètre à Molerova': {
 				coordinates: {
 					Lat: 44.804296,
 					Lng: 20.475596
 				},
-				vimeo_id: 55932126
+				vimeo_id: null
 			},
 			'Café Plato avec étudiants': {
 				coordinates: {
 					Lat: 44.818148,
 					Lng: 20.457835
 				},
-				vimeo_id: 55932236
+				vimeo_id: null
 			},
 			'Marché avec fontaine': {
 				coordinates: {
 					Lat: 44.818917,
 					Lng: 20.467424
 				},
-				vimeo_id: 55932126
+				vimeo_id: null
 			},
 			'Gare (bar timelapse)': {
 				coordinates: {
 					Lat: 44.808288,
 					Lng: 20.457299
 				},
-				vimeo_id: 55932236
+				vimeo_id: null
 			},
 			'Dans la gare de Belgrade: vieux sur banc': {
 				coordinates: {
 					Lat: 44.808985,
 					Lng: 20.455448
 				},
-				vimeo_id: 55932126
+				vimeo_id: null
 			},
 			'Hotel Beograd de nuit': {
 				coordinates: {
 					Lat: 44.807447,
 					Lng: 20.457889
 				},
-				vimeo_id: 55932236
+				vimeo_id: null
 			},
 			'Immeuble crade avec carrefour (Slatkich)': {
 				coordinates: {
 					Lat: 44.808669,
 					Lng: 20.478118
 				},
-				vimeo_id: 55932126
+				vimeo_id: null
 			},
 			'Jeunes à Ada': {
 				coordinates: {
 					Lat: 44.787942,
 					Lng: 20.415975
 				},
-				vimeo_id: 53782406
+				vimeo_id: null
 			},
 			'Kalamegdan: surplombant la ville': {
 				coordinates: {
 					Lat: 44.82502,
 					Lng: 20.445941
 				},
-				vimeo_id: 53782406
+				vimeo_id: 56203739
 			},
 			'Koloseum (Novi beograd)': {
 				coordinates: {
 					Lat: 44.802979,
 					Lng: 20.380716
 				},
-				vimeo_id: 55932236
+				vimeo_id: null
 			},
 			'Lac pollen Ada': {
 				coordinates: {
 					Lat: 44.791928,
 					Lng: 20.416529
 				},
-				vimeo_id: 53782406
+				vimeo_id: null
 			},
 			'Marché avec blonde qui vend des oranges': {
 				coordinates: {
 					Lat: 44.814124,
 					Lng: 20.457028
 				},
-				vimeo_id: 55932236
+				vimeo_id: null
 			},
 			'Marcheur de nuit Slavija': {
 				coordinates: {
 					Lat: 44.80216,
 					Lng: 20.465962
 				},
-				vimeo_id: 55932126
+				vimeo_id: null
 			},
 			'Alex avec Emilija en pute': {
 				coordinates: {
 					Lat: 44.817281,
 					Lng: 20.458532
 				},
-				vimeo_id: 53782406
+				vimeo_id: null
 			},
 			'Alex dans café en gentleman': {
 				coordinates: {
 					Lat: 44.816836,
 					Lng: 20.458929
 				},
-				vimeo_id: 55932126
+				vimeo_id: null
 			},
 			'Papy sur un banc à Novi Beograd': {
 				coordinates: {
 					Lat: 44.804494,
 					Lng: 20.381954
 				},
-				vimeo_id: 53782406
+				vimeo_id: 56203738
 			},
 			'Persiennes: maison décatie (vers ton café de Prague)': {
 				coordinates: {
 					Lat: 44.820842,
 					Lng: 20.460779
 				},
-				vimeo_id: 55932126
+				vimeo_id: null
 			},
 			'Portes d\'appartements à Novi Beograd': {
 				coordinates: {
 					Lat: 44.801959,
 					Lng: 20.376332
 				},
-				vimeo_id: 53782406
+				vimeo_id: null
 			},
 			'Ancienne gare routière': {
 				coordinates: {
 					Lat: 44.810378,
 					Lng: 20.453868
 				},
-				vimeo_id: 55932126
+				vimeo_id: null
 			},
 			'Slatkouch: serveuse': {
 				coordinates: {
 					Lat: 44.80884,
 					Lng: 20.477909
 				},
-				vimeo_id: 55932236
+				vimeo_id: null
 			},
 			'Eglise St. Slava de nuit qui clignote': {
 				coordinates: {
 					Lat: 44.797216,
 					Lng: 20.466278
 				},
-				vimeo_id: 55932126
+				vimeo_id: null
 			},
 			'Place Slavija de nuit': {
 				coordinates: {
 					Lat: 44.802689,
 					Lng: 20.466278
 				},
-				vimeo_id: 55932236
+				vimeo_id: null
 			},
 			'Jardin du mausolée de Tito': {
 				coordinates: {
 					Lat: 44.786503,
 					Lng: 20.451301
 				},
-				vimeo_id: 53782406
+				vimeo_id: null
 			},
 			'Bigz': {
 				coordinates: {
 					Lat: 44.796706,
 					Lng: 20.446134
 				},
-				vimeo_id: 55932236
+				vimeo_id: null
 			},
 			'Tondeur de pelouse au bord de l\'eau (Casino)': {
 				coordinates: {
 					Lat: 44.829517,
 					Lng: 20.42156
 				},
-				vimeo_id: 55932126
+				vimeo_id: null
 			},
 			'Dans le tramway vers le zoo': {
 				coordinates: {
 					Lat: 44.823582,
 					Lng: 20.459513
 				},
-				vimeo_id: 55932236
+				vimeo_id: null
 			},
 			'Vieux sur un banc (Casino)': {
 				coordinates: {
 					Lat: 44.834311,
 					Lng: 20.419589
 				},
-				vimeo_id: 53782406
+				vimeo_id: null
 			},
 			'Hotel Moskva (vert)': {
 				coordinates: {
 					Lat: 44.812828,
 					Lng: 20.460629
 				},
-				vimeo_id: 55932236
+				vimeo_id: null
 			},
 			'Jugo Export': {
 				coordinates: {
 					Lat: 44.815831,
 					Lng: 20.461118
 				},
-				vimeo_id: 55932126
+				vimeo_id: null
 			},
 			'MJC immeuble doré avec un éclair': {
 				coordinates: {
 					Lat: 44.815344,
 					Lng: 20.462776
 				},
-				vimeo_id: 53782406
+				vimeo_id: null
 			}
       	}
 
-      	// loop through mcnfpdo_places/places
+      	// loop through places
       	var count = 0;
       	for(var key in mcnfpdo_places) {
 
@@ -754,6 +772,7 @@ window.application = {
 	      		//title: key
 	      	});
 
+	      	// delayed Marker placement for a nice visual effect on arrival
 	      	var placeMarker = function() {
 	      		var _mrkr = mrkr
 	      		,	delay = 2000 + (count*50);
@@ -762,9 +781,13 @@ window.application = {
 	      	}
 			
 			mrkr.setPosition(new google.maps.LatLng(mcnfpdo_place.coordinates.Lat,mcnfpdo_place.coordinates.Lng));
-			mrkr.setIcon(icon_image_on);
+			
+			mrkr.setIcon((mcnfpdo_place.vimeo_id !== null)? icon_image_on : icon_image_missing);
 
 			placeMarker();
+
+			if(mcnfpdo_place.vimeo_id === null)
+				continue;
 
 			// add mcnfpdo_id property to Marker
 			// to be able to map the mcnfpdo_place object to a marker
@@ -793,19 +816,60 @@ window.application = {
       	google.maps.event.addListener(infoWindow, 'domready', function() {
       		
       		var vw_content = this.getContent()
-      		,	_this = this
+      		,	_iw = this
+      		, 	_player = this.player
       		,	src = 'http://player.vimeo.com/video/' + mcnfpdo_places[this.anchor.mcnfpdo_id].vimeo_id;
 
   			if(typeof this.player !== 'object') {
-  				this.player = Popcorn.smart(vw_content, src);
+
+  				window._player = this.player = Popcorn.smart(vw_content, src);
   				this.player.media.autoplay = true;
+
+  				this.player.on('ended', function() { 
+  					_iw.close();
+  				});
+
+  				this.player.on('play', function() { 
+  					console.log('PLAY - player time: ' + this.media.currentTime);
+  				});
+
+  				this.player.on('canplay', function() { 
+
+  					console.log('CAN PLAY:' + this.media.src);
+  					console.log('CAN PLAY - player time: ' + this.media.currentTime);
+
+  					var setVisited = function() { 
+						// set marker to 'visited' after 2 seconds
+						if(this.currentTime() > 4) {
+							_iw.anchor.setIcon(icon_image_off);
+							this.off('timeupdate', setVisited);
+						}	
+					}
+
+					// set setVisited
+					if(_iw.anchor !== null) {
+						if(_iw.anchor.getIcon() != icon_image_off) {
+		  					this.on('timeupdate', setVisited);
+		  				}
+		  			}
+
+  				});
+
   			}
   			else {
-  				this.player.media.src = src;
-  				setTimeout(this.player.media.play, 2000);
-  			}
+  				// add random number to src if it has not changed
+  				// allows for autoplaying src even if it's the same as the previously watched
+  				// this has to do with the HTMLVimeoVideoElement changeSrc method - triggered only if src has changed
+  				// I tried to call play() on the media instead of doing this but it was not working
+  				// probably because 'play' is not fwded to iframe player after it's been removed and re-added to the dom (closing and re-opening the info window)
+  				if(this.player.media.src == src) {
+  					src += '?rdm=' + Math.round(Math.random()*10000);
+  					//this.player.play();
+  				}
 
-	        this.anchor.setIcon(icon_image_off);
+  				this.player.media.src = src;
+
+  			}
 
       		google.maps.event.addListener(this, 'closeclick', function() {
 	          //map.setZoom(13);
