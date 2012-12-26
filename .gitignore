@@ -1,9 +1,11 @@
+.DS_Store
+.gitignore.swp
 temp
 dist
 *.webm
 *.mp4
 *.mp3
-components
+components/
 data
 *.sublime-project
 *.sublime-workspace
