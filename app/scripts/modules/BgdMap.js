@@ -97,7 +97,26 @@ function(app) {
         center: new google.maps.LatLng(44.81448,20.46674),
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         disableDefaultUI: false,
-        mapTypeControl: false
+        mapTypeControl: false,
+        styles: [
+          {
+            "featureType": "poi",
+            "stylers": [
+              { "visibility": "off" }
+            ]
+          },{
+            "featureType": "transit",
+            "stylers": [
+              { "visibility": "simplified" }
+            ]
+          },
+          {
+            "featureType": "poi.park",
+            "stylers": [
+              { "visibility": "simplified" }
+            ]
+          }
+        ]
       }
 
       // create map
@@ -121,7 +140,7 @@ function(app) {
         // create google maps Marker
         var mrkr = new google.maps.Marker({
           animation: google.maps.Animation.DROP,
-          //title: key
+          title: place.get('name')
         });
 
         // delayed Marker placement for a nice visual effect on arrival
