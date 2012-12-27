@@ -1,7 +1,12 @@
+.DS_Store
+.gitignore.swp
 temp
 dist
-*.sublime-project
+*.webm
+*.mp4
+*.mp3
 *.sublime-workspace
+*.sublime-project
 .sass-cache
 .DS_Store
 components/

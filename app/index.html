@@ -4,75 +4,19 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
         <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width">
+        <meta name="description" content=""/>
+        <meta name="viewport" content="width=device-width"/>
 
-        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-
-        
-        <script src="scripts/vendor/modernizr.min.js"></script>
-
-        <style type="text/css">
-
-            html, body {
-              height: 100%;
-              margin: 0;
-              padding: 0;
-            }
-
-            body {
-
-                background: #000    ;
-
-            }
-
-            #main {
-
-                position: relative;
-                overflow: hidden;
-
-            }
-
-            #videos > div {
-                float: left;
-                margin: 0px;
-                width: 100%;
-                height: auto;
-            }
-
-            #videos video {
-                width: 100%;
-                height: auto;
-            }
-
-            #notes {
-
-                display: none;
-
-                width: 100%;
-                position: relative;
-                text-align: center;
-                font-size: 24px;
-                text-transform: lowercase;
-                color: #dfdfdf;
-
-            }
-
-        </style>
-        
+        <link rel="stylesheet" href="styles/index.css"/>
     </head>
     <body>
-        <div class="container" id="main" style="">
-            <div>
-                <!-- <h1>Mon corps ne fait pas d'ombre - tests</h1> -->
-            </div>
-            <div id="notes"><!-- Click on any video to start playing it --></div>
-            <div id="videos"></div>
-            <div id="audio"></div>
-            <div id="webcam"><img src="" /></div>
+
+        <!-- Main container. -->
+        <div role="main" id="main" class="container">
+            <div id="module-container"></div>
         </div>
 
         <!--[if lt IE 7]>
@@ -81,9 +25,10 @@
 
         <!-- Add your site or application content here -->
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="scripts/vendor/jquery.min.js"><\/script>')</script>
-        
+        <!-- build:js scripts/amd-app.js -->
+        <script data-main="/scripts/config" src="/scripts/libs/require.js"></script>
+        <!-- endbuild -->
+
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
             var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
@@ -91,17 +36,6 @@
             g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
             s.parentNode.insertBefore(g,s)}(document,'script'));
         </script>
-    
-    <!-- build:js scripts/main.js -->
-        <script src="scripts/vendor/popcorn-complete.js" type="text/javascript"></script> 
-        <!-- <script src="components/popcornjs/popcorn.js"></script>
-        <script src="components/popcornjs/modules/player/popcorn.player.js"></script>
-        <script src="components/popcornjs/wrappers/common/popcorn._MediaElementProto.js"></script>
-        <script src="components/popcornjs/wrappers/vimeo/popcorn.HTMLVimeoVideoElement.js"></script> -->
-        <script src="scripts/vendor/jquery.transit.js" type="text/javascript"></script>
-        <script src="scripts/main.js"></script>
-    <!-- endbuild -->
-        
-       
-</body>
+
+    </body>
 </html>
