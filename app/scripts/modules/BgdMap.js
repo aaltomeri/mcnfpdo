@@ -55,6 +55,13 @@ function(app) {
 
   });
 
+  // Info Window Content View
+  BgdMap.Views.IwContent = Backbone.LayoutView.extend({
+    template: "iw_content",
+    className: "iw_content",
+
+  });
+
   // Default View.
   BgdMap.Views.Layout = Backbone.Layout.extend({
 
@@ -66,13 +73,18 @@ function(app) {
 
       // add layout to the dom
       $('#module-container').empty().append(this.el);
+
       // render layout
       this.render();
 
       // create infoWindow
       // only one info window will be used as we never are displaying more than one
+      var iw_content_view = new BgdMap.Views.IwContent();
+
+      iw_content_view.render();
+
       this.infoWindow = new google.maps.InfoWindow({
-        content: new BgdMap.Views.IwContent().el
+        content: iw_content_view.$el.find('> div').get(0)
       });
 
     },
@@ -172,7 +184,7 @@ function(app) {
           this.player.media.autoplay = true;
 
           this.player.on('ended', function() { 
-            _iw.close();
+            //_iw.close();
           });
 
           this.player.on('canplay', function() { 
@@ -216,13 +228,6 @@ function(app) {
 
         });
     }
-
-  });
-  
-  // Info Window Content View
-  BgdMap.Views.IwContent = Backbone.LayoutView.extend({
-    template: "iw_content",
-    className: "iw_content",
 
   });
 
