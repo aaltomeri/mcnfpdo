@@ -39,4 +39,3 @@ function(app, Router) {
   window.app = app;
 
 });
->>>>>>> test-amd
