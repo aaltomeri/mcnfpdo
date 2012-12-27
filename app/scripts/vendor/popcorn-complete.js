@@ -4505,10 +4505,7 @@
     }
 
     function updateDuration( newDuration ) {
-<<<<<<< HEAD
 
-=======
->>>>>>> 544859c10529414a8e26c2b098777668e9732f4e
       var oldDuration = impl.duration;
 
       if( oldDuration !== newDuration ) {
@@ -4536,16 +4533,12 @@
           var i = playerReadyCallbacks.length;
           while( i-- ) {
             playerReadyCallbacks[ i ]();
-<<<<<<< HEAD
           }
 
           delete playerReadyCallbacks;
           playerReadyCallbacks = [];
           
-=======
-            delete playerReadyCallbacks[ i ];
-          }
->>>>>>> 544859c10529414a8e26c2b098777668e9732f4e
+
         }
       }
     }
@@ -4790,10 +4783,7 @@
         return;
       }
 
-<<<<<<< HEAD
       impl.duration = NaN;
-=======
->>>>>>> 544859c10529414a8e26c2b098777668e9732f4e
       impl.src = aSrc;
 
       if( playerReady ) {
