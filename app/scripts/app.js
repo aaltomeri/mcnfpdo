@@ -3,6 +3,7 @@ define([
   "jquery",
   "lodash",
   "backbone",
+  "popcorn",
 
   // Plugins.
   "plugins/backbone.layoutmanager"
@@ -24,7 +25,7 @@ function($, _, Backbone) {
   Backbone.LayoutManager.configure({
     paths: {
       layout: "templates/layouts/",
-      template: "b = require(templates/"
+      template: "templates/"
     },
 
     fetch: function(path) {
