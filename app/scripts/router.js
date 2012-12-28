@@ -14,21 +14,22 @@ function(app, Intro, TTB) {
 
     routes: {
       "": "index",
-      "ttb": "ttb",
+      "ttb(/:command)(/:offset)": "ttb",
       "bgd-map": "bgdMap"
     },
 
     index: function() {
 
-      // here we call the init function that we have defined for the Intro module
+      // here we call the init function that we have defined for the module
       Intro.init();
 
     },
 
-    ttb: function() {
+    ttb: function(command, offset) {
 
-      // here we call the init function that we have defined for the Intro module
-      TTB.init();
+      // here we call the init function that we have defined for the module
+      // we pass the optional offset argument that will result in the TTB video to be played at that time offset
+      TTB.init(command, offset);
 
     },
 

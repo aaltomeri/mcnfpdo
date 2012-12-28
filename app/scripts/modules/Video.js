@@ -32,24 +32,37 @@ function(app) {
       if(!this.model)
         throw 'Video View requires a model';
       
-      var d = this.model.get('dimensions');
+      var dimensions = this.model.get('dimensions')
+      ,   offset = this.model.get('offset')
+      ,   autoplay = this.model.get('autoplay')
 
       // adjust video container dimensions if provided
-      if(d) {
-        this.$el.css({ width: d.width, height: d.height});
+      if(dimensions) {
+        this.$el.css({ width: dimensions.width, height: dimensions.height});
       }
 
       // Popcorn instantiation
       this.popcorn = Popcorn.smart(this.el, this.model.attributes.sources);
 
       // adjust video dimensions if provided
-      if(d) {
-        this.$el.find('video').css({ width: d.width, height: d.height});
+      if(dimensions) {
+        this.$el.find('video').css({ width: dimensions.width, height: dimensions.height});
       }
 
-      // autoplay?
-      if(this.model.attributes.autoplay)
-        this.popcorn.play();
+      // wrap all play actions in a 'canplay' callback
+      this.popcorn.on('canplay', function() {
+
+        if(offset)
+          this.currentTime(offset);
+
+        // autoplay?
+        if(autoplay)
+          this.play();
+
+      })
+     
+
+      
 
     }
 

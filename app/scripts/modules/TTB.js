@@ -14,7 +14,7 @@ function(app, Video) {
   // Create a new module.
   var TTB = app.module();
 
-  TTB.init = function() {
+  TTB.init = function(command, offset) {
     
     // video info for this module
     var video_model = new Video.Model({
@@ -23,7 +23,8 @@ function(app, Video) {
       dimensions: { width: '100%', height: '100%' },
       //sources: ['http://player.vimeo.com/video/56203539'],
       //dimensions: { width: '1280px', height: '720px' }
-      autoplay: true,
+      offset: offset,
+      autoplay: (command === 'play')? true : false
     }),
     // video view
     video_view = new Video.Views.Main({ model: video_model }),
