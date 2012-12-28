@@ -18,18 +18,33 @@ function(app, Video) {
     
     // video info for this module
     var video_model = new Video.Model({
-      name: 'Intro',
+      name: 'TTB',
       sources: ['medias/videos/ttb.mp4'],
       dimensions: { width: '100%', height: '100%' },
       //sources: ['http://player.vimeo.com/video/56203539'],
       //dimensions: { width: '1280px', height: '720px' }
       offset: offset,
-      autoplay: (command === 'play')? true : false
+      autoplay: (command === 'play')? true : false,
+      chapters: [
+        { name: "notebook",  start: 66, end: 72 },
+        { name: "bgd-book",  start: 73, end: 77 },
+        { name: "bgd-map", start: 22, end: 27 },
+        { name: "mail",  start: 58, end: 63 },
+        { name: "tabloid", start: 86, end: 92 },
+        { name: "news",  start: 79, end: 84 },
+        { name: "tesla", start: 40, end: 48 },
+        { name: "history", start: 49, end: 56 },
+        { name: "war-trauma",  start: 32, end: 37 }
+      ]
+
     }),
     // video view
     video_view = new Video.Views.Main({ model: video_model }),
     // actual main view for this module
-    ttb_view = new TTB.Views.Main({ video_view: video_view});
+    ttb_view = new TTB.Views.Main({ 
+      video_view: video_view,
+
+    });
 
   };
 
@@ -77,11 +92,43 @@ function(app, Video) {
 
     initBehaviors: function() {
 
+      var _this = this
+      ,   vv = this.vv
+      ,   vp = vv.popcorn
+      ,   chapter;
+
       this.allowPlayPause();
 
       // setup mechanism to launch a module on pause
       this.vv.popcorn.on('pause', function() {
-        console.log('TTB PAUSED');
+
+        if(chapter = vv.model.getChapterByTime(vp.currentTime())) {
+
+          console.log('TTB PAUSED on chapter:' + chapter.name);
+
+        }
+        else {
+
+          // do not pause when outside of a chapter
+          this.play();
+
+          // show some feedback that no action is possible at this time
+          var d = $('<div style="position"></div>').css({
+            position: 'absolute',
+            width: '100%',
+            height: '100%',
+            background: 'red',
+            top: '0px',
+            right: '0px',
+            opacity: 0.3
+          })
+
+          _this.$el.append(d);
+
+          setTimeout(function() { d.remove() }, 500);
+
+        }
+
       });
 
     },
@@ -99,7 +146,7 @@ function(app, Video) {
     _allowPlayPauseByClicking: function() {
 
         var _this = this;
-        
+
         $('#main').on('click',function() { 
           _this._togglePlayPause();
         });
@@ -130,7 +177,7 @@ function(app, Video) {
         vp.pause();
       }
 
-    }
+    },
 
   });
 

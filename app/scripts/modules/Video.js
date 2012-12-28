@@ -68,11 +68,21 @@ function(app) {
 
   });
 
-  
-
   // Default Model.
   Video.Model = Backbone.Model.extend({
-      
+
+      chapters: [],
+
+      /**
+       * returns the chapter for a given time
+       * @return object the chapter
+       */
+      getChapterByTime: function(time) {
+        return _.find(this.attributes.chapters, function(chapter) { 
+          return  time > chapter.start && time < chapter.end;
+        });
+      }
+
   });
 
   // Default Collection.
