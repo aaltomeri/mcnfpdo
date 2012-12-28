@@ -18,10 +18,11 @@ function(app, Video) {
     // video info for this module
     var video_model = new Video.Model({
       name: 'Intro',
-      //sources: ['medias/videos/135797856.mp4'],
-      sources: ['http://player.vimeo.com/video/56203539'],
+      sources: ['medias/videos/135797856.mp4'],
+      dimensions: { width: '100%', height: '100%' },
+      //sources: ['http://player.vimeo.com/video/56203539'],
+      //dimensions: { width: '1280px', height: '720px' }
       autoplay: true,
-      dimensions: { width: '1280px', height: '720px' }
     }),
     // video view
     video_view = new Video.Views.Main({ model: video_model }),
@@ -56,8 +57,8 @@ function(app, Video) {
 
       vv.popcorn.on('timeupdate', function() {
         if(this.currentTime() > this.duration()-3) {
-          app.trigger('goto', 'bgd-map');
-          //this.pause();
+          //app.trigger('goto', 'bgd-map');
+          this.pause();
         }
       });
 
