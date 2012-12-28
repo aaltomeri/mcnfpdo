@@ -53,7 +53,7 @@ function(app, Video) {
       }
       else {
         // shortcut to video view
-        var vv = this.options.video_view;
+        var vv = this.vv = this.options.video_view;
       }
 
       this.$el.css({ width: "100%", height: "100%"});
@@ -70,6 +70,65 @@ function(app, Video) {
       vv.popcorn.on('timeupdate', function() {
         
       });
+
+      this.initBehaviors();
+
+    },
+
+    initBehaviors: function() {
+
+      this.allowPlayPause();
+
+      // setup mechanism to launch a module on pause
+      this.vv.popcorn.on('pause', function() {
+        console.log('TTB PAUSED');
+      });
+
+    },
+
+    allowPlayPause: function() {
+
+      // by clicking on video
+      this._allowPlayPauseByClicking();
+
+      // by pressing space bar
+      this._allowPlayPauseByPressingKey(32);
+
+    },
+
+    _allowPlayPauseByClicking: function() {
+
+        var _this = this;
+        
+        $('#main').on('click',function() { 
+          _this._togglePlayPause();
+        });
+
+    },
+
+    _allowPlayPauseByPressingKey: function(key) {
+
+        var _this = this;
+
+        $('body').on('keydown', function(e) {
+            if(e.which == key) {
+              _this._togglePlayPause();
+            }
+        });
+
+    },
+
+    _togglePlayPause: function() {
+
+      var vv = this.vv
+      ,   vp = vv.popcorn;
+
+      if(vp.paused()) {
+        vp.play();
+      }
+      else {
+        vp.pause();
+      }
 
     }
 
