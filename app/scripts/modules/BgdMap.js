@@ -17,6 +17,13 @@ function(app) {
 
   init = function() {
 
+    // poll for google.maps.version to see if it's actually loaded
+    if(typeof google.maps.version === 'undefined') {
+      console.log("Google Maps NOT loaded");
+      setTimeout(init, 10);
+      return;
+    }
+
     console.log("Google Maps loaded: " + google.maps.version);
 
     var places = new BgdMap.Collection();
@@ -71,6 +78,8 @@ function(app) {
 
       this.$el.css({height: '100%'});
 
+      $('#module-container').css({opacity: 0});
+
       // add layout to the dom
       $('#module-container').empty().append(this.el);
 
@@ -124,6 +133,8 @@ function(app) {
 
       this.createPlaces(this.collection.models);
       this.initInfoWindow();
+
+      $('#module-container').transition({opacity: 1}, 2000);
 
     },
 
@@ -250,7 +261,7 @@ function(app) {
 
   });
 
-  setTimeout(init, 50);
+  setTimeout(init, 10);
 
   // Return the module for AMD compliance.
   return BgdMap;
