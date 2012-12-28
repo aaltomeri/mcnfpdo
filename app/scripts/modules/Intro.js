@@ -18,7 +18,7 @@ function(app, Video) {
     // video info for this module
     var video_model = new Video.Model({
       name: 'Intro',
-      sources: ['medias/videos/135797856.mp4'],
+      sources: ['medias/videos/intro.mp4'],
       dimensions: { width: '100%', height: '100%' },
       //sources: ['http://player.vimeo.com/video/56203539'],
       //dimensions: { width: '1280px', height: '720px' }
@@ -57,8 +57,9 @@ function(app, Video) {
 
       vv.popcorn.on('timeupdate', function() {
         if(this.currentTime() > this.duration()-3) {
-          //app.trigger('goto', 'bgd-map');
           this.pause();
+          this.destroy();
+          app.trigger('goto', 'ttb');
         }
       });
 

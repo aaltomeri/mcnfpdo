@@ -3,16 +3,18 @@ define([
   "app",
 
   // Modules
-  "modules/Intro"
+  "modules/Intro", 
+  "modules/TTB",
 ],
 
-function(app, Intro) {
+function(app, Intro, TTB) {
 
   // Defining the application router, you can attach sub routers here.
   var Router = Backbone.Router.extend({
 
     routes: {
       "": "index",
+      "ttb": "ttb",
       "bgd-map": "bgdMap"
     },
 
@@ -20,6 +22,13 @@ function(app, Intro) {
 
       // here we call the init function that we have defined for the Intro module
       Intro.init();
+
+    },
+
+    ttb: function() {
+
+      // here we call the init function that we have defined for the Intro module
+      TTB.init();
 
     },
 
