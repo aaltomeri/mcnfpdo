@@ -17,6 +17,7 @@ body {
 	vertical-align: middle;
 	margin: 0;
 	background: #000;
+	overflow: hidden;
 }
 
 h1 {
@@ -36,6 +37,8 @@ h1 {
 	left: 0;
 	height: 100%;
 	width: 100%;
+
+	overflow: hidden;
 }
 
 #module-container {
@@ -44,4 +47,5 @@ h1 {
 	left: 0;
 	height: 100%;
 	width: 100%;
+	overflow: hidden;
 }
