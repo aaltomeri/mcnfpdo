@@ -15,13 +15,17 @@ function(app, Video) {
   
   Intro.init = function() {
     
+    // video info for this module
     var video_model = new Video.Model({
       name: 'Intro',
-      sources: ['medias/videos/intro.mp4'],
+      //sources: ['medias/videos/135797856.mp4'],
+      sources: ['http://player.vimeo.com/video/56203539'],
       autoplay: true,
-      dimensions: { width: '100%', height: '100%' }
+      dimensions: { width: '1280px', height: '720px' }
     }),
+    // video view
     video_view = new Video.Views.Main({ model: video_model }),
+    // actual main view for this module
     intro_view = new Intro.Views.Main({ video_view: video_view});
 
   };
@@ -35,17 +39,19 @@ function(app, Video) {
         throw "Intro requires a video view";
       }
       else {
+        // shortcut to video view
         var vv = this.options.video_view;
       }
 
       this.$el.css({ width: "100%", height: "100%"});
 
-      // add video view
+      // append video view to Intro view
       this.$el.append(vv.$el);
 
-      // add layout to the dom
+      // add Intro view to the dom
       $('#main-container').empty().append(this.el);
 
+      // init video
       vv.init();
 
       vv.popcorn.on('timeupdate', function() {
