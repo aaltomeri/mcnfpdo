@@ -21,20 +21,33 @@ function(app) {
 
     popcorn: null,
 
+    /**
+     * Init routine for Vieo View
+     * this methd needs to be explicitly called for video instanciation through Popcorn
+     * 
+     * @return void
+     */
     init: function() {
-
-      var d;
 
       if(!this.model)
         throw 'Video View requires a model';
+      
+      var d = this.model.get('dimensions');
 
+      // adjust video container dimensions if provided
+      if(d) {
+        this.$el.css({ width: d.width, height: d.height});
+      }
+
+      // Popcorn instantiation
       this.popcorn = Popcorn.smart(this.el, this.model.attributes.sources);
 
-      if(d = this.model.attributes.dimensions) {
-        this.$el.css({ width: d.width, height: d.height});
+      // adjust video dimensions if provided
+      if(d) {
         this.$el.find('video').css({ width: d.width, height: d.height});
       }
 
+      // autoplay?
       if(this.model.attributes.autoplay)
         this.popcorn.play();
 

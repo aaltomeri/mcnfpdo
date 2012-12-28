@@ -48,6 +48,13 @@ function(app, Video) {
 
       vv.init();
 
+      vv.popcorn.on('timeupdate', function() {
+        if(this.currentTime() > this.duration()-3) {
+          app.trigger('goto', 'bgd-map');
+          //this.pause();
+        }
+      });
+
     }
 
   });

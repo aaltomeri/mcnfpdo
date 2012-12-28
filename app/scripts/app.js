@@ -4,6 +4,7 @@ define([
   "lodash",
   "backbone",
   "popcorn",
+  "transit",
 
   // Plugins.
   "plugins/backbone.layoutmanager"

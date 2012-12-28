@@ -13,7 +13,8 @@ require.config({
     jquery: "../scripts/libs/jquery",
     lodash: "../scripts/libs/lodash",
     backbone: "../scripts/libs/backbone",
-    popcorn: "../scripts/vendor/popcorn-complete"
+    popcorn: "../scripts/vendor/popcorn-complete",
+    transit: "../scripts/vendor/jquery.transit"
   },
 
   shim: {
@@ -21,6 +22,10 @@ require.config({
     backbone: {
       deps: ["lodash", "jquery"],
       exports: "Backbone"
+    },
+
+    transit: {
+       deps: ["jquery"],
     },
 
     // Backbone.LayoutManager depends on Backbone.
