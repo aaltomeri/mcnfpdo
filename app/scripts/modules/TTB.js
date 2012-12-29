@@ -104,7 +104,7 @@ function(app, Video) {
 
         if(chapter = vv.model.getChapterByTime(vp.currentTime())) {
 
-          console.log('TTB PAUSED on chapter:' + chapter.name);
+          console.log('TTB PAUSED on chapter: ' + chapter.name);
 
         }
         else {
@@ -113,19 +113,26 @@ function(app, Video) {
           this.play();
 
           // show some feedback that no action is possible at this time
-          var d = $('<div style="position"></div>').css({
+          var d = $('<div style="position"><span>Patience !</<span></div>').css({
             position: 'absolute',
-            width: '100%',
-            height: '100%',
+            // get actual video width : height * video dimensions factor
+            width: _this.$el.find('video').height() * (this.media.videoWidth/this.media.videoHeight),
+            height: _this.$el.find('video').height(),
             background: 'red',
-            top: '0px',
-            right: '0px',
-            opacity: 0.3
-          })
+            top: 0,
+            opacity: 0.3,
+            display: 'table'
+          });
+
+          // center overlay
+          d.css({ left: _this.$el.width()/2 - d.width()/2 });
+
+          // message style
+          d.find('span').css({ 'display': 'table-cell', 'vertical-align': 'middle', 'text-align': 'center', color: 'white', 'font-size': '150px'});
 
           _this.$el.append(d);
 
-          setTimeout(function() { d.remove() }, 500);
+          setTimeout(function() { d.fadeOut(function() { $(this).remove(); }) }, 500);
 
         }
 
