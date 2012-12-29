@@ -59,7 +59,7 @@ function(app, Video) {
         if(this.currentTime() > this.duration()-3) {
           this.pause();
           this.destroy();
-          app.trigger('goto', 'ttb/play/60');
+          app.trigger('goto', 'ttb/play/10');
         }
       });
 
