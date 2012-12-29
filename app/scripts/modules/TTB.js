@@ -117,15 +117,17 @@ function(app, Video) {
             position: 'absolute',
             // get actual video width : height * video dimensions factor
             width: _this.$el.find('video').height() * (this.media.videoWidth/this.media.videoHeight),
-            height: _this.$el.find('video').height(),
+            height: _this.$el.find('video').width() * (this.media.videoHeight/this.media.videoWidth),
             background: 'red',
-            top: 0,
             opacity: 0.3,
             display: 'table'
           });
 
           // center overlay
-          d.css({ left: _this.$el.width()/2 - d.width()/2 });
+          d.css({ 
+            left: _this.$el.width()/2 - d.width()/2,
+            top: _this.$el.height()/2 - d.height()/2
+          });
 
           // message style
           d.find('span').css({ 'display': 'table-cell', 'vertical-align': 'middle', 'text-align': 'center', color: 'white', 'font-size': '150px'});
