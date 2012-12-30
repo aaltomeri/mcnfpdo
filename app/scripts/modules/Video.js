@@ -20,6 +20,7 @@ function(app) {
   Video.Views.Main = Backbone.View.extend({
 
     popcorn: null,
+    overlay: null,
 
     /**
      * Init routine for Vieo View
@@ -60,10 +61,57 @@ function(app) {
           this.play();
 
       })
-     
 
+    },
+
+    showOverlay: function(text) {
+
+      this.hideOverlay();
+
+      var overlay = this.overlay = $('<div><div class="text">'+text+'</div></div>');
+
+      overlay.css({
+        position: 'absolute',
+        // get actual video width : height * video dimensions factor
+        width: this.$el.find('video').height() * (this.popcorn.media.videoWidth/this.popcorn.media.videoHeight),
+        height: this.$el.find('video').width() * (this.popcorn.media.videoHeight/this.popcorn.media.videoWidth),
+        background: 'black ',
+        opacity: 0.3,
+        display: 'table'
+      });
+
+      // center overlay
+      overlay.css({ 
+        left: this.$el.width()/2 - overlay.width()/2,
+        top: this.$el.height()/2 - overlay.height()/2
+      });
+
+      // message style
+      overlay.find('.text').css({ 
+        'display': 'table-cell', 
+        'vertical-align': 'middle', 
+        'text-align': 'center', 
+        color: 'white', 
+        'font-size': '30px', 
+        'line-height': 'auto',
+        'text-transform': 'uppercase',
+        'padding': '0 15%'
+      });
+
+      overlay.css({opacity: 0});
+      this.$el.append(overlay);
+      overlay.transition({opacity: 0.5});
+
+    },
+
+    hideOverlay: function() {
+
+      var overlay = this.overlay;
       
-
+      if(overlay) {
+        overlay.transition({opacity: 0}, function() { overlay.remove(); });
+      }
+        
     }
 
   });
@@ -81,6 +129,23 @@ function(app) {
         return _.find(this.attributes.chapters, function(chapter) { 
           return  time > chapter.start && time < chapter.end;
         });
+      },
+
+      /**
+       * returns the next chapter for a given time
+       * @return object the chapter
+       */
+      getChapterNextByTime: function(time) {
+
+        var chapter = this.getChapterByTime(time);
+
+        if(chapter) {
+          return chapter;
+        }
+        else {
+          return this.getChapterNextByTime(time+1);
+        }
+
       }
 
   });
