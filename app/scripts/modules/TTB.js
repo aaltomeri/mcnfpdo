@@ -26,15 +26,15 @@ function(app, Video) {
       offset: offset,
       autoplay: (command === 'play')? true : false,
       chapters: [
-        { name: "notebook",  start: 66, end: 72 },
-        { name: "bgd-book",  start: 73, end: 77 },
-        { name: "bgd-map", start: 22, end: 27 },
-        { name: "mail",  start: 58, end: 63 },
-        { name: "tabloid", start: 86, end: 92 },
-        { name: "news",  start: 79, end: 84 },
-        { name: "tesla", start: 40, end: 48 },
-        { name: "history", start: 49, end: 56 },
-        { name: "war-trauma",  start: 32, end: 37 }
+        { name: "notebook", title: "Carnet de notes", start: 66, end: 72 },
+        { name: "bgd-book", title: "Belgrade par Angélica Liddell", start: 73, end: 77 },
+        { name: "bgd-map",title: "Belgrade Ville", start: 22, end: 27 },
+        { name: "mail", title: "Lettres du père", start: 58, end: 63 },
+        { name: "tabloid",title: "Belgrade Trash", start: 86, end: 92 },
+        { name: "news", title: "Actualités", start: 79, end: 84 },
+        { name: "tesla",title: "Insconscient collectif", start: 40, end: 48 },
+        { name: "history",title: "Histoire Serbe", start: 49, end: 56 },
+        { name: "war-trauma", title: "Traumatisme de guerre", start: 32, end: 37 }
       ]
 
     }),
@@ -82,8 +82,21 @@ function(app, Video) {
       // init video
       vv.init();
 
+      var showIntroInfo = true
+      ,   hideIntroInfo = true;
+
       vv.popcorn.on('timeupdate', function() {
-        
+
+          if(this.currentTime() < 15 && showIntroInfo) {
+            vv.showOverlay('Pour découvrir ce que cache les objets appuyez sur la barre espace  ');
+            showIntroInfo = false;
+          }
+
+          if(this.currentTime() > 15 && hideIntroInfo) {
+            vv.hideOverlay();
+            hideIntroInfo = false;
+          }
+
       });
 
       this.initBehaviors();
@@ -112,29 +125,13 @@ function(app, Video) {
           // do not pause when outside of a chapter
           this.play();
 
+          // get next chapter
+          chapter = vv.model.getChapterNextByTime(vp.currentTime());
+
           // show some feedback that no action is possible at this time
-          var d = $('<div style="position"><span>Patience !</<span></div>').css({
-            position: 'absolute',
-            // get actual video width : height * video dimensions factor
-            width: _this.$el.find('video').height() * (this.media.videoWidth/this.media.videoHeight),
-            height: _this.$el.find('video').width() * (this.media.videoHeight/this.media.videoWidth),
-            background: 'red',
-            opacity: 0.3,
-            display: 'table'
-          });
+          vv.showOverlay('Prochain chapitre<br /><strong>'+ chapter.title +'</strong>');
 
-          // center overlay
-          d.css({ 
-            left: _this.$el.width()/2 - d.width()/2,
-            top: _this.$el.height()/2 - d.height()/2
-          });
-
-          // message style
-          d.find('span').css({ 'display': 'table-cell', 'vertical-align': 'middle', 'text-align': 'center', color: 'white', 'font-size': '150px'});
-
-          _this.$el.append(d);
-
-          setTimeout(function() { d.fadeOut(function() { $(this).remove(); }) }, 500);
+          setTimeout(function() { vv.hideOverlay(); }, 1000);
 
         }
 
