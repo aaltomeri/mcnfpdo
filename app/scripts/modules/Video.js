@@ -64,6 +64,51 @@ function(app) {
 
     },
 
+    allowPlayPause: function() {
+
+      // by clicking on video
+      this._allowPlayPauseByClicking();
+
+      // by pressing space bar
+      this._allowPlayPauseByPressingKey(32);
+
+    },
+
+    _allowPlayPauseByClicking: function() {
+
+        var _this = this;
+
+        $('#main').on('click',function() { 
+          _this._togglePlayPause();
+        });
+
+    },
+
+    _allowPlayPauseByPressingKey: function(key) {
+
+        var _this = this;
+
+        $('body').on('keydown', function(e) {
+            if(e.which == key) {
+              _this._togglePlayPause();
+            }
+        });
+
+    },
+
+    _togglePlayPause: function() {
+
+      var vp = this.popcorn;
+
+      if(vp.paused()) {
+        vp.play();
+      }
+      else {
+        vp.pause();
+      }
+
+    },
+
     showOverlay: function(text) {
 
       this.hideOverlay();
