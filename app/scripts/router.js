@@ -15,7 +15,8 @@ function(app, Intro, TTB) {
     routes: {
       "": "index",
       "ttb(/:command)(/:offset)": "ttb",
-      "bgd-map": "bgdMap"
+      "bgd-map": "bgdMap",
+      "news": "news"
     },
 
     index: function() {
@@ -35,9 +36,20 @@ function(app, Intro, TTB) {
 
     bgdMap: function() {
 
+
+
       // requiring the module here will in effect initialize it because of how it is coded
       // @see init function in the module
       require(["modules/BgdMap"]);
+
+    },
+
+    news: function() {
+
+      console.log(TTB.started);
+
+      // requiring the module here AND callnig its init method in the callback
+      require(["modules/News"], function(News) { News.init(); });
 
     }
 

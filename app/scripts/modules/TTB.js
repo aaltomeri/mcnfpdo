@@ -14,6 +14,8 @@ function(app, Video) {
   // Create a new module.
   var TTB = app.module();
 
+  TTB.started = false;
+
   TTB.init = function(command, offset) {
     
     // video info for this module
@@ -83,6 +85,8 @@ function(app, Video) {
       // init video
       vv.init();
       this.initBehaviors();
+
+      TTB.started = true;
 
     },
 
