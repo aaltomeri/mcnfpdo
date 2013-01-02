@@ -39,6 +39,7 @@ function(app) {
       var dimensions = this.model.get('dimensions')
       ,   offset = this.model.get('offset')
       ,   autoplay = this.model.get('autoplay')
+      ,   enablePlayPause = this.model.get('enablePlayPause')
 
       // adjust video container dimensions if provided
       if(dimensions) {
@@ -60,44 +61,67 @@ function(app) {
           this.currentTime(offset);
 
         // autoplay?
-        if(autoplay)
-          this.play();
+        if(autoplay) this.play();
 
-      })
+      });
+
+      // enable PLAY / PAUSE
+      if(enablePlayPause) this.enablePlayPause();
 
     },
 
-    allowPlayPause: function() {
+    enablePlayPause: function() {
 
       // by clicking on video
-      this._allowPlayPauseByClicking();
+      this._enablePlayPauseByClicking();
 
       // by pressing space bar
-      this._allowPlayPauseByPressingKey(32);
+      this._enablePlayPauseByPressingKey(32);
 
     },
 
-    _allowPlayPauseByClicking: function() {
+    _disablePlayPause: function() {
 
-        var _this = this;
+      this._disablePlayPauseByClicking();
+      this._disablePlayPauseByPressingKey();
+
+    },
+
+    _enablePlayPauseByClicking: function() {
 
         var trigger_event = app.isiPad? 'touchstart' : 'click';
 
-        $('#main').on(trigger_event,function() { 
-          _this._togglePlayPause();
-        });
+        $('#main').on(trigger_event, $.proxy(this._togglePlayPause, this));
+
+    },
+    
+    _disablePlayPauseByClicking: function() {
+
+        var trigger_event = app.isiPad? 'touchstart' : 'click';
+        $('#main').off(trigger_event, this._togglePlayPause);
 
     },
 
-    _allowPlayPauseByPressingKey: function(key) {
+    _enablePlayPauseByPressingKey: function(key) {
 
-        var _this = this;
+      $('body').on('keydown', {key: key}, $.proxy(this._keydownHandler, this));
 
-        $('body').on('keydown', function(e) {
-            if(e.which == key) {
-              _this._togglePlayPause();
-            }
-        });
+    },
+
+    _disablePlayPauseByPressingKey: function() {
+
+      $('body').off('keydown', this._keydownHandler);
+
+    },
+
+    _keydownHandler: function(e) {
+
+      if(!e.data.key)
+        throw "This handler needs an event data 'key' property";
+
+      if(e.which == e.data.key) {
+        this._togglePlayPause();
+      }
 
     },
 
@@ -170,6 +194,21 @@ function(app) {
         overlay.transition({opacity: 0}, function() { overlay.remove(); });
       }
         
+    },
+
+    /**
+     * override remove method to allow for destroying popcorn instance
+     */
+    remove: function() {
+
+      this.popcorn.destroy();
+
+      delete this.popcorn;
+
+      this._disablePlayPause();
+
+      Backbone.View.prototype.remove.apply(this, arguments);
+
     }
 
   });

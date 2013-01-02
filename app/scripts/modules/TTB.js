@@ -25,6 +25,7 @@ function(app, Video) {
       //dimensions: { width: '1280px', height: '720px' }
       offset: offset,
       autoplay: (command === 'play')? true : false,
+      enablePlayPause: true,
       chapters: [
         { name: "notebook", title: "Carnet de notes", start: 66, end: 72 },
         { name: "bgd-book", title: "Belgrade par Angélica Liddell", start: 73, end: 77 },
@@ -93,8 +94,6 @@ function(app, Video) {
       ,   chapter
        ,  showIntroInfo = true
       ,   hideIntroInfo = true;
-
-      vv.allowPlayPause();
 
       // show overlay on start
       // allows for user interaction which allow for playing the video

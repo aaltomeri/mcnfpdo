@@ -23,11 +23,12 @@ function(app, Video) {
       //sources: ['http://player.vimeo.com/video/56203539'],
       //dimensions: { width: '1280px', height: '720px' }
       autoplay: false,
+      enablePlayPause: true
     }),
     // video view
     video_view = new Video.Views.Main({ model: video_model }),
     // actual main view for this module
-    intro_view = new Intro.Views.Main({ video_view: video_view});
+    intro_view = new Intro.Views.Main({ video_view: video_view });
 
   };
 
@@ -64,35 +65,27 @@ function(app, Video) {
       var _this = this
       ,   vv = this.vv
       ,   vp = vv.popcorn;
+      
+      vv.showOverlay('Pour commencer appuyez sur la barre espace ou cliquez/touchez l\'écran');
 
-      vv.allowPlayPause();
-
-      // this block of code is designed to work on the iPad
-      // we need to wait until we have video dimensions before being able to properly show the overlay
-      // TODO this needs to go into the Video view
-      var show_overlay = function() {
-        //console.log('progress');
-        vv.showOverlay('Pour commencer appuyez sur la barre espace ou cliquez/touchez l\'écran');
-        vp.off('progress', show_overlay);
-      };
-      vp.on('progress', show_overlay);
-
-     
-      vv.popcorn.on('ended', function() {
-
-          this.destroy();
-
-           // go to TTB at the end of the intro
-          app.trigger('goto', 'ttb/play/10');
-
-      });
-
-      this.vv.popcorn.on('play', function() {
+      // PLAY
+      vp.on('play', function() {
 
         // hide welcome screen on first play
         if(this.currentTime() == 0) {
           vv.hideOverlay();  
         }
+
+      });
+     
+      // END     
+      vp.on('ended', function() {
+
+          // remove Video View
+          vv.remove();  
+
+          // go to TTB at the end of the intro
+          app.trigger('goto', 'ttb/play/10');
 
       });
 
