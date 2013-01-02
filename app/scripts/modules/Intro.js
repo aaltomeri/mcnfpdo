@@ -22,7 +22,7 @@ function(app, Video) {
       dimensions: { width: '100%', height: '100%' },
       //sources: ['http://player.vimeo.com/video/56203539'],
       //dimensions: { width: '1280px', height: '720px' }
-      autoplay: true,
+      autoplay: false,
     }),
     // video view
     video_view = new Video.Views.Main({ model: video_model }),
@@ -41,7 +41,7 @@ function(app, Video) {
       }
       else {
         // shortcut to video view
-        var vv = this.options.video_view;
+        var vv = this.vv = this.options.video_view;
       }
 
       this.$el.css({ width: "100%", height: "100%"});
@@ -55,19 +55,50 @@ function(app, Video) {
       // init video
       vv.init();
 
-      vv.popcorn.on('timeupdate', function() {
-        if(this.currentTime() > this.duration()-3) {
-          this.pause();
+      this.initBehaviors();
+
+    },
+
+    initBehaviors: function() {
+
+      var _this = this
+      ,   vv = this.vv
+      ,   vp = vv.popcorn;
+
+      vv.allowPlayPause();
+
+      // this block of code is designed to work on the iPad
+      // we need to wait until we have video dimensions before being able to properly show the overlay
+      // TODO this needs to go into the Video view
+      var show_overlay = function() {
+        //console.log('progress');
+        vv.showOverlay('Pour commencer appuyez sur la barre espace ou cliquez/touchez l\'écran');
+        vp.off('progress', show_overlay);
+      };
+      vp.on('progress', show_overlay);
+
+     
+      vv.popcorn.on('ended', function() {
+
           this.destroy();
+
+           // go to TTB at the end of the intro
           app.trigger('goto', 'ttb/play/10');
+
+      });
+
+      this.vv.popcorn.on('play', function() {
+
+        // hide welcome screen on first play
+        if(this.currentTime() == 0) {
+          vv.hideOverlay();  
         }
+
       });
 
     }
 
   });
-
-  
 
   // Default Model.
   Intro.Model = Backbone.Model.extend({

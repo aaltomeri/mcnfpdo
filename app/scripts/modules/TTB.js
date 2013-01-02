@@ -81,24 +81,6 @@ function(app, Video) {
 
       // init video
       vv.init();
-
-      var showIntroInfo = true
-      ,   hideIntroInfo = true;
-
-      vv.popcorn.on('timeupdate', function() {
-
-          if(this.currentTime() < 15 && showIntroInfo) {
-            vv.showOverlay('Pour découvrir ce que cache les objets appuyez sur la barre espace  ');
-            showIntroInfo = false;
-          }
-
-          if(this.currentTime() > 15 && hideIntroInfo) {
-            vv.hideOverlay();
-            hideIntroInfo = false;
-          }
-
-      });
-
       this.initBehaviors();
 
     },
@@ -108,9 +90,35 @@ function(app, Video) {
       var _this = this
       ,   vv = this.vv
       ,   vp = vv.popcorn
-      ,   chapter;
+      ,   chapter
+       ,  showIntroInfo = true
+      ,   hideIntroInfo = true;
 
       vv.allowPlayPause();
+
+      // show overlay on start
+      // allows for user interaction which allow for playing the video
+      // there is no autoplay on iPad ... so we resort to making the user act
+      // which might be a good thing anyway
+      var show_overlay = function() {
+        vv.showOverlay('Pour découvrir ce que cache les objets appuyez sur la barre espace ou cliquez/touchez l\'écran');
+        vp.off('progress', show_overlay);
+      };
+      vp.on('progress', show_overlay);
+
+      vv.popcorn.on('timeupdate', function() {
+
+          if(this.currentTime() < 15 && showIntroInfo) {
+            //vv.showOverlay('Pour découvrir ce que cache les objets appuyez sur la barre espace ou cliquez/touchez l\'écran');
+            //showIntroInfo = false;
+          }
+
+          if(this.currentTime() > 0 && hideIntroInfo) {
+            vv.hideOverlay();
+            hideIntroInfo = false;
+          }
+
+      });
 
       // setup mechanism to launch a module on pause
       this.vv.popcorn.on('pause', function() {

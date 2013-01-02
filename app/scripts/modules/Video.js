@@ -9,6 +9,9 @@ function(app) {
 
   // Create a new module.
   var Video = app.module();
+
+  Video.defaultWidth = 640;
+  Video.defaultHeight = 360;
   
   Video.init = function() {
     
@@ -45,7 +48,7 @@ function(app) {
       // Popcorn instantiation
       this.popcorn = Popcorn.smart(this.el, this.model.attributes.sources);
 
-      // adjust video dimensions if provided
+      // adjust video element dimensions if provided
       if(dimensions) {
         this.$el.find('video').css({ width: dimensions.width, height: dimensions.height});
       }
@@ -78,7 +81,9 @@ function(app) {
 
         var _this = this;
 
-        $('#main').on('click',function() { 
+        var trigger_event = app.isiPad? 'touchstart' : 'click';
+
+        $('#main').on(trigger_event,function() { 
           _this._togglePlayPause();
         });
 
@@ -113,13 +118,21 @@ function(app) {
 
       this.hideOverlay();
 
-      var overlay = this.overlay = $('<div><div class="text">'+text+'</div></div>');
+      var overlay = this.overlay = $('<div><div class="text">'+text+'</div></div>')
+
+      // original video media dimensions: use dynamically obtained dimensions if possible, 
+      // defaults to the Video module defaults otherwise
+      // useful on iPad where we have no way to have an autoplay or autoload which would allow us to get those dimensions from the media itself
+      // i.e. they become available only after at least being loaded through the load() method
+      ,   vw = this.popcorn.media.videoWidth? this.popcorn.media.videoWidth : Video.defaultWidth
+      ,   vh = this.popcorn.media.videoHeight? this.popcorn.media.videoHeight : Video.defaultHeight
+
 
       overlay.css({
         position: 'absolute',
         // get actual video width : height * video dimensions factor
-        width: this.$el.find('video').height() * (this.popcorn.media.videoWidth/this.popcorn.media.videoHeight),
-        height: this.$el.find('video').width() * (this.popcorn.media.videoHeight/this.popcorn.media.videoWidth),
+        width: this.$el.find('video').height() * (vw/vh),
+        height: this.$el.find('video').width() * (vh/vw),
         background: 'black ',
         opacity: 0.3,
         display: 'table'
