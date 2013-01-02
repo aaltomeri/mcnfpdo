@@ -36,7 +36,8 @@ function(app) {
       if(!this.model)
         throw 'Video View requires a model';
       
-      var dimensions = this.model.get('dimensions')
+      var vv = this
+      ,   dimensions = this.model.get('dimensions')
       ,   time = this.model.get('time')
       ,   autoplay = this.model.get('autoplay')
       ,   enablePlayPause = this.model.get('enablePlayPause')
@@ -57,8 +58,29 @@ function(app) {
       // wrap all play actions in a 'canplay' callback
       this.popcorn.on('canplay', function() {
 
-        if(time)
-          this.currentTime(time);
+        // offset playhead
+        if(time) {
+
+          // time is a string 
+          if(typeof time === 'string') {
+
+            // is it a chapter name ?
+            var chapter = _.find(vv.model.attributes.chapters, function(chapter) { 
+              return  chapter.name == time;
+            }) 
+
+            if(chapter) {
+              this.currentTime(chapter.start);
+            }
+
+          }
+          else {
+             this.currentTime(time);
+          }
+
+         
+
+        }
 
         // autoplay?
         if(autoplay) this.play();
