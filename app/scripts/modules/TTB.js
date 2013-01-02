@@ -92,18 +92,10 @@ function(app, Video) {
       ,   vv = this.vv
       ,   vp = vv.popcorn
       ,   chapter
-       ,  showIntroInfo = true
+      ,  showIntroInfo = true
       ,   hideIntroInfo = true;
 
-      // show overlay on start
-      // allows for user interaction which allow for playing the video
-      // there is no autoplay on iPad ... so we resort to making the user act
-      // which might be a good thing anyway
-      var show_overlay = function() {
-        vv.showOverlay('Pour découvrir ce que cache les objets appuyez sur la barre espace ou cliquez/touchez l\'écran');
-        vp.off('progress', show_overlay);
-      };
-      vp.on('progress', show_overlay);
+      vv.showOverlay('Pour découvrir ce que cache les objets appuyez sur la barre espace ou cliquez/touchez l\'écran');
 
       vv.popcorn.on('timeupdate', function() {
 
@@ -112,7 +104,7 @@ function(app, Video) {
             //showIntroInfo = false;
           }
 
-          if(this.currentTime() > 0 && hideIntroInfo) {
+          if(this.currentTime() > 15 && hideIntroInfo) {
             vv.hideOverlay();
             hideIntroInfo = false;
           }
