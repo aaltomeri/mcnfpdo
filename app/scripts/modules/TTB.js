@@ -118,6 +118,16 @@ function(app, Video) {
 
           console.log('TTB PAUSED on chapter: ' + chapter.name);
 
+          if(app.router.routes[chapter.name]) {
+            // go to chapter
+            app.trigger('goto', chapter.name);
+          }
+          else {
+            vv.showOverlay('Le chapitre : <strong>' + chapter.title + '</strong> n\'existe pas encore');
+            setTimeout(function() { vv.hideOverlay(); }, 2000);
+          }
+
+
         }
         else {
 
