@@ -26,7 +26,7 @@ function(app) {
     overlay: null,
 
     /**
-     * Init routine for Vieo View
+     * Init routine for Video View
      * this methd needs to be explicitly called for video instanciation through Popcorn
      * 
      * @return void
@@ -37,7 +37,7 @@ function(app) {
         throw 'Video View requires a model';
       
       var dimensions = this.model.get('dimensions')
-      ,   offset = this.model.get('offset')
+      ,   time = this.model.get('time')
       ,   autoplay = this.model.get('autoplay')
       ,   enablePlayPause = this.model.get('enablePlayPause')
 
@@ -57,8 +57,8 @@ function(app) {
       // wrap all play actions in a 'canplay' callback
       this.popcorn.on('canplay', function() {
 
-        if(offset)
-          this.currentTime(offset);
+        if(time)
+          this.currentTime(time);
 
         // autoplay?
         if(autoplay) this.play();

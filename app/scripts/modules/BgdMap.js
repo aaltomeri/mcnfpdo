@@ -13,14 +13,14 @@ define([
 function(app) {
 
   // Create a new module.
-  var BgdMap = app.module(),
+  var BgdMap = app.module();
 
-  init = function() {
+  BgdMap.init = function() {
 
     // poll for google.maps.version to see if it's actually loaded
     if(typeof google.maps.version === 'undefined') {
       console.log("Google Maps NOT loaded");
-      setTimeout(init, 10);
+      setTimeout(BgdMap.init, 10);
       return;
     }
 
@@ -260,8 +260,6 @@ function(app) {
     }
 
   });
-
-  setTimeout(init, 10);
 
   // Return the module for AMD compliance.
   return BgdMap;

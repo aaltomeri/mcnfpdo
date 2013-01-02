@@ -15,6 +15,7 @@ function(app, Intro, TTB) {
     routes: {
       "": "index",
       "ttb(/:command)(/:offset)": "ttb",
+      "ttb(/:command)(/:time)": "ttb",
       "bgd-map": "bgdMap",
       "news": "news"
     },
@@ -27,10 +28,12 @@ function(app, Intro, TTB) {
     },
 
     ttb: function(command, offset) {
+    ttb: function(command, time) {
 
       // here we call the init function that we have defined for the module
       // we pass the optional offset argument that will result in the TTB video to be played at that time offset
       TTB.init(command, offset);
+      TTB.init(command, time);
 
     },
 
