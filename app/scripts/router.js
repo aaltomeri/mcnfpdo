@@ -14,10 +14,9 @@ function(app, Intro, TTB) {
 
     routes: {
       "": "index",
-      "ttb(/:command)(/:offset)": "ttb",
-      "ttb(/:command)(/:time)": "ttb",
-      "bgd-map": "bgdMap",
-      "news": "news"
+      "TTB(/:command)(/:time)": "ttb",
+      "BgdMap": "bgdMap",
+      "News": "news"
     },
 
     index: function() {
@@ -27,32 +26,44 @@ function(app, Intro, TTB) {
 
     },
 
-    ttb: function(command, offset) {
     ttb: function(command, time) {
+
+      $('#module-container').empty();
+
+      // if current Chapter exists, call its destroy method
+      if(typeof TTB.model !== "undefined" && TTB.model.get('currentChapter')) {
+          require(["modules/" + TTB.model.get('currentChapter').name], function(_module) {
+          if(_.isFunction(_module.destroy)) _module.destroy();
+        });
+      }
 
       // here we call the init function that we have defined for the module
       // we pass the optional offset argument that will result in the TTB video to be played at that time offset
-      TTB.init(command, offset);
+      // 'time' can also be a chapter name - the ttb video playhead will then position it self at the beginning of the chapter
       TTB.init(command, time);
 
     },
 
     bgdMap: function() {
 
-
-
-      // requiring the module here will in effect initialize it because of how it is coded
-      // @see init function in the module
-      require(["modules/BgdMap"]);
+      this.moduleLauncher('BgdMap');
 
     },
 
     news: function() {
 
-      console.log(TTB.started);
+      this.moduleLauncher('News');
 
-      // requiring the module here AND callnig its init method in the callback
-      require(["modules/News"], function(News) { News.init(); });
+    },
+
+    moduleLauncher: function(moduleName) {
+
+      this.ttb('pause', moduleName);
+
+      TTB.MainView.showBackToTtbButton();
+
+      // requiring the module AND calling its init method in the callback
+      require(["modules/" + moduleName], function(module) { module.init(); });
 
     }
 

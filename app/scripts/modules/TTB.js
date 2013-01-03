@@ -20,6 +20,7 @@ function(app, Video) {
 
     // video info for this module
     var video_model = new Video.Model({
+
       name: 'TTB',
       sources: ['medias/videos/ttb.mp4'],
       dimensions: { width: '100%', height: '100%' },
@@ -29,25 +30,46 @@ function(app, Video) {
       autoplay: (command === 'play')? true : false,
       enablePlayPause: true,
       chapters: [
-        { name: "notebook", title: "Carnet de notes", start: 66, end: 72 },
-        { name: "bgd-book", title: "Belgrade par Angélica Liddell", start: 73, end: 77 },
-        { name: "bgd-map",title: "Belgrade Ville", start: 22, end: 27 },
-        { name: "mail", title: "Lettres du père", start: 58, end: 63 },
-        { name: "tabloid",title: "Belgrade Trash", start: 86, end: 92 },
-        { name: "news", title: "Actualités", start: 79, end: 84 },
-        { name: "tesla",title: "Insconscient collectif", start: 40, end: 48 },
-        { name: "history",title: "Histoire Serbe", start: 49, end: 56 },
-        { name: "war-trauma", title: "Traumatisme de guerre", start: 32, end: 37 }
+        { name: "Notebook", title: "Carnet de notes", start: 66, end: 72 },
+        { name: "BgdBook", title: "Belgrade par Angélica Liddell", start: 73, end: 77 },
+        { name: "BgdMap",title: "Belgrade Ville", start: 22, end: 27 },
+        { name: "Mail", title: "Lettres du père", start: 58, end: 63 },
+        { name: "Tabloid",title: "Belgrade Trash", start: 86, end: 92 },
+        { name: "News", title: "Actualités", start: 79, end: 84 },
+        { name: "Tesla",title: "Insconscient collectif", start: 40, end: 48 },
+        { name: "History",title: "Histoire Serbe", start: 49, end: 56 },
+        { name: "WarTrauma", title: "Traumatisme de guerre", start: 32, end: 37 }
       ]
 
-    }),
-    // video view
-    video_view = new Video.Views.Main({ model: video_model }),
-    // actual main view for this module
-    ttb_view = new TTB.Views.Main({ 
-      video_view: video_view,
-
     });
+  
+    // TTB has already been initialized and launched
+    if(TTB.started) {
+
+      if(time) {// move playhead if necessary
+        TTB.MainView.options.video_view.movePlayHead(time);
+      }
+
+      // play or pause
+      if(command === 'play') {
+        TTB.MainView.options.video_view.popcorn.play();
+      }
+      else {
+        TTB.MainView.options.video_view.popcorn.pause();
+      }
+
+      return;
+
+    }
+
+    // video view
+    var video_view = new Video.Views.Main({ model: video_model }),
+    // actual main view for this module
+    ttb_view = TTB.MainView = new TTB.Views.Main({ 
+      video_view: video_view,
+    });
+
+    TTB.model = video_model;
 
   };
 
@@ -64,7 +86,7 @@ function(app, Video) {
   // Default View.
   TTB.Views.Main = Backbone.View.extend({
 
-     initialize: function() {
+    initialize: function() {
 
       if(!this.options.video_view) {
         throw "TTB requires a video view";
@@ -76,7 +98,7 @@ function(app, Video) {
 
       this.$el.css({ width: "100%", height: "100%"});
 
-      // append video view to Intro view
+      // append video view to Main view
       this.$el.append(vv.$el);
 
       // add Intro view to the dom
@@ -84,9 +106,49 @@ function(app, Video) {
 
       // init video
       vv.init();
+
+      this.createBacktoTtbButton();
+
       this.initBehaviors();
 
       TTB.started = true;
+
+    },
+
+    createBacktoTtbButton: function() {
+
+        var v = this
+        ,   vv = this.vv
+        ,   bt = this.back_to_ttb_button =  $('<button>Back to TTB</button>');
+
+        // append home button
+        bt.css({ 
+          position: 'absolute', 
+          bottom: '10px', 
+          right: '10px',
+          opacity: 0
+        });
+        $('#main').append(bt);
+
+        bt.on('click', function() {
+
+          // go to end of current chapter
+          app.trigger('goto', 'TTB/play/' + vv.model.get('currentChapter').end);
+
+          v.hideBackToTtbButton();
+
+        });
+    },
+
+    showBackToTtbButton: function() {
+
+      this.back_to_ttb_button.transition({opacity: 1});
+
+    },
+
+    hideBackToTtbButton: function() {
+
+      this.back_to_ttb_button.transition({opacity: 0});
 
     },
 

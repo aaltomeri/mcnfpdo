@@ -111,6 +111,12 @@ function(app) {
 
   });
 
+  News.destroy = function() {
+
+    console.log('News destroy');
+
+  }
+
   // Return the module for AMD compliance.
   return News;
 

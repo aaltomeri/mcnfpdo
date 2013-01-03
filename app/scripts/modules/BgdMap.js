@@ -32,7 +32,7 @@ function(app) {
     places.on('reset', function() { layout.createMap() });
     places.fetchData();
 
-  }
+  };
 
   // marker icons images
   var icon_image_on = 'images/mapicons_on/video.png'
@@ -260,6 +260,12 @@ function(app) {
     }
 
   });
+
+  BgdMap.destroy = function() {
+
+    console.log('BgdMap destroy');
+
+  }
 
   // Return the module for AMD compliance.
   return BgdMap;

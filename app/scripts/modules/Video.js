@@ -61,24 +61,8 @@ function(app) {
         // offset playhead
         if(time) {
 
-          // time is a string 
-          if(typeof time === 'string') {
-
-            // is it a chapter name ?
-            var chapter = _.find(vv.model.attributes.chapters, function(chapter) { 
-              return  chapter.name == time;
-            }) 
-
-            if(chapter) {
-              this.currentTime(chapter.start);
-            }
-
-          }
-          else {
-             this.currentTime(time);
-          }
-
-         
+          // execute function with Video View context ( as we are in a popcorn event callback )
+          $.proxy(vv.movePlayHead, vv)(time);
 
         }
 
@@ -89,6 +73,28 @@ function(app) {
 
       // enable PLAY / PAUSE
       if(enablePlayPause) this.enablePlayPause();
+
+    },
+
+    movePlayHead: function(time) {
+
+      // time is a string 
+      if(isNaN(time)) {
+
+        // is it a chapter name ?
+        var chapter = _.find(this.model.attributes.chapters, function(chapter) { 
+          return  chapter.name.toLowerCase() == time.toLowerCase();
+        }) 
+
+        if(chapter) {
+          this.popcorn.currentTime(chapter.start);
+          this.model.set('currentChapter', chapter);
+        }
+
+      }
+      else {
+         this.popcorn.currentTime(time);
+      }
 
     },
 
