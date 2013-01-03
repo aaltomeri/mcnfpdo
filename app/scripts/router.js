@@ -13,10 +13,21 @@ function(app, Intro, TTB) {
   var Router = Backbone.Router.extend({
 
     routes: {
+
       "": "index",
+
       "TTB(/:command)(/:time)": "ttb",
+
       "BgdMap": "bgdMap",
-      "News": "news"
+      "BgdBook": "bgdBook",
+      "News": "news",
+      "Notebook": "notebook",
+      "Tesla": "tesla",
+      "Mail": "mail",
+      "History": "history",
+      "Tabloid": "tabloid",
+      "WarTrauma": "warTrauma"
+
     },
 
     index: function() {
@@ -31,16 +42,28 @@ function(app, Intro, TTB) {
       $('#module-container').empty();
 
       // if current Chapter exists, call its destroy method
-      if(typeof TTB.model !== "undefined" && TTB.model.get('currentChapter')) {
-          require(["modules/" + TTB.model.get('currentChapter').name], function(_module) {
-          if(_.isFunction(_module.destroy)) _module.destroy();
-        });
-      }
+      // if(typeof TTB.model !== "undefined" && TTB.model.get('currentChapter')) {
+      //     require(["modules/" + TTB.model.get('currentChapter').name], function(module) {
+      //     if(_.isFunction(module.destroy)) module.destroy();
+      //   });
+      // }
 
       // here we call the init function that we have defined for the module
       // we pass the optional offset argument that will result in the TTB video to be played at that time offset
       // 'time' can also be a chapter name - the ttb video playhead will then position it self at the beginning of the chapter
       TTB.init(command, time);
+
+    },
+
+    notebook: function() {
+
+      this.moduleLauncher('Notebook');
+
+    },
+    
+    bgdBook: function() {
+
+      this.moduleLauncher('BgdBook');
 
     },
 
@@ -50,9 +73,39 @@ function(app, Intro, TTB) {
 
     },
 
+    mail: function() {
+
+      this.moduleLauncher('Mail');
+
+    }, 
+    
+    tabloid: function() {
+
+      this.moduleLauncher('Tabloid');
+
+    },
+
     news: function() {
 
       this.moduleLauncher('News');
+
+    },
+
+    tesla: function() {
+
+      this.moduleLauncher('Tesla');
+
+    },
+
+    history: function() {
+
+      this.moduleLauncher('History');
+
+    },
+
+    warTrauma: function() {
+
+      this.moduleLauncher('WarTrauma');
 
     },
 
