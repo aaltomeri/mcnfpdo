@@ -16,9 +16,8 @@ function(app, Video) {
 
   TTB.started = false;
 
-  TTB.init = function(command, offset) {
   TTB.init = function(command, time) {
-    
+
     // video info for this module
     var video_model = new Video.Model({
       name: 'TTB',
@@ -26,7 +25,6 @@ function(app, Video) {
       dimensions: { width: '100%', height: '100%' },
       //sources: ['http://player.vimeo.com/video/56203539'],
       //dimensions: { width: '1280px', height: '720px' }
-      offset: offset,
       time: time,
       autoplay: (command === 'play')? true : false,
       enablePlayPause: true,
