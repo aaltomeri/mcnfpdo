@@ -108,7 +108,7 @@ function(app) {
 
     },
 
-    _disablePlayPause: function() {
+    disablePlayPause: function() {
 
       this._disablePlayPauseByClicking();
       this._disablePlayPauseByPressingKey();
@@ -233,7 +233,7 @@ function(app) {
 
       delete this.popcorn;
 
-      this._disablePlayPause();
+      this.disablePlayPause();
 
       Backbone.View.prototype.remove.apply(this, arguments);
 

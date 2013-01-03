@@ -130,14 +130,13 @@ function(app, Video) {
         });
         $('#main').append(bt);
 
-        bt.on('click', function() {
+    },
 
-          // go to end of current chapter
-          app.trigger('goto', 'TTB/play/' + vv.model.get('currentChapter').end);
+    prepareStageForModule: function() {
 
-          v.hideBackToTtbButton();
+      this.disablePlayPause();
+      this.enableBackToTtb();
 
-        });
     },
 
     showBackToTtbButton: function() {
@@ -150,6 +149,67 @@ function(app, Video) {
 
       this.back_to_ttb_button.transition({opacity: 0});
 
+    },
+
+    enableBackToTtb: function(key) {
+
+      var bt = this.back_to_ttb_button;
+
+      this.showBackToTtbButton();
+
+      bt.on('click', $.proxy(this._backToTtb, this));
+
+      $('body').on('keydown', {key: 32}, $.proxy(this._keydownHandler, this));
+
+    },
+
+    disableBackToTtb: function() {
+
+      var bt = this.back_to_ttb_button;
+
+      this.hideBackToTtbButton();
+
+      bt.off('click', this._backToTtb);
+      
+      $('body').off('keydown', this._keydownHandler);
+
+    },
+
+    _keydownHandler: function(e) {
+
+      if(!e.data.key)
+        throw "This handler needs an event data 'key' property";
+
+      if(e.which == e.data.key) {
+        this._backToTtb();
+      }
+
+    },
+
+    _backToTtb: function() {
+
+      var vv = this.vv;
+
+      // go to end of current chapter
+      app.trigger('goto', 'TTB/play/' + vv.model.get('currentChapter').end);
+
+      this.disableBackToTtb();
+      this.enablePlayPause();
+
+    },
+
+    // wrapper around the Video View method of the same name
+    enablePlayPause: function() {
+      if(this.vv) {
+        this.vv.enablePlayPause();
+      }
+    },
+
+    // wrapper around the Video View method of the same name
+    disablePlayPause: function() {
+      if(this.vv) {
+        this.vv.disablePlayPause();
+      }
     },
 
     initBehaviors: function() {

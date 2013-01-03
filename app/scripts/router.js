@@ -113,7 +113,8 @@ function(app, Intro, TTB) {
 
       this.ttb('pause', moduleName);
 
-      TTB.MainView.showBackToTtbButton();
+
+      TTB.MainView.prepareStageForModule();
 
       // requiring the module AND calling its init method in the callback
       require(["modules/" + moduleName], function(module) { module.init(); });
