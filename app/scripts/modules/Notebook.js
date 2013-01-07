@@ -1,7 +1,10 @@
 // News module
 define([
   // Application.
-  "app"
+  "app",
+
+  "css!../../styles/notebook.css"
+
 ],
 
 // Map dependencies from above array.
@@ -50,6 +53,8 @@ function(app) {
     },
 
   });
+
+  
 
   Notebook.destroy = function() {
 
