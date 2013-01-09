@@ -1,4 +1,5 @@
 define([
+
   // Libraries.
   "jquery",
   "lodash",
@@ -20,7 +21,10 @@ function($, _, Backbone) {
     root: "/",
 
     // iPad Detection
-    isiPad: navigator.userAgent.match(/iPad/i) != null
+    isiPad: navigator.userAgent.match(/iPad/i) != null,
+
+    mainVideo_defaultWidth: 640,
+    mainVideo_defaultHeight: 360
 
   };
 
@@ -84,7 +88,35 @@ function($, _, Backbone) {
 
       // Return the reference, for chainability.
       return layout;
+    },
+
+    /**
+     * resize #main to account for the fact that the main video keeps its aspect ratio even if stretched to 100% width
+     * as we want #module-container to overlay exactly on top of main video (intro or ttb) we need this calculation
+     */
+    resizeMain: function() {
+
+      var video_container   = $('#main-container video')
+      ,   video_el          = video_container.get(0)
+      ,   module_container  = $('#module-container')
+      ,   video_w           = video_el.videoWidth? video_el.videoWidth : this.mainVideo_defaultWidth
+      ,   video_h           = video_el.videoHeight? video_el.videoHeight : this.mainVideo_defaultHeight
+      ,   video_wRatio      = video_h/video_w 
+      ,   video_hRatio      = video_w/video_h
+      ,   video_container_w = video_container.width()
+      ,   video_container_h = video_container.height()
+      ,   w = Math.round(video_container_h * video_hRatio)
+      ,   h = Math.round(video_container_w * video_wRatio)
+
+      if(video_container_w > w)
+        $('#main').width(w);
+
+      if(video_container_h > h)
+        $('#main').height(h);
+
     }
+
+
   }, Backbone.Events);
 
 });

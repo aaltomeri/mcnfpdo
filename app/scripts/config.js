@@ -17,6 +17,16 @@ require.config({
     transit: "vendor/jquery.transit"
   },
 
+  map: {
+
+    '*': {
+
+      'css': 'libs/require-css/css'
+
+    }
+
+  },
+
   shim: {
     // Backbone library depends on lodash and jQuery.
     backbone: {

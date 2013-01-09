@@ -113,6 +113,8 @@ function(app, Video) {
 
       TTB.started = true;
 
+      app.trigger('module:ttb:ready', TTB);
+
     },
 
     createBacktoTtbButton: function() {
