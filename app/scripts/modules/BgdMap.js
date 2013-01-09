@@ -64,7 +64,7 @@ function(app) {
 
   // Info Window Content View
   BgdMap.Views.IwContent = Backbone.LayoutView.extend({
-    template: "iw_content",
+    template: "modules/bgd-map/iw_content",
     className: "iw_content",
 
   });
