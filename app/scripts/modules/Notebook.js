@@ -54,7 +54,7 @@ function(app) {
   // Day View
   Notebook.Views.Day = Backbone.LayoutView.extend({
 
-    template: 'calendar-day',
+    template: 'modules/notebook/calendar-day',
     tagName: 'li',
 
     events: {
@@ -71,22 +71,9 @@ function(app) {
 
     },
 
-    // options: {
-    //     paths: {
-    //       template: ""
-    //   }
-    // },
-
-    // overriding application LayoutManager fetch method to use inline template
-    // we also need to set the template path to "" above if we want to set the template to something like #day
-    // as otherwise it will look for templates/#days as 'templates/' is the default template path used to fetch JST templates
-    // fetch: function(path) {
-    //   return _.template($(path).html());
-    // },
-
     // Provide data to the template
-      serialize: function() {
-        return this.model.toJSON();
+    serialize: function() {
+      return this.model.toJSON();
     }
 
 
