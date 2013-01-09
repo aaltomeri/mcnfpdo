@@ -64,6 +64,16 @@ function(app) {
       var data = this.wikiData = data.parse
       ,   $text = this.wikiText = $('<div />').append(data.text['*'])
 
+      // remove editsection links
+      $text.find('.editsection').remove();
+
+      // add wikipedia absolute url for wikipedia links
+      // also make link open in another tab/window
+      $text.find('[href*=wiki]').each(function() {
+        $(this).attr('href', 'http://fr.wikipedia.com/' + $(this).attr('href'));
+        $(this).attr('target', '_blank');
+      });
+
       // add infos  to days models
       this.each(function(model) {
 
@@ -84,9 +94,6 @@ function(app) {
         wiki_entry = $('<div />');
         wiki_entry.append($anchor.parent().clone());
         wiki_entry.append($anchor.parent().next().clone());
-
-        // remove editsection links
-        wiki_entry.find('.editsection').remove();
 
         // creating li elements for each fictional entry
         // appending fictional data to the day entry
