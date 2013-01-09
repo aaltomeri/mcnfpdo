@@ -3,7 +3,7 @@
 		"number": "1",
 		"video_url": null,
 		"mcnfpdo_entries": [
-			"Baltasar arrive à Belgrade"
+			"Baltasar arrive à <a href=\"#BgdMap\">Belgrade</a>"
 		]
 	},
 	{	
