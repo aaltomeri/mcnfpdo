@@ -1,7 +1,10 @@
 // News module
 define([
   // Application.
-  "app"
+  "app",
+
+  // Css
+  "css!../../styles/news.css"
 ],
 
 // Map dependencies from above array.

@@ -1,5 +1,29 @@
 #notebook {
 
+	
+
+}
+
+#notebook h1 {
+
 	font-size: 80px;
 
+}
+
+#notebook #calendar {
+	width: 20%;
+	text-align: left;
+}
+
+#notebook #calendar ul li {
+
+	list-style: none;
+	display: inline-block;
+	margin: 5px;
+
+}
+
+#notebook #calendar ul li a {
+	color: inherit;
+	text-decoration: none;
 }
