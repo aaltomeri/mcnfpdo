@@ -6,15 +6,15 @@ require.config({
 
   paths: {
     // JavaScript folders.
-    libs: "../scripts/libs",
-    plugins: "../scripts/plugins",
+    libs: "libs",
+    plugins: "plugins",
 
     // Libraries.
-    jquery: "../scripts/libs/jquery",
-    lodash: "../scripts/libs/lodash",
-    backbone: "../scripts/libs/backbone",
-    popcorn: "../scripts/vendor/popcorn-complete",
-    transit: "../scripts/vendor/jquery.transit"
+    jquery: "libs/jquery",
+    lodash: "libs/lodash",
+    backbone: "libs/backbone",
+    popcorn: "vendor/popcorn-complete",
+    transit: "vendor/jquery.transit"
   },
 
   shim: {

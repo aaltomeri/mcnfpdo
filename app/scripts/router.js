@@ -49,7 +49,7 @@ function(app, Intro, TTB) {
       // }
 
       // here we call the init function that we have defined for the module
-      // we pass the optional offset argument that will result in the TTB video to be played at that time offset
+      // we pass the optional command and time arguments that will result in the TTB video to be played/paused at a time offset if given
       // 'time' can also be a chapter name - the ttb video playhead will then position it self at the beginning of the chapter
       TTB.init(command, time);
 
