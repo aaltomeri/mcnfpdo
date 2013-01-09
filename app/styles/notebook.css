@@ -1,12 +1,40 @@
 #notebook {
 
-	
+	height: 100%;
+	position: relative;
 
 }
 
-#notebook h1 {
+#notebook #entries {
 
-	font-size: 80px;
+	position: relative;
+	float: left;
+	background: black;
+	padding: 10px;
+	width: 50%;
+	text-align: left;
+
+	height: 100%;
+	overflow: auto;
+
+}
+
+#notebook #entries > div {
+
+	position: relative;
+
+}
+
+#notebook #entries a {
+
+	color: #E6D305;
+	text-decoration: none;
+
+}
+
+#notebook #entries h3 {
+
+	margin: 5px;
 
 }
 
