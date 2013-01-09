@@ -1,18 +1,58 @@
 #notebook {
 
-	
+	height: 100%;
+	position: relative;
 
 }
 
-#notebook h1 {
+#notebook #entries {
 
-	font-size: 80px;
+	position: relative;
+	float: left;
+	background: black;
+	padding: 10px;
+	width: 40%;
+	text-align: left;
+
+	height: 100%;
+	overflow: auto;
+
+}
+
+#notebook #entries > div {
+
+	position: relative;
+
+}
+
+#notebook #entries a {
+
+	color: #E6D305;
+	text-decoration: none;
+
+}
+
+#notebook #entries h3 {
+
+	margin: 5px;
+
+}
+
+#notebook #entries ul li {
+
+	list-style: none;
+	margin-bottom: 10px;
 
 }
 
 #notebook #calendar {
-	width: 20%;
+	
+	float: right;
+	width: 26%;
 	text-align: left;
+
+	font-size: 24px
+
 }
 
 #notebook #calendar ul li {
