@@ -47,6 +47,11 @@ function(app) {
         this.$el.css({ width: dimensions.width, height: dimensions.height});
       }
 
+      if(this.popcorn) {
+        this.popcorn.destroy();
+        this.$el.empty();
+      }
+
       // Popcorn instantiation
       this.popcorn = Popcorn.smart(this.el, this.model.attributes.sources);
 
