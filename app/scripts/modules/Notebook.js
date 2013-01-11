@@ -2,13 +2,13 @@
 define([
   // Application.
   "app",
-
+  "modules/Video",
   "css!../../styles/notebook.css"
 
 ],
 
 // Map dependencies from above array.
-function(app) {
+function(app, Video) {
 
   // Create a new module.
   var Notebook = app.module();
@@ -119,7 +119,7 @@ function(app) {
 
   });
 
-  // Wikipedia Text View
+  // Wikipedia Entries View
   Notebook.Views.Entries = Backbone.LayoutView.extend({
 
     initialize: function() {
@@ -148,6 +148,14 @@ function(app) {
     events: {
 
       "click a"   : "onClickHandler"
+
+    },
+
+    initialize: function() {
+
+      if(this.model.get('video_url')) {
+        this.$el.addClass('important');
+      }
 
     },
 
@@ -196,9 +204,16 @@ function(app) {
 
     views: {},
 
+    afterRender: function() {
+      
+      // this.videoView.init();
+      // this.videoView.popcorn.play();
+
+    },
+
     initialize: function() {
 
-      var calendarView, entriesView
+      var calendarView, entriesView, videoView
 
       this.$el.css({height: '100%'});
 
@@ -212,13 +227,50 @@ function(app) {
       calendarView = this.setView("#calendar", new Notebook.Views.Calendar({ collection: this.collection }));
       entriesView = this.setView("#entries", new Notebook.Views.Entries({ collection: this.collection }));
 
+
+      this.videoView = this.setView("#notebook-video", new Video.Views.Main());
+
+      this.videoView.model = new Video.Model({
+
+        name: 'Notebook-video',
+        //sources: ['https://www.youtube.com/watch?v=XAJZF7rJXG0'],
+        dimensions: { width: '100%', height: '100%' },
+        autoplay: true,
+        enablePlayPause: false,
+        chapters: []
+
+      });
+
+
+
       this.collection.on('change:currentDay', function() { 
 
         var currentDay = this.collection.currentDay
         ,   anchor = currentDay.get('anchor')
         ,   top    =  entriesView.$el.find('[id*="' + anchor + '"]').position().top
+        ,   video_url = currentDay.get('video_url')
 
         entriesView.scrollTo(top);
+
+        if(video_url) {
+
+          this.videoView.model.set('sources', new Array(video_url + "&html5=1"));
+
+          this.videoView.init();
+
+          // despite autoplay youTube videos seem to pause
+          // so we force play here
+          // have not tested with other sources
+          this.videoView.popcorn.play();
+
+        }
+        else {
+          if(this.videoView.popcorn) {
+            this.videoView.popcorn.destroy();
+            delete this.videoView.popcorn;
+            this.videoView.$el.empty();
+          }
+        }
 
       }, this);
 

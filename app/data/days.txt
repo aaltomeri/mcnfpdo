@@ -57,7 +57,7 @@
 	},
 	{	
 		"number": "9",
-		"video_url": null,
+		"video_url": "http://www.youtube.com/watch?v=EfJiNPZ38kY",
 		"mcnfpdo_entries": [
 
 		]
@@ -78,14 +78,14 @@
 	},
 	{	
 		"number": "12",
-		"video_url": null,
+		"video_url": "http://www.youtube.com/watch?v=fvZyy-_gXvE",
 		"mcnfpdo_entries": [
 
 		]
 	},
 	{	
 		"number": "13",
-		"video_url": null,
+		"video_url": "http://www.youtube.com/watch?v=BaB_Yx7hpJs",
 		"mcnfpdo_entries": [
 
 		]
@@ -120,7 +120,7 @@
 	},
 	{	
 		"number": "18",
-		"video_url": null,
+		"video_url": "http://www.youtube.com/watch?v=g2n0RcVfHWk",
 		"mcnfpdo_entries": [
 
 		]
@@ -134,7 +134,7 @@
 	},
 	{	
 		"number": "20",
-		"video_url": null,
+		"video_url": "http://youtu.be/ulq8i6sqHRo",
 		"mcnfpdo_entries": [
 
 		]
@@ -155,7 +155,7 @@
 	},
 	{	
 		"number": "23",
-		"video_url": null,
+		"video_url": "http://youtu.be/Q-2oYPDX6bk",
 		"mcnfpdo_entries": [
 
 		]
@@ -176,7 +176,7 @@
 	},
 	{	
 		"number": "26",
-		"video_url": null,
+		"video_url": "http://youtu.be/pypwd0-Fp_E",
 		"mcnfpdo_entries": [
 
 		]
@@ -197,7 +197,7 @@
 	},
 	{	
 		"number": "29",
-		"video_url": null,
+		"video_url": "http://www.youtube.com/watch?v=HLruVJHIgCM",
 		"mcnfpdo_entries": [
 
 		]
