@@ -20,7 +20,9 @@ function(app, Router) {
     app.resizeMain();
   });
 
-  $(window).on('resize', function() { app.resizeMain(); } );
+  $(window).on('resize', function() { 
+    app.resizeMain(); 
+  });
   
   // Trigger the initial route and enable HTML5 History API support, set the
   // root folder to '/' by default.  Change in app.js.
