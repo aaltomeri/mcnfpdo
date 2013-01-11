@@ -101,7 +101,7 @@ function(app, Video) {
       // append video view to Main view
       this.$el.append(vv.$el);
 
-      // add Intro view to the dom
+      // add view to the dom
       $('#main-container').empty().append(this.el);
 
       // init video
