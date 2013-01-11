@@ -37,6 +37,9 @@ function(app) {
 
       if(!this.model)
         throw 'Video View requires a model';
+
+      if(!this.model.get('sources'))
+        throw 'Video View requires a model with sources attribute set';
       
       var vv = this
       ,   dimensions = this.model.get('dimensions')
