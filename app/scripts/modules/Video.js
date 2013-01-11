@@ -22,6 +22,8 @@ function(app) {
   // Default View.
   Video.Views.Main = Backbone.View.extend({
 
+    manage: true,
+
     popcorn: null,
     overlay: null,
 
@@ -35,6 +37,9 @@ function(app) {
 
       if(!this.model)
         throw 'Video View requires a model';
+
+      if(!this.model.get('sources'))
+        throw 'Video View requires a model with sources attribute set';
       
       var vv = this
       ,   dimensions = this.model.get('dimensions')
@@ -45,6 +50,11 @@ function(app) {
       // adjust video container dimensions if provided
       if(dimensions) {
         this.$el.css({ width: dimensions.width, height: dimensions.height});
+      }
+
+      if(this.popcorn) {
+        this.popcorn.destroy();
+        this.$el.empty();
       }
 
       // Popcorn instantiation

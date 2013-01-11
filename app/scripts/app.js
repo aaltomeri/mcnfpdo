@@ -108,11 +108,10 @@ function($, _, Backbone) {
       ,   w = Math.round(video_container_h * video_hRatio)
       ,   h = Math.round(video_container_w * video_wRatio)
 
-      if(video_container_w > w)
-        $('#main').width(w);
-
-      if(video_container_h > h)
-        $('#main').height(h);
+      if($('body').height() < $('body').width())
+        $('#main').width($('body').height()*0.9 * video_hRatio);
+      else
+      $('#main').height($('body').width()*0.9 * video_wRatio);
 
     }
 
