@@ -22,6 +22,8 @@ function(app) {
   // Default View.
   Video.Views.Main = Backbone.View.extend({
 
+    manage: true,
+
     popcorn: null,
     overlay: null,
 
