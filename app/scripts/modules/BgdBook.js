@@ -101,8 +101,18 @@ function(app, Video) {
       // init all video views behaviors
       videos.each(function(view, index, videos) {
 
+        var next = null;
+
+        // do not do anything for last video
+        if(index != videos.length-1) {
+          next = videos[index+1];
+        }
+
         // init view - i.e. create popcorn instance
         view.init();
+
+        // set video element dimensions to match containers
+        view.$el.find('video').css({width: "100%", height: "auto"});
 
         // hide view as we are showing them sequentially
         view.$el.hide();
@@ -110,25 +120,24 @@ function(app, Video) {
         // wrap behavior init in 'canplay' event handler because we need video duration
         view.popcorn.on('canplay', function() {
 
+          // if there is no next video we dont need to setup the mechanism that launches it
+          if(!next) return;
+
           // set random out_point
           var out_point = Math.random()*view.popcorn.duration()
+          // define timeupdate handler used to play next video if out_point has been overshot
           ,   play_next = function() {
 
             // overshooting out_point
             if(this.currentTime() > out_point) {
 
+              console.log(next);
+
               // remove handler
               this.off('timeupdate', play_next);
 
-              // do not do anything for last video
-              if(index == videos.length-1) {
-                return;
-              }
-
               // play next video
-              var next = videos[index+1];
               next.$el.fadeIn();
-              //next.$el.find('video').css({width: "100%", height: "auto"});
               next.popcorn.play();
               
             }
@@ -137,9 +146,6 @@ function(app, Video) {
 
           // make videos start next video on ending
           view.popcorn.on('timeupdate', play_next);
-
-          // set video element dimensions to match containers
-          view.$el.find('video').css({width: "100%", height: "auto"});
 
         });
 
