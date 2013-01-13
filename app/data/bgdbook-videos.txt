@@ -5,7 +5,8 @@
                 "dimensions": { "width": "50%", "height": "50%" },
                 "position": { "top": "0", "left": "0" },
                 "autoplay": false,
-                "enablePlayPause": false
+                "enablePlayPause": false,
+                "className": "portrait"
         },
         {       
                 "name": "Julie Denisse",
@@ -13,7 +14,8 @@
                 "dimensions": { "width": "50%", "height": "50%" },
                 "position": { "top": "0", "left": "50%" },
                 "autoplay": false,
-                "enablePlayPause": false
+                "enablePlayPause": false,
+                "className": "portrait"
         },
         {       
                 "name": "Laurent Sauvage",
@@ -21,7 +23,8 @@
                 "dimensions": { "width": "50%", "height": "50%" },
                 "position": { "top": "50%", "left": "0" },
                 "autoplay": false,
-                "enablePlayPause": false
+                "enablePlayPause": false,
+                "className": "portrait"
         },
         {       
                 "name": "Julie Denisse",
@@ -29,7 +32,8 @@
                 "dimensions": { "width": "50%", "height": "50%" },
                 "position": { "top": "50%", "left": "50%" },
                 "autoplay": false,
-                "enablePlayPause": false
+                "enablePlayPause": false,
+                "className": "portrait"
         },
         {	
                 "name": "Dragan/Baltasar",
@@ -67,7 +71,7 @@
 		"name": "Cria Cuervos",
                 "sources": ["http://player.vimeo.com/video/57063870"],
                 "dimensions": { "width": "50%", "height": "50%" },
-                "position": { "top": "50%", "left": "50%" },
+                "position": { "top": "0", "left": "0" },
                 "autoplay": false,
                 "enablePlayPause": false
 	}
