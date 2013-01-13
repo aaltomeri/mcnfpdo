@@ -64,10 +64,14 @@ function(app, Video) {
 
     initialize: function() {
 
+      var videos
+      ,   first_video
+
       this.$el.css({ width: '100%', height: '100%'});
 
       $('#module-container').css({opacity: 0});
 
+      // looping through video models
       this.collection.each(function(model) {
 
         // temporary
@@ -91,11 +95,64 @@ function(app, Video) {
 
       $('#module-container').transition({opacity: 1}, 2000);
 
-      // init all video views
-      this.getViews().each(function(view) {
+      // get all set videos in Layout
+      videos = this.getViews();
+
+      // init all video views behaviors
+      videos.each(function(view, index, videos) {
+
+        // init view - i.e. create popcorn instance
         view.init();
-        view.$el.find('video').css({width: "100%", height: "auto"});
+
+        // hide view as we are showing them sequentially
+        view.$el.hide();
+
+        // wrap behavior init in 'canplay' event handler because we need video duration
+        view.popcorn.on('canplay', function() {
+
+          // set random out_point
+          var out_point = Math.random()*view.popcorn.duration()
+          ,   play_next = function() {
+
+            // overshooting out_point
+            if(this.currentTime() > out_point) {
+
+              // remove handler
+              this.off('timeupdate', play_next);
+
+              // do not do anything for last video
+              if(index == videos.length-1) {
+                return;
+              }
+
+              // play next video
+              var next = videos[index+1];
+              next.$el.fadeIn();
+              //next.$el.find('video').css({width: "100%", height: "auto"});
+              next.popcorn.play();
+              
+            }
+
+          }
+
+          // make videos start next video on ending
+          view.popcorn.on('timeupdate', play_next);
+
+          // set video element dimensions to match containers
+          view.$el.find('video').css({width: "100%", height: "auto"});
+
+        });
+
+
       });
+        
+      // get first video
+      first_video = videos.first().value()
+
+      // show first video
+      first_video.$el.fadeIn();
+      // play it
+      first_video.popcorn.play();
 
     },
 
