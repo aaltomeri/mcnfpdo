@@ -1,31 +1,71 @@
 [	
-	{	
+	{      
                 "name": "Alex Pallu",
                 "sources": ["http://player.vimeo.com/video/57062882"],
                 "dimensions": { "width": "50%", "height": "50%" },
                 "position": { "top": "0", "left": "0" },
                 "autoplay": false,
                 "enablePlayPause": false
+        },
+        {       
+                "name": "Julie Denisse",
+                "sources": ["http://player.vimeo.com/video/57062881"],
+                "dimensions": { "width": "50%", "height": "50%" },
+                "position": { "top": "0", "left": "50%" },
+                "autoplay": false,
+                "enablePlayPause": false
+        },
+        {       
+                "name": "Laurent Sauvage",
+                "sources": ["http://player.vimeo.com/video/57062884"],
+                "dimensions": { "width": "50%", "height": "50%" },
+                "position": { "top": "50%", "left": "0" },
+                "autoplay": false,
+                "enablePlayPause": false
+        },
+        {       
+                "name": "Julie Denisse",
+                "sources": ["http://player.vimeo.com/video/57062883"],
+                "dimensions": { "width": "50%", "height": "50%" },
+                "position": { "top": "50%", "left": "50%" },
+                "autoplay": false,
+                "enablePlayPause": false
+        },
+        {	
+                "name": "Dragan/Baltasar",
+                "sources": ["http://player.vimeo.com/video/57071230"],
+                "dimensions": { "width": "50%", "height": "50%" },
+                "position": { "top": "0", "left": "0" },
+                "autoplay": false,
+                "enablePlayPause": false
 	},
 	{	
-        	"name": "Julie Denisse",
-                "sources": ["http://player.vimeo.com/video/57062881"],
+        	"name": "Elvis",
+                "sources": ["http://player.vimeo.com/video/57070192"],
                 "dimensions": { "width": "50%", "height": "50%" },
                 "position": { "top": "0", "left": "50%" },
                 "autoplay": false,
                 "enablePlayPause": false
 	},
 	{	
-		"name": "Laurent Sauvage",
-                "sources": ["http://player.vimeo.com/video/57062884"],
+		"name": "Discussion à la table",
+                "sources": ["http://player.vimeo.com/video/57063245"],
                 "dimensions": { "width": "50%", "height": "50%" },
                 "position": { "top": "50%", "left": "0" },
                 "autoplay": false,
                 "enablePlayPause": false
 	},
+        {       
+                "name": "Torture",
+                "sources": ["http://player.vimeo.com/video/57057852"],
+                "dimensions": { "width": "50%", "height": "50%" },
+                "position": { "top": "50%", "left": "50%" },
+                "autoplay": false,
+                "enablePlayPause": false
+        },
 	{	
-		"name": "Julie Denisse",
-                "sources": ["http://player.vimeo.com/video/57062883"],
+		"name": "Cria Cuervos",
+                "sources": ["http://player.vimeo.com/video/57063870"],
                 "dimensions": { "width": "50%", "height": "50%" },
                 "position": { "top": "50%", "left": "50%" },
                 "autoplay": false,
