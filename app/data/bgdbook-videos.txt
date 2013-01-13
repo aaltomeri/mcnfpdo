@@ -1,0 +1,34 @@
+[	
+	{	
+		"name": "Alex Pallu",
+        "sources": ["http://player.vimeo.com/video/57062882"],
+        "dimensions": { "width": "50%", "height": "50%" },
+        "position": { "top": "0", "left": "0" },
+        "autoplay": "true",
+        "enablePlayPause": "false"
+	},
+	{	
+		"name": "Julie Denisse",
+        "sources": ["http://player.vimeo.com/video/57062881"],
+        "dimensions": { "width": "50%", "height": "50%" },
+        "position": { "top": "0", "left": "50%" },
+        "autoplay": "true",
+        "enablePlayPause": "false"
+	},
+	{	
+		"name": "Laurent Sauvage",
+        "sources": ["http://player.vimeo.com/video/57062884"],
+        "dimensions": { "width": "50%", "height": "50%" },
+        "position": { "top": "50%", "left": "0" },
+        "autoplay": "true",
+        "enablePlayPause": "false"
+	},
+	{	
+		"name": "Julie Denisse",
+        "sources": ["http://player.vimeo.com/video/57062883"],
+        "dimensions": { "width": "50%", "height": "50%" },
+        "position": { "top": "50%", "left": "50%" },
+        "autoplay": "true",
+        "enablePlayPause": "false"
+	}
+]
