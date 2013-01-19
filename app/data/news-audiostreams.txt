@@ -1,0 +1,207 @@
+[	
+	
+	{ 
+		"name": "Radio Beograd 1",
+		"url": "http://rts.ipradio.rs:8002/;stream.nsv" 
+	},
+	{ 
+		"name": "Radio Beograd 2/3",
+		"url": "http://rts.ipradio.rs:8004/;stream.nsv" 
+	},
+	{ 
+		"name": "Beograd 202",
+		"url": "http://rts.ipradio.rs:8006/;stream.nsv" 
+	},
+	{ 
+		"name": "B92",
+		"url": "http://stream.b92.net:7999/radio-b92.mp3" 
+	},
+	{ 
+		"name": "Antena Radi",
+		"url": "http://94.23.38.225:7005/;stream.nsv" 
+	},
+	{ 
+		"name": "Bum Bum Radio",
+		"url": "http://radio.bumbumradio.rs:8010/;stream.nsv" 
+	},
+	{ 
+		"name": "Hit Music FM",
+		"url": "http://roadstar128.streaming.rs:9300/;stream.nsv" 
+	},
+	{ 
+		"name": "In Radio",
+		"url": "http://radio.web-streaming.net:8060/;stream.nsv" 
+	},
+	{ 
+		"name": "Naxi Radio",
+		"url": "http://naxi128.streaming.rs:9150/;stream.nsv" 
+	},
+	{ 
+		"name": "Naxi usce Shopping Radio",
+		"url": "http://109.206.96.18:8000/;stream.nsv" 
+	},
+	{ 
+		"name": "Naxi House Radio",
+		"url": "http://naxidigital48.kbcnet.rs:8000/;stream.nsv" 
+	},
+	{ 
+		"name": "Naxi 80-e Radio",
+		"url": "http://naxidigital48.kbcnet.rs:8040/;stream.nsv" 
+	},
+	{ 
+		"name": "Naxi Cafe Radio",
+		"url": "http://naxidigital128.kbcnet.rs:8020/;stream.nsv" 
+	},
+	{ 
+		"name": "Naxi Classic Radio",
+		"url": "http://naxidigital48.kbcnet.rs:8030/;stream.nsv" 
+	},
+	{ 
+		"name": "Naxi Evergreen Radio",
+		"url": "http://naxidigital48.kbcnet.rs:8010/;stream.nsv" 
+	},
+	{ 
+		"name": "Naxi Kids Radio",
+		"url": "http://naxidigital128.kbcnet.rs:8050/;stream.nsv" 
+	},
+	{ 
+		"name": "Naxi Clubbing Radio",
+		"url": "http://naxidigital128.kbcnet.rs:8090/;stream.nsv" 
+	},
+	{ 
+		"name": "OK Radio",
+		"url": "http://live3.okradio.net:8002/;stream.nsv" 
+	},
+	{ 
+		"name": "Pink Radio",
+		"url": "http://pink.exyustream.com/;stream.nsv" 
+	},
+	{ 
+		"name": "Prvi Radio",
+		"url": "http://www.prviradio.rs/live/;stream.nsv" 
+	},
+	{ 
+		"name": "Radio 02",
+		"url": "http://176.9.79.227:8021/;stream.nsv" 
+	},
+	{ 
+		"name": "Radio 3",
+		"url": "http://85.25.154.136:10010;stream.nsv" 
+	},
+	{ 
+		"name": "Radio Anten",
+		"url": "http://antena.topstream.net:19322/;stream.nsv" 
+	},
+	{ 
+		"name": "Radio Antena Beogra",
+		"url": "http://live3.infonetmedia.si:8000/;stream.nsv" 
+	},
+	{ 
+		"name": "Radio A",
+		"url": "http://radioas.kbcnet.rs:8015/;stream.nsv" 
+	},
+	{ 
+		"name": "Radio Baltaza",
+		"url": "http://streaming8.tdiradio.com:13131/;stream.nsv" 
+	},
+	{ 
+		"name": "Radio Brav",
+		"url": "http://176.31.239.83:8173/;stream.nsv" 
+	},
+	{ 
+		"name": "Radio DA",
+		"url": "http://85.25.73.243:10150/;stream.nsv" 
+	},
+	{ 
+		"name": "Radio GAG",
+		"url": "http://87.106.136.203:8600/;stream.nsv" 
+	},
+	{ 
+		"name": "Radio Index",
+		"url": "http://live3.infonetmedia.si:8000/;stream.nsv" 
+	},
+	{ 
+		"name": "Radio JA",
+		"url": "http://streaming.radiojat.rs:12121/;stream.nsv" 
+	},
+	{ 
+		"name": "Radio Ljubav",
+		"url": "http://37.59.78.209:5020/;stream.nsv" 
+	},
+	{ 
+		"name": "Radio MF",
+		"url": "http://195.252.107.194:8012/;stream.nsv" 
+	},
+	{ 
+		"name": "Radio Morav",
+		"url": "http://www.radiomorava.rs/playlists/;stream.nsv" 
+	},
+	{ 
+		"name": "Radio Nostalgij",
+		"url": "http://87.98.217.82:7080/;stream.nsv" 
+	},
+	{ 
+		"name": "Radio Novi Sad 1",
+		"url": "http://82.117.194.13:9020/;stream.nsv" 
+	},
+	{ 
+		"name": "Radio Novi Sad 2",
+		"url": "http://82.117.194.13:9010/;stream.nsv" 
+	},
+	{ 
+		"name": "Radio Novi Sad 3",
+		"url": "http://82.117.194.13:9030/;stream.nsv" 
+	},
+	{ 
+		"name": "Radio Novost",
+		"url": "http://www.radionovosti.rs:443/;stream.nsv" 
+	},
+	{ 
+		"name": "Radio Pingvi",
+		"url": "http://www.radiopingvin.com/;stream.nsv" 
+	},
+	{ 
+		"name": "Radio S",
+		"url": "http://live3.infonetmedia.si:8000/;stream.nsv" 
+	},
+	{ 
+		"name": "Sport F",
+		"url": "http://195.252.113.118:8012/;stream.nsv" 
+	},
+	{ 
+		"name": "Studio B",
+		"url": "http://radio.studiob.rs:8004/;stream.nsv" 
+	},
+	{ 
+		"name": "Szabadkai R�di",
+		"url": "http://onlineradio.hu:8010/;stream.nsv" 
+	},
+	{ 
+		"name": "TDI Radi",
+		"url": "http://streaming.tdiradio.com:9000/;stream.nsv" 
+	},
+	{ 
+		"name": "Top FM",
+		"url": "http://www.topfm.rs/;stream.nsv" 
+	},
+	{ 
+		"name": "RTK Radio Kosov",
+		"url": "http://stream2.rtkit.com:8088/;stream.nsv" 
+	},
+	{ 
+		"name": "RTK Radio Blue Sk",
+		"url": "http://stream2.rtkit.com:8098/;stream.nsv" 
+	},
+	{ 
+		"name": "Radio Llap",
+		"url": "http://radiollapi.com:8555/;stream.nsv" 
+	},
+	{ 
+		"name": "Radio Vala Rinor",
+		"url": "http://84.22.46.10:8000/;stream.nsv" 
+	},
+	{ 
+		"name": "Radio K",
+		"url": "http://fm.radiokfor.com:8090/;stream.nsv" 
+	}
+]
