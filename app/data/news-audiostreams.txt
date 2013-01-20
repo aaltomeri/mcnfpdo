@@ -29,10 +29,6 @@
 		"url": "http://roadstar128.streaming.rs:9300/;stream.nsv" 
 	},
 	{ 
-		"name": "In Radio",
-		"url": "http://radio.web-streaming.net:8060/;stream.nsv" 
-	},
-	{ 
 		"name": "Naxi Radio",
 		"url": "http://naxi128.streaming.rs:9150/;stream.nsv" 
 	},
@@ -78,7 +74,7 @@
 	},
 	{ 
 		"name": "Prvi Radio",
-		"url": "http://www.prviradio.rs/live/;stream.nsv" 
+		"url": "http://live3.infonetmedia.si:8000/prviradio" 
 	},
 	{ 
 		"name": "Radio 02",
@@ -89,23 +85,23 @@
 		"url": "http://85.25.154.136:10010;stream.nsv" 
 	},
 	{ 
-		"name": "Radio Anten",
+		"name": "Radio Antena",
 		"url": "http://antena.topstream.net:19322/;stream.nsv" 
 	},
 	{ 
-		"name": "Radio Antena Beogra",
-		"url": "http://live3.infonetmedia.si:8000/;stream.nsv" 
+		"name": "Radio Antena",
+		"url": "http://live3.infonetmedia.si:8000/Antena" 
 	},
 	{ 
 		"name": "Radio A",
 		"url": "http://radioas.kbcnet.rs:8015/;stream.nsv" 
 	},
 	{ 
-		"name": "Radio Baltaza",
-		"url": "http://streaming8.tdiradio.com:13131/;stream.nsv" 
+		"name": "Radio Baltazar",
+		"url": "http://streaming.tdiradio.com:9000/;stream.nsv" 
 	},
 	{ 
-		"name": "Radio Brav",
+		"name": "Radio Bravo",
 		"url": "http://176.31.239.83:8173/;stream.nsv" 
 	},
 	{ 
@@ -118,7 +114,11 @@
 	},
 	{ 
 		"name": "Radio Index",
-		"url": "http://live3.infonetmedia.si:8000/;stream.nsv" 
+		"url": "http://live3.infonetmedia.si:8000/index" 
+	},
+	{ 
+		"name": "Radio Antena Beograd",
+		"url": "http://live3.infonetmedia.si:8000/index" 
 	},
 	{ 
 		"name": "Radio JA",
@@ -134,11 +134,7 @@
 	},
 	{ 
 		"name": "Radio Morav",
-		"url": "http://www.radiomorava.rs/playlists/;stream.nsv" 
-	},
-	{ 
-		"name": "Radio Nostalgij",
-		"url": "http://87.98.217.82:7080/;stream.nsv" 
+		"url": "http://78.129.199.49:12100/;stream.nsv" 
 	},
 	{ 
 		"name": "Radio Novi Sad 1",
@@ -153,16 +149,8 @@
 		"url": "http://82.117.194.13:9030/;stream.nsv" 
 	},
 	{ 
-		"name": "Radio Novost",
-		"url": "http://www.radionovosti.rs:443/;stream.nsv" 
-	},
-	{ 
-		"name": "Radio Pingvi",
-		"url": "http://www.radiopingvin.com/;stream.nsv" 
-	},
-	{ 
 		"name": "Radio S",
-		"url": "http://live3.infonetmedia.si:8000/;stream.nsv" 
+		"url": "http://live3.infonetmedia.si:8000/radios" 
 	},
 	{ 
 		"name": "Sport F",
@@ -173,19 +161,15 @@
 		"url": "http://radio.studiob.rs:8004/;stream.nsv" 
 	},
 	{ 
-		"name": "Szabadkai R�di",
-		"url": "http://onlineradio.hu:8010/;stream.nsv" 
-	},
-	{ 
 		"name": "TDI Radi",
 		"url": "http://streaming.tdiradio.com:9000/;stream.nsv" 
 	},
 	{ 
 		"name": "Top FM",
-		"url": "http://www.topfm.rs/;stream.nsv" 
+		"url": "http://109.206.96.12:8000/;stream.nsv" 
 	},
 	{ 
-		"name": "RTK Radio Kosov",
+		"name": "RTK Radio Kosovo",
 		"url": "http://stream2.rtkit.com:8088/;stream.nsv" 
 	},
 	{ 
