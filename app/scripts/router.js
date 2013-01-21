@@ -54,7 +54,11 @@ function(app, Intro, TTB, Soundtrack) {
 
                 try {
                   require([module_path], function(module) {
+
+                    module.soundtrack.pause();
+
                     if(_.isFunction(module.destroy)) module.destroy();
+                    
                   });
                 }
                 catch(e) {
@@ -144,7 +148,38 @@ function(app, Intro, TTB, Soundtrack) {
 
                 try {
                   // requiring the module AND calling its init method in the callback
-                  require(["modules/" + moduleName], function(module) { module.init(); });
+                  require(["modules/" + moduleName], function(module) { 
+
+                    module.init(); 
+
+                    var config = app.chapters.find(function(model) { return model.get('name') == moduleName });
+
+                    ////////////////
+                    // Soundtrack //
+                    ////////////////
+                    var chapter_soundtracks = new Soundtrack.Collection()
+
+                    // build collection for this chapter Soundtrack View
+                    // it is built out of an array of soundtracks names
+                    // that we fill in the chapters config file
+                    _.each(config.get('soundtrack'), function(soundtrack_name) {
+
+                      // get sound from sountrack name
+                      var soundtrack_model = app.sounds.find(function(model) { return model.get('name') == soundtrack_name });
+
+                      // add new Soundtrack model to collection
+                      chapter_soundtracks.add(soundtrack_model);
+
+                    })
+
+                    module.soundtrack = new Soundtrack.View({ 
+                      collection: chapter_soundtracks
+                    });
+
+                    module.soundtrack.play();
+
+
+                  });
                 }
                 catch(e) {
                   setTimeout(_load_module, 200);

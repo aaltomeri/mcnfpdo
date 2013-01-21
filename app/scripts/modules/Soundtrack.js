@@ -25,6 +25,15 @@ function(app) {
 		initialize: function() {
 
 			this.popcorn = Popcorn( new Popcorn.HTMLAudioElement(this.el) );
+			this.popcorn.loop(true);
+
+			if(this.collection) {
+				this.model = this.collection.at(0);
+			}
+
+			if(!this.model)
+				return;
+
 	  		this.popcorn.media.src = this.model.get('url');
 
 		},
