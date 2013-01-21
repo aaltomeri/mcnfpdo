@@ -207,7 +207,7 @@ function(app, Video, SearchEngine) {
         // wrap behavior init in 'canplay' event handler because we need video duration
         view.popcorn.on('canplay', function() {
 
-          var slice = 1;
+          var slice = null;
           // set random out_point
           view.model.set('out_point', view.model.get('out_point')? view.model.get('out_point') : (slice? slice : view.popcorn.duration()))//Math.random()*view.popcorn.duration())//Math.random()*view.popcorn.duration()
           // define timeupdate handler used to play next video if out_point has been overshot
