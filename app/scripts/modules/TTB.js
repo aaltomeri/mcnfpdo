@@ -73,6 +73,7 @@ function(app, Video, Soundtrack) {
       video_view: video_view,
     });
 
+    // Set TTB model to be used throughout the application
     TTB.model = video_model;
 
     ////////////////
