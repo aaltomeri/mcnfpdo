@@ -1,14 +1,14 @@
 [	
 	{	
 		"number": "1",
-		"video_url": null,
+		"video_url": "https://www.youtube.com/watch?v=YM_tyfbqY3A",
 		"mcnfpdo_entries": [
 			"Baltasar arrive à <a href=\"#BgdMap\">Belgrade</a>"
 		]
 	},
 	{	
 		"number": "2",
-		"video_url": null,
+		"video_url": "https://www.youtube.com/watch?v=0CeSsesCr54",
 		"mcnfpdo_entries": [
 
 		]
@@ -29,14 +29,14 @@
 	},
 	{	
 		"number": "5",
-		"video_url": null,
+		"video_url": "https://www.youtube.com/watch?v=iMLtMw-psmI",
 		"mcnfpdo_entries": [
 
 		]
 	},
 	{	
 		"number": "6",
-		"video_url": null,
+		"video_url": "https://www.youtube.com/watch?v=m3ezD4gqcaY",
 		"mcnfpdo_entries": [
 			"Visite à Agnes : Boulevard Nicolas Tesla"
 		]
@@ -50,14 +50,14 @@
 	},
 	{	
 		"number": "8",
-		"video_url": null,
+		"video_url": "https://www.youtube.com/watch?v=QKhXuwyn8iU",
 		"mcnfpdo_entries": [
 
 		]
 	},
 	{	
 		"number": "9",
-		"video_url": "http://www.youtube.com/watch?v=EfJiNPZ38kY",
+		"video_url": "http://www.youtube.com/watch?v=P31RzaYp-Kg",
 		"mcnfpdo_entries": [
 
 		]
@@ -71,7 +71,7 @@
 	},
 	{	
 		"number": "11",
-		"video_url": null,
+		"video_url": "http://www.youtube.com/watch?v=n-OsXrHSHTw",
 		"mcnfpdo_entries": [
 
 		]
@@ -85,7 +85,7 @@
 	},
 	{	
 		"number": "13",
-		"video_url": "http://www.youtube.com/watch?v=BaB_Yx7hpJs",
+		"video_url": null,
 		"mcnfpdo_entries": [
 
 		]
@@ -99,14 +99,14 @@
 	},
 	{	
 		"number": "15",
-		"video_url": null,
+		"video_url": "https://www.youtube.com/watch?v=HRQ3l9tlt9Y",
 		"mcnfpdo_entries": [
 
 		]
 	},
 	{	
 		"number": "16",
-		"video_url": null,
+		"video_url": "https://www.youtube.com/watch?v=aj-NJe3CtKY",
 		"mcnfpdo_entries": [
 
 		]
@@ -120,7 +120,7 @@
 	},
 	{	
 		"number": "18",
-		"video_url": "http://www.youtube.com/watch?v=g2n0RcVfHWk",
+		"video_url": null,
 		"mcnfpdo_entries": [
 
 		]
@@ -134,14 +134,14 @@
 	},
 	{	
 		"number": "20",
-		"video_url": "http://youtu.be/ulq8i6sqHRo",
+		"video_url": null,
 		"mcnfpdo_entries": [
 
 		]
 	},
 	{	
 		"number": "21",
-		"video_url": null,
+		"video_url": "http://www.youtube.com/watch?v=Ppl-7-uiU8I",
 		"mcnfpdo_entries": [
 
 		]
@@ -155,7 +155,7 @@
 	},
 	{	
 		"number": "23",
-		"video_url": "http://youtu.be/Q-2oYPDX6bk",
+		"video_url": null,
 		"mcnfpdo_entries": [
 
 		]
@@ -169,21 +169,21 @@
 	},
 	{	
 		"number": "25",
-		"video_url": null,
+		"video_url": "http://www.youtube.com/watch?v=FBRXNvvYXvc",
 		"mcnfpdo_entries": [
 
 		]
 	},
 	{	
 		"number": "26",
-		"video_url": "http://youtu.be/pypwd0-Fp_E",
+		"video_url": "",
 		"mcnfpdo_entries": [
 
 		]
 	},
 	{	
 		"number": "27",
-		"video_url": null,
+		"video_url": "http://www.youtube.com/watch?v=-ayLhnNUT_k",
 		"mcnfpdo_entries": [
 
 		]
@@ -197,7 +197,7 @@
 	},
 	{	
 		"number": "29",
-		"video_url": "http://www.youtube.com/watch?v=HLruVJHIgCM",
+		"video_url": "http://www.youtube.com/watch?v=AzuXaOvuJtU",
 		"mcnfpdo_entries": [
 
 		]
