@@ -617,7 +617,7 @@ function(app) {
       $('#webcam > img').attr('src', webcam_url);
 
 
-     setInterval(updateWebcam, 1000);
+     setInterval(updateWebcam, 10000);
 
     }
 

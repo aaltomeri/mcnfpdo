@@ -1,0 +1,57 @@
+[
+	{ 
+		"name": "Notebook",
+		"title": "Carnet de notes",
+		"start": "66", "end": "72",
+		"soundtrack": ["Ada Ciganlija", "Cour Novi Beograd"],
+		"soundtrack_mode": "linear"
+	},
+    { 
+    	"name": "BgdBook",
+    	"title": "Belgrade par Angélica Liddell",
+    	"start": "73", "end": "77",
+    	"soundtrack": "medias/soundtracks/" 
+    },
+    { 
+    	"name": "BgdMap",
+    	"title": "Belgrade Ville",
+    	"start": "22", "end": "27",
+    	"soundtrack": "medias/soundtracks/" 
+    },
+    { 
+    	"name": "Mail",
+    	"title": "Lettres du père",
+    	"start": "58", "end": "63",
+    	"soundtrack": "medias/soundtracks/" 
+    },
+    { 
+    	"name": "Tabloid",
+    	"title": "Belgrade Trash",
+    	"start": "86", "end": "92",
+    	"soundtrack": "medias/soundtracks/" 
+    },
+    { 
+    	"name": "News",
+    	"title": "Actualités",
+    	"start": "79", "end": "84",
+    	"soundtrack": "medias/soundtracks/" 
+    },
+    { 
+    	"name": "Tesla",
+    	"title": "Insconscient collectif",
+    	"start": "40", "end": "48",
+    	"soundtrack": "medias/soundtracks/" 
+    },
+    { 
+    	"name": "History",
+    	"title": "Histoire Serbe",
+    	"start": "49", "end": "56",
+    	"soundtrack": "medias/soundtracks/" 
+    },
+    { 
+    	"name": "WarTrauma",
+    	"title": "Traumatisme de guerre",
+    	"start": "32", "end": "37",
+    	"soundtrack": "medias/soundtracks/" 
+   }
+]

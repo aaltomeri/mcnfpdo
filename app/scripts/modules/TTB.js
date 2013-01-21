@@ -4,12 +4,13 @@ define([
   "app",
 
   // Modules
-  "modules/Video"
+  "modules/Video",
+  "modules/Soundtrack"
 
 ],
 
 // Map dependencies from above array.
-function(app, Video) {
+function(app, Video, Soundtrack) {
 
   // Create a new module.
   var TTB = app.module();
@@ -62,7 +63,10 @@ function(app, Video) {
 
     }
 
-    // video view
+    ////////////////
+    // video view //
+    ////////////////
+    
     var video_view = new Video.Views.Main({ model: video_model }),
     // actual main view for this module
     ttb_view = TTB.MainView = new TTB.Views.Main({ 
@@ -70,6 +74,14 @@ function(app, Video) {
     });
 
     TTB.model = video_model;
+
+    ////////////////
+    // Soundtrack //
+    ////////////////
+    var soundtrack_model = app.sounds.find(function(model) { return model.get('name') == "TTB Soundtrack" });
+    TTB.soundtrack = new Soundtrack.View({ 
+      model: soundtrack_model
+    });
 
   };
 

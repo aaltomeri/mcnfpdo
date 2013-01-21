@@ -9,6 +9,9 @@ require.config({
     libs: "libs",
     plugins: "plugins",
 
+    // require text plugin
+    text: "libs/text",
+
     // Libraries.
     jquery: "libs/jquery",
     lodash: "libs/lodash",

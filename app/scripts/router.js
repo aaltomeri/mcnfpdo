@@ -5,9 +5,12 @@ define([
   // Modules
   "modules/Intro", 
   "modules/TTB",
+
+  "modules/Soundtrack"
+
 ],
 
-function(app, Intro, TTB) {
+function(app, Intro, TTB, Soundtrack) {
 
   // Defining the application router, you can attach sub routers here.
   var Router = Backbone.Router.extend({
@@ -52,6 +55,9 @@ function(app, Intro, TTB) {
       // we pass the optional command and time arguments that will result in the TTB video to be played/paused at a time offset if given
       // 'time' can also be a chapter name - the ttb video playhead will then position it self at the beginning of the chapter
       TTB.init(command, time);
+
+      // play soudtrack (has been initialized in the init call)
+      TTB.soundtrack.play();
 
     },
 
@@ -113,6 +119,8 @@ function(app, Intro, TTB) {
 
       this.ttb('pause', moduleName);
 
+      // pause Soundtrack
+      TTB.soundtrack.pause();
 
       TTB.MainView.prepareStageForModule();
 
