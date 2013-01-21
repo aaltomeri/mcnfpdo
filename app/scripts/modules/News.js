@@ -347,7 +347,9 @@ function(app) {
   // VIEWS //
   ///////////
 
-  // AudioStream View
+  //////////////////////
+  // AudioStream View //
+  //////////////////////
   // this is just a Html Audio Element
   News.Views.AudioStream = Backbone.LayoutView.extend({
 
@@ -359,6 +361,8 @@ function(app) {
 
       this.popcorn = Popcorn( new Popcorn.HTMLAudioElement(this.el) );
       this.popcorn.media.src = this.model.get('url');
+
+      this.popcorn.volume(0.4);
 
       this.popcorn.on('canplay', function() {
         
