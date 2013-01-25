@@ -1,0 +1,22 @@
+[	
+	{
+		"name": "B92 English News Feed",
+		"url": "http://www.b92.net/info/rss/news.xml"
+	},
+	{
+		"name": "Chronicales of Serbia",
+		"url": "http://chroniclesofserbia.wordpress.com/feed/"
+	},
+	{
+		"name": "Live from Belgrade",
+		"url": "http://livefrombelgrade.wordpress.com/feed/"
+	},
+	{
+		"name": "Real House Wife of Belgrade",
+		"url": "http://realhousewifeofbelgrade.com/feed/"
+	},
+	{
+		"name": "Black Serbia",
+		"url": "http://blackserbia.wordpress.com/feed/"
+	}
+]

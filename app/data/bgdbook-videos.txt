@@ -1,0 +1,212 @@
+[       
+        {       
+                "name": "Vlad Galard",
+                "sources": ["http://player.vimeo.com/video/57062883-1"],
+                "dimensions": { "width": "40%", "height": "auto" },
+                "position": { "top": "8%", "left": "7%" },
+                "autoplay": false,
+                "enablePlayPause": false,
+                "className": "portrait",
+                "out_point": null
+        },
+        {       
+                "name": "Laurent Sauvage",
+                "sources": ["http://player.vimeo.com/video/57062884-1"],
+                "dimensions": { "width": "40%", "height": "auto" },
+                "position": { "top": "17%", "left": "22%" },
+                "autoplay": false,
+                "enablePlayPause": false,
+                "className": "portrait",
+                "out_point": null
+        },
+        {       
+                "name": "Julie Denisse",
+                "sources": ["http://player.vimeo.com/video/57062881-1"],
+                "dimensions": { "width": "40%", "height": "auto" },
+                "dimensions": { "width": "40%", "height": "auto" },
+                "position": { "top": "13%", "left": "36%" },
+                "autoplay": false,
+                "enablePlayPause": false,
+                "className": "portrait",
+                "out_point": null
+        },
+        {      
+                "name": "Alex Pallu",
+                "sources": ["http://player.vimeo.com/video/57062882-1"],
+                "dimensions": { "width": "40%", "height": "auto" },
+                "position": { "top": "20%", "left": "52%" },
+                "autoplay": false,
+                "enablePlayPause": false,
+                "className": "portrait",
+                "out_point": null
+        },
+        {       
+                "name": "Dragan",
+                "sources": ["http://player.vimeo.com/video/57071230_1"],
+                "dimensions": { "width": "40%", "height": "auto" },
+                "position": { "top": "28%", "left": "15%" },
+                "autoplay": false,
+                "enablePlayPause": false
+        },
+        {       
+                "name": "Baltasar",
+                "sources": ["http://player.vimeo.com/video/57071230_2"],
+                "dimensions": { "width": "40%", "height": "auto" },
+                "position": { "top": "34%", "left": "45%" },
+                "autoplay": false,
+                "enablePlayPause": false
+        },
+        {       
+                "name": "Dragan",
+                "sources": ["http://player.vimeo.com/video/57071230_3"],
+                "dimensions": { "width": "40%", "height": "auto" },
+                "position": { "top": "25%", "left": "12%" },
+                "autoplay": false,
+                "enablePlayPause": false
+        },
+        {       
+                "name": "Baltasar",
+                "sources": ["http://player.vimeo.com/video/57071230_4"],
+                "dimensions": { "width": "40%", "height": "auto" },
+                "position": { "top": "36%", "left": "42%" },
+                "autoplay": false,
+                "enablePlayPause": false
+        },
+        {       
+                "name": "Dragan",
+                "sources": ["http://player.vimeo.com/video/57071230_5"],
+                "dimensions": { "width": "40%", "height": "auto" },
+                "position": { "top": "27%", "left": "12%" },
+                "autoplay": false,
+                "enablePlayPause": false
+        },
+        {       
+                "name": "Baltasar",
+                "sources": ["http://player.vimeo.com/video/57071230_6"],
+                "dimensions": { "width": "40%", "height": "auto" },
+                "position": { "top": "32%", "left": "46%" },
+                "autoplay": false,
+                "enablePlayPause": false
+        },
+        {       
+                "name": "Dragan",
+                "sources": ["http://player.vimeo.com/video/57071230_7"],
+                "dimensions": { "width": "40%", "height": "auto" },
+                "position": { "top": "27%", "left": "14%" },
+                "autoplay": false,
+                "enablePlayPause": false
+        },
+        {       
+                "name": "Elvis",
+                "sources": ["http://player.vimeo.com/video/57070192-1"],
+                "dimensions": { "width": "40%", "height": "auto" },
+                "position": { "top": "24%", "left": "28%" },
+                "autoplay": false,
+                "enablePlayPause": false
+        },
+        {       
+                "name": "Discussion à la table",
+                "sources": ["http://player.vimeo.com/video/57063245_1"],
+                "dimensions": { "width": "40%", "height": "auto" },
+                "position": { "top": "4%", "left": "2%" },
+                "autoplay": false,
+                "enablePlayPause": false
+        },
+        {       
+                "name": "Discussion à la table",
+                "sources": ["http://player.vimeo.com/video/57063245_2"],
+                "dimensions": { "width": "40%", "height": "auto" },
+                "position": { "top": "4%", "left": "14%" },
+                "autoplay": false,
+                "enablePlayPause": false
+        },
+        {       
+                "name": "Discussion à la table",
+                "sources": ["http://player.vimeo.com/video/57063245_3"],
+                "dimensions": { "width": "40%", "height": "auto" },
+                "position": { "top": "4%", "left": "26%" },
+                "autoplay": false,
+                "enablePlayPause": false
+        },
+        {       
+                "name": "Discussion à la table",
+                "sources": ["http://player.vimeo.com/video/57063245_4"],
+                "dimensions": { "width": "40%", "height": "auto" },
+                "position": { "top": "4%", "left": "36%" },
+                "autoplay": false,
+                "enablePlayPause": false
+        },
+        {       
+                "name": "Discussion à la table",
+                "sources": ["http://player.vimeo.com/video/57063245_5"],
+                "dimensions": { "width": "40%", "height": "auto" },
+                "position": { "top": "4%", "left": "48%" },
+                "autoplay": false,
+                "enablePlayPause": false
+        },
+        {       
+                "name": "Discussion à la table",
+                "sources": ["http://player.vimeo.com/video/57063245_6"],
+                "dimensions": { "width": "40%", "height": "auto" },
+                "position": { "top": "4%", "left": "55%" },
+                "autoplay": false,
+                "enablePlayPause": false
+        },
+        {       
+                "name": "Torture",
+                "sources": ["http://player.vimeo.com/video/57057852_1"],
+                "dimensions": { "width": "40%", "height": "auto" },
+                "position": { "top": "56%", "left": "2%" },
+                "autoplay": false,
+                "enablePlayPause": false
+        },
+        {       
+                "name": "Torture",
+                "sources": ["http://player.vimeo.com/video/57057852_2"],
+                "dimensions": { "width": "40%", "height": "auto" },
+                "position": { "top": "56%", "left": "12%" },
+                "autoplay": false,
+                "enablePlayPause": false
+        },
+        {       
+                "name": "Torture",
+                "sources": ["http://player.vimeo.com/video/57057852_3"],
+                "dimensions": { "width": "40%", "height": "auto" },
+                "position": { "top": "56%", "left": "24%" },
+                "autoplay": false,
+                "enablePlayPause": false
+        },
+        {       
+                "name": "Torture",
+                "sources": ["http://player.vimeo.com/video/57057852_4"],
+                "dimensions": { "width": "40%", "height": "auto" },
+                "position": { "top": "56%", "left": "36%" },
+                "autoplay": false,
+                "enablePlayPause": false
+        },
+        {       
+                "name": "Torture",
+                "sources": ["http://player.vimeo.com/video/57057852_5"],
+                "dimensions": { "width": "40%", "height": "auto" },
+                "position": { "top": "56%", "left": "46%" },
+                "autoplay": false,
+                "enablePlayPause": false
+        },
+        {       
+                "name": "Torture",
+                "sources": ["http://player.vimeo.com/video/57057852_6"],
+                "dimensions": { "width": "40%", "height": "auto" },
+                "position": { "top": "56%", "left": "55%" },
+                "autoplay": false,
+                "enablePlayPause": false
+        },
+        {       
+                "name": "Cria Cuervos",
+                "sources": ["http://player.vimeo.com/video/57063870-1"],
+                "dimensions": { "width": "40%", "height": "auto" },
+                "position": { "top": "9%", "left": "15%" },
+                "autoplay": false,
+                "enablePlayPause": false,
+                "out_point": 6
+        }
+]

@@ -45,7 +45,7 @@ function(app, Video) {
     fetchData: function() {
 
       var _this = this;
-      $.get('data/days.txt').done(
+      $.get('data/notebook-days.txt').done(
 
         function(data) { 
 
@@ -153,7 +153,7 @@ function(app, Video) {
 
     initialize: function() {
 
-      if(this.model.get('video_url')) {
+      if(this.model.get('sources')) {
         this.$el.addClass('important');
       }
 
@@ -248,13 +248,26 @@ function(app, Video) {
         var currentDay = this.collection.currentDay
         ,   anchor = currentDay.get('anchor')
         ,   top    =  entriesView.$el.find('[id*="' + anchor + '"]').position().top
-        ,   video_url = currentDay.get('video_url')
+        ,   sources = currentDay.get('sources')
+        ,   youtube_force_html5_param = ""
 
         entriesView.scrollTo(top);
 
-        if(video_url) {
+        if(sources) {
 
-          this.videoView.model.set('sources', new Array(video_url + "&html5=1"));
+          // sources is a simple string 
+          if(_.isString(sources)) {
+
+              // if youtube url we want html5
+              if(sources.search(/youtube/) != -1) {
+                youtube_force_html5_param = "&html5=1";
+              }
+
+              // we need an array in any case
+              sources = new Array(sources + youtube_force_html5_param)
+          }
+
+          this.videoView.model.set('sources', sources);
 
           this.videoView.init();
 

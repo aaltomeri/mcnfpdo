@@ -4,12 +4,13 @@ define([
   "app",
 
   // Modules
-  "modules/Video"
+  "modules/Video",
+  "modules/Soundtrack"
 
 ],
 
 // Map dependencies from above array.
-function(app, Video) {
+function(app, Video, Soundtrack) {
 
   // Create a new module.
   var TTB = app.module();
@@ -22,7 +23,7 @@ function(app, Video) {
     var video_model = new Video.Model({
 
       name: 'TTB',
-      sources: ['medias/videos/ttb.mp4'],
+      sources: ['medias/videos/ttb.mp4', 'medias/videos/ttb.webm'],
       dimensions: { width: '100%', height: '100%' },
       //sources: ['http://player.vimeo.com/video/56203539'],
       //dimensions: { width: '1280px', height: '720px' }
@@ -62,14 +63,26 @@ function(app, Video) {
 
     }
 
-    // video view
+    ////////////////
+    // video view //
+    ////////////////
+    
     var video_view = new Video.Views.Main({ model: video_model }),
     // actual main view for this module
     ttb_view = TTB.MainView = new TTB.Views.Main({ 
       video_view: video_view,
     });
 
+    // Set TTB model to be used throughout the application
     TTB.model = video_model;
+
+    ////////////////
+    // Soundtrack //
+    ////////////////
+    var soundtrack_model = app.sounds.find(function(model) { return model.get('name') == "TTB Soundtrack" });
+    TTB.soundtrack = new Soundtrack.View({ 
+      model: soundtrack_model
+    });
 
   };
 

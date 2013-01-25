@@ -239,9 +239,12 @@ function(app) {
      */
     remove: function() {
 
-      this.popcorn.destroy();
+      if(this.popcorn) {
 
-      delete this.popcorn;
+        this.popcorn.destroy();
+        delete this.popcorn;
+        
+      }
 
       this.disablePlayPause();
 

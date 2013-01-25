@@ -5,9 +5,12 @@ define([
   // Modules
   "modules/Intro", 
   "modules/TTB",
+
+  "modules/Soundtrack"
+
 ],
 
-function(app, Intro, TTB) {
+function(app, Intro, TTB, Soundtrack) {
 
   // Defining the application router, you can attach sub routers here.
   var Router = Backbone.Router.extend({
@@ -41,17 +44,39 @@ function(app, Intro, TTB) {
 
       $('#module-container').empty();
 
-      // if current Chapter exists, call its destroy method
-      // if(typeof TTB.model !== "undefined" && TTB.model.get('currentChapter')) {
-      //     require(["modules/" + TTB.model.get('currentChapter').name], function(module) {
-      //     if(_.isFunction(module.destroy)) module.destroy();
-      //   });
-      // }
+      //if current Chapter exists, call its destroy method
+      if(typeof TTB.model !== "undefined" && TTB.model.get('currentChapter')) {
+
+          var module_path = "modules/" + TTB.model.get('currentChapter').name
+          ,   _destroy_current_module = function() {
+
+                //console.log(module_path);
+
+                try {
+                  require([module_path], function(module) {
+
+                    module.soundtrack.pause();
+
+                    if(_.isFunction(module.destroy)) module.destroy();
+                    
+                  });
+                }
+                catch(e) {
+                  setTimeout(_destroy_current_module, 200);
+                }
+              }
+
+          _destroy_current_module();
+
+      }
 
       // here we call the init function that we have defined for the module
-      // we pass the optional offset argument that will result in the TTB video to be played at that time offset
+      // we pass the optional command and time arguments that will result in the TTB video to be played/paused at a time offset if given
       // 'time' can also be a chapter name - the ttb video playhead will then position it self at the beginning of the chapter
       TTB.init(command, time);
+
+      // play soudtrack (has been initialized in the init call)
+      TTB.soundtrack.play();
 
     },
 
@@ -113,11 +138,55 @@ function(app, Intro, TTB) {
 
       this.ttb('pause', moduleName);
 
+      // pause Soundtrack  
+      TTB.soundtrack.pause();
 
       TTB.MainView.prepareStageForModule();
 
-      // requiring the module AND calling its init method in the callback
-      require(["modules/" + moduleName], function(module) { module.init(); });
+      var module_path = "modules/" + moduleName
+          ,   _load_module = function() {
+
+                try {
+                  // requiring the module AND calling its init method in the callback
+                  require(["modules/" + moduleName], function(module) { 
+
+                    module.init(); 
+
+                    var config = app.chapters.find(function(model) { return model.get('name') == moduleName });
+
+                    ////////////////
+                    // Soundtrack //
+                    ////////////////
+                    var chapter_soundtracks = new Soundtrack.Collection()
+
+                    // build collection for this chapter Soundtrack View
+                    // it is built out of an array of soundtracks names
+                    // that we fill in the chapters config file
+                    _.each(config.get('soundtrack'), function(soundtrack_name) {
+
+                      // get sound from sountrack name
+                      var soundtrack_model = app.sounds.find(function(model) { return model.get('name') == soundtrack_name });
+
+                      // add new Soundtrack model to collection
+                      chapter_soundtracks.add(soundtrack_model);
+
+                    })
+
+                    module.soundtrack = new Soundtrack.View({ 
+                      collection: chapter_soundtracks
+                    });
+
+                    module.soundtrack.play();
+
+
+                  });
+                }
+                catch(e) {
+                  setTimeout(_load_module, 200);
+                }
+              }
+
+      _load_module();
 
     }
 

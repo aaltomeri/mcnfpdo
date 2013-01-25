@@ -4,14 +4,19 @@ define([
   "jquery",
   "lodash",
   "backbone",
+
+  "text!../data/app.chapters.json",
+  "text!../data/app.sounds.json",
+
   "popcorn",
   "transit",
 
   // Plugins.
   "plugins/backbone.layoutmanager"
+
 ],
 
-function($, _, Backbone) {
+function($, _, Backbone, Chapters, Sounds) {
 
   // Provide a global location to place configuration settings and module
   // creation.
@@ -24,7 +29,11 @@ function($, _, Backbone) {
     isiPad: navigator.userAgent.match(/iPad/i) != null,
 
     mainVideo_defaultWidth: 640,
-    mainVideo_defaultHeight: 360
+    mainVideo_defaultHeight: 360,
+
+    chapters: new Backbone.Collection($.parseJSON(Chapters)),
+
+    sounds: new Backbone.Collection($.parseJSON(Sounds))
 
   };
 
@@ -112,6 +121,16 @@ function($, _, Backbone) {
         $('#main').width($('body').height()*0.9 * video_hRatio);
       else
       $('#main').height($('body').width()*0.9 * video_wRatio);
+
+    },
+
+
+    /**
+     * Load chapters config
+     */
+    loadChaptersConfig: function() {
+
+
 
     }
 
