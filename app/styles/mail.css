@@ -1,0 +1,9 @@
+#brief {
+	width: 100%;
+	height: 100%;
+}
+
+#brief canvas {
+	position: absolute;
+	display: block;
+}
