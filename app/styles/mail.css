@@ -3,7 +3,13 @@
 	height: 100%;
 }
 
-#brief canvas {
+#brief .c {
+	position: absolute;
+	display: block;
+	overflow: hidden;
+}
+
+#brief .c canvas {
 	position: absolute;
 	display: block;
 }

@@ -141,7 +141,8 @@ function(app, Video, Soundtrack) {
           position: 'absolute', 
           bottom: '10px', 
           right: '10px',
-          opacity: 0
+          opacity: 0,
+          "z-index": 1000
         });
         $('#main').append(bt);
 

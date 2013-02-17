@@ -86,8 +86,6 @@ function(app, Soundtrack) {
 
       this.soundtrack.popcorn.loop(false);
 
-      
-
     },
 
     init_sliced_brief: function(a) {
@@ -101,27 +99,21 @@ function(app, Soundtrack) {
       ,   offset_dy = 0
       ,   iw = i.width - offset_dx*2
       ,   ih = Math.floor(i.height*(iw/i.width)) - offset_dy*2
+      ,   container_w = this.$el.width()
+      ,   container_h = this.$el.height()
       ,   rows = 80
       ,   cols = 6
       ,   n_slices = rows*cols
-      ,   slice_w = Math.floor(iw/cols)
-      ,   slice_h = Math.round(ih/rows)
-      ,   max_lines = Math.floor(this.$el.height()/rows) - 1
+      ,   o_slice_w = Math.floor(iw/cols)
+      ,   o_slice_h = Math.round(ih/rows)
+      ,   max_lines = Math.round(this.$el.height()/o_slice_h)
+      ,   d_slice_w = Math.round(container_w/cols)
+      ,   d_slice_h = Math.round(container_h/max_lines)
       ,   index = 0
       ,   delta_ox = 0
       ,   delta_oy = 0
-      ,   delta_dx = 10
-      ,   delta_dy = 10
-
-      // create a canvas that holds the scaled down image we will use to create the slices
-      // if we use the original image we can't slice into a properly sized image
-      var canvas_src = this.canvas_src = document.createElement('canvas')
-      ,   ctx_src = canvas_src.getContext('2d')
-
-      canvas_src.width = iw;
-      canvas_src.height = ih;
-
-      ctx_src.drawImage(i, 0, 0, iw, ih);
+      ,   delta_dx = 20
+      ,   delta_dy = 20
 
       // this.$el.append(this.brief_image);
       // return;
@@ -130,18 +122,34 @@ function(app, Soundtrack) {
 
         this.brief_slices[row_index] = new Array();
 
-        var dy = (row_index%max_lines)*slice_h + (Math.floor(Math.random() * delta_dy) - delta_dy) + offset_dy;
 
         for(var col_index = 0; col_index < cols; col_index++) {
+
+          var  random_y = (Math.floor(Math.random() * delta_dy) - delta_dy)
+          ,    random_x = (Math.floor(Math.random() * delta_dx) - delta_dx)
+          ,    ox = col_index*o_slice_w + random_x
+          ,    dx = col_index*d_slice_w + random_x
+          ,    oy = row_index*o_slice_h + random_y
+          ,    dy = (row_index%max_lines)*d_slice_h + random_y
+
+          // make sure ox is > 0 and ox+slice_w is within bounds so that drawImage works
+          if(ox < 0) ox = 0;
+          if(ox + o_slice_w > iw) ox = iw - o_slice_w;
+
+          // make sure oy is > 0 and oy+slice_h < ih so that drawImage works
+          if(oy < 0) oy = 0;
+          if(oy + o_slice_h > ih) oy = ih - o_slice_h;
 
           this.brief_slices_data[index] = {
             row_index: row_index,
             col_index: col_index,
-            slice_w: slice_w,
-            slice_h: slice_h,
-            ox: col_index*slice_w,// + (Math.floor(Math.random() * (delta_ox*2)) - delta_ox),
-            oy: row_index*slice_h,// + (Math.floor(Math.random() * (delta_oy*2)) - delta_oy),
-            dx: col_index*slice_w + (Math.floor(Math.random() * (delta_dx)) - delta_dx) + offset_dx,
+            o_slice_w: o_slice_w,
+            o_slice_h: o_slice_h,
+            d_slice_w: d_slice_w,
+            d_slice_h: d_slice_h,
+            ox: ox,// + (Math.floor(Math.random() * (delta_ox*2)) - delta_ox),
+            oy: oy, //row_index*slice_h,// + (Math.floor(Math.random() * (delta_oy*2)) - delta_oy),
+            dx: col_index*d_slice_w + (Math.floor(Math.random() * (delta_dx)) - delta_dx) + offset_dx,
             dy: dy
           } 
 
@@ -155,7 +163,7 @@ function(app, Soundtrack) {
 
       for(var i = 0; i < view.brief_slices_data.length; i++){
         view.drawSlice(i);
-        //view.insertSlice(i);
+        //view.animateSlice(i);
       }
 
       //return;
@@ -170,14 +178,14 @@ function(app, Soundtrack) {
 
       this.soundtrack.popcorn.on('play', function() {
 
-        console.log('play');
-
         var time_intvl;
 
         function _startAnimation() {
-          console.log('start animation');
+
           time_intvl = Math.ceil((view.soundtrack.popcorn.duration() / view.brief_slices_data.length) * 1000);
-          _insertSlice();
+
+          _animateSlice(time_intvl);
+
         }
 
         if(this.duration()) {
@@ -188,32 +196,100 @@ function(app, Soundtrack) {
             _startAnimation();
           })
         }
-        
 
-        console.log(time_intvl);
+        var current_page = 0;
 
-        function _insertSlice(time) {
-            
-          if(view.brief_slice_current_index < view.brief_slices_data.length) {
+        function _animateSlice() {
+          
 
+                 
               setTimeout(function() {
 
-                  var to_be_deleted_slice;
+                var index = parseInt(view.brief_slice_current_index) + 1
+                ,   slices_on_page = cols*max_lines
+                ,   page = Math.ceil(index/slices_on_page)
+                ,   index_on_page = index - slices_on_page*(page-1)
+                ,   index_to_be_deleted = (slices_on_page*(page-1)) - index_on_page
+                ,   to_be_deleted_slice = $(view.brief_slices[index_to_be_deleted])
+                ,   index_to_be_faded = view.brief_slice_current_index - slices_on_page
+                ,   to_be_faded_slice = $(view.brief_slices[index_to_be_faded])
 
-                  // insert slice
-                  view.insertSlice(view.brief_slice_current_index++);
-
+                if(view.brief_slice_current_index < view.brief_slices_data.length) {
+                  
                   //delete old slices
-                  if(view.brief_slice_current_index > cols*max_lines + 10) {
-                    to_be_deleted_slice = view.brief_slices[view.brief_slice_current_index - (cols*max_lines) - 10];
-                    $(to_be_deleted_slice).remove();
+                  if(page > 1) {
+
+                    // console.log("page:" + page);
+                    // console.log("showing:" + index);
+                    // console.log("deleting: " + index_to_be_deleted);
+                    // console.log('----');
+
+                    // to_be_deleted_slice.transition({
+                    //   opacity: 0
+                    // }, time_intvl, 'in', function() { to_be_deleted_slice.remove() });
+                  
+                    //to_be_deleted_slice.remove();
+
+                    // to_be_faded_slice.css({ 
+                    //   //transformOrigin: to_be_faded_slice.width() + 'px 0px',
+                    //   //"z-index": 2000
+                    // });
+
+                    // to_be_faded_slice.transition({
+                    //   opacity: 0,
+                    //   //scale: [0, 1],
+                    //   //left: view.$el.width()
+                    // }, time_intvl, 'out', function() { to_be_faded_slice.remove() });
+
                   }
 
-                  webkitRequestAnimationFrame(_insertSlice);
 
-              }, time_intvl);
+                  // modify previous slices on previous page
+                  if(current_page != page) {
 
-          }
+                    //console.log(page + " :: " + current_page);
+
+                    current_page = page;
+
+                    if(page > 1) {
+
+                      var i = index - 1
+                      ,   slice
+                      ,   delay
+                      ,   delay_factor
+                      ,   delay_base = time_intvl * 0.5
+                      ,   bottom_limit = i - slices_on_page
+
+                      while(i > bottom_limit) {
+
+                        slice = $(view.brief_slices[i]);
+
+                        delay_factor = ((slices_on_page*(page-1))-i)
+                        delay = delay_base * delay_factor * Math.random();
+
+                        slice.transition({opacity: 0, delay: delay}, time_intvl, function() { slice.remove() });
+
+                        i--;
+
+                      }
+
+                    }
+
+                  }
+
+                  if(view.brief_slice_current_index < view.brief_slices_data.length) {
+                    // insert slice
+                    view.animateSlice(view.brief_slice_current_index, time_intvl);
+                  } 
+
+                  view.brief_slice_current_index++;
+
+                  requestAnimationFrame(_animateSlice);
+
+                }
+
+              }, view.brief_slice_current_index? time_intvl : 0);
+
 
         }
 
@@ -228,62 +304,91 @@ function(app, Soundtrack) {
       var c, $c, ctx
       ,   row_index = this.brief_slices_data[index].row_index
       ,   col_index = this.brief_slices_data[index].col_index
-      ,   slice_w = this.brief_slices_data[index].slice_w
-      ,   slice_h = this.brief_slices_data[index].slice_h
+      ,   o_slice_w = this.brief_slices_data[index].o_slice_w
+      ,   o_slice_h = this.brief_slices_data[index].o_slice_h
+      ,   d_slice_w = this.brief_slices_data[index].d_slice_w
+      ,   d_slice_h = this.brief_slices_data[index].d_slice_h
       ,   ox = this.brief_slices_data[index].ox
       ,   oy = this.brief_slices_data[index].oy
       ,   dx = this.brief_slices_data[index].dx
       ,   dy = this.brief_slices_data[index].dy
 
-      $c = $('<canvas id="brief-slice-'+row_index+'-'+col_index+'" width="'+slice_w+'" height="'+slice_h+'"></canvas>')
+      $c = $('<canvas id="brief-slice-'+row_index+'-'+col_index+'" width="'+o_slice_w+'" height="'+o_slice_h+'"></canvas>')
       c = $c.get(0);
       ctx = c.getContext('2d');
 
       ctx.webkitImageSmoothingEnabled = false;
 
-      this.brief_slices[index] = c;
+      var $container = $('<div class="c" id="slice-container-'+ index +'"></div>');
+
+       $container.append(c);
+       this.$el.append($container);
+
+      $c.css({
+        //x: -d_slice_w,
+        //scale: [0, 1],
+        width: d_slice_w,
+        height: d_slice_h
+
+      })
+
+       $container.css({
+        top: dy,// - (Math.floor(Math.random() * (40)) - 20),
+        left: dx,// - 1000,// - (Math.floor(Math.random() * (100)) - 200),
+        "z-index": index,
+        opacity: 0,
+        width: d_slice_w,
+        height: d_slice_h,
+        //scale: [0,1],
+        //transformOrigin: '0px 0px'
+        "-webkit-box-shadow": "5px 5px 5px rgba(0, 0, 0, 0.4)",
+        //"-webkit-transform": "rotateX(180deg)"
+        //"-webkit-transform": "scale(0.95, 0.95)"
+        //"-webkit-transform": "rotate("+(Math.floor(Math.random() * (6)) - 3) + "deg)"
+      })
+
+      this.brief_slices[index] = $container;
 
       ctx.fillStyle = 'rgb(' + Math.floor(255-42.5*Math.random()*10) + ',' +
                        Math.floor(255-42.5*Math.random()*10) + ',0)';
 
-      var di = ctx.drawImage(this.brief_image, ox, oy, slice_w, slice_h, 0, 0, slice_w, slice_h);
-      //ctx.fillRect(0, 0, slice_w, slice_h);
+      var di = ctx.drawImage(this.brief_image, ox, oy, o_slice_w, o_slice_h, 0, 0, o_slice_w, o_slice_h);
+      //ctx.fillRect(0, 0, o_slice_w, o_slice_h);
       
 
     },
 
-    insertSlice: function(index) {
+    animateSlice: function(index, time_intvl) {
 
-      var c = this.brief_slices[index]
-      ,   $c = $(c)
+      var $container = this.brief_slices[index]
+      //,   $c = $container.children('canvas')
       ,   row_index = this.brief_slices_data[index].row_index
       ,   col_index = this.brief_slices_data[index].col_index
-      ,   slice_w = this.brief_slices_data[index].slice_w
-      ,   slice_h = this.brief_slices_data[index].slice_h
+      ,   o_slice_w = this.brief_slices_data[index].o_slice_w
+      ,   o_slice_h = this.brief_slices_data[index].o_slice_h
+      ,   d_slice_w = this.brief_slices_data[index].d_slice_w
+      ,   d_slice_h = this.brief_slices_data[index].d_slice_h
       ,   ox = this.brief_slices_data[index].ox
       ,   oy = this.brief_slices_data[index].oy
-      ,   dx = this.brief_slices_data[index].dx + 26
-      ,   dy = this.brief_slices_data[index].dy + 40
+      ,   dx = this.brief_slices_data[index].dx
+      ,   dy = this.brief_slices_data[index].delta_dy
 
-      $c.css({
-        top: dy - (Math.floor(Math.random() * (100)) - 20),
-        left: dx,// - (Math.floor(Math.random() * (100)) - 200),
-        "z-index": index,
-        opacity: 0,
-        "-webkit-box-shadow": "1px 1px 5px rgba(0, 0, 0, 0.5)",
-        //"-webkit-transform": "rotateX(180deg)"
-      })
-
-      this.$el.append(c);
-
-      $c.transition({
+      $container.transition({
         opacity: 1,
-        top: dy,
-        left: dx,
-        //width: slice_w
-        rotateX: '0deg',
-        rotate: (Math.floor(Math.random() * (6)) - 3) + 'deg'
-      }, 200, 'out');
+        //top: dy,
+        //left: dx,
+        //width: d_slice_w,
+        //scale: [1, 1],
+        //rotateX: '0deg',
+        //"-webkit-transform":" translateZ(0)"
+        //scale: 0.9
+        //rotate: (Math.floor(Math.random() * (6)) - 3) + 'deg'
+      }, time_intvl, 'linear');
+
+      // $c.transition({
+      //   //x: 0,
+      //   //scale: [1, 1]
+      // }, time_intvl, 'linear');
 
     },
 
