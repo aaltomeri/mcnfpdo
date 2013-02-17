@@ -1,11 +1,12 @@
 // News module
 define([
   // Application.
-  "app"
+  "app",
+  "modules/Video"
 ],
 
 // Map dependencies from above array.
-function(app) {
+function(app, Video) {
 
   // Create a new module.
   var Tesla = app.module();
@@ -14,7 +15,47 @@ function(app) {
 
     console.log('Tesla INIT');
 
-    var layout = new Tesla.Views.Layout();
+    var layout;
+
+    var videos = new Tesla.Collection();
+
+    videos.on('reset', function() {
+
+      this.each(function(model) { 
+        
+       // add autoplay to all models
+        model.set('autoplay', true);
+
+        // turn single source string into an array for consistency
+        if(_.isString(model.get('sources'))) {
+          model.set('sources', new Array(model.get('sources')));
+        }
+        
+        // alter video sources if need be
+        var sources = new Array();
+        _.each(model.get('sources'), function(source) {
+
+          // force html5 video for youtube
+          if(source.search(/youtube/) != -1) {
+            source += "&html5=1&controls=1";
+          }
+
+          // add modified source
+          sources.push(source)
+          
+        });
+
+        // replace sources by modified ones
+        model.set('sources', sources);
+
+      });
+
+      layout = new Tesla.Views.Layout({ collection: this });
+
+
+    });
+
+    videos.fetchData();
 
   }
 
@@ -25,13 +66,58 @@ function(app) {
 
   // Default Collection.
   Tesla.Collection = Backbone.Collection.extend({
-    model: Tesla.Model
+
+    model: Video.Model,
+    currentVideoIndex: -1,
+
+    fetchData: function() {
+
+      var _this = this;
+      $.get('data/tesla-videos.txt').done(
+
+        function(data) { 
+
+          _this.reset($.parseJSON(data));
+
+        }
+      );
+
+    },
+
+    getPrevious: function() {
+
+      if(this.currentVideoIndex > 0) {
+        this.currentVideoIndex--;
+      }
+      else {
+        return;
+      }
+      
+      return this.at(this.currentVideoIndex);
+
+    },
+
+     getNext: function() {
+
+      this.currentVideoIndex++;
+
+      if(this.currentVideoIndex > this.models.length - 1) {
+
+        this.currentVideoIndex = 0;
+
+      }
+
+      return this.at(this.currentVideoIndex);
+
+    }
+
   });
 
   // Default View.
   Tesla.Views.Layout = Backbone.Layout.extend({
 
     template: "tesla",
+    vv: null,// Video View
 
     initialize: function() {
 
@@ -42,12 +128,59 @@ function(app) {
       // add layout to the dom
       $('#module-container').empty().append(this.el);
 
+      this.playNext();
+
       // render layout
       this.render();
 
       $('#module-container').transition({opacity: 1}, 2000);
 
     },
+
+    playNext: function(in_point, out_point) {
+
+      // create Video View and set its first Video Model to be the first model in collection (created from list of videos loaded at startup)
+      var model = this.collection.getNext(),
+          in_point = model.get('in_point')? model.get('in_point') : 0,
+          out_point = model.get('out_point'),
+          vv = this.vv,
+          controller = this
+
+      //Video View has not been set yet
+      if(!vv) {
+        
+        vv = this.vv = this.setView(new Video.Views.Main({model : model }));
+
+        // for debugging
+        window.tv = vv.popcorn;
+
+      }
+      else { // Video View exists so all we do is change its model
+        vv.model = model;
+      }
+
+      vv.init();
+
+      // init behaviors
+      vv.popcorn.on('canplay', function() {
+        vv.popcorn.currentTime(in_point);
+        this.on('seeked', function() { this.play(); });
+      });
+
+      vv.popcorn.on('timeupdate', function() {
+
+        console.log(this.currentTime());
+
+        if(out_point && this.currentTime() > out_point) {
+
+          controller.playNext();
+
+        }
+
+      });
+
+    }
+
 
   });
 

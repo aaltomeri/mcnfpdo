@@ -1,0 +1,131 @@
+[       
+        {
+             "name": "Nikola Tesla  ",
+             "sources": "http://www.youtube.com/watch?v=g2n0RcVfHWk",
+             "dimensions": {},
+             "position": {},
+             "in_point": 7,
+             "out_point": 12
+        },
+        {
+             "name": "Nikola Tesla  ",
+             "sources": "http://www.youtube.com/watch?v=BaB_Yx7hpJs",
+             "dimensions": {},
+             "position": {},
+             "in_point": 103,
+             "out_point": 122
+        },
+        {
+             "name": "Casino Royal  ",
+             "sources": "http://youtu.be/5bBnVDj5SkA",
+             "dimensions": {},
+             "position": {},
+             "in_point": 1453,
+             "out_point": 1473
+        },
+        {
+             "name": "Dusko Popov",
+             "sources": "http://www.youtube.com/watch?v=fvZyy-_gXvE",
+             "dimensions": {},
+             "position": {},
+             "in_point": 22,
+             "out_point": 37
+        },
+        {
+             "name": "Tito Programme spatial",
+             "sources": "http://www.youtube.com/watch?v=EfJiNPZ38kY",
+             "dimensions": {},
+             "position": {},
+             "in_point": 24,
+             "out_point": 67
+
+        },
+        {
+             "name": "Nostalgie Yugo",
+             "sources": "http://youtu.be/0RRnCnO1Y2c",
+             "dimensions": {},
+             "position": {},
+             "in_point": 60,
+             "out_point": 65
+        },
+        {
+             "name": "Match Football 1996",
+             "sources": "http://youtu.be/ulq8i6sqHRo",
+             "dimensions": {},
+             "position": {},
+             "in_point": 20,
+             "out_point": 25
+        },
+        {
+             "name": "Eurovision Yug",
+             "sources": "http://youtu.be/Q-2oYPDX6bk",
+             "dimensions": {},
+             "position": {},
+             "in_point": 40,
+             "out_point": 45
+        },
+        {
+             "name": "Tito et bâtons à Mosta",
+             "sources": "https://www.youtube.com/watch?v=Nq6B4rLSpJY",
+             "dimensions": {},
+             "position": {},
+             "in_point": 160,
+             "out_point": 170
+        },
+        {
+             "name": "J.fille remet bâton à Tito ",
+             "sources": "https://www.youtube.com/watch?v=XAJZF7rJXG0",
+             "dimensions": {},
+             "position": {},
+             "in_point": 46,
+             "out_point": 76
+        },
+        {
+             "name": "Accords de Dayton  ",
+             "sources": "http://www.youtube.com/watch?v=PwKhT1vSrqw",
+             "dimensions": {},
+             "position": {},
+             "in_point": 117,
+             "out_point": 137
+        },
+        {
+             "name": "Extrait(s) de La Féline",
+             "sources": "http://www.youtube.com/watch?v=_9xmUidNvw8",
+             "dimensions": {},
+             "position": {},
+             "in_point": 90,
+             "out_point": 95
+        },
+        {
+             "name": "Film la parade",
+             "sources": "http://www.youtube.com/watch?v=6FnzNPfngzg",
+             "dimensions": {},
+             "position": {},
+             "in_point": 9,
+             "out_point": 34
+        },
+        {
+             "name": "Arkan ",
+             "sources": "http://www.youtube.com/watch?v=pypwd0-Fp_E",
+             "dimensions": {},
+             "position": {},
+             "in_point": 20,
+             "out_point": 25
+        },
+        {
+             "name": "Attentat de Sarajevo: G. Princip",
+             "sources": "http://www.youtube.com/watch?v=HLruVJHIgCM",
+             "dimensions": {},
+             "position": {},
+             "in_point": 40,
+             "out_point": 45
+        },
+        {
+             "name": "Concert dans le regard d'Ulysse",
+             "sources": "http://www.youtube.com/watch?v=KJyjJIb4p0M",
+             "dimensions": {},
+             "position": {},
+             "in_point": 0,
+             "out_point": 68
+        }
+]
