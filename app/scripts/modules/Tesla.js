@@ -160,12 +160,13 @@ function(app, Video) {
       }
 
       vv.init();
+      vv.popcorn.play(in_point);
 
-      // init behaviors
-      vv.popcorn.on('canplay', function() {
-        vv.popcorn.currentTime(in_point);
-        this.on('seeked', function() { this.play(); });
-      });
+      // init behaviors - deprecated sine Youtube wrapper seems to work fine with new version of popcorn
+      // vv.popcorn.on('canplay', function() {
+      //   vv.popcorn.currentTime(in_point);
+      //   this.on('seeked', function() { this.play(); });
+      // });
 
       vv.popcorn.on('timeupdate', function() {
 

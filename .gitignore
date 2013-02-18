@@ -10,3 +10,5 @@ dist
 .sass-cache
 .DS_Store
 components/
+medias/videos
+medias/soundtracks

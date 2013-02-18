@@ -17,7 +17,7 @@
         },
         {
              "name": "Casino Royal  ",
-             "sources": "http://youtu.be/5bBnVDj5SkA",
+             "sources": "http://www.youtube.com/watch?v=5bBnVDj5SkA",
              "dimensions": {},
              "position": {},
              "in_point": 1453,
@@ -42,27 +42,27 @@
         },
         {
              "name": "Nostalgie Yugo",
-             "sources": "http://youtu.be/0RRnCnO1Y2c",
+             "sources": "http://www.youtube.com/watch?v=0RRnCnO1Y2c",
              "dimensions": {},
              "position": {},
-             "in_point": 60,
-             "out_point": 65
+             "in_point": 4,
+             "out_point": 27
         },
         {
              "name": "Match Football 1996",
-             "sources": "http://youtu.be/ulq8i6sqHRo",
+             "sources": "http://www.youtube.com/watch?v=ulq8i6sqHRo",
              "dimensions": {},
              "position": {},
-             "in_point": 20,
-             "out_point": 25
+             "in_point": 0,
+             "out_point": 22
         },
         {
              "name": "Eurovision Yug",
-             "sources": "http://youtu.be/Q-2oYPDX6bk",
+             "sources": "http://www.youtube.com/watch?v=Q-2oYPDX6bk",
              "dimensions": {},
              "position": {},
-             "in_point": 40,
-             "out_point": 45
+             "in_point": 34,
+             "out_point": 80
         },
         {
              "name": "Tito et bâtons à Mosta",
