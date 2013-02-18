@@ -5928,7 +5928,20 @@
     }
 
     function onPlayerReady( event ) {
-      playerReady = true;
+
+      mediaReady = true;
+
+      var i = mediaReadyCallbacks.length;
+      while( i-- ) {
+        mediaReadyCallbacks[ i ]();
+        delete mediaReadyCallbacks[ i ];
+      }
+
+      // Auto-start if necessary
+      if( impl.autoplay ) {
+        self.play();
+      }
+
     }
 
     function getDuration() {
