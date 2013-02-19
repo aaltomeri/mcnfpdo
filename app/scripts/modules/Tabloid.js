@@ -43,15 +43,19 @@ function(app, Video) {
     fetchData: function() {
 
       var youtube_feed_url = '//gdata.youtube.com/feeds/api/videos?callback=?'
-      ,   _this = this;
-
+      ,   _this = this
+      ,   search_terms = ["belgrade", "nightlife+belgrade", "beograd", "belgrade+chipmunk", "turbofolk"]
+      ,   search_term = search_terms[Math.floor(Math.random()*search_terms.length)]
+      
+      console.log("search_term: " + search_term);
+     
       $.getJSON(youtube_feed_url, {
           v:2, 
           alt:'json-in-script', 
           format:'5',
-          q: "belgrade",
-          "start-index": Math.floor(Math.random() * 400),
-          "max-results": 9
+          q: search_term,
+          "start-index": Math.floor(Math.random() * 100),
+          "max-results": 4
         }, 
         $.proxy(_this.parseYoutubeData, _this)
       );
@@ -92,6 +96,7 @@ function(app, Video) {
   Tabloid.Views.Layout = Backbone.Layout.extend({
 
     template: "tabloid",
+    n_videos_played_in_set: 0,
 
     initialize: function() {
 
@@ -122,6 +127,8 @@ function(app, Video) {
 
     },
 
+
+
     playSet: function() {
       
       var videos = this.collection
@@ -131,7 +138,7 @@ function(app, Video) {
         view.remove();
       });
 
-      //setTimeout(function() { layout.collection.fetchData(); }, 15000);
+      this.n_videos_played_in_set = 0;
 
       // looping through video models
       this.collection.each(function(model, index) {
@@ -147,7 +154,7 @@ function(app, Video) {
 
           // force html5 video for youtube
           if(source.search(/youtube/) != -1) {
-            source += "&html5=1&controls=0";
+            source += "&html5=1";
           }
 
           // add modified source
@@ -170,21 +177,92 @@ function(app, Video) {
         ,   left = Math.floor(hz_delta*(index%hz_vdo_cnt))// + (Math.floor(Math.random() * (10 + 10 + 1)) - 20)
         ,   top = Math.floor(vt_delta * parseInt(index/vt_vdo_cnt))// + (Math.floor(Math.random() * (10 + 10 + 1)) - 20)
 
-        var custom_position = {
+        var vv_css = {
           position: 'absolute',
           top: top,
           left: left,
           width: w,
           height: h,
           "z-index": index
+          //display: "none"
         }
 
         // position view
-        vv.$el.css(custom_position);
+        vv.$el.css(vv_css);
         vv.render();
         vv.init();
+        vv.popcorn.play(); 
+        vv.popcorn.pause(); 
+
+        vv.popcorn.on('loadedmetadata', function() {
+          this.hasPlayed = false;
+        });
 
       }, this);
+
+      //setInterval(function() { layout.playRdm(); }, 3000);
+      layout.playRdm();
+
+    },
+
+    playRdm: function(index) {
+
+      console.log(" -------- playRdm ------- " );
+
+      // play one random video from the set
+      var views = this.getViews().value()
+      ,   layout = this
+      ,   index = index? index : Math.floor(Math.random()*views.length)
+      ,   vv = views[index]
+
+      if(this.n_videos_played_in_set == views.length) {
+        this.collection.fetchData();
+        return;
+      }
+
+      console.log("index: " + index);
+      console.log("vv: " + vv);
+      console.log("vv popcorn: " + vv.popcorn);
+      console.log("hasPlayed: " + vv.popcorn.hasPlayed);
+
+      if(vv.popcorn.hasPlayed) {
+        layout.playRdm();
+        return;
+      }
+
+      if(!isNaN(vv.popcorn.duration()) && vv.popcorn.duration() > 0) {
+
+        var duration = vv.popcorn.duration()
+        ,   in_point = Math.round(Math.random()*duration)
+        ,   out_point = Math.ceil(Math.max(in_point, Math.min(duration, in_point + Math.round(Math.random()*3))))
+
+      }
+      else {
+        setTimeout(function() { layout.playRdm(index); }, 100);
+        return;
+      }
+
+
+      console.log("duration: " + vv.popcorn.duration());
+      console.log("in_point: " + in_point);
+      console.log("out_point: " + out_point);
+
+      vv.$el.show();
+
+      vv.popcorn.on('timeupdate', function() {
+
+        if(this.currentTime() > out_point && !this.hasPlayed) {
+          this.hasPlayed = true;
+          this.pause();
+          layout.n_videos_played_in_set++;
+          layout.playRdm();
+        }
+
+      });
+
+      //vv.popcorn.unmute();
+      //vv.popcorn.volume(1); 
+      vv.popcorn.play(in_point);
 
     }
 
