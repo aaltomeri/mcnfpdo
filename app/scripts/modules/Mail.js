@@ -12,13 +12,14 @@ define([
 function(app, Soundtrack) {
 
   // Create a new module.
-  var Mail = app.module();
+  var Mail = app.module(),
+  layout;
 
   Mail.init = function() {
 
     console.log('Mail INIT');
 
-    var layout = new Mail.Views.Layout();
+    layout = new Mail.Views.Layout();
 
   }
 
@@ -420,7 +421,7 @@ function(app, Soundtrack) {
       // add layout to the dom
       $('#module-container').empty().append(this.el);
 
-      this.setView(new Mail.Views.Brief({id: 'brief'}));
+      this.brief = this.setView(new Mail.Views.Brief({id: 'brief'}));
 
       
 
@@ -436,6 +437,10 @@ function(app, Soundtrack) {
   Mail.destroy = function() {
 
     console.log('Mail destroy');
+    console.log('Mail layout? ' + layout);
+
+    layout.brief.soundtrack.pause();
+    layout.brief.soundtrack.remove();
 
   }
 

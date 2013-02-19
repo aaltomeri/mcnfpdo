@@ -46,9 +46,27 @@ function(app) {
 	    // wrapper for popcorn instance pause method
 	    pause: function() {
 	      this.popcorn.media.pause();
+	    },
+
+	    /**
+	     * override remove method to allow for destroying popcorn instance
+	     */
+	    remove: function() {
+
+	      if(this.popcorn) {
+
+	        this.popcorn.destroy();
+	        delete this.popcorn;
+	        
+	      }
+
+	      Backbone.View.prototype.remove.apply(this, arguments);
+
 	    }
 
 	});
+
+
 
 	return Soundtrack;
 
