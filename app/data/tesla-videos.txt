@@ -53,7 +53,7 @@
              "sources": "http://www.youtube.com/watch?v=ulq8i6sqHRo",
              "dimensions": {},
              "position": {},
-             "in_point": 0,
+             "in_point": 12,
              "out_point": 22
         },
         {
@@ -109,8 +109,8 @@
              "sources": "http://www.youtube.com/watch?v=pypwd0-Fp_E",
              "dimensions": {},
              "position": {},
-             "in_point": 20,
-             "out_point": 25
+             "in_point": 33,
+             "out_point": 55
         },
         {
              "name": "Attentat de Sarajevo: G. Princip",
