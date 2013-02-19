@@ -6171,7 +6171,8 @@
       playerVars.origin = playerVars.origin || domain;
 
       // Show/hide controls. Sync with impl.controls and prefer URL value.
-      playerVars.controls = playerVars.controls || impl.controls ? 2 : 0;
+      // TM added parseInt() call to avoid "controls=0" to not work because "0" is not null (as a string)
+      playerVars.controls = parseInt(playerVars.controls) || impl.controls ? 2 : 0;
       impl.controls = playerVars.controls;
 
       // Set wmode to transparent to show video overlays
