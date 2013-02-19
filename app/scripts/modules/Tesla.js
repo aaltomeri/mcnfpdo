@@ -37,7 +37,7 @@ function(app, Video) {
 
           // force html5 video for youtube
           if(source.search(/youtube/) != -1) {
-            source += "&html5=1&controls=1";
+            source += "&html5=1";
           }
 
           // add modified source
@@ -121,6 +121,8 @@ function(app, Video) {
 
     initialize: function() {
 
+      var layout = this;
+
       this.$el.css({height: '100%'});
 
       $('#module-container').css({opacity: 0});
@@ -132,6 +134,17 @@ function(app, Video) {
 
       // render layout
       this.render();
+
+      /**
+       * All dynically added elements must be added after render since render load a template and replaces $el.html with it
+       */
+      
+      // next button for debugging
+      var next_bt = $('<button>NEXT</button>');
+      next_bt.css({position: "absolute", top: 0, left: 0, "z-index": 200})
+      this.$el.append(next_bt);
+
+      next_bt.on('click', function() { layout.playNext(); });
 
       $('#module-container').transition({opacity: 1}, 2000);
 
@@ -162,7 +175,7 @@ function(app, Video) {
       vv.init();
       vv.popcorn.play(in_point);
 
-      // init behaviors - deprecated sine Youtube wrapper seems to work fine with new version of popcorn
+      // init behaviors - deprecated since Youtube wrapper seems to work fine with new version of popcorn
       // vv.popcorn.on('canplay', function() {
       //   vv.popcorn.currentTime(in_point);
       //   this.on('seeked', function() { this.play(); });
