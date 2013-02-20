@@ -33,7 +33,7 @@ function(app) {
      * 
      * @return void
      */
-    init: function() {
+    init: function(start_time) {
 
       if(!this.model)
         throw 'Video View requires a model';
@@ -74,6 +74,10 @@ function(app) {
           // execute function with Video View context ( as we are in a popcorn event callback )
           $.proxy(vv.movePlayHead, vv)(time);
 
+        }
+
+        if(start_time) {
+          this.currentTime(start_time);
         }
 
         // autoplay?

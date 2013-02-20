@@ -31,15 +31,15 @@ function(app, Video, Soundtrack) {
       autoplay: (command === 'play')? true : false,
       enablePlayPause: true,
       chapters: [
-        { name: "Notebook", title: "Carnet de notes", start: 66, end: 72 },
-        { name: "BgdBook", title: "Belgrade par Angélica Liddell", start: 73, end: 77 },
-        { name: "BgdMap",title: "Belgrade Ville", start: 22, end: 27 },
-        { name: "Mail", title: "Lettres du père", start: 58, end: 63 },
-        { name: "Tabloid",title: "Belgrade Trash", start: 86, end: 92 },
-        { name: "News", title: "Actualités", start: 79, end: 84 },
-        { name: "Tesla",title: "Insconscient collectif", start: 40, end: 48 },
-        { name: "History",title: "Histoire Serbe", start: 49, end: 56 },
-        { name: "WarTrauma", title: "Traumatisme de guerre", start: 32, end: 37 }
+        { name: "BgdMap",title: "Belgrade Ville", start: 17, end: 23 },
+        { name: "BgdBook", title: "Belgrade par Angélica Liddell", start: 27, end: 33 },
+        { name: "Notebook", title: "Carnet de notes", start: 37, end: 43 },
+        { name: "Mail", title: "Lettres du père", start: 46, end: 52 },
+        { name: "Tabloid",title: "Belgrade Trash", start: 54, end: 61 },
+        { name: "News", title: "Actualités", start: 62, end: 67 },
+        { name: "Tesla",title: "Insconscient collectif", start: 69, end: 75 },
+        { name: "History",title: "Histoire Serbe", start: 77, end: 83 },
+        { name: "WarTrauma", title: "Traumatisme de guerre", start: 85, end: 90 }
       ]
 
     });
