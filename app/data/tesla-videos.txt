@@ -1,6 +1,6 @@
 [       
         {
-             "name": "Nikola Tesla  ",
+             "name": "Nikola Tesla",
              "sources": "http://www.youtube.com/watch?v=g2n0RcVfHWk",
              "dimensions": {},
              "position": {},
