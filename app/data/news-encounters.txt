@@ -1,6 +1,7 @@
 [	
 	{ 	
 		"title": "",
+		"date": "Tue, 19 Feb 2011 17:26:11 +0000",
 		"text": "M. revient de New-York et est sous antidépresseurs depuis 2 ans. C’est la première fois qu’il arrive à sortir en pleine journée. Nous trinquons à sa réussite."
 	},
 
