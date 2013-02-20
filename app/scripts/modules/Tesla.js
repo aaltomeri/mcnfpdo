@@ -37,7 +37,7 @@ function(app, Video) {
 
           // force html5 video for youtube
           if(source.search(/youtube/) != -1) {
-            source += "&html5=1&controls=1";
+            source += "&html5=1";
           }
 
           // add modified source
