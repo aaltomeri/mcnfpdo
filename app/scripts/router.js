@@ -150,8 +150,6 @@ function(app, Intro, TTB, Soundtrack) {
                   // requiring the module AND calling its init method in the callback
                   require(["modules/" + moduleName], function(module) { 
 
-                    module.init(); 
-
                     var config = app.chapters.find(function(model) { return model.get('name') == moduleName });
 
                     ////////////////
@@ -177,6 +175,8 @@ function(app, Intro, TTB, Soundtrack) {
                     });
 
                     module.soundtrack.play();
+
+                    module.init(); 
 
 
                   });
