@@ -85,7 +85,7 @@ function(app, Video) {
           vv.remove();  
 
           // go to TTB at the end of the intro
-          app.trigger('goto', 'TTB/play/10');
+          app.trigger('goto', 'TTB/play');
 
       });
 
