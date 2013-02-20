@@ -15,6 +15,8 @@ function(app, Video) {
 
     console.log('Tabloid INIT');
 
+    Tabloid.soundtrack.pause();
+
     var videos = new Tabloid.Collection();
 
     var layout = new Tabloid.Views.Layout( {collection: videos });
@@ -55,7 +57,7 @@ function(app, Video) {
           format:'5',
           q: search_term,
           "start-index": Math.floor(Math.random() * 100),
-          "max-results": 4
+          "max-results": 9
         }, 
         $.proxy(_this.parseYoutubeData, _this)
       );
@@ -174,8 +176,8 @@ function(app, Video) {
         ,   vt_delta = this.$el.height()/vt_vdo_cnt
         ,   w = Math.ceil((100/hz_vdo_cnt)) + '%'
         ,   h = Math.ceil((100/vt_vdo_cnt)) + '%'
-        ,   left = Math.floor(hz_delta*(index%hz_vdo_cnt))// + (Math.floor(Math.random() * (10 + 10 + 1)) - 20)
-        ,   top = Math.floor(vt_delta * parseInt(index/vt_vdo_cnt))// + (Math.floor(Math.random() * (10 + 10 + 1)) - 20)
+        ,   left = Math.floor(hz_delta*(index%hz_vdo_cnt)) + (Math.floor(Math.random() * (10 + 10 + 1)) - 20)
+        ,   top = Math.floor(vt_delta * parseInt(index/vt_vdo_cnt)) + (Math.floor(Math.random() * (10 + 10 + 1)) - 20)
 
         var vv_css = {
           position: 'absolute',
@@ -183,8 +185,8 @@ function(app, Video) {
           left: left,
           width: w,
           height: h,
-          "z-index": index
-          //display: "none"
+          "z-index": index,
+          opacity: 0.2
         }
 
         // position view
@@ -247,7 +249,7 @@ function(app, Video) {
       console.log("in_point: " + in_point);
       console.log("out_point: " + out_point);
 
-      vv.$el.show();
+      vv.$el.transition({opacity: 1});
 
       vv.popcorn.on('timeupdate', function() {
 
