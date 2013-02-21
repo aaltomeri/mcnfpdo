@@ -1,6 +1,6 @@
 [       
         {
-             "name": "Nikola Tesla",
+             "name": "Nikola Tesla : My Inventions",
              "sources": "http://www.youtube.com/watch?v=g2n0RcVfHWk",
              "dimensions": {},
              "position": {},
@@ -8,7 +8,7 @@
              "out_point": 12
         },
         {
-             "name": "Nikola Tesla  ",
+             "name": "Lost Ligntning : The Missing Secrets of Nikola Tesla",
              "sources": "http://www.youtube.com/watch?v=BaB_Yx7hpJs",
              "dimensions": {},
              "position": {},
@@ -16,7 +16,7 @@
              "out_point": 122
         },
         {
-             "name": "Casino Royal  ",
+             "name": "James Bond First Adaptation : Casino Royal (1954)",
              "sources": "http://www.youtube.com/watch?v=5bBnVDj5SkA",
              "dimensions": {},
              "position": {},
@@ -24,7 +24,7 @@
              "out_point": 1473
         },
         {
-             "name": "Dusko Popov",
+             "name": "Dusko Popov : Inspiration for James Bond Character",
              "sources": "http://www.youtube.com/watch?v=fvZyy-_gXvE",
              "dimensions": {},
              "position": {},
@@ -32,7 +32,7 @@
              "out_point": 37
         },
         {
-             "name": "Tito Programme spatial",
+             "name": "Tito's Secret Space Program",
              "sources": "http://www.youtube.com/watch?v=EfJiNPZ38kY",
              "dimensions": {},
              "position": {},
@@ -41,7 +41,7 @@
 
         },
         {
-             "name": "Nostalgie Yugo",
+             "name": "Yugoslavia : Europe's Hidden Treasure (1986)",
              "sources": "http://www.youtube.com/watch?v=0RRnCnO1Y2c",
              "dimensions": {},
              "position": {},
@@ -49,7 +49,7 @@
              "out_point": 27
         },
         {
-             "name": "Match Football 1996",
+             "name": "Yugoslavia VS Czech Republic (November 10 1996)",
              "sources": "http://www.youtube.com/watch?v=ulq8i6sqHRo",
              "dimensions": {},
              "position": {},
