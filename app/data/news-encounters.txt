@@ -66,45 +66,53 @@
 	},
 
 	{ 	
-		"title": "",
-		"text": "La sœur de A., de trois ans plus jeune qu’elle, s’est réfugiée à Prague. Quand elle est revenue, elle avait la tête entièrement couverte de cheveux blancs. Ca lui était venu d’un coup. Elle avait beaucoup souffert de ne pas partager la douleur de sa famille restée à Belgrade. Son isolement lui faisait imaginer bien pire que ce qu’ils avaient réellement vécu."
+		"title": "Chronique de Belgrade : Les cheveux blancs",
+		"date": "Thur, 21 April 2011 11:42:19 +0000",
+		"text": "La sœur de A. s’était réfugiée à Prague. Quand elle est rentrée, elle avait la tête couverte de cheveux blancs. Ca lui était venu d’un coup. Son isolement lui avait fait imaginer bien pire que ce qu’ils avaient réellement vécu."
 	},
 
 	{ 	
-		"title": "",
-		"text": "« Les frappes, précise-t-elle, on les attendait avec impatience. C’était un vrai soulagement quand l’OTAN s’est décidé à intervenir. C’est seulement après qu’on a perçu le choc. »"
+		"title": "Chronique de Belgrade : Les frappes 2",
+		"date": "Thur, 21 April 2011 11:31:10 +0000",
+		"text": "«Les frappes, précise A., on les attendait avec impatience. C’était un vrai soulagement quand l’OTAN s’est décidé à intervenir. C’est seulement après qu’on a perçu le choc.»"
+	},
+
+	{ 	"title": "Chronique de Belgrade : Keep your expectations low!",
+		"date": "Tues, 26 April 2011 17:21:54 +0000",
+		"text": "Je retrouve Z. quelques jours plus tard dans son atelier: «Ne t’attends pas à grand-chose ici. Keep your expectations low !» Il me raconte combien il est difficle de s'organiser pour faire avancer les choses."
 	},
 
 	{ 	
-		"title": "",
-		"text": "Je retrouve Z. quelques jours plus tard dans son atelier. Il me dit : « Ne t’attends pas à grand-chose ici. Keep your expectations low ! » Il me raconte combien il est impossible de fixer des rendez-vous, des réunions de travail ou quoi que ce soit qui pourrait faire avancer les choses."
+		"title": "Chronique de Belgrade : A l'atelier",
+		"date": "Tues, 26 April 2011 17:40:05 +0000",
+		"text": "Il n’y a selon Z. aucune perspective, aucune stabilité. Il ne vote plus. Il ne fait plus confiance à personne, et surtout pas à la classe politique."
 	},
 
 	{ 	
-		"title": "",
-		"text": "Il n’y a selon lui aucune perspective, aucune stabilité. Il ne vote plus. Il ne fait plus confiance à personne, et surtout pas à la classe politique."
+		"title": "Chronique de Belgrade : Nirvana",
+		"date": "Fri, 16 September 2011 20:01:03 +0000",
+		"text": "Au théâtre je sursaute: une jeune ado a 'Smells like teen spirit' en sonnerie de portable. Je me souviens alors que Krist Novoselic, le bassiste et co-fondateur du groupe, est d’origine croate."
+	},
+	{ 	
+		"title": "Chronique de Belgrade : Hubert",
+		"date": "Thur, 14 April 2011 16:11:45 +0000",
+		"text": "Chez le coiffeur je rencontre Hubert, un jeune Français de 20 ans. Il a décidé de s'installer à Belgrade. Il partage avec moi son enthousiasme pour la ville: «Tu verras, tu vas trop kiffer: les filles sont magnifiques! (…)On se voit demain soir au Plastik ? »"
+	},
+	{ 	
+		"title": "Chronique de Belgrade : Hubert 2",
+		"date": "Thur, 14 April 2011 16:18:10 +0000",
+		"text": "Hubert profite de la ville depuis juillet: ses parents sont «cools». Il va peut-être reprendre ses études l'an prochain et troquer ses études de droit pour du marketing."
 	},
 
 	{ 	
-		"title": "",
-		"text": "Au théâtre je sursaute : une jeune ado a Smells like teen spirit en sonnerie de portable. Je me souviens alors que Krist Novoselic, le bassiste et co-fondateur du groupe avec Kurt Cobain, est d’origine croate."
-	},
-	{ 	
-		"title": "",
-		"text": "Chez le coiffeur je rencontre un jeune Français de vingt ans qui s'appelle Hubert. Il était venu rendre visite à un ami Français et a décidé de s'installer à Belgrade. Il partage avec moi son enthousiasme pour la ville : « Les weekends tu verras, tu vas trop kiffer : les filles sont magnifiques ! (…) On se voit samedi soir au Plastik ? »"
-	},
-	{ 	
-		"title": "",
-		"text": "Il profite de la ville depuis juillet : ses parents sont « cools » et le laissent faire. Il va peut-être reprendre ses études l'an prochain et troquer ses études de droit pour du marketing."
+		"title": "Chronique de Belgrade : Hubert 3",
+		"date": "Thur, 14 April 2011 16:29:40 +0000",
+		"text": "Hubert et le coiffeur se retrouvent sur un grand nombre de points. «C’est parce que la France a eu tellement de colonies qu’ils prennent maintenant leur revanche.» A quoi le coiffeur répond: «Les Turcs étaient chez nous trop longtemps, maintenant c'est notre tour.»"
 	},
 
 	{ 	
-		"title": "",
-		"text": "Hubert et le coiffeur ont l’air de se retrouver sur un grand nombre de points. Il dit que « c’est parce que la France a eu tellement de colonies, qu’ils prennent maintenant leur revanche. » A quoi le coiffeur répond : « Les Turcs étaient chez nous pendant si longtemps, maintenant c'est notre tour. »"
-	},
-
-	{ 	
-		"title": "",
+		"title": "Chronique de Belgrade : A New Life",
+		"date": "Thur, 14 April 2011 16:31:01 +0000",
 		"text": "Les cheveux coupés, Hubert se regarde dans le miroir et s’exclame : « A New man for a New Life ! »."
 	},
 
