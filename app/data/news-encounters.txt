@@ -129,34 +129,35 @@
 	},
 
 	{ 	
-		"title": "Chronique de Belgrade : Comment ça fonctionne",
+		"title": "Chronique de Belgrade : Surtout ne rien prévoir",
 		"date": "Sat, 15 September 2012 16:02:24 +0000",
 		"text": "Les choses se font ici au dernier moment et il est vain d’essayer de prévoir quoi que ce soit. Je m’épuise rapidement à ne pas adopter le mode de fonctionnement que les Belgradois imposent à quiconque n’est pas d’ici."
 	},
 
-	{	"title": "Chronique de Belgrade : Comment ça fonctionne",
+	{	"title": "Chronique de Belgrade : Agir",
 		"date": "Sat, 15 September 2012 16:07:53 +0000",
 		"text": "Je repense aux mots d'Angélica Liddell: "Belgrade" est une pièce sur la frustration, sur le hiatus entre les mots et l'action."
 	},
 
-	{ 	
-		"title": "",
-		"text": "Z. m’apprend qu’il attend un second enfant. Nous nous réjouissons mais lui s’assombrit. Je perçois de la tristesse dans son regard quand il annonce la venue d'un garçon et non d'une fille. Tout d'un coup, et depuis mes précédents voyages, je le sens comme rattrapé par la vieillesse."
+	{	"title": "Chronique de Belgrade : Le temps qui passe",
+		"date": "Mon, 16 April 2012 14:41:34 +0000",
+		"text": "Z. m’apprend qu’il attend un second enfant. Nous nous réjouissons mais lui s’assombrit. Je perçois de la tristesse dans son regard quand il annonce la venue d'un garçon et non d'une fille. Tout d'un coup, et depuis mes précédentes visites, je le sens rattrapé par le temps qui passe."
 	},
 
 
-	{ 	
-		"title": "",
-		"text": "Je me dis aujourd’hui, exactement 10 jours après mon arrivée ici, que cette hospitalité dont tous ici ont démontré à mon égard est peut-être trop rare en France parce qu’on est en temps de paix."
+	{	"title": "Chronique de Belgrade : En temps de paix",
+		"date": "Fri, 22 April 2011 03:11:14 +0000",
+		"text": "Je me dis aujourd’hui, exactement 10 jours après mon arrivée, que cette hospitalité dont tous ont démontré à mon égard est peut-être trop rare en France parce qu’on est en depuis longtemps en temps de paix."
 	},
-	{ 	
-		"title": "",
+
+	{	"title": "Chronique de Belgrade : La nécessaire entraide",
+		"date": "Fri, 22 April 2011 03:12:04 +0000",
 		"text": "Peut-être une paix trop longue fait oublier la nécessaire fraternité. On s’entraide, on échange parce qu’on ne sait jamais, si quelque chose arrivait…"
 	},
 
-	{ 	
-		"title": "",
-		"text": "Un mot qui revient souvent ici dans la bouche des gens c’est le mot « insensible ». Il n’y a pas de joie, pas de désir. Il semblerait paradoxalement, alors que la ville est réputée pour ses nuits animées, que les Belgradois n’aient plus le goût à rien."
+	{	"title": "Chronique de Belgrade : Le goût à quoi ?",
+		"date": "Thur, 15 September 2011 02:04:17 +0000",
+		"text": "Un mot qui revient souvent ici c’est « insensible ». Il n’y a pas de joie, pas de désir. Il semblerait paradoxalement, alors que la ville est réputée pour ses nuits animées, que les Belgradois n’aient plus le goût à rien."
 	},
 
 	{ 	
