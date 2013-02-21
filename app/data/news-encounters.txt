@@ -1,28 +1,38 @@
 [	
 	{ 	
-		"title": "",
-		"date": "Tue, 19 Feb 2011 17:26:11 +0000",
+		"title": "Chronique de Belgrade : Les anti-dépresseurs",
+		"date": "Sat, 16 April 2011 19:26:11 +0000",
 		"text": "M. revient de New-York et est sous antidépresseurs depuis 2 ans. C’est la première fois qu’il arrive à sortir en pleine journée. Nous trinquons à sa réussite."
 	},
 
 	{ 	
-		"title": "",
-		"text": "Pour ne pas être mobilisé, M. s’est enfermé seul pendant trois semaines dans un appartement bruyant surplombant l’autoroute. Il passait ses journées seul, à lire Dostoïevski et à fumer méthodiquement son stock de marijuana. Une fois convoqué par l’armée, il est considéré comme fou et s’est fait révoquer."
+		"title": "Chronique de Belgrade : Se faire révoquer",
+		"date": "Sat, 16 April 2011 19:41:07 +0000",
+		"text": "Pour ne pas être mobilisé, M. s’enferme seul pendant 3 semaines dans un appartement bruyant surplombant l’autoroute. Il passe ses journées seul, à lire Dostoïevski et à fumer méthodiquement son stock de marijuana. Convoqué, il est considéré comme fou et se fait révoquer."
 	},
 
 	{ 	
-		"title": "",
-		"text": "Nous nous racontons encore la formidable et incroyable histoire de Radovan Karadzic qui se cachait sous le nom de Dragan Dabic à Nouveau-Belgrade, avenue Gagarine. Il s’était passionné pour la naturopathie et toutes choses naturelles. Il est finalement arrêté le 28 juillet 2008 après treize années de cavale."
+		"title": "Chronique de Belgrade : Dragan Dabic",
+		"date": "Sat, 16 April 2011 19:58:14 +0000",
+		"text": "Nous nous racontons encore l'incroyable histoire de Radovan Karadzic qui se cachait sous le nom de Dragan Dabic à Nouveau-Belgrade, avenue Gagarine juste en face. Il est arrêté le 28 07 2008 après 13 années de cavale."
 	},
 
 	{ 	
-		"title": "",
+		"title": "Chronique de Belgrade : Une ville sans corps",
+		"date": "Tues, 19 April 2011 22:14:52 +0000",
 		"text": "E. parle de Belgrade comme d’une ville sans corps. D’une ville qui n’a pas de personnalité."
 	},
 
-	{ 	
-		"title": "",
-		"text": "Elle dit aussi : « Ici rien ne fonctionne. L’éducation notamment est lamentable : je passe des heures après l’école à tout reprendre avec ma fille. Le pire c’est que les profs cherchent à lui inculquer un enseignement religieux. » Le travail est rare et la vie est chère. S’ils avaient les moyens, ils partiraient vivre en Allemagne."
+	{ 		
+		"title": "Chronique de Belgrade : Eduquer son enfant",
+		"date": "Tues, 19 April 2011 23:01:27 +0000",
+		"text": "E. dit aussi: « Ici rien ne fonctionne. L’éducation notamment est lamentable: je passe des heures après l’école à tout reprendre avec ma fille. Le pire c’est que les profs cherchent à lui inculquer un enseignement religieux. » 
+	},
+
+	{
+		"title": "Chronique de Belgrade : Partir ?",
+		"date": "Tues, 19 April 2011 23:12:37 +0000",
+		"text": "Le travail est rare et la vie est chère. S’ils avaient les moyens, ils partiraient vivre en Allemagne."
 	},
 
 	{ 	
