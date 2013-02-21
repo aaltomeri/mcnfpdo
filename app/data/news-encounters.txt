@@ -117,22 +117,26 @@
 	},
 
 	{ 	
-		"title": "",
-		"text": "Pour P. aussi, tout se fait au dernier moment. Belgrade vit littéralement « dans l’instant » : on ne peut caler les choses que pour tout de suite, jamais pour après. Effectivement je suis surpris au début par ces téléphones portables qui n’arrêtent pas de sonner. Et ces amis rencontrés qui s’interrompent soudain en plein milieu de la conversation pour se lancer dans d’interminables échanges de textos afin de déterminer le rendez-vous d’après."
+		"title": "Chronique de Belgrade : Les sonneries de téléphone",
+		"date": "Sat, 21 April 2012 19:32:47 +0000",
+		"text": "Belgrade vit littéralement dans l’instant me rappelle P. : on ne peut caler les choses que pour tout de suite, jamais pour après. Au début je suis surpris par ces téléphones portables qui n’arrêtent pas de sonner. Et ces amis rencontrés qui s’interrompent soudain en plein milieu de la conversation pour se lancer dans d’interminables échanges de textos afin de déterminer le rendez-vous d’après."
 	},
 
 	{ 	
-		"title": "",
-		"text": "C’est, pour P., un des effets directs de la guerre."
+		"title": "Chronique de Belgrade : Le temps à Belgrade",
+		"date": "Sat, 21 April 2012 19:41:00 +0000",
+		"text": "Etre dans l’instant, dit P., c'est un des effets directs de la guerre."
 	},
 
 	{ 	
-		"title": "",
+		"title": "Chronique de Belgrade : Comment ça fonctionne",
+		"date": "Sat, 15 September 2012 16:02:24 +0000",
 		"text": "Les choses se font ici au dernier moment et il est vain d’essayer de prévoir quoi que ce soit. Je m’épuise rapidement à ne pas adopter le mode de fonctionnement que les Belgradois imposent à quiconque n’est pas d’ici."
 	},
 
-	{	"title": "",
-		"text": "Je retombe sur les mots d'Angélica Liddell : \"Belgrade\" est une pièce sur la frustration, sur le hiatus entre les mots et l'action."
+	{	"title": "Chronique de Belgrade : Comment ça fonctionne",
+		"date": "Sat, 15 September 2012 16:07:53 +0000",
+		"text": "Je repense aux mots d'Angélica Liddell: "Belgrade" est une pièce sur la frustration, sur le hiatus entre les mots et l'action."
 	},
 
 	{ 	
