@@ -36,33 +36,33 @@
 	},
 
 	{ 	
-		"title": "",
-		"text": "Je retrouve M. dans un salon de thé pastel dans un quartier cossu de la ville. Il travaille pour le Tribunal Pénal International de La Haye mais veux surtout évoquer avec moi la corruption de masse dans son pays. Il me parle de sa tante qui a dû passer une somme considérable sous la table pour se faire opérer à temps. Et ne pas oublier à chaque consultation la bouteille de slivovica. Il se désespère de cette situation : « Rien n’a changé : c’est comme au temps des communistes. »"
+		"title": "Chronique de Belgrade : De l'usage de la slivovica",
+		"date": "Fri, 15 April 2011 17:42:07 +0000",
+		"text": "Je retrouve M. dans un salon de thé pastel dans un quartier cossu de la ville. Il travaille pour le TPI mais veux surtout évoquer avec moi la corruption de masse dans son pays: « Rien n’a changé : c’est pire qu'au temps des communistes.»"
 	},
 
 	{ 	
-		"title": "",
-		"text": "A. me raconte les frappes de l’OTAN sur Belgrade. Après toutes ces nuits d’insomnie, elle me parle d’un sommeil de plusieurs semaines. Les sirènes étaient déclenchées à 18 heures et ne s’arrêtaient qu’à 6 heures du matin. Rapidement, elle ne les entendait même plus."
+		"title": "Chronique de Belgrade : Les frappes",
+		"date": "Thur, 21 April 2011 11:29:27 +0000",
+		"text": "A. me raconte les frappes. Les sirènes étaient déclenchées à 18 H et ne s’arrêtaient qu’à 6 H. Après toutes ces nuits d’insomnie, elle me parle d’un sommeil de plusieurs semaines."
 	},
 
 	{ 	
-		"title": "",
-		"text": "Ce qui l’inquiète aujourd’hui, ce sont les bruits qui courent selon lesquels les bombes auraient dissimulé en fait une attaque chimique. Elle dénombre autour d’elle un nombre suspect de cas de cancers."
+		"title": "Chronique de Belgrade : Les frappes 2",
+		"date": "Thur, 21 April 2011 11:30:04 +0000",
+		"text": "Ce qui inquiète A. aujourd’hui, ce sont les bruits selon lesquels les bombes auraient dissimulé en fait une attaque chimique. Elle dénombre autour d’elle un nombre suspect de cas de cancers."
 	},
 
 	{ 	
-		"title": "",
-		"text": "Un jour je vais au parc avec Z., sa femme et son fils Bogdan."
+		"title": "Chronique de Belgrade : Sauvé par la dope",
+		"date": "Sun, 24 April 2011 12:14:51 +0000",
+		"text": "Au parc avec Z., sa femme et son fils Bogdan. Lui ne s’est pas fait mobiliser: il est passé entre les gouttes. Il était héroïnomane à l’époque et ça l’a, dit-il en souriant, sauvé. Tous ses amis de l’époque ont disparu."
 	},
 
 	{ 	
-		"title": "",
-		"text": "Il me parle de la femme de Milosevic. Et des années 1980 lorsqu’il faisait partie d’un groupe de rock. Pendant la guerre tous ses amis étaient déjà partis. Lui ne s’est pas fait mobiliser : il est passé entre les gouttes. Il était héroïnomane à l’époque et ça l’a, dit-il en souriant, sauvé. Tous ses amis de l’époque ont disparu."
-	},
-
-	{ 	
-		"title": "",
-		"text": "Avant la guerre, il y avait de l’argent. Quand il voyageait, puisque sous Tito les Serbes pouvaient sortir du pays sans visa, il ne se sentait pas inférieur. Ne serait-ce que d’un point de vue économique : il ne se sentait pas plus pauvre que les Occidentaux. Aujourd’hui, si."
+		"title": "Chronique de Belgrade : Voyager ?",
+		"date": "Sun, 24 April 2011 12:22:34 +0000",
+		"text": "Avant la guerre, il y avait de l’argent. Quand Z. voyageait, il ne se sentait pas inférieur. Ne serait-ce que d’un point de vue économique: il ne se sentait pas plus pauvre que les Occidentaux. Aujourd’hui, si."
 	},
 
 	{ 	
