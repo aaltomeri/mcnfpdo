@@ -100,7 +100,7 @@
 		"text": "Chez le coiffeur je rencontre Hubert, un jeune Français de 20 ans. Il a décidé de s'installer à Belgrade. Il partage avec moi son enthousiasme pour la ville: «Tu verras, tu vas trop kiffer: les filles sont magnifiques! (…)On se voit demain soir au Plastik ? »"
 	},
 
-{ 	
+	{ 	
 		"title": "Chronique de Belgrade : Hubert 2",
 		"date": "Thur, 14 April 2011 16:18:10 +0000",
 		"text": "Hubert profite de la ville depuis juillet: ses parents sont «cools». Il va peut-être reprendre ses études l'an prochain et troquer ses études de droit pour du marketing."
