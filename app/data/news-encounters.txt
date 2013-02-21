@@ -160,22 +160,24 @@
 		"text": "Un mot qui revient souvent ici c’est « insensible ». Il n’y a pas de joie, pas de désir. Il semblerait paradoxalement, alors que la ville est réputée pour ses nuits animées, que les Belgradois n’aient plus le goût à rien."
 	},
 
-	{ 	
-		"title": "",
+	{	"title": "Chronique de Belgrade : PTSD",
+		"date": "Thur, 15 September 2011 02:04:58 +0000",
 		"text": "Je me demande si ça ne s’apparente pas à une espèce de stress post-traumatique."
 	},
 
-	{ 	
-		"title": "",
-		"text": "Il y a par ailleurs un sentiment d’impuissance que je ressens très fort et qui est partagé absolument par tous. Z. est le premier à utiliser cette expression anglaise qui me paraît très juste : killing time. Ils semblent attendre que le temps passe et qu’ils n’y soient plus."
+	{	"title": "Chronique de Belgrade : Killing time",
+		"date": "Thur, 15 September 2011 02:05:07 +0000",
+		"text": "Il y a par ailleurs un sentiment d’impuissance qui est partagé absolument par tous. Z. est le premier à utiliser cette expression qui me paraît très juste : killing time. Ils semblent attendre que le temps passe."
 	},
-	{
-		"title": "",
+	
+	{	"title": "Chronique de Belgrade : Mélancolie",
+		"date": "Sat, 17 September 2011 04:12:51 +0000",
 		"text": "Je me rends compte ici pour la première fois de l'usure du temps. Je prends conscience de ma tristesse et me dis que la mélancolie de Belgrade a déteint sur moi."
 	},
-	{ 	
-		"title": "",
-		"text": "Je découvre, par un détour par Freud, que la mélancolie est marquée par l’insomnie. Le complexe mélancolique « se comporte comme une blessure ouverte attirant de toutes parts vers lui des énergies d’investissement et vidant le moi jusqu’à l’appauvrir complètement. » Ce complexe, précise-t-il, se montre « résistant au désir de dormir »."
+
+	{	"title": "Chronique de Belgrade : Insomnie",
+		"date": "Sat, 17 September 2011 04:54:12 +0000",
+		"text": "Je découvre, par un détour par Freud, que la mélancolie est marquée par l’insomnie. Le complexe mélancolique «se comporte comme une blessure ouverte attirant de toutes parts vers lui des énergies d’investissement et vidant le moi jusqu’à l’appauvrir complètement.» Ce complexe se montre «résistant au désir de dormir»."
 	}
 
 ]
