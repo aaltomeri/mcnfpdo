@@ -178,7 +178,7 @@
 	},
 
 	{	"title": "Chronique de Belgrade : Insomnie",
-		"date": "Sat, 17 September 2011 04:54:12 +0000",
+		"date": "Sat, 17 September 2011 04:54:18 +0000",
 		"text": "Je découvre, par un détour par Freud, que la mélancolie est marquée par l’insomnie. Le complexe mélancolique «se comporte comme une blessure ouverte attirant de toutes parts vers lui des énergies d’investissement et vidant le moi jusqu’à l’appauvrir complètement.» Ce complexe se montre «résistant au désir de dormir»."
 	}
 
