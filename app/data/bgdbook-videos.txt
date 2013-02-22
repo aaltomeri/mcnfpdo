@@ -42,22 +42,6 @@
         },
         {       
                 "name": "Dragan",
-                "sources": ["http://player.vimeo.com/video/57071230_1"],
-                "dimensions": { "width": "40%", "height": "auto" },
-                "position": { "top": "28%", "left": "15%" },
-                "autoplay": false,
-                "enablePlayPause": false
-        },
-        {       
-                "name": "Baltasar",
-                "sources": ["http://player.vimeo.com/video/57071230_2"],
-                "dimensions": { "width": "40%", "height": "auto" },
-                "position": { "top": "34%", "left": "45%" },
-                "autoplay": false,
-                "enablePlayPause": false
-        },
-        {       
-                "name": "Dragan",
                 "sources": ["http://player.vimeo.com/video/57071230_3"],
                 "dimensions": { "width": "40%", "height": "auto" },
                 "position": { "top": "25%", "left": "12%" },
@@ -116,7 +100,7 @@
                 "name": "Discussion à la table",
                 "sources": ["http://player.vimeo.com/video/57063245_2"],
                 "dimensions": { "width": "40%", "height": "auto" },
-                "position": { "top": "4%", "left": "14%" },
+                "position": { "top": "4%", "left": "24%" },
                 "autoplay": false,
                 "enablePlayPause": false
         },
@@ -124,29 +108,13 @@
                 "name": "Discussion à la table",
                 "sources": ["http://player.vimeo.com/video/57063245_3"],
                 "dimensions": { "width": "40%", "height": "auto" },
-                "position": { "top": "4%", "left": "26%" },
-                "autoplay": false,
-                "enablePlayPause": false
-        },
-        {       
-                "name": "Discussion à la table",
-                "sources": ["http://player.vimeo.com/video/57063245_4"],
-                "dimensions": { "width": "40%", "height": "auto" },
                 "position": { "top": "4%", "left": "36%" },
                 "autoplay": false,
                 "enablePlayPause": false
         },
         {       
                 "name": "Discussion à la table",
-                "sources": ["http://player.vimeo.com/video/57063245_5"],
-                "dimensions": { "width": "40%", "height": "auto" },
-                "position": { "top": "4%", "left": "48%" },
-                "autoplay": false,
-                "enablePlayPause": false
-        },
-        {       
-                "name": "Discussion à la table",
-                "sources": ["http://player.vimeo.com/video/57063245_6"],
+                "sources": ["http://player.vimeo.com/video/57063245_4"],
                 "dimensions": { "width": "40%", "height": "auto" },
                 "position": { "top": "4%", "left": "55%" },
                 "autoplay": false,
