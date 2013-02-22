@@ -1,5 +1,5 @@
 /*
- * popcorn.js version c492f16
+ * popcorn.js version 879399e
  * http://popcornjs.org
  *
  * Copyright 2011, Mozilla Foundation
@@ -100,7 +100,7 @@
   };
 
   //  Popcorn API version, automatically inserted via build system.
-  Popcorn.version = "c492f16";
+  Popcorn.version = "879399e";
 
   //  Boolean flag allowing a client to determine if Popcorn can be supported
   Popcorn.isSupported = true;
@@ -4100,7 +4100,6 @@
   temporalRegex = /#t=(\d+)?,?(\d+)?/;
 
   function NullPlayer( options ) {
-    this.startTime = 0;
     this.currentTime = options.currentTime || 0;
     this.duration = options.duration || NaN;
     this.playInterval = null;
@@ -4109,12 +4108,12 @@
   }
 
   function nullPlay( video ) {
-    video.currentTime += ( Date.now() - video.startTime ) / 1000;
-    video.startTime = Date.now();
-    if( video.currentTime >= video.duration ) {
+    if( video.currentTime + DEFAULT_UPDATE_RESOLUTION_S >= video.duration ) {
       video.currentTime = video.duration;
       video.pause();
       video.ended();
+    } else {
+      video.currentTime += DEFAULT_UPDATE_RESOLUTION_S;
     }
   }
 
@@ -4124,7 +4123,6 @@
       var video = this;
       if ( this.paused ) {
         this.paused = false;
-        this.startTime = Date.now();
         this.playInterval = setInterval( function() { nullPlay( video ); },
                                          DEFAULT_UPDATE_RESOLUTION_MS );
       }
@@ -5930,15 +5928,20 @@
     }
 
     function onPlayerReady( event ) {
-      playerReady = true;
-      // XXX: this should really live in cued below, but doesn't work.
 
-      // Browsers using flash will have the pause() call take too long and cause some
-      // sound to leak out. Muting before to prevent this.
-      player.mute();
+      mediaReady = true;
 
-      // force an initial play on the video, to remove autostart on initial seekTo.
-      player.playVideo();
+      var i = mediaReadyCallbacks.length;
+      while( i-- ) {
+        mediaReadyCallbacks[ i ]();
+        delete mediaReadyCallbacks[ i ];
+      }
+
+      // Auto-start if necessary
+      if( impl.autoplay ) {
+        self.play();
+      }
+
     }
 
     function getDuration() {
@@ -6007,6 +6010,14 @@
 
         // unstarted
         case -1:
+          // XXX: this should really live in cued below, but doesn't work.
+
+          // Browsers using flash will have the pause() call take too long and cause some
+          // sound to leak out. Muting before to prevent this.
+          player.mute();
+
+          // force an initial play on the video, to remove autostart on initial seekTo.
+          player.playVideo();
           break;
 
         // ended
@@ -6160,7 +6171,8 @@
       playerVars.origin = playerVars.origin || domain;
 
       // Show/hide controls. Sync with impl.controls and prefer URL value.
-      playerVars.controls = playerVars.controls || impl.controls ? 2 : 0;
+      // TM added parseInt() call to avoid "controls=0" to not work because "0" is not null (as a string)
+      playerVars.controls = parseInt(playerVars.controls) || impl.controls ? 2 : 0;
       impl.controls = playerVars.controls;
 
       // Set wmode to transparent to show video overlays
@@ -6252,7 +6264,7 @@
       }
       timeUpdateInterval = setInterval( onTimeUpdate,
                                         self._util.TIMEUPDATE_MS );
-      impl.paused = false;
+
       if( playerPaused ) {
         playerPaused = false;
 
@@ -6275,7 +6287,6 @@
     };
 
     function onPause() {
-      impl.paused = true;
       if ( !playerPaused ) {
         playerPaused = true;
         clearInterval( timeUpdateInterval );

@@ -57,6 +57,7 @@ function(app, Video) {
         { display: "crazy", q: "crazy" },
         { display: "trash", q: "trash" },
         { display: "music", q: "music" },
+        { display: "gay", q: "gay" },
         { display: "underground", q: "underground"}
 
       ]
