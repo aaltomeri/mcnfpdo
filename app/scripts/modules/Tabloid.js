@@ -46,8 +46,21 @@ function(app, Video) {
 
       var youtube_feed_url = '//gdata.youtube.com/feeds/api/videos?callback=?'
       ,   _this = this
-      ,   search_terms = ["belgrade", "nightlife+belgrade", "beograd", "belgrade+chipmunk", "turbofolk"]
-      ,   search_term = search_terms[Math.floor(Math.random()*search_terms.length)]
+      ,   search_terms = [
+
+        { display: "models", q: "+serbian +models -indoor -flying -space" },
+        { display: "nightlife", q: "nightlife" },
+        { display: "atmosphere", q: "atmosphere" },
+        { display: "life", q: "life" },
+        { display: "today", q: "today" },
+        { display: "party", q: "party" },
+        { display: "crazy", q: "crazy" },
+        { display: "trash", q: "trash" },
+        { display: "music", q: "music" },
+        { display: "underground", q: "underground"}
+
+      ]
+      ,   search_term = search_terms[Math.floor(Math.random()*search_terms.length)].q
       
       console.log("search_term: " + search_term);
      
@@ -55,9 +68,9 @@ function(app, Video) {
           v:2, 
           alt:'json-in-script', 
           format:'5',
-          q: search_term,
-          "start-index": Math.floor(Math.random() * 100),
-          "max-results": 9
+          vq: "belgrade " + search_term,
+          "start-index": Math.floor(Math.random() * 40),
+          "max-results": 4
         }, 
         $.proxy(_this.parseYoutubeData, _this)
       );
@@ -66,7 +79,7 @@ function(app, Video) {
 
     parseYoutubeData: function(data) {
 
-      console.log(data);
+      // console.log(data);
 
       // turning entries into an array of mcnfpdo Videos
       // same model than other modules use
@@ -209,7 +222,6 @@ function(app, Video) {
 
     playRdm: function(index) {
 
-      console.log(" -------- playRdm ------- " );
 
       // play one random video from the set
       var views = this.getViews().value()
@@ -222,10 +234,11 @@ function(app, Video) {
         return;
       }
 
-      console.log("index: " + index);
-      console.log("vv: " + vv);
-      console.log("vv popcorn: " + vv.popcorn);
-      console.log("hasPlayed: " + vv.popcorn.hasPlayed);
+      // console.log(" -------- playRdm ------- " );
+      // console.log("index: " + index);
+      // console.log("vv: " + vv);
+      // console.log("vv popcorn: " + vv.popcorn);
+      // console.log("hasPlayed: " + vv.popcorn.hasPlayed);
 
       if(vv.popcorn.hasPlayed) {
         layout.playRdm();
@@ -236,7 +249,7 @@ function(app, Video) {
 
         var duration = vv.popcorn.duration()
         ,   in_point = Math.round(Math.random()*duration)
-        ,   out_point = Math.ceil(Math.max(in_point, Math.min(duration, in_point + Math.round(Math.random()*3))))
+        ,   out_point = Math.ceil(Math.max(in_point, Math.min(duration, in_point + Math.round(Math.random()*15))))
 
       }
       else {
@@ -245,9 +258,9 @@ function(app, Video) {
       }
 
 
-      console.log("duration: " + vv.popcorn.duration());
-      console.log("in_point: " + in_point);
-      console.log("out_point: " + out_point);
+      // console.log("duration: " + vv.popcorn.duration());
+      // console.log("in_point: " + in_point);
+      // console.log("out_point: " + out_point);
 
       vv.$el.transition({opacity: 1});
 
