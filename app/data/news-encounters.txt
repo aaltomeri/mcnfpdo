@@ -26,7 +26,7 @@
 	{ 		
 		"title": "Chronique de Belgrade : Eduquer son enfant",
 		"date": "Tues, 19 April 2011 23:01:27 +0000",
-		"text": "E. dit aussi: « Ici rien ne fonctionne. L’éducation notamment est lamentable: je passe des heures après l’école à tout reprendre avec ma fille. Le pire c’est que les profs cherchent à lui inculquer un enseignement religieux. » 
+		"text": "E. dit aussi: « Ici rien ne fonctionne. L’éducation notamment est lamentable: je passe des heures après l’école à tout reprendre avec ma fille. Le pire c’est que les profs cherchent à lui inculquer un enseignement religieux."
 	},
 
 	{
@@ -138,7 +138,7 @@
 
 	{	"title": "Chronique de Belgrade : Agir",
 		"date": "Sat, 15 September 2012 16:07:53 +0000",
-		"text": "Je repense aux mots d'Angélica Liddell: "Belgrade" est une pièce sur la frustration, sur le hiatus entre les mots et l'action."
+		"text": "Je repense aux mots d'Angélica Liddell: \"Belgrade\" est une pièce sur la frustration, sur le hiatus entre les mots et l'action."
 	},
 
 	{	"title": "Chronique de Belgrade : Le temps qui passe",

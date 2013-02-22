@@ -3,7 +3,7 @@
 		"number": "1",
 		"sources": "https://www.youtube.com/watch?v=YM_tyfbqY3A",
 		"mcnfpdo_entries": [
-			"Baltasar arrive à <a href=\"#BgdMap\">Belgrade</a>"
+			
 		]
 	},
 	{	
@@ -101,21 +101,21 @@
 		"number": "15",
 		"sources": "medias/videos/Gran_Marcha_2006_Los_Angeles.mp4",
 		"mcnfpdo_entries": [
-
+			"Baltasar arrive à <a href=\"#BgdMap\">Belgrade</a>"
 		]
 	},
 	{	
 		"number": "16",
 		"sources": "https://www.youtube.com/watch?v=aj-NJe3CtKY",
 		"mcnfpdo_entries": [
-
+			"Baltasar se rend pour la première fois au Musée de la Révolution pour voir la dépouille de Slobodan Milošević."
 		]
 	},
 	{	
 		"number": "17",
 		"sources": null,
 		"mcnfpdo_entries": [
-
+			"Baltasar se rend à nouveau au Musée de la Révolution."
 		]
 	},
 	{	
@@ -129,14 +129,14 @@
 		"number": "19",
 		"sources": null,
 		"mcnfpdo_entries": [
-
+			"Baltasar se fait séquestrer par Željko."
 		]
 	},
 	{	
 		"number": "20",
 		"sources": null,
 		"mcnfpdo_entries": [
-
+			"Baltasar rentre en Espagne."
 		]
 	},
 	{	
@@ -199,7 +199,7 @@
 		"number": "29",
 		"sources": "http://www.youtube.com/watch?v=AzuXaOvuJtU",
 		"mcnfpdo_entries": [
-
+			"Baltasar fait la connaissance de Borislav."
 		]
 	},
 	{	
