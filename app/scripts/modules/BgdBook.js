@@ -19,6 +19,8 @@ function(app, Video, SearchEngine) {
 
     console.log('BgdBook INIT');
 
+    BgdBook.soundtrack.pause();
+
     var layout;
 
     var videos = new BgdBook.Collection();
@@ -254,12 +256,16 @@ function(app, Video, SearchEngine) {
               // but we display the search results
               // and thus we do not pause the video
               if(!next) {
+
+                // display Search Results View
                 srView.$el.transition({
                   opacity: 0.99,
                   rotate3d: '0, 0, 1, ' + 1 + 'deg',
                   right: "20px"
                 }, 600);
+
                 return;
+                
               };
 
               view.popcorn.pause(time);
