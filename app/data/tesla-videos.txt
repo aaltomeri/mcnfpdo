@@ -1,6 +1,6 @@
 [       
         {
-             "name": "Nikola Tesla  ",
+             "name": "Nikola Tesla : My Inventions",
              "sources": "http://www.youtube.com/watch?v=g2n0RcVfHWk",
              "dimensions": {},
              "position": {},
@@ -8,7 +8,7 @@
              "out_point": 12
         },
         {
-             "name": "Nikola Tesla  ",
+             "name": "Lost Ligntning : The Missing Secrets of Nikola Tesla",
              "sources": "http://www.youtube.com/watch?v=BaB_Yx7hpJs",
              "dimensions": {},
              "position": {},
@@ -16,7 +16,7 @@
              "out_point": 122
         },
         {
-             "name": "Casino Royal  ",
+             "name": "James Bond First Adaptation : Casino Royal (1954)",
              "sources": "http://www.youtube.com/watch?v=5bBnVDj5SkA",
              "dimensions": {},
              "position": {},
@@ -24,7 +24,7 @@
              "out_point": 1473
         },
         {
-             "name": "Dusko Popov",
+             "name": "Dusko Popov : Inspiration for James Bond Character",
              "sources": "http://www.youtube.com/watch?v=fvZyy-_gXvE",
              "dimensions": {},
              "position": {},
@@ -32,7 +32,7 @@
              "out_point": 37
         },
         {
-             "name": "Tito Programme spatial",
+             "name": "Tito's Secret Space Program",
              "sources": "http://www.youtube.com/watch?v=EfJiNPZ38kY",
              "dimensions": {},
              "position": {},
@@ -41,7 +41,7 @@
 
         },
         {
-             "name": "Nostalgie Yugo",
+             "name": "Yugoslavia : Europe's Hidden Treasure (1986)",
              "sources": "http://www.youtube.com/watch?v=0RRnCnO1Y2c",
              "dimensions": {},
              "position": {},
@@ -49,7 +49,7 @@
              "out_point": 27
         },
         {
-             "name": "Match Football 1996",
+             "name": "Yugoslavia VS Czech Republic (November 10 1996)",
              "sources": "http://www.youtube.com/watch?v=ulq8i6sqHRo",
              "dimensions": {},
              "position": {},
@@ -57,7 +57,7 @@
              "out_point": 22
         },
         {
-             "name": "Eurovision Yug",
+             "name": "Zdravko Colic Eurovision 1973 Song Contest",
              "sources": "http://www.youtube.com/watch?v=Q-2oYPDX6bk",
              "dimensions": {},
              "position": {},
@@ -65,7 +65,7 @@
              "out_point": 80
         },
         {
-             "name": "Tito et bâtons à Mosta",
+             "name": "Youth Day 1962 in Mostar : Tito and The Relay of Youth (Stafeta Relay)",
              "sources": "https://www.youtube.com/watch?v=Nq6B4rLSpJY",
              "dimensions": {},
              "position": {},
@@ -73,7 +73,7 @@
              "out_point": 170
         },
         {
-             "name": "J.fille remet bâton à Tito ",
+             "name": "1977 Relay of Youth : Tito is offered the Stafeta in Belgrade",
              "sources": "https://www.youtube.com/watch?v=XAJZF7rJXG0",
              "dimensions": {},
              "position": {},
@@ -81,7 +81,7 @@
              "out_point": 76
         },
         {
-             "name": "Accords de Dayton  ",
+             "name": "Dayton Agreement signed in Paris : 14 December 1995",
              "sources": "http://www.youtube.com/watch?v=PwKhT1vSrqw",
              "dimensions": {},
              "position": {},
@@ -89,15 +89,15 @@
              "out_point": 137
         },
         {
-             "name": "Extrait(s) de La Féline",
-             "sources": "http://www.youtube.com/watch?v=_9xmUidNvw8",
+             "name": "Jacques Tourneur's 'Cat People' (1942)",
+             "sources": "http://www.youtube.com/watch?v=zfbGJrAVWUo",
              "dimensions": {},
              "position": {},
-             "in_point": 90,
+             "in_point": 10,
              "out_point": 95
         },
         {
-             "name": "Film la parade",
+             "name": "Srdjan Dragojevic's 'The Parade' (2011)",
              "sources": "http://www.youtube.com/watch?v=6FnzNPfngzg",
              "dimensions": {},
              "position": {},
@@ -105,7 +105,7 @@
              "out_point": 34
         },
         {
-             "name": "Arkan ",
+             "name": "Arkan & Svetlana 'Ceca' Velickovic Wedding (19 February 1995)",
              "sources": "http://www.youtube.com/watch?v=pypwd0-Fp_E",
              "dimensions": {},
              "position": {},
@@ -113,7 +113,7 @@
              "out_point": 55
         },
         {
-             "name": "Attentat de Sarajevo: G. Princip",
+             "name": "Assassination of Archduke Franz Ferdinand in Sarajevo (June 28 1914)",
              "sources": "http://www.youtube.com/watch?v=HLruVJHIgCM",
              "dimensions": {},
              "position": {},
@@ -121,7 +121,7 @@
              "out_point": 45
         },
         {
-             "name": "Concert dans le regard d'Ulysse",
+             "name": "Theo Angelopoulos' 'Ulysses' Gaze' : Concert Scene (1995)",
              "sources": "http://www.youtube.com/watch?v=KJyjJIb4p0M",
              "dimensions": {},
              "position": {},
