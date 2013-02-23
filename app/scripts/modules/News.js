@@ -19,8 +19,8 @@ function(app) {
 
     News.queries = new Array();
 
-    var NewsItemDisplayInterval = 8000
-    ,   EncounterDisplayInterval = 5000
+    var NewsItemDisplayInterval = 6000
+    ,   EncounterDisplayInterval = 10000
     ,   layout
     ,   audiostreams
     ,   rssfeeds
