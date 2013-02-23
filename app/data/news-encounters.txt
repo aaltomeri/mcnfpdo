@@ -16,209 +16,209 @@
 	{ 	
 		"source": "Chronique de Belgrade",
 		"title": "Dragan Dabic",
-		"date": "Sat, 16 April 2011 19:58:14 +0000",
-		"text": "Nous nous racontons encore l'incroyable histoire de Radovan Karadzic qui se cachait sous le nom de Dragan Dabic à Nouveau-Belgrade, avenue Gagarine juste en face. Il est arrêté le 28 07 2008 après 13 années de cavale."
+		"date": "Sat, 16 Apr 2011 19:58:14 +0000",
+		"text": "Nous nous racontons encore l'incroyable histoire de Radovan Karadzic qui se cachait sous le nom de Dragan Dabic à Nouveau-Belgrade, avenue Gagarine juste en face. Il est arrêté le 28 juillet 2008 après 13 années de cavale."
 	},
 
 	{ 	
 		"source": "Chronique de Belgrade",
 		"title": "Une ville sans corps",
-		"date": "Tues, 19 April 2011 22:14:52 +0000",
+		"date": "Tues, 19 Apr 2011 22:14:52 +0000",
 		"text": "E. parle de Belgrade comme d’une ville sans corps. D’une ville qui n’a pas de personnalité."
 	},
 
 	{ 		
 		"source": "Chronique de Belgrade",
 		"title": "Eduquer son enfant",
-		"date": "Tues, 19 April 2011 23:01:27 +0000",
+		"date": "Tues, 19 Apr 2011 23:01:27 +0000",
 		"text": "E. dit aussi: « Ici rien ne fonctionne. L’éducation notamment est lamentable: je passe des heures après l’école à tout reprendre avec ma fille. Le pire c’est que les profs cherchent à lui inculquer un enseignement religieux."
 	},
 
 	{
 		"source": "Chronique de Belgrade",
 		"title": "Partir ?",
-		"date": "Tues, 19 April 2011 23:12:37 +0000",
-		"text": "Le travail est rare et la vie est chère. S’ils avaient les moyens, ils partiraient vivre en Allemagne."
+		"date": "Tues, 19 Apr 2011 23:12:37 +0000",
+		"text": "Le travail est rare et la vie est chère. S’ils avaient les moyens, E. et son mari B. partiraient vivre en Allemagne."
 	},
 
 	{ 	
 		"source": "Chronique de Belgrade",
 		"title": "De l'usage de la slivovica",
-		"date": "Fri, 15 April 2011 17:42:07 +0000",
+		"date": "Fri, 15 Apr 2011 17:42:07 +0000",
 		"text": "Je retrouve M. dans un salon de thé pastel dans un quartier cossu de la ville. Il travaille pour le TPI mais veux surtout évoquer avec moi la corruption de masse dans son pays: « Rien n’a changé : c’est pire qu'au temps des communistes.»"
 	},
 
 	{ 	
 		"source": "Chronique de Belgrade",
 		"title": "Les frappes",
-		"date": "Thur, 21 April 2011 11:29:27 +0000",
-		"text": "A. me raconte les frappes. Les sirènes étaient déclenchées à 18 H et ne s’arrêtaient qu’à 6 H. Après toutes ces nuits d’insomnie, elle me parle d’un sommeil de plusieurs semaines."
+		"date": "Thur, 21 Apr 2011 11:29:27 +0000",
+		"text": "A. me raconte les frappes. Les sirènes étaient déclenchées à 18 heures et ne s’arrêtaient qu’à 6 heures du matin. Après toutes ces nuits d’insomnie, elle me parle d’un sommeil de plusieurs semaines."
 	},
 
 	{ 	
 		"source": "Chronique de Belgrade",
 		"title": "Les frappes 2",
-		"date": "Thur, 21 April 2011 11:30:04 +0000",
+		"date": "Thur, 21 Apr 2011 11:30:04 +0000",
 		"text": "Ce qui inquiète A. aujourd’hui, ce sont les bruits selon lesquels les bombes auraient dissimulé en fait une attaque chimique. Elle dénombre autour d’elle un nombre suspect de cas de cancers."
 	},
 
 	{ 	
 		"source": "Chronique de Belgrade",
 		"title": "Sauvé par la dope",
-		"date": "Sun, 24 April 2011 12:14:51 +0000",
+		"date": "Sun, 24 Apr 2011 12:14:51 +0000",
 		"text": "Au parc avec Z., sa femme et son fils Bogdan. Lui ne s’est pas fait mobiliser: il est passé entre les gouttes. Il était héroïnomane à l’époque et ça l’a, dit-il en souriant, sauvé. Tous ses amis de l’époque ont disparu."
 	},
 
 	{ 	
 		"source": "Chronique de Belgrade",
 		"title": "Voyager ?",
-		"date": "Sun, 24 April 2011 12:22:34 +0000",
+		"date": "Sun, 24 Apr 2011 12:22:34 +0000",
 		"text": "Avant la guerre, il y avait de l’argent. Quand Z. voyageait, il ne se sentait pas inférieur. Ne serait-ce que d’un point de vue économique: il ne se sentait pas plus pauvre que les Occidentaux. Aujourd’hui, si."
 	},
 
 	{ 	
 		"source": "Chronique de Belgrade",
 		"title": "Les cheveux blancs",
-		"date": "Thur, 21 April 2011 11:42:19 +0000",
+		"date": "Thur, 21 Apr 2011 11:42:19 +0000",
 		"text": "La sœur de A. s’était réfugiée à Prague. Quand elle est rentrée, elle avait la tête couverte de cheveux blancs. Ca lui était venu d’un coup. Son isolement lui avait fait imaginer bien pire que ce qu’ils avaient réellement vécu."
 	},
 
 	{ 	
 		"source": "Chronique de Belgrade",
 		"title": "Les frappes 2",
-		"date": "Thur, 21 April 2011 11:31:10 +0000",
+		"date": "Thur, 21 Apr 2011 11:31:10 +0000",
 		"text": "«Les frappes, précise A., on les attendait avec impatience. C’était un vrai soulagement quand l’OTAN s’est décidé à intervenir. C’est seulement après qu’on a perçu le choc.»"
 	},
 
 	{ 
 		"source": "Chronique de Belgrade",
 		"title": "Keep your expectations low!",
-		"date": "Tues, 26 April 2011 17:21:54 +0000",
+		"date": "Tues, 26 Apr 2011 17:21:54 +0000",
 		"text": "Je retrouve Z. quelques jours plus tard dans son atelier: «Ne t’attends pas à grand-chose ici. Keep your expectations low !» Il me raconte combien il est difficle de s'organiser pour faire avancer les choses."
 	},
 
 	{ 	
 		"source": "Chronique de Belgrade",
 		"title": "A l'atelier",
-		"date": "Tues, 26 April 2011 17:40:05 +0000",
+		"date": "Tues, 26 Apr 2011 17:40:05 +0000",
 		"text": "Il n’y a selon Z. aucune perspective, aucune stabilité. Il ne vote plus. Il ne fait plus confiance à personne, et surtout pas à la classe politique."
 	},
 
 	{ 	
 		"source": "Chronique de Belgrade",
 		"title": "Nirvana",
-		"date": "Fri, 16 September 2011 20:01:03 +0000",
+		"date": "Fri, 16 Sept 2011 20:01:03 +0000",
 		"text": "Au théâtre je sursaute: une jeune ado a 'Smells like teen spirit' en sonnerie de portable. Je me souviens alors que Krist Novoselic, le bassiste et co-fondateur du groupe, est d’origine croate."
 	},
 
 	{ 	
 		"source": "Chronique de Belgrade",
 		"title": "Hubert",
-		"date": "Thur, 14 April 2011 16:11:45 +0000",
+		"date": "Thur, 14 Apr 2011 16:11:45 +0000",
 		"text": "Chez le coiffeur je rencontre Hubert, un jeune Français de 20 ans. Il a décidé de s'installer à Belgrade. Il partage avec moi son enthousiasme pour la ville: «Tu verras, tu vas trop kiffer: les filles sont magnifiques! (…)On se voit demain soir au Plastik ? »"
 	},
 
 	{ 	
 		"source": "Chronique de Belgrade",
 		"title": "Hubert 2",
-		"date": "Thur, 14 April 2011 16:18:10 +0000",
-		"text": "Hubert profite de la ville depuis juillet: ses parents sont «cools». Il va peut-être reprendre ses études l'an prochain et troquer ses études de droit pour du marketing."
+		"date": "Thur, 14 Apr 2011 16:18:10 +0000",
+		"text": "Hubert le Français profite de la ville depuis juillet: ses parents sont «cools». Il va peut-être reprendre ses études l'an prochain et troquer ses études de droit pour du marketing."
 	},
 
 	{ 	
 		"source": "Chronique de Belgrade",
 		"title": "Hubert 3",
-		"date": "Thur, 14 April 2011 16:29:40 +0000",
-		"text": "Hubert et le coiffeur se retrouvent sur un grand nombre de points. «C’est parce que la France a eu tellement de colonies qu’ils prennent maintenant leur revanche.» A quoi le coiffeur répond: «Les Turcs étaient chez nous trop longtemps, maintenant c'est notre tour.»"
+		"date": "Thur, 14 Apr 2011 16:29:40 +0000",
+		"text": "Hubert le Français et le coiffeur serbe se retrouvent sur un grand nombre de points. «C’est parce que la France a eu tellement de colonies qu’ils prennent maintenant leur revanche.» A quoi le coiffeur répond: «Les Turcs étaient chez nous trop longtemps, maintenant c'est notre tour.»"
 	},
 
 	{ 	
 		"source": "Chronique de Belgrade",
 		"title": "A New Life",
-		"date": "Thur, 14 April 2011 16:31:01 +0000",
+		"date": "Thur, 14 Apr 2011 16:31:01 +0000",
 		"text": "Les cheveux coupés, Hubert se regarde dans le miroir et s’exclame : « A New man for a New Life ! »."
 	},
 
 	{ 	
 		"source": "Chronique de Belgrade",
 		"title": "Les sonneries de téléphone",
-		"date": "Sat, 21 April 2012 19:32:47 +0000",
+		"date": "Sat, 21 Apr 2012 19:32:47 +0000",
 		"text": "Belgrade vit littéralement dans l’instant me rappelle P. : on ne peut caler les choses que pour tout de suite, jamais pour après. Au début je suis surpris par ces téléphones portables qui n’arrêtent pas de sonner. Et ces amis rencontrés qui s’interrompent soudain en plein milieu de la conversation pour se lancer dans d’interminables échanges de textos afin de déterminer le rendez-vous d’après."
 	},
 
 	{ 	
 		"source": "Chronique de Belgrade",
 		"title": "Le temps à Belgrade",
-		"date": "Sat, 21 April 2012 19:41:00 +0000",
-		"text": "Etre dans l’instant, dit P., c'est un des effets directs de la guerre."
+		"date": "Sat, 21 Apr 2012 19:41:00 +0000",
+		"text": "Etre unqiuement dans l’instant, dit P., c'est un des effets directs de la guerre."
 	},
 
 	{ 	
 		"source": "Chronique de Belgrade",
 		"title": "Surtout ne rien prévoir",
-		"date": "Sat, 15 September 2012 16:02:24 +0000",
+		"date": "Sat, 15 Sept 2012 16:02:24 +0000",
 		"text": "Les choses se font ici au dernier moment et il est vain d’essayer de prévoir quoi que ce soit. Je m’épuise rapidement à ne pas adopter le mode de fonctionnement que les Belgradois imposent à quiconque n’est pas d’ici."
 	},
 
 	{	
 		"source": "Chronique de Belgrade",
 		"title": "Agir",
-		"date": "Sat, 15 September 2012 16:07:53 +0000",
+		"date": "Sat, 15 Sept 2012 16:07:53 +0000",
 		"text": "Je repense aux mots d'Angélica Liddell: \"Belgrade\" est une pièce sur la frustration, sur le hiatus entre les mots et l'action."
 	},
 
 	{	"source": "Chronique de Belrade",
 		"title": "Le temps qui passe",
-		"date": "Mon, 16 April 2012 14:41:34 +0000",
+		"date": "Mon, 16 Apr 2012 14:41:34 +0000",
 		"text": "Z. m’apprend qu’il attend un second enfant. Nous nous réjouissons mais lui s’assombrit. Je perçois de la tristesse dans son regard quand il annonce la venue d'un garçon et non d'une fille. Tout d'un coup, et depuis mes précédentes visites, je le sens rattrapé par le temps qui passe."
 	},
 
 	{	
 		"source": "Chronique de Belgrade",
 		"title": "En temps de paix",
-		"date": "Fri, 22 April 2011 03:11:14 +0000",
+		"date": "Fri, 22 Apr 2011 03:11:14 +0000",
 		"text": "Je me dis aujourd’hui, exactement 10 jours après mon arrivée, que cette hospitalité dont tous ont démontré à mon égard est peut-être trop rare en France parce qu’on est en depuis longtemps en temps de paix."
 	},
 
 	{
 		"source": "Chronique de Belgrade",
 		"title": "La nécessaire entraide",
-		"date": "Fri, 22 April 2011 03:12:04 +0000",
+		"date": "Fri, 22 Apr 2011 03:12:04 +0000",
 		"text": "Peut-être une paix trop longue fait oublier la nécessaire fraternité. On s’entraide, on échange parce qu’on ne sait jamais, si quelque chose arrivait…"
 	},
 
 	{
 		"source": "Chronique de Belgrade",
 		"title": "Le goût à quoi ?",
-		"date": "Thur, 15 September 2011 02:04:17 +0000",
+		"date": "Thur, 15 Sept 2011 02:04:17 +0000",
 		"text": "Un mot qui revient souvent ici c’est « insensible ». Il n’y a pas de joie, pas de désir. Il semblerait paradoxalement, alors que la ville est réputée pour ses nuits animées, que les Belgradois n’aient plus le goût à rien."
 	},
 
 	{	
 		"source": "Chronique de Belgrade",
 		"title": "PTSD",
-		"date": "Thur, 15 September 2011 02:04:58 +0000",
+		"date": "Thur, 15 Sept 2011 02:04:58 +0000",
 		"text": "Je me demande si ça ne s’apparente pas à une espèce de stress post-traumatique."
 	},
 
 	{	
 		"source": "Chronique de Belgrade",
 		"title": "Killing time",
-		"date": "Thur, 15 September 2011 02:05:07 +0000",
-		"text": "Il y a par ailleurs un sentiment d’impuissance qui est partagé absolument par tous. Z. est le premier à utiliser cette expression qui me paraît très juste : killing time. Ils semblent attendre que le temps passe."
+		"date": "Thur, 15 Sept 2011 02:05:07 +0000",
+		"text": "Il y a par ailleurs un sentiment d’impuissance qui est partagé absolument par tous. Z. est le premier à utiliser cette expression qui me paraît très juste : "killing time". Ils semblent attendre que le temps passe."
 	},
 	
 	{	
 		"source": "Chronique de Belgrade",
 		"title": "Mélancolie",
-		"date": "Sat, 17 September 2011 04:12:51 +0000",
+		"date": "Sat, 17 Sept 2011 04:12:51 +0000",
 		"text": "Je me rends compte ici pour la première fois de l'usure du temps. Je prends conscience de ma tristesse et me dis que la mélancolie de Belgrade a déteint sur moi."
 	},
 
 	{	
 		"source": "Chronique de Belgrade",
 		"title": "Insomnie",
-		"date": "Sat, 17 September 2011 04:54:18 +0000",
+		"date": "Sat, 17 Sept 2011 04:54:18 +0000",
 		"text": "Je découvre, par un détour par Freud, que la mélancolie est marquée par l’insomnie. Le complexe mélancolique «se comporte comme une blessure ouverte attirant de toutes parts vers lui des énergies d’investissement et vidant le moi jusqu’à l’appauvrir complètement.» Ce complexe se montre «résistant au désir de dormir»."
 	}
 
