@@ -22,7 +22,7 @@
 
 	{ 	
 		"source": "Chronique de Belgrade",
-		"title": "les bombes",
+		"title": "Les bombes",
 		"date": "Wed, 13 Apr 2011 11:26:47 +0000",
 		"text": "Je suis arrivé hier à minuit, après un voyage en train long de 27 H. Dont 17 dans le même train : Munich, Innsbruck, Ljubljana, Zagreb, Belgrade. B. m'accueille et je découvre au centre-ville deux énormes bâtiments éventrés. Je soupire: "Ah, la guerre...". A quoi il répond: "Non, c'est vous, c'est l'OTAN." Mon désarroi ne fait que comemencer.
 
@@ -30,7 +30,7 @@
 		"source": "Chronique de Belgrade",
 		"title": "Une ville sans corps",
 		"date": "Tues, 19 Apr 2011 22:14:52 +0000",
-		"text": "E. parle de Belgrade comme d’une ville sans corps. D’une ville qui n’a pas de personnalité."
+		"text": "E. parle de Belgrade comme d’une ville sans personnalité. Une ville sans corps."
 	},
 
 	{ 		
