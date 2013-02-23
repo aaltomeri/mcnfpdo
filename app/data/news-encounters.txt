@@ -91,7 +91,7 @@
 
 	{ 	
 		"source": "Chronique de Belgrade",
-		"title": "Les frappes 2",
+		"title": "Les frappes",
 		"date": "Thur, 21 Apr 2011 11:31:10 +0000",
 		"text": "«Les frappes, précise A., on les attendait avec impatience. C’était un vrai soulagement quand l’OTAN s’est décidé à intervenir. C’est seulement après qu’on a perçu le choc.»"
 	},
