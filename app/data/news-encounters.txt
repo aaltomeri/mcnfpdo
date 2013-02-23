@@ -24,7 +24,8 @@
 		"source": "Chronique de Belgrade",
 		"title": "Les bombes",
 		"date": "Wed, 13 Apr 2011 11:26:47 +0000",
-		"text": "Je suis arrivé hier à minuit, après un voyage en train long de 27 H. Dont 17 dans le même train : Munich, Innsbruck, Ljubljana, Zagreb, Belgrade. B. m'accueille et je découvre au centre-ville deux énormes bâtiments éventrés. Je soupire: "Ah, la guerre...". A quoi il répond: "Non, c'est vous, c'est l'OTAN." Mon désarroi ne fait que comemencer.
+		"text": "Je suis arrivé hier à minuit, après un voyage en train long de 27 H. Dont 17 dans le même train : Munich, Innsbruck, Ljubljana, Zagreb, Belgrade. B. m'accueille et je découvre au centre-ville deux énormes bâtiments éventrés. Je soupire: \"Ah, la guerre...\". A quoi il répond: \"Non, c'est vous, c'est l'OTAN.\" Mon désarroi ne fait que comemencer."
+	},
 
 	{ 	
 		"source": "Chronique de Belgrade",
@@ -211,7 +212,7 @@
 		"source": "Chronique de Belgrade",
 		"title": "Killing time",
 		"date": "Thur, 15 Sept 2011 02:05:07 +0000",
-		"text": "Il y a par ailleurs un sentiment d’impuissance qui est partagé absolument par tous. Z. est le premier à utiliser cette expression qui me paraît très juste : "killing time". Ils semblent attendre que le temps passe."
+		"text": "Il y a par ailleurs un sentiment d’impuissance qui est partagé absolument par tous. Z. est le premier à utiliser cette expression qui me paraît très juste : \"killing time\". Ils semblent attendre que le temps passe."
 	},
 	
 	{	
