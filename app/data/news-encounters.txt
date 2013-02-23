@@ -22,6 +22,12 @@
 
 	{ 	
 		"source": "Chronique de Belgrade",
+		"title": "les bombes",
+		"date": "Wed, 13 Apr 2011 11:26:47 +0000",
+		"text": "Je suis arrivé hier à minuit, après un voyage en train long de 27 H. Dont 17 dans le même train : Munich, Innsbruck, Ljubljana, Zagreb, Belgrade. B. m'accueille et je découvre au centre-ville deux énormes bâtiments éventrés. Je soupire: "Ah, la guerre...". A quoi il répond: "Non, c'est vous, c'est l'OTAN." Mon désarroi ne fait que comemencer.
+
+	{ 	
+		"source": "Chronique de Belgrade",
 		"title": "Une ville sans corps",
 		"date": "Tues, 19 Apr 2011 22:14:52 +0000",
 		"text": "E. parle de Belgrade comme d’une ville sans corps. D’une ville qui n’a pas de personnalité."
@@ -115,7 +121,7 @@
 		"source": "Chronique de Belgrade",
 		"title": "Hubert",
 		"date": "Thur, 14 Apr 2011 16:11:45 +0000",
-		"text": "Chez le coiffeur je rencontre Hubert, un jeune Français de 20 ans. Il a décidé de s'installer à Belgrade. Il partage avec moi son enthousiasme pour la ville: «Tu verras, tu vas trop kiffer: les filles sont magnifiques! (…)On se voit demain soir au Plastik ? »"
+		"text": "Chez le coiffeur je rencontre Hubert, un jeune Français de 20 ans. Il a décidé de s'installer à Belgrade. Il partage avec moi son enthousiasme pour la ville: «Tu verras, tu vas trop kiffer: les filles sont magnifiques! (…) On se voit demain soir au Plastik ? »"
 	},
 
 	{ 	
