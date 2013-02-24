@@ -1,7 +1,9 @@
 // News module
 define([
   // Application.
-  "app"
+  "app",
+  "css!../../styles/history.css",
+  "vendor/jquery-ui-1.10.1.custom.min"
 ],
 
 // Map dependencies from above array.
@@ -19,6 +21,29 @@ function(app) {
 
     wiki_entries.on('reset', function() {
       layout = new History.Views.Layout({collection: this});
+    });
+
+    // starting a wikipedia request
+    wiki_entries.on('History:WikiEntries:request_start', function(data) {
+
+      layout.$el.find('.loading .request').append(data.model.get('name') + " / ");
+      
+    });
+
+    // done with the wikipedia request 
+    wiki_entries.on('History:WikiEntries:request_done', function(data) {
+
+      var view = new History.Views.WikiView({ model: data.model });
+      layout.insertView(view);
+      view.render();
+
+    });
+
+    // done with all wikipedia requests
+    wiki_entries.on('History:WikiEntries:all_requests_done', function() {
+
+      layout.$el.find('.loading').remove();
+
     });
 
     wiki_entries.fetchData();
@@ -57,7 +82,11 @@ function(app) {
           });
           
           $.when.apply($, wiki_requests).done(function() {
-            console.warn('ALL REQUESTS DONE');
+
+            console.log('%cALL REQUESTS DONE', "color: orange; font-size: medium");
+
+            _this.trigger('History:WikiEntries:all_requests_done', _this);
+
           })
           
 
@@ -73,6 +102,8 @@ function(app) {
         {page:model.get('name'), prop:'text|sections', uselang:'fr', redirects: 1}
       );
 
+      _this.trigger('History:WikiEntries:request_start', { model: model });
+
       wiki_request.done(function(data) {
 
         // skip if data is undefined
@@ -85,9 +116,11 @@ function(app) {
         var data = _this.parseWikiData(data);
 
         model.set('name', data.title);
-        model.set('wiki_entry', data.text);
+        model.set('text', data.text);
 
         console.log(model.get('name'));
+
+        _this.trigger('History:WikiEntries:request_done', { request: data.title, model: model });
 
 
       })
@@ -116,10 +149,35 @@ function(app) {
         $(this).attr('target', '_blank');
       });
 
-      data.text = $text.html();
+      data.text = "";//$text.html();
 
       return data;
 
+    }
+
+  });
+
+
+  // WikiView
+  History.Views.WikiView = Backbone.LayoutView.extend({
+
+    template: 'modules/history/wiki-entry',
+    className: 'wiki-entry',
+
+    initialize: function() {
+      this.$el.draggable({ 
+        handle: '.handle',
+        cursor: 'move',
+        stack: ".wiki-entry",
+        containment: "parent",
+        distance : 0,
+        delay: 0
+      });
+    },
+
+    // Provide data to the template
+    serialize: function() {
+      return this.model.toJSON();
     }
 
   });
