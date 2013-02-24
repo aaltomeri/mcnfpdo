@@ -28,7 +28,7 @@
              "sources": "http://www.youtube.com/watch?v=fvZyy-_gXvE",
              "dimensions": {},
              "position": {},
-             "in_point": 05,
+             "in_point": 5,
              "out_point": 47
         },
         {
