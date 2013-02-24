@@ -1,0 +1,74 @@
+[
+	{
+		"name": "Milosevic",
+		"url": ""
+	},
+	{
+		"name": "Balkans",
+		"url": ""
+	},
+	{
+		"name": "Kosovo",
+		"url": ""
+	},
+	{
+		"name": "OTAN",
+		"url": ""
+	},
+	{
+		"name": "Vukovic",
+		"url": ""
+	},
+	{
+		"name": "Pierre Ier de Serbie",
+		"url": ""
+	},
+	{
+		"name": "Tito",
+		"url": ""
+	},
+	{
+		"name": "Non-alignés",
+		"url": ""
+	},
+	{
+		"name": "Gavrilo Princip",
+		"url": ""
+	},
+	{
+		"name": "Zoran Đinđić",
+		"url": ""
+	},
+	{
+		"name": "Draža Mihailović",
+		"url": ""
+	},
+	{
+		"name": "Nettoyage ethnique",
+		"url": ""
+	},
+	{
+		"name": "Srebrenica",
+		"url": ""
+	},
+	{
+		"name": "Guerres de Yougoslavie",
+		"url": ""
+	},
+	{
+		"name": "Accords de Dayton",
+		"url": ""
+	},
+	{
+		"name": "Belgrade",
+		"url": ""
+	},
+	{
+		"name": "Empire Ottoman",
+		"url": ""
+	},
+	{
+		"name": "Armée française d'Orient",
+		"url": ""
+	}
+]

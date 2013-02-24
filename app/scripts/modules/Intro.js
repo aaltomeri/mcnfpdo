@@ -66,7 +66,7 @@ function(app, Video) {
       ,   vv = this.vv
       ,   vp = vv.popcorn;
       
-      vv.showOverlay('Pour commencer appuyez sur la barre espace ou cliquez/touchez l\'écran');
+      vv.showOverlay('<h3>Pour commencer appuyez sur la barre espace ou cliquez/touchez l\'écran</h3>');
 
       // PLAY
       vp.on('play', function() {
