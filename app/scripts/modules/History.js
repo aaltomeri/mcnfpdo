@@ -19,6 +19,7 @@ function(app) {
     var layout
     ,   wiki_entries = new History.WikiEntries();
 
+    // create layout after entries list has been loaded and Collection has been populated
     wiki_entries.on('reset', function() {
       layout = new History.Views.Layout({collection: this});
     });
@@ -26,7 +27,6 @@ function(app) {
     // starting a wikipedia request
     wiki_entries.on('History:WikiEntries:request_start', function(data) {
 
-      layout.$el.find('.loading .request').append(data.model.get('name') + " / ");
       
     });
 
@@ -38,12 +38,12 @@ function(app) {
 
       view.render();
 
-      view.$el.hide();
+      //view.$el.hide();
 
-      var _l = (Math.random() > .5)? layout.$el.width() : -view.$el.width()-20
-      ,   _t = (Math.random() > .5)? layout.$el.height() : -view.$el.height()-20
+      var _l = Math.random() * 20 + 10 //(Math.random() > .5)? layout.$el.width() : -view.$el.width()-20
+      ,   _t = Math.random() * 20 + 40 //(Math.random() > .5)? layout.$el.height() : -view.$el.height()-20
 
-      view.$el.css({ 
+      view.$el.css({
         left: _l,
         top: _t
       });
@@ -57,6 +57,7 @@ function(app) {
 
       layout.getViews(function(view, index) {
 
+        // return;
 
         // spread cards on canvas
         
@@ -68,7 +69,11 @@ function(app) {
         view.$el.transition({ 
           left: _l,
           top: _t,
+          opacity: 1,
           delay:  100 * index 
+        }, 
+        function() { 
+          view.enabled = true; 
         });
 
       });
@@ -90,7 +95,6 @@ function(app) {
     model: History.WikiEntry,
     wikiData: null,
 
-
     fetchData: function() {
 
       var _this = this
@@ -104,19 +108,32 @@ function(app) {
 
           // loop through parsed entries
           // we will fecth the wikipedia entry and popupate a 'entry' key with the parsed wiki text
-          _this.each(function(model) {
+          _this.each(function(model, index) {
 
-              wiki_requests.push(_this.fetchWikiData(model));
+              setTimeout(function() {
+
+                // add Promise returned by the fetch method to array
+                wiki_requests.push(_this.fetchWikiData(model));
+
+                // add all requests to global promise
+                // when all have been processed
+                if(wiki_requests.length == _this.models.length) {
+
+                   $.when.apply($, wiki_requests).done(function() {
+
+                    console.log('%cALL REQUESTS DONE', "color: orange; font-size: medium");
+
+                    _this.trigger('History:WikiEntries:all_requests_done', _this);
+
+                  });
+
+                }
+
+              }, 500 * index);
 
           });
           
-          $.when.apply($, wiki_requests).done(function() {
-
-            console.log('%cALL REQUESTS DONE', "color: orange; font-size: medium");
-
-            _this.trigger('History:WikiEntries:all_requests_done', _this);
-
-          })
+         
           
 
         }
@@ -128,7 +145,12 @@ function(app) {
 
       var _this = this
       ,   wiki_request = $.getJSON('//fr.wikipedia.org/w/api.php?action=parse&format=json&callback=?', 
-        {page:model.get('name'), prop:'text|sections', uselang:'fr', redirects: 1}
+        { 
+          page: model.get('name'), 
+          prop: 'text|sections', 
+          uselang: 'fr', 
+          redirects: 1
+        }
       );
 
       _this.trigger('History:WikiEntries:request_start', { model: model });
@@ -193,6 +215,8 @@ function(app) {
     template: 'modules/history/wiki-entry',
     className: 'wiki-entry',
 
+    enabled: false,
+
     events: {
       "click .btn-show-entry": "toggleEntry"
     },
@@ -212,6 +236,11 @@ function(app) {
 
     toggleEntry: function() {
       
+      // abort if not active yet
+      if(!this.enabled) {
+        return;
+      }
+
       if(this.$text.is(':visible')) {
 
         this.$text.hide();
