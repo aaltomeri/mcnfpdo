@@ -1,18 +1,18 @@
 [       
         {
-             "name": "Nikola Tesla : My Inventions",
-             "sources": "http://www.youtube.com/watch?v=g2n0RcVfHWk",
+             "name": "Modern Marvels : Nikola Tesla",
+             "sources": "http://www.youtube.com/watch?v=qdPoOAVAuFQ",
              "dimensions": {},
              "position": {},
-             "in_point": 7,
-             "out_point": 12
+             "in_point": 1026,
+             "out_point": 1148
         },
         {
              "name": "Lost Ligntning : The Missing Secrets of Nikola Tesla",
              "sources": "http://www.youtube.com/watch?v=BaB_Yx7hpJs",
              "dimensions": {},
              "position": {},
-             "in_point": 103,
+             "in_point": 83,
              "out_point": 122
         },
         {
@@ -20,8 +20,8 @@
              "sources": "http://www.youtube.com/watch?v=5bBnVDj5SkA",
              "dimensions": {},
              "position": {},
-             "in_point": 1453,
-             "out_point": 1473
+             "in_point": 1355,
+             "out_point": 1422
         },
         {
              "name": "Dusko Popov : Inspiration for James Bond Character",
