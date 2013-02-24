@@ -216,7 +216,6 @@ function(app) {
         'vertical-align': 'middle', 
         'text-align': 'center', 
         color: 'white', 
-        'font-size': '30px', 
         'line-height': 'auto',
         'text-transform': 'uppercase',
         'padding': '0 15%'
