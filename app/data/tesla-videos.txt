@@ -16,6 +16,14 @@
              "out_point": 122
         },
         {
+             "name": "Dusko Popov : Inspiration for James Bond Character",
+             "sources": "http://www.youtube.com/watch?v=fvZyy-_gXvE",
+             "dimensions": {},
+             "position": {},
+             "in_point": 05,
+             "out_point": 47
+        },
+        {
              "name": "James Bond First Adaptation : Casino Royal (1954)",
              "sources": "http://www.youtube.com/watch?v=5bBnVDj5SkA",
              "dimensions": {},
@@ -24,20 +32,12 @@
              "out_point": 1422
         },
         {
-             "name": "Dusko Popov : Inspiration for James Bond Character",
-             "sources": "http://www.youtube.com/watch?v=fvZyy-_gXvE",
-             "dimensions": {},
-             "position": {},
-             "in_point": 22,
-             "out_point": 37
-        },
-        {
              "name": "Tito's Secret Space Program",
              "sources": "http://www.youtube.com/watch?v=EfJiNPZ38kY",
              "dimensions": {},
              "position": {},
-             "in_point": 24,
-             "out_point": 67
+             "in_point": 20,
+             "out_point": 77
 
         },
         {
@@ -45,7 +45,7 @@
              "sources": "http://www.youtube.com/watch?v=0RRnCnO1Y2c",
              "dimensions": {},
              "position": {},
-             "in_point": 4,
+             "in_point": 3,
              "out_point": 27
         },
         {
@@ -101,15 +101,15 @@
              "sources": "http://www.youtube.com/watch?v=6FnzNPfngzg",
              "dimensions": {},
              "position": {},
-             "in_point": 9,
-             "out_point": 34
+             "in_point": 7,
+             "out_point": 50
         },
         {
              "name": "Arkan & Svetlana 'Ceca' Velickovic Wedding (19 February 1995)",
              "sources": "http://www.youtube.com/watch?v=pypwd0-Fp_E",
              "dimensions": {},
              "position": {},
-             "in_point": 33,
+             "in_point": 24,
              "out_point": 55
         },
         {
@@ -125,7 +125,7 @@
              "sources": "http://www.youtube.com/watch?v=KJyjJIb4p0M",
              "dimensions": {},
              "position": {},
-             "in_point": 0,
-             "out_point": 68
+             "in_point": 16,
+             "out_point": 99
         }
 ]
