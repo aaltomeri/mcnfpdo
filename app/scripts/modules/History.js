@@ -35,7 +35,18 @@ function(app) {
 
       var view = new History.Views.WikiView({ model: data.model });
       layout.insertView(view);
+
       view.render();
+
+      view.$el.hide();
+
+      var _l = (Math.random() > .5)? layout.$el.width() : -view.$el.width()-20
+      ,   _t = (Math.random() > .5)? layout.$el.height() : -view.$el.height()-20
+
+      view.$el.css({ 
+        left: _l,
+        top: _t
+      });
 
     });
 
@@ -43,6 +54,24 @@ function(app) {
     wiki_entries.on('History:WikiEntries:all_requests_done', function() {
 
       layout.$el.find('.loading').remove();
+
+      layout.getViews(function(view, index) {
+
+
+        // spread cards on canvas
+        
+        var _l = Math.ceil(Math.random() * (layout.$el.width() - view.$el.width()))
+        ,   _t = Math.round(Math.random() * (layout.$el.height() - view.$el.height()));
+
+        view.$el.show();
+
+        view.$el.transition({ 
+          left: _l,
+          top: _t,
+          delay:  100 * index 
+        });
+
+      });
 
     });
 
@@ -149,7 +178,7 @@ function(app) {
         $(this).attr('target', '_blank');
       });
 
-      data.text = "";//$text.html();
+      data.text = $text.html();
 
       return data;
 
@@ -164,7 +193,12 @@ function(app) {
     template: 'modules/history/wiki-entry',
     className: 'wiki-entry',
 
+    events: {
+      "click .btn-show-entry": "toggleEntry"
+    },
+
     initialize: function() {
+
       this.$el.draggable({ 
         handle: '.handle',
         cursor: 'move',
@@ -173,6 +207,34 @@ function(app) {
         distance : 0,
         delay: 0
       });
+
+    },
+
+    toggleEntry: function() {
+      
+      if(this.$text.is(':visible')) {
+
+        this.$text.hide();
+        this.$btn_show_entry.addClass('icon-circle-arrow-down');
+        this.$btn_show_entry.removeClass('icon-circle-arrow-up');
+
+      }
+      else {
+
+        this.$text.show();
+        this.$btn_show_entry.removeClass('icon-circle-arrow-down');
+        this.$btn_show_entry.addClass('icon-circle-arrow-up');
+
+      }
+
+    },
+
+    afterRender: function() {
+
+      this.$text = this.$el.find('.text');
+      this.$btn_show_entry = this.$el.find('.btn-show-entry');
+
+
     },
 
     // Provide data to the template

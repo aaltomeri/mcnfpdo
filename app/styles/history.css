@@ -1,46 +1,35 @@
 .wiki-entry {
-
-	color: #000;
-
-	position: absolute !important;
-
-	width: 30%;
-	height: 100%;
-
-	overflow: hidden;
-
-	background: #fff;
-	border: solid 2px #333;
-
-	top: 0;
-	left: 0;
-
+  color: #000;
+  position: absolute !important;
+  width: 30%;
+  background: #fff;
+  border: solid 2px #333;
+  top: 10px;
+  left: 0;
+  -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
 }
-
+.wiki-entry h2 {
+  margin: 10px 0;
+}
 .wiki-entry > header {
-
-	width: 100%;
-	height: 10%;
-	background: #ccc;
-
-	padding: 0 10px;
-
-	position: absolute;
-	top: 0;
-	left: 0;
-
+  width: 100%;
+  padding: 10px;
+  background: #272731;
+  color: #dccfc8;
 }
-
 .wiki-entry > section {
-
-	position: absolute;
-	bottom: 0;
-	height: 90%;
-
-	overflow: auto;
-
-	padding: 0 10px;
-
+  display: none;
+  position: relative;
+  height: 400px;
+  overflow: auto;
+  padding: 0 14px;
+  word-wrap: break-word;
 }
-
-.wiki-entry .handle:hover { cursor: move; }
+.wiki-entry .handle:hover {
+  cursor: move;
+}
+.wiki-entry .btn-show-entry {
+  cursor: pointer;
+}
