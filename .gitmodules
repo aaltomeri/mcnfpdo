@@ -1,3 +1,6 @@
 [submodule "bootstrap"]
 	path = bootstrap
 	url = git@github.com:twitter/bootstrap.git
+[submodule "app/scripts/vendor/buzz"]
+	path = app/scripts/vendor/buzz
+	url = git@github.com:jaysalvat/buzz.git

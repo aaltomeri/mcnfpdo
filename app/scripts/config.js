@@ -17,7 +17,8 @@ require.config({
     lodash: "libs/lodash",
     backbone: "libs/backbone",
     popcorn: "vendor/popcorn-complete",
-    transit: "vendor/jquery.transit"
+    transit: "vendor/jquery.transit",
+    buzz: "vendor/buzz/buzz", 
   },
 
   map: {
