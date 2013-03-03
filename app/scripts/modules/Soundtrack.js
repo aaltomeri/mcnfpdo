@@ -1,11 +1,12 @@
 define([
   // Application.
-  "app"
+  "app",
+  "buzz"
 
 ],
 
 // Map dependencies from above array.
-function(app) {
+function(app, Buzz) {
 
 	var Soundtrack = app.module();
 
@@ -39,13 +40,74 @@ function(app) {
 		},
 
 		// wrapper for popcorn instance play method
-	    play: function() {
-	      this.popcorn.media.play();
+	    play: function(start_time, fade_in) {
+
+	    	var p = this.popcorn
+	    	,	bz = null
+
+	    	function _play() {
+	    		
+	    		if(fade_in) {
+
+			    	// default id no number given
+			    	if(typeof(fade_in) != "number") {
+			    		fade_in = 1000;
+			    	}
+
+		    		p.currentTime(start_time);
+
+		    		bz = new Buzz.sound(p.media);
+		    		bz.fadeIn(fade_in);
+
+		    	}
+		    	else {
+
+		    		p.play(start_time);
+
+	    		}
+
+	    	}
+
+	    	try {
+	    		_play();
+	    	}
+	    	catch(error) {
+
+		    	p.on('canplay', function() {
+		    		_play();
+		    	});
+
+	    	}
+	    	
+
+
 	    },
 
 	    // wrapper for popcorn instance pause method
-	    pause: function() {
-	      this.popcorn.media.pause();
+	    pause: function(fade_out) {
+
+	    	var p = this.popcorn
+	    	,	bz = null
+
+	    	if(fade_out) {
+
+		    	// default id no number given
+		    	if(typeof(fade_out) != "number") {
+		    		fade_in = 1000;
+		    	}
+
+	    		bz = new Buzz.sound(p.media);
+	    		bz.fadeOut(fade_out, function() {
+	    			p.pause();
+	    		});
+
+	    	}
+	    	else {
+
+	    		p.pause();
+
+	    	}
+	    	
 	    },
 
 	    /**

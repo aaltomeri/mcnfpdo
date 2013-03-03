@@ -4,11 +4,12 @@ define([
   "app",
 
   // Modules
-  "modules/Video"
+  "modules/Video",
+  "modules/Soundtrack"
 ],
 
 // Map dependencies from above array.
-function(app, Video) {
+function(app, Video, Soundtrack) {
 
   // Create a new module.
   var Intro = app.module();
@@ -29,6 +30,29 @@ function(app, Video) {
     video_view = new Video.Views.Main({ model: video_model }),
     // actual main view for this module
     intro_view = new Intro.Views.Main({ video_view: video_view });
+
+    // when PLAYING the video ...
+    video_view.popcorn.on('play', function() {
+      // do not play unless paused AND we have passed th epoit where we actually want the soundtrack to play
+      if(Intro.soundtrack.popcorn.paused() && video_view.popcorn.currentTime() > 22)
+        Intro.soundtrack.play(Intro.soundtrack.popcorn.currentTime(), 500);
+    })
+
+    // when PAUSING the video ...
+    video_view.popcorn.on('pause', function() {
+      if(!Intro.soundtrack.popcorn.paused() && video_view.popcorn.currentTime() > 22)
+        Intro.soundtrack.pause(500);
+    })
+
+    ////////////////
+    // Soundtrack //
+    ////////////////
+    var soundtrack_model = app.sounds.find(function(model) { return model.get('name') == "Intro Soundtrack" });
+    Intro.soundtrack = new Soundtrack.View({ 
+      model: soundtrack_model
+    });
+
+    Intro.soundtrack.popcorn.loop(false);
 
   };
 
@@ -77,6 +101,26 @@ function(app, Video) {
         }
 
       });
+
+      // start Soundtrack
+      vp.code({
+        start: 22,
+        onStart: function( options ) {
+          console.log('PLAY SOUNDTRACK');
+          Intro.soundtrack.play(18, 15000);
+        }
+      });
+
+      // fadeout Soundtrack
+      vp.code({
+        start: 83,
+        onStart: function( options ) {
+          console.log('PAUSE SOUNDTRACK');
+          Intro.soundtrack.pause(20000);
+        }
+      });
+
+
      
       // END     
       vp.on('ended', function() {

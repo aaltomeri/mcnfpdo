@@ -42,8 +42,6 @@ function(app, Intro, TTB, Soundtrack) {
 
     ttb: function(command, time) {
 
-      $('#module-container').empty();
-
       //if current Chapter exists, call its destroy method
       if(typeof TTB.model !== "undefined" && TTB.model.get('currentChapter')) {
 
@@ -68,15 +66,14 @@ function(app, Intro, TTB, Soundtrack) {
 
           _destroy_current_module();
 
+          $('#module-container').empty();
+
       }
 
       // here we call the init function that we have defined for the module
       // we pass the optional command and time arguments that will result in the TTB video to be played/paused at a time offset if given
       // 'time' can also be a chapter name - the ttb video playhead will then position it self at the beginning of the chapter
       TTB.init(command, time);
-
-      // play soudtrack (has been initialized in the init call)
-      TTB.soundtrack.play();
 
     },
 
@@ -136,11 +133,9 @@ function(app, Intro, TTB, Soundtrack) {
 
     moduleLauncher: function(moduleName) {
 
+      // init TTB
       this.ttb('pause', moduleName);
-
-      // pause Soundtrack  
-      TTB.soundtrack.pause();
-
+            
       TTB.MainView.prepareStageForModule();
 
       var module_path = "modules/" + moduleName
@@ -177,7 +172,6 @@ function(app, Intro, TTB, Soundtrack) {
                     module.soundtrack.play();
 
                     module.init(); 
-
 
                   });
                 }

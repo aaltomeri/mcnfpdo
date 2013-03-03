@@ -73,6 +73,18 @@ function(app, Video, Soundtrack) {
       video_view: video_view,
     });
 
+    // when PLAYING the video ...
+    video_view.popcorn.on('play', function() {
+      console.log('Video:play');
+      if(TTB.soundtrack.popcorn.paused())
+        TTB.soundtrack.play(TTB.soundtrack.popcorn.currentTime(), 2000);
+    })
+
+    // when PAUSING the video ...
+    video_view.popcorn.on('pause', function() {
+      console.log('Video:pause');
+    })
+
     // Set TTB model to be used throughout the application
     TTB.model = video_model;
 
@@ -83,6 +95,11 @@ function(app, Video, Soundtrack) {
     TTB.soundtrack = new Soundtrack.View({ 
       model: soundtrack_model
     });
+
+    // play soudtrack if time param is a Number
+    if(typeof(time) == "number") {
+      TTB.soundtrack.play(time, 2000);
+    }
 
   };
 
@@ -269,6 +286,7 @@ function(app, Video, Soundtrack) {
             setTimeout(function() { vv.hideOverlay(); }, 2000);
           }
 
+          TTB.soundtrack.pause(7000);
 
         }
         else {
