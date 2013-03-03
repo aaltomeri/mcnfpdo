@@ -73,18 +73,6 @@ function(app, Video, Soundtrack) {
       video_view: video_view,
     });
 
-    // when PLAYING the video ...
-    video_view.popcorn.on('play', function() {
-      console.log('Video:play');
-      if(TTB.soundtrack.popcorn.paused())
-        TTB.soundtrack.play(TTB.soundtrack.popcorn.currentTime(), 2000);
-    })
-
-    // when PAUSING the video ...
-    video_view.popcorn.on('pause', function() {
-      console.log('Video:pause');
-    })
-
     // Set TTB model to be used throughout the application
     TTB.model = video_model;
 
@@ -254,7 +242,12 @@ function(app, Video, Soundtrack) {
       ,  showIntroInfo = true
       ,   hideIntroInfo = true;
 
-      vv.showOverlay('Pour découvrir ce que cache les objets appuyez sur la barre espace ou cliquez/touchez l\'écran');
+
+      vv.popcorn.on('canplay', function() {
+
+        vv.showOverlay('⬤ Pour explorer chaque chapitre appuyez sur la barre espace ou cliquez dans l\'écran lorsque la pastille blanche apparaît ⬤');
+
+      });
 
       vv.popcorn.on('timeupdate', function() {
 
@@ -270,6 +263,16 @@ function(app, Video, Soundtrack) {
 
       });
 
+       // when PLAYING the video ...
+      vv.popcorn.on('play', function() {
+        
+        vv.hideOverlay();
+
+        if(TTB.soundtrack.popcorn.paused())
+          TTB.soundtrack.play(TTB.soundtrack.popcorn.currentTime(), 2000);
+      })
+
+      // when PAUSING the video ...
       // setup mechanism to launch a module on pause
       this.vv.popcorn.on('pause', function() {
 
@@ -292,15 +295,16 @@ function(app, Video, Soundtrack) {
         else {
 
           // do not pause when outside of a chapter
-          this.play();
+          //this.play();
 
           // get next chapter
           chapter = vv.model.getChapterNextByTime(vp.currentTime());
 
           // show some feedback that no action is possible at this time
-          vv.showOverlay('Prochain chapitre<br /><strong>'+ chapter.title +'</strong>');
+          vv.showOverlay('<p>Prochain chapitre<br /><strong>'+ chapter.title +'</strong></p>'
+            + '<p class="infos">⬤ Pour explorer chaque chapitre appuyez sur la barre espace ou cliquez dans l\'écran lorsque la pastille blanche apparaît ⬤</p>');
 
-          setTimeout(function() { vv.hideOverlay(); }, 1000);
+          // setTimeout(function() { vv.hideOverlay(); }, 1000);
 
         }
 

@@ -22,6 +22,8 @@ function(app) {
   // Default View.
   Video.Views.Main = Backbone.View.extend({
 
+    className: 'video',
+
     manage: true,
 
     popcorn: null,
@@ -184,7 +186,7 @@ function(app) {
 
       this.hideOverlay();
 
-      var overlay = this.overlay = $('<div><div class="text">'+text+'</div></div>')
+      var overlay = this.overlay = $('<div class="overlay"><div class="text">'+text+'</div></div>')
 
       // original video media dimensions: use dynamically obtained dimensions if possible, 
       // defaults to the Video module defaults otherwise
@@ -197,8 +199,8 @@ function(app) {
       overlay.css({
         position: 'absolute',
         // get actual video width : height * video dimensions factor
-        width: this.$el.find('video').height() * (vw/vh),
-        height: this.$el.find('video').width() * (vh/vw),
+        width: Math.round(this.$el.find('video').height() * (vw/vh)),
+        height: Math.round(this.$el.find('video').width() * (vh/vw)),
         background: 'black ',
         opacity: 0.3,
         display: 'table'
@@ -208,17 +210,6 @@ function(app) {
       overlay.css({ 
         left: this.$el.width()/2 - overlay.width()/2,
         top: this.$el.height()/2 - overlay.height()/2
-      });
-
-      // message style
-      overlay.find('.text').css({ 
-        'display': 'table-cell', 
-        'vertical-align': 'middle', 
-        'text-align': 'center', 
-        color: 'white', 
-        'line-height': 'auto',
-        'text-transform': 'uppercase',
-        'padding': '0 15%'
       });
 
       overlay.css({opacity: 0});

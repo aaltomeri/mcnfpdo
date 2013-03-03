@@ -90,7 +90,7 @@ function(app, Video, Soundtrack) {
       ,   vv = this.vv
       ,   vp = vv.popcorn;
       
-      vv.showOverlay('<h3>Pour commencer appuyez sur la barre espace ou cliquez/touchez l\'écran</h3>');
+      vv.showOverlay('Pour commencer appuyez sur la barre espace ou cliquez/touchez l\'écran');
 
       // PLAY
       vp.on('play', function() {
