@@ -29,7 +29,7 @@ function(app, Intro, TTB, Soundtrack) {
       "Mail": "mail",
       "History": "history",
       "Tabloid": "tabloid",
-      "WarTrauma": "warTrauma"
+      "BgdVoices": "bgdVoices"
 
     },
 
@@ -41,6 +41,8 @@ function(app, Intro, TTB, Soundtrack) {
     },
 
     ttb: function(command, time) {
+
+      $('#main-container').css({"z-index": 1});
 
       //if current Chapter exists, call its destroy method
       if(typeof TTB.model !== "undefined" && TTB.model.get('currentChapter')) {
@@ -125,9 +127,9 @@ function(app, Intro, TTB, Soundtrack) {
 
     },
 
-    warTrauma: function() {
+    bgdVoices: function() {
 
-      this.moduleLauncher('WarTrauma');
+      this.moduleLauncher('BgdVoices');
 
     },
 
