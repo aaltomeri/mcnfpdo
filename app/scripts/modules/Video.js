@@ -70,6 +70,8 @@ function(app) {
       // wrap all play actions in a 'canplay' callback
       this.popcorn.on('canplay', function() {
 
+        vv.model.set('duration', this.duration());
+
         // offset playhead
         if(time) {
 
@@ -182,7 +184,7 @@ function(app) {
 
     },
 
-    showOverlay: function(text) {
+    showOverlay: function(text, styles) {
 
       this.hideOverlay();
 
@@ -195,15 +197,19 @@ function(app) {
       ,   vw = this.popcorn.media.videoWidth? this.popcorn.media.videoWidth : Video.defaultWidth
       ,   vh = this.popcorn.media.videoHeight? this.popcorn.media.videoHeight : Video.defaultHeight
 
+      var opacity = 0.5;
+
+      if(styles && typeof(styles) == "object") {
+        overlay.css(styles);
+        opacity = styles.opacity? styles.opacity : opacity;
+      }
+
 
       overlay.css({
         position: 'absolute',
         // get actual video width : height * video dimensions factor
         width: Math.round(this.$el.find('video').height() * (vw/vh)),
-        height: Math.round(this.$el.find('video').width() * (vh/vw)),
-        background: 'black ',
-        opacity: 0.3,
-        display: 'table'
+        height: Math.round(this.$el.find('video').width() * (vh/vw))
       });
 
       // center overlay
@@ -214,7 +220,7 @@ function(app) {
 
       overlay.css({opacity: 0});
       this.$el.append(overlay);
-      overlay.transition({opacity: 0.5});
+      overlay.transition({opacity: opacity});
 
     },
 
@@ -265,9 +271,14 @@ function(app) {
 
       /**
        * returns the next chapter for a given time
+       * works by appending 1s to the time passed to getChapterByTime until a chapter is found
        * @return object the chapter
        */
       getChapterNextByTime: function(time) {
+
+        // abort it time > video duration
+        if(time > this.get('duration'))
+          return null;
 
         var chapter = this.getChapterByTime(time);
 
