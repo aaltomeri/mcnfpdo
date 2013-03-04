@@ -90,7 +90,10 @@ function(app, Video, Soundtrack) {
       ,   vv = this.vv
       ,   vp = vv.popcorn;
       
-      vv.showOverlay('Pour commencer appuyez sur la barre espace ou cliquez/touchez l\'écran');
+      vv.showOverlay(
+        '<p><strong>Mon corps ne fait pas d\'ombre</strong></p>'
+        + '<p>appuyez sur la barre espace<br />ou cliquez dans l\'écran</p>'
+      );
 
       // PLAY
       vp.on('play', function() {
@@ -129,7 +132,7 @@ function(app, Video, Soundtrack) {
           vv.remove();  
 
           // go to TTB at the end of the intro
-          app.trigger('goto', 'TTB/play');
+          app.trigger('goto', 'TTB/pause');
 
       });
 
