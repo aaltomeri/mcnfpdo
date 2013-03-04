@@ -9,13 +9,12 @@ define([
 function(app, Video) {
 
   // Create a new module.
-  var Tesla = app.module();
+  var Tesla = app.module()
+  ,   layout
 
   Tesla.init = function() {
 
     console.log('Tesla INIT');
-
-    var layout;
 
     var videos = new Tesla.Collection();
 
@@ -136,7 +135,7 @@ function(app, Video) {
       this.render();
 
       /**
-       * All dynically added elements must be added after render since render load a template and replaces $el.html with it
+       * All dynamically added elements must be added after render since render load a template and replaces $el.html with it
        */
       
       // next button for debugging
@@ -183,8 +182,6 @@ function(app, Video) {
 
       vv.popcorn.on('timeupdate', function() {
 
-        console.log(this.currentTime());
-
         if(out_point && this.currentTime() > out_point) {
 
           controller.playNext();
@@ -201,6 +198,8 @@ function(app, Video) {
   Tesla.destroy = function() {
 
     console.log('Tesla destroy');
+
+    layout.vv.remove();
 
   }
 
