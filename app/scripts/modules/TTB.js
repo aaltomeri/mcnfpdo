@@ -32,14 +32,14 @@ function(app, Video, Soundtrack) {
       enablePlayPause: true,
       chapters: [
         { name: "BgdMap",title: "Belgrade Ville", start: 17, end: 23 },
-        { name: "BgdBook", title: "Belgrade par Angélica Liddell", start: 27, end: 33 },
+        { name: "BgdBook", title: "Belgrade d'Angélica Liddell", start: 27, end: 33 },
         { name: "Notebook", title: "Carnet de notes", start: 37, end: 43 },
-        { name: "Mail", title: "Lettres du père", start: 46, end: 52 },
-        { name: "Tabloid",title: "Belgrade Trash", start: 54, end: 61 },
+        { name: "Mail", title: "Très cher père", start: 46, end: 52 },
+        { name: "Tabloid",title: "Belgrade +", start: 54, end: 61 },
         { name: "News", title: "Actualités", start: 62, end: 67 },
-        { name: "Tesla",title: "Insconscient collectif", start: 69, end: 75 },
+        { name: "Tesla",title: "Inconscient collectif", start: 69, end: 75 },
         { name: "History",title: "Histoire Serbe", start: 77, end: 83 },
-        { name: "WarTrauma", title: "Traumatisme de guerre", start: 85, end: 90 }
+        { name: "BgdVoices", title: "Les voix de Belgrade", start: 85, end: 90 }
       ]
 
     });
@@ -239,27 +239,64 @@ function(app, Video, Soundtrack) {
       ,   vv = this.vv
       ,   vp = vv.popcorn
       ,   chapter
-      ,  showIntroInfo = true
-      ,   hideIntroInfo = true;
+      ,   showIntroInfo = true
+      ,   hideIntroInfo = true
+      ,   creditsDisplayed;
 
 
       vv.popcorn.on('canplay', function() {
 
-        vv.showOverlay('⬤ Pour explorer chaque chapitre appuyez sur la barre espace ou cliquez dans l\'écran lorsque la pastille blanche apparaît ⬤');
 
       });
 
       vv.popcorn.on('timeupdate', function() {
 
+          var chapter = vv.model.getChapterByTime(this.currentTime());
+
           if(this.currentTime() < 15 && showIntroInfo) {
-            //vv.showOverlay('Pour découvrir ce que cache les objets appuyez sur la barre espace ou cliquez/touchez l\'écran');
-            //showIntroInfo = false;
+
+            vv.showOverlay(
+              '<p>Pour commencer<br />appuyez sur la barre espace<br/>ou cliquez dans l\'écran</p>'
+              + '<p class="infos">Ensuite,<br/>pour explorer chaque chapitre,<br /> c\'est le même principe,<br />appuyez sur la barre espace<br/>ou cliquez dans l\'écran<br/>lorsque le nom du chapitre apparaît</p>'
+            );
+            showIntroInfo = false;
+
           }
 
           if(this.currentTime() > 15 && hideIntroInfo) {
             vv.hideOverlay();
             hideIntroInfo = false;
           }
+
+          // show chapter name
+          if(chapter && vv.currentChapter != chapter) {
+
+            vv.currentChapter = chapter;
+            vv.showOverlay('<p class="chapter-title '+ chapter.name +'">'+chapter.title+'</p>', { opacity: 0.8, background: 'transparent'});
+            setTimeout(function() { vv.hideOverlay(); }, 3000);
+
+          }
+
+          // show end credits
+          if(this.currentTime() > 95 && !creditsDisplayed) {
+            vv.showOverlay('<p>Mon corps ne fait pas d\'ombre</p><p>Un projet de Julien Fišera, Jérémie Scheidler et Thomas Mery</p>'
+              + '<p class="infos">Baltasar: Vladislav Galard<br /> Musique: Thomas Mery & Jérôme Berg<br/>Images: Jérémie Scheidler</p>'
+              + '<p class="infos">Appuyez sur la barre espace ou cliquez dans l\'écran pour explorer à nouveau les différents chapitres. Vous pouvez également choisir de vous rendre directement à un des chapitres en cliquant sur une des liens ci-dessous</p>'
+              + '<p class="infos"><a href="#BgdMap">Belgrade Ville</a> - <a href="#BgdBook">Belgrade d\'Angélica Liddell</a> - <a href="#Notebook">Carnet de notes</a> - <a href="#Mail">Très cher père</a> - <a href="#Tabloid">Belgrade +</a> - <a href="#News">Actualités</a> - <a href="#Tesla">Inconcient collectif</a> - <a href="#History">Histoire Serbe</a> - <a href="#BgdVoices">Les voix de Belgrade</a></p>'
+            , { opacity: 0.8, background: "rgba(0,0,0,0.6)" } );
+            hideIntroInfo = false;
+            creditsDisplayed = true;
+
+            $('#main-container').css({"z-index": 3});
+
+          }
+
+           if(this.currentTime() < 95 && creditsDisplayed) {
+
+              // reset creditsDisplayed to show them each time we reach the end
+              creditsDisplayed = false;
+
+           }
 
       });
 
@@ -300,9 +337,18 @@ function(app, Video, Soundtrack) {
           // get next chapter
           chapter = vv.model.getChapterNextByTime(vp.currentTime());
 
+          // abort if no chapter has been found
+          if(!chapter) {
+
+            app.trigger('goto', 'TTB');
+
+            return;
+
+          }
+
           // show some feedback that no action is possible at this time
           vv.showOverlay('<p>Prochain chapitre<br /><strong>'+ chapter.title +'</strong></p>'
-            + '<p class="infos">⬤ Pour explorer chaque chapitre appuyez sur la barre espace ou cliquez dans l\'écran lorsque la pastille blanche apparaît ⬤</p>');
+            + '<p class="infos">Pour explorer chaque chapitre<br />appuyez sur la barre espace<br />ou cliquez dans l\'écran<br />lorsque son nom apparaît</p>');
 
           // setTimeout(function() { vv.hideOverlay(); }, 1000);
 
