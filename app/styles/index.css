@@ -1,3 +1,4 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700&subset=latin,latin-ext);
 /*!
  * Bootstrap v2.3.0
  *
@@ -5272,9 +5273,14 @@ body {
   margin: 0;
   background: #000;
   overflow: hidden;
+  font-family: 'Open Sans Condensed', sans-serif;
+  letter-spacing: 1.1px;
 }
 h1 {
   margin: 0;
+}
+img {
+  max-width: none;
 }
 #main {
   position: relative;
@@ -5284,6 +5290,7 @@ h1 {
 }
 #main-container {
   position: absolute;
+  z-index: 1;
   top: 0;
   left: 0;
   height: 100%;
@@ -5292,12 +5299,18 @@ h1 {
 }
 #module-container {
   position: absolute;
+  z-index: 2;
   top: 0;
   left: 0;
   height: 100%;
   width: 100%;
   overflow: hidden;
   color: white;
+}
+.video .overlay {
+  background: black;
+  opacity: 0.3;
+  display: table;
 }
 .video .overlay .text {
   font-size: 34px;
@@ -5307,12 +5320,53 @@ h1 {
   text-align: center;
   padding: 0 15%;
   color: white;
+  text-shadow: #000 3px 3px 0.2em;
   text-transform: uppercase;
+}
+.video .overlay .text a {
+  color: #cdd6dd;
+}
+.video .overlay .text a:hover {
+  color: #dee7ee;
+  text-decoration: none;
 }
 .video .overlay .text > p {
   margin-bottom: 60px;
 }
 .video .overlay .text .infos {
-  font-size: 0.8em;
-  line-height: 1.2em;
+  font-size: 0.7em;
+  line-height: 1.4em;
+  font-style: italic;
+}
+.video .overlay .text .chapter-title {
+  position: relative;
+  top: -100px;
+  left: -100px;
+}
+.video .overlay .text .chapter-title.Notebook {
+  top: -100px;
+  left: 170px;
+}
+.video .overlay .text .chapter-title.BgdBook {
+  top: -60px;
+}
+.video .overlay .text .chapter-title.Mail {
+  top: 130px;
+  left: -300px;
+}
+.video .overlay .text .chapter-title.Tabloid {
+  top: 330px;
+  left: -400px;
+}
+.video .overlay .text .chapter-title.News {
+  top: -170px;
+  left: 300px;
+}
+.video .overlay .text .chapter-title.History {
+  top: 40px;
+  left: -180px;
+}
+.video .overlay .text .chapter-title.BgdVoices {
+  top: -120px;
+  left: -260px;
 }

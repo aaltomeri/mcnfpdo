@@ -45,7 +45,6 @@
 	position: relative;
 	height: 96%;
 	overflow: hidden;
-
 }
 
 #news-items ul li,
@@ -56,6 +55,7 @@
 	display: none;
 
 	font-size: 36px;
+	line-height: 46px;
 
 	width: 100%;
 

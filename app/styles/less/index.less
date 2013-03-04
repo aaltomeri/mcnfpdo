@@ -6,6 +6,9 @@
 @iconSpritePath:          "../images/glyphicons-halflings.png";
 @iconWhiteSpritePath:     "../images/glyphicons-halflings-white.png";
 
+@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700&subset=latin,latin-ext);
+//@import url(http://fonts.googleapis.com/css?family=Open+Sans&subset=latin,latin-ext);
+
 
 html * {
 	-webkit-box-sizing: border-box;
@@ -30,10 +33,20 @@ body {
 	margin: 0;
 	background: #000;
 	overflow: hidden;
+
+	font-family: 'Open Sans Condensed', sans-serif;
+	letter-spacing: 1.1px;
+	//font-family: 'Open Sans', sans-serif;
 }
 
 h1 {
 	margin: 0;
+}
+
+// override bootstrap img max width to avoid problems in some places
+// will target more precisely if necessary
+img {
+	max-width: none;
 }
 
 #main {
@@ -45,6 +58,7 @@ h1 {
 
 #main-container {
 	position: absolute;
+	z-index: 1;
 	top: 0;
 	left: 0;
 	height: 100%;
@@ -55,6 +69,7 @@ h1 {
 
 #module-container {
 	position: absolute;
+	z-index: 2;
 	top: 0;
 	left: 0;
 	height: 100%;
@@ -65,7 +80,13 @@ h1 {
 	
 }
 
-.video .overlay .text {
+.video .overlay {
+
+    background: black;
+    opacity: 0.3;
+    display: table;
+
+	.text {
 
 	font-size: 34px;
 	line-height: 44px;
@@ -76,20 +97,98 @@ h1 {
     text-align: center;
     padding: 0 15%;
     color: white;
+    text-shadow: #000 3px 3px 0.2em;
 
     text-transform: uppercase;
 
-    > p {
+    	a {
 
-    	margin-bottom: 60px;
+    		color: #cdd6dd;
 
-    }
+    		&:hover {
 
-    .infos {
+    			color: #dee7ee;
+    			text-decoration: none
+    		}
 
-    	font-size: 0.8em;
-    	line-height: 1.2em;
+    	}
 
-    }
+	    > p {
+
+	    	margin-bottom: 60px;
+
+	    }
+
+	    .infos {
+
+	    	font-size: 0.7em;
+	    	line-height: 1.4em;
+
+	    	font-style: italic; 
+
+	    }
+
+	    .chapter-title {
+
+	    	position: relative;
+	    	top: -100px;
+	    	left: -100px;
+
+	    	&.Notebook {
+
+				top: -100px;
+		    	left: 170px;
+
+	    	}
+
+	    	&.BgdBook {
+
+				top: -60px;
+
+	    	}
+
+	    	&.Mail {
+
+	    		top: 130px;
+		    	left: -300px;
+
+	    	}
+
+	    	&.Tabloid {
+
+	    		top: 330px;
+		    	left: -400px;
+
+	    	}
+
+	    	&.News {
+
+	    		top: -170px;
+		    	left: 300px;
+
+	    	}
+
+	    	&.Tesla {
+
+
+	    	}
+
+	    	&.History {
+
+	    		top: 40px;
+		    	left: -180px;
+
+	    	}
+
+	    	&.BgdVoices {
+
+	    		top: -120px;
+		    	left: -260px;
+
+	    	}
+
+	    }
+
+	}
 
 }
