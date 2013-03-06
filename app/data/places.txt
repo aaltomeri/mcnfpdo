@@ -253,7 +253,7 @@
 			"Lat": 44.817281,
 			"Lng": 20.458532
 		},
-		"vimeo_id": null
+		"vimeo_id": 61001912
 	},
 	{	
 		"name": "Alex dans café en gentleman",
@@ -261,7 +261,7 @@
 			"Lat": 44.816836,
 			"Lng": 20.458929
 		},
-		"vimeo_id": null
+		"vimeo_id": 61002063
 	},
 	{	
 		"name": "Papy sur un banc à Novi Beograd",
@@ -382,5 +382,21 @@
 			"Lng": 20.462776
 		},
 		"vimeo_id": null
+	},
+	{	
+		"name": "POZAREVAC",
+		"coordinates": {
+			"Lat": 44.617142,
+			"Lng": 21.177281
+		},
+		"vimeo_id": 61005762
+	},
+	{	
+		"name": "Alex au resto",
+		"coordinates": {
+			"Lat": 44.818411,
+			"Lng": 20.450502
+		},
+		"vimeo_id": 61006906
 	}
 ]
