@@ -208,55 +208,52 @@ function(app) {
           , _player = this.player
           , src = 'http://player.vimeo.com/video/' + this.anchor.place.get('vimeo_id');
 
-        if(typeof this.player !== 'object') {
+          // playe exists
+          // destroy it and remove the vimeo iframe
+          // note: I tried to change src for an existing player but did not succeed so I tear down and rebuild
+          // this is working for this case at least  
+          if(typeof this.player == 'object') {
 
-          window._player = this.player = Popcorn.smart(vw_content, src);
-          this.player.media.autoplay = true;
+            this.player.destroy();
 
-          this.player.on('ended', function() { 
-            //_iw.close();
-          });
+            if($(vw_content).find('iframe').length) {
+              $(vw_content).find('iframe').remove();
+            }
 
-          this.player.on('canplay', function() { 
-
-            var setVisited = function() { 
-            // set marker to 'visited' after 2 seconds
-            if(this.currentTime() > 4) {
-              _iw.anchor.setIcon(icon_image_off);
-              this.off('timeupdate', setVisited);
-            } 
           }
 
-          // set setVisited
-          if(_iw.anchor !== null) {
-            if(_iw.anchor.getIcon() != icon_image_off) {
+          this.player = Popcorn.smart(vw_content, src);
+          this.player.autoplay(true);
+
+          this.player.on('ended', function() { 
+            _iw.close();
+          });
+
+          this.player.on('canplay', function() {
+
+            var setVisited = function() { 
+              // set marker to 'visited' after 2 seconds
+              if(this.currentTime() > 4) {
+                _iw.anchor.setIcon(icon_image_off);
+                this.off('timeupdate', setVisited);
+              } 
+            }
+
+            // set setVisited
+            if(_iw.anchor !== null) {
+              if(_iw.anchor.getIcon() != icon_image_off) {
                 this.on('timeupdate', setVisited);
               }
             }
 
           });
 
-        }
-        else {
-          // add random number to src if it has not changed
-          // allows for autoplaying src even if it's the same as the previously watched
-          // this has to do with the HTMLVimeoVideoElement changeSrc method - triggered only if src has changed
-          // I tried to call play() on the media instead of doing this but it was not working
-          // probably because 'play' is not fwded to iframe player after it's been removed and re-added to the dom (closing and re-opening the info window)
-          if(this.player.media.src == src) {
-            src += '?rdm=' + Math.round(Math.random()*10000);
-            //this.player.play();
-          }
-
-          this.player.media.src = src;
-
-        }
-
           google.maps.event.addListener(this, 'closeclick', function() {
             //map.setZoom(13);
           });
 
-        });
+      });
+
     }
 
   });
