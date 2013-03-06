@@ -139,7 +139,7 @@ function(app, Video, Soundtrack) {
 
         var v = this
         ,   vv = this.vv
-        ,   bt = this.back_to_ttb_button =  $('<button>Back to TTB</button>');
+        ,   bt = this.back_to_ttb_button =  $('<button class="btn btn-inverse">Poursuivre l\'exploration</button>');
 
         // append home button
         bt.css({ 
