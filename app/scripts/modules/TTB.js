@@ -31,15 +31,15 @@ function(app, Video, Soundtrack) {
       autoplay: (command === 'play')? true : false,
       enablePlayPause: true,
       chapters: [
-        { name: "BgdMap",title: "Belgrade Ville", start: 17, end: 23 },
-        { name: "BgdBook", title: "Belgrade d'Angélica Liddell", start: 27, end: 33 },
-        { name: "Notebook", title: "Carnet de notes", start: 37, end: 43 },
-        { name: "Mail", title: "Très cher père", start: 46, end: 52 },
-        { name: "Tabloid",title: "Belgrade +", start: 54, end: 61 },
-        { name: "News", title: "Actualités", start: 62, end: 67 },
-        { name: "Tesla",title: "Inconscient collectif", start: 69, end: 75 },
-        { name: "History",title: "Histoire Serbe", start: 77, end: 83 },
-        { name: "BgdVoices", title: "Les voix de Belgrade", start: 85, end: 90 }
+        { name: "BgdMap",title: "Belgrade Ville", start: 17, end: 23, description: "Baltasar s'est promené dans Belgrade" },
+        { name: "BgdBook", title: "Belgrade d'Angélica Liddell", start: 27, end: 33, description: "Belgrade, la pièce d'Angélica Liddell, monté par Julien Fisera. Première le 18 mars à la Comédié de Sant Etienne" },
+        { name: "Notebook", title: "Carnet de notes", start: 37, end: 43, description: "Mars 2006, Baltasar est à Belgrade. C'est l'enterrement de Milosevic. Quelques notes mais surtout d'autres choses se passent ailleurs." },
+        { name: "Mail", title: "Très cher père", start: 46, end: 52, description: "" },
+        { name: "Tabloid",title: "Belgrade +", start: 54, end: 61, description: "Petites promenades du côté obscur" },
+        { name: "News", title: "Actualités", start: 62, end: 67, description: "Belgrade en direct" },
+        { name: "Tesla",title: "Inconscient collectif", start: 69, end: 75, description: "La Serbie, ah oui ... Nicolas Tesla etc." },
+        { name: "History",title: "Histoire Serbe", start: 77, end: 83, description: "Mais dans les faits ? Qu'est ce qui s'est passé ? Comment est ce qu'on peut expliquer ?" },
+        { name: "BgdVoices", title: "Les voix de Belgrade", start: 85, end: 90, description: "Tous parlent, ou pensent, tous marchent ..." },
       ]
 
     });
@@ -348,7 +348,10 @@ function(app, Video, Soundtrack) {
 
           // show some feedback that no action is possible at this time
           vv.showOverlay('<p>Prochain chapitre<br /><strong>'+ chapter.title +'</strong></p>'
-            + '<p class="infos">Pour explorer chaque chapitre<br />appuyez sur la barre espace<br />ou cliquez dans l\'écran<br />lorsque son nom apparaît</p>');
+            + '<p class="infos">'+ chapter.description +'</p>'
+            + '<p class="infos">Pour explorer chaque chapitre<br />appuyez sur la barre espace<br />ou cliquez dans l\'écran<br />lorsque son nom apparaît</p>'
+            , {background: "transparent", opacity: 0.8 }
+          );
 
           // setTimeout(function() { vv.hideOverlay(); }, 1000);
 
