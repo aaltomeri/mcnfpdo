@@ -43,6 +43,10 @@ function(app, Video, Soundtrack) {
 
     // when PLAYING the video ...
     video_view.popcorn.on('play', function() {
+
+      // hide still
+      video_view.hideStill();
+
       // do not play unless paused AND we have passed th epoit where we actually want the soundtrack to play
       if(Intro.soundtrack.popcorn.paused() && video_view.popcorn.currentTime() > Intro.soundtrack.model.get('start'))
         Intro.soundtrack.play(Intro.soundtrack.popcorn.currentTime(), 500);
@@ -51,6 +55,9 @@ function(app, Video, Soundtrack) {
     // when PAUSING the video ...
     video_view.popcorn.on('pause', function() {
 
+      // show still
+      var still = video_view.createStill();
+      video_view.showStill(still);
 
       if(!Intro.soundtrack.popcorn.paused() && video_view.popcorn.currentTime() > Intro.soundtrack.model.get('start'))
         Intro.soundtrack.pause(500);
