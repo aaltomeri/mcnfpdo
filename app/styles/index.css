@@ -5254,6 +5254,12 @@ a.badge:focus {
 .affix {
   position: fixed;
 }
+.video-pause-effect {
+  -webkit-filter: blur(6px) grayscale(40%) contrast(120%);
+}
+.no-filter {
+  -webkit-filter: none;
+}
 html * {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
