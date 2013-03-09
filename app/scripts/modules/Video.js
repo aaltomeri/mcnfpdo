@@ -184,6 +184,92 @@ function(app) {
 
     },
 
+    /**
+     * create Thubnail for this video
+     * @param dimensions object the size of the thumbnail as an object with width and height properties
+     * @return Canvas Element
+     */
+    createStill: function(dimensions) {
+
+      var v = this.popcorn.media
+      ,   $c = $('<canvas></canvas>')
+      ,   c = $c.get(0)
+      ,   context = c.getContext('2d')
+      ,   vw = this.popcorn.media.videoWidth? this.popcorn.media.videoWidth : Video.defaultWidth
+      ,   vh = this.popcorn.media.videoHeight? this.popcorn.media.videoHeight : Video.defaultHeight
+      ,   elw = this.$el.find('video').width()
+      ,   elh = this.$el.find('video').height()
+      ,   cw = (dimensions && dimensions.width)? dimensions.width : ((elw > elh)? Math.round(elh * (vw/vh)) : elw)
+      ,   ch = (dimensions && dimensions.height)? dimensions.height : ((elh > elw)?Math.round(elw * (vh/vw)) : elh)
+
+      $c.css({
+        position: "absolute"
+      });
+
+      c.width = cw;
+      c.height = ch;
+
+      context.drawImage(v,0,0,cw,ch);
+      return c;
+
+    },
+
+    /**
+     * displays video thumbnail on top of the video
+     * @param c canvas element holding the thumbnail
+     * @param position object with top and left properties
+     * @return void
+     */
+    showStill: function(c, position) {
+
+      var $c = $(c)
+
+      // remove still if already present on stage
+      if(this.still && this.still.length)
+        this.still.remove();
+
+      $c.attr('id', this.popcorn.id);
+      this.still = $c;
+
+      if(typeof(position) == "undefined")
+        position = {
+          top: 0, 
+          left: this.$el.width()/2 - $c.get(0).width/2
+        }
+
+      $c.css({
+
+        top: position.top,
+        left: position.left,
+        opacity: 0
+
+      });
+
+      // add filters
+      $c.addClass('video-pause-effect');
+
+      this.$el.append($c);
+
+      $c.transition({opacity: 1, duration: 500});
+
+    },
+
+    /**
+     * remove still image if present
+     */
+    hideStill: function() {
+
+      var still = this.still;
+
+      if(!still)
+        return;
+
+      if(this.still.length) {
+        this.still.transition({opacity: 0, duration: 600}, function() { still.remove()});
+      }
+
+    },
+
     showOverlay: function(text, styles) {
 
       this.hideOverlay();
