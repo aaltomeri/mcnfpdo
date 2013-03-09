@@ -15,6 +15,16 @@ function(app, Video, Soundtrack) {
   var Intro = app.module();
   
   Intro.init = function() {
+
+    ////////////////
+    // Soundtrack //
+    ////////////////
+    var soundtrack_model = app.sounds.find(function(model) { return model.get('name') == "Intro Soundtrack" });
+    Intro.soundtrack = new Soundtrack.View({ 
+      model: soundtrack_model
+    });
+
+    Intro.soundtrack.popcorn.loop(false);
     
     // video info for this module
     var video_model = new Video.Model({
@@ -34,25 +44,18 @@ function(app, Video, Soundtrack) {
     // when PLAYING the video ...
     video_view.popcorn.on('play', function() {
       // do not play unless paused AND we have passed th epoit where we actually want the soundtrack to play
-      if(Intro.soundtrack.popcorn.paused() && video_view.popcorn.currentTime() > 22)
+      if(Intro.soundtrack.popcorn.paused() && video_view.popcorn.currentTime() > Intro.soundtrack.model.get('start'))
         Intro.soundtrack.play(Intro.soundtrack.popcorn.currentTime(), 500);
     })
 
     // when PAUSING the video ...
     video_view.popcorn.on('pause', function() {
-      if(!Intro.soundtrack.popcorn.paused() && video_view.popcorn.currentTime() > 22)
+
+
+      if(!Intro.soundtrack.popcorn.paused() && video_view.popcorn.currentTime() > Intro.soundtrack.model.get('start'))
         Intro.soundtrack.pause(500);
+
     })
-
-    ////////////////
-    // Soundtrack //
-    ////////////////
-    var soundtrack_model = app.sounds.find(function(model) { return model.get('name') == "Intro Soundtrack" });
-    Intro.soundtrack = new Soundtrack.View({ 
-      model: soundtrack_model
-    });
-
-    Intro.soundtrack.popcorn.loop(false);
 
   };
 
@@ -107,19 +110,19 @@ function(app, Video, Soundtrack) {
 
       // start Soundtrack
       vp.code({
-        start: 22,
+        start: Intro.soundtrack.model.get('start'),
         onStart: function( options ) {
           console.log('PLAY SOUNDTRACK');
-          Intro.soundtrack.play(18, 15000);
+          Intro.soundtrack.play(Intro.soundtrack.model.get('offset'), Intro.soundtrack.model.get('fade_in_duration')*1000);
         }
       });
 
       // fadeout Soundtrack
       vp.code({
-        start: 83,
+        start: Intro.soundtrack.model.get('end'),
         onStart: function( options ) {
           console.log('PAUSE SOUNDTRACK');
-          Intro.soundtrack.pause(20000);
+          Intro.soundtrack.pause(Intro.soundtrack.model.get('fade_out_duration')*1000);
         }
       });
 

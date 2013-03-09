@@ -1,7 +1,12 @@
 [
 	{ 
         "name": "Intro Soundtrack",
-        "url": "medias/soundtracks/intro.mp3" 
+        "url": "medias/soundtracks/intro.mp3",
+        "offset": 1,
+        "start": 22,
+        "fade_in_duration": 10,
+        "end": 83,
+        "fade_out_duration": 18
     },
     { 
         "name": "TTB Soundtrack",
