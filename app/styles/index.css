@@ -5281,6 +5281,13 @@ body {
   overflow: hidden;
   font-family: 'Open Sans Condensed', sans-serif;
   letter-spacing: 1.1px;
+  font-weight: 300;
+}
+input,
+button,
+select,
+textarea {
+  font-family: 'Open Sans Condensed', sans-serif;
 }
 h1 {
   margin: 0;
@@ -5343,6 +5350,10 @@ img {
   font-size: 0.7em;
   line-height: 1.4em;
   font-style: italic;
+}
+.video .overlay .text .infos .small {
+  font-size: 0.5em;
+  line-height: 1em;
 }
 .video .overlay .text .chapter-title {
   position: relative;
