@@ -125,6 +125,9 @@ function(app, Video, Soundtrack) {
       // init video
       vv.init();
 
+      var still = vv.createStill();
+      vv.showStill(still);
+
       this.createBacktoTtbButton();
 
       this.initBehaviors();
@@ -255,9 +258,14 @@ function(app, Video, Soundtrack) {
 
           if(this.currentTime() < 15 && showIntroInfo) {
 
+            // show still
+            var still = vv.createStill();
+            vv.showStill(still);
+
             vv.showOverlay(
               '<p>Pour commencer<br />appuyez sur la barre espace<br/>ou cliquez dans l\'écran</p>'
               + '<p class="infos">Ensuite,<br/>pour explorer chaque chapitre,<br /> c\'est le même principe,<br />appuyez sur la barre espace<br/>ou cliquez dans l\'écran<br/>lorsque le nom du chapitre apparaît</p>'
+              , {background: "transparent", opacity: 0.8 }
             );
             showIntroInfo = false;
 
@@ -305,6 +313,9 @@ function(app, Video, Soundtrack) {
         
         vv.hideOverlay();
 
+        // hide still image
+        vv.hideStill();
+
         if(TTB.soundtrack.popcorn.paused())
           TTB.soundtrack.play(TTB.soundtrack.popcorn.currentTime(), 2000);
       })
@@ -312,6 +323,10 @@ function(app, Video, Soundtrack) {
       // when PAUSING the video ...
       // setup mechanism to launch a module on pause
       this.vv.popcorn.on('pause', function() {
+
+        // show still
+        var still = vv.createStill();
+        vv.showStill(still);
 
         if(chapter = vv.model.getChapterByTime(vp.currentTime())) {
 
