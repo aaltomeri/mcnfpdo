@@ -292,7 +292,7 @@ function(app, Video, Soundtrack) {
           if(this.currentTime() > 95 && !creditsDisplayed) {
             vv.showOverlay('<p>Mon corps ne fait pas d\'ombre</p><p>Un projet de Julien Fišera, Jérémie Scheidler et Thomas Mery</p>'
               + '<p class="infos">Baltasar: Vladislav Galard<br /> Musique: Thomas Mery & Jérôme Berg<br/>Images: Jérémie Scheidler</p>'
-              + '<p class="infos">Appuyez sur la barre espace ou cliquez dans l\'écran pour explorer à nouveau les différents chapitres. Vous pouvez également choisir de vous rendre directement à un des chapitres en cliquant sur une des liens ci-dessous</p>'
+              + '<p class="infos">Appuyez sur la barre espace ou cliquez dans l\'écran pour explorer à nouveau les différents chapitres. Vous pouvez également choisir de vous rendre directement à un des chapitres en cliquant sur un des liens ci-dessous</p>'
               + '<p class="infos"><a href="#BgdMap">Belgrade Ville</a> - <a href="#BgdBook">Belgrade d\'Angélica Liddell</a> - <a href="#Notebook">Carnet de notes</a> - <a href="#Mail">Très cher père</a> - <a href="#Tabloid">Belgrade +</a> - <a href="#News">Actualités</a> - <a href="#Tesla">Inconcient collectif</a> - <a href="#History">Histoire Serbe</a> - <a href="#BgdVoices">Les voix de Belgrade</a></p>'
             , { opacity: 0.8, background: "rgba(0,0,0,0.6)" } );
             hideIntroInfo = false;

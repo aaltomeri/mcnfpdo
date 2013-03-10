@@ -80,7 +80,7 @@
 		"number": "12",
 		"sources": "medias/videos/CORPS_MILOSEVIC_ARRIVE_DE_LA_HAYE.mp4",
 		"mcnfpdo_entries": [
-			"Le corps de Slobodan Milošević est rapatrié de La Haye. Pour le journal serbe "Danas", "il ne reste de lui ni monument ni voie à suivre."
+			"Le corps de Slobodan Milošević est rapatrié de La Haye. Pour le journal serbe \"Danas\", \"il ne reste de lui ni monument ni voie à suivre."
 		]
 	},
 	{	
@@ -123,7 +123,7 @@
 		"number": "18",
 		"sources": "medias/videos/FIN_ENTERREMENT_MILOSEVIC.mp4",
 		"mcnfpdo_entries": [
-			"Un cortège emportant la dépouille de Slobodan Milošević part du Parlement à Belgrade et s'achève à Pozarevać, ville natale de l'ancien président. Au même moment, les opposants invitent à un rassemblement avec ce SMS: "Serbie 18/03 à 15 heures. Place de la République. Le printemps arrive avec trois jours d'avance. Venez nous rejoindre pour souhaiter tous ensemble qu'un autre Milošević n'apparaisse plus jamais. Signe de reconnaissance: ballon. Faire suivre.""
+			"Un cortège emportant la dépouille de Slobodan Milošević part du Parlement à Belgrade et s'achève à Pozarevać, ville natale de l'ancien président. Au même moment, les opposants invitent à un rassemblement avec ce SMS: \"Serbie 18/03 à 15 heures. Place de la République. Le printemps arrive avec trois jours d'avance. Venez nous rejoindre pour souhaiter tous ensemble qu'un autre Milošević n'apparaisse plus jamais. Signe de reconnaissance: ballon. Faire suivre.\""
 		]
 	},
 	{	
