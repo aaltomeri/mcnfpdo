@@ -25,9 +25,6 @@ function(app, Buzz) {
 
 		initialize: function() {
 
-			this.popcorn = Popcorn( new Popcorn.HTMLAudioElement(this.el) );
-			this.popcorn.loop(true);
-
 			if(this.collection) {
 				this.model = this.collection.at(0);
 			}
@@ -35,7 +32,14 @@ function(app, Buzz) {
 			if(!this.model)
 				return;
 
-	  		this.popcorn.media.src = this.model.get('url');
+			this.$el.hide();
+			$('body').append(this.$el);
+
+			this.popcorn = Popcorn.smart(this.el, this.model.get('url')); 
+			//this.popcorn = Popcorn( new Popcorn.HTMLAudioElement(this.el) );
+			this.popcorn.loop(true);
+
+	  		//this.popcorn.media.src = this.model.get('url');
 
 		},
 
