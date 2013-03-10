@@ -1,4 +1,4 @@
-[       
+[     
         {       
                 "name": "Vlad Galard",
                 "sources": ["http://player.vimeo.com/video/57062883-1"],
@@ -7,7 +7,8 @@
                 "autoplay": false,
                 "enablePlayPause": false,
                 "className": "portrait",
-                "out_point": null
+                "out_point": 2,
+                "keep": true
         },
         {       
                 "name": "Laurent Sauvage",
@@ -17,7 +18,8 @@
                 "autoplay": false,
                 "enablePlayPause": false,
                 "className": "portrait",
-                "out_point": null
+                "out_point": 2,
+                "keep": true
         },
         {       
                 "name": "Julie Denisse",
@@ -28,7 +30,8 @@
                 "autoplay": false,
                 "enablePlayPause": false,
                 "className": "portrait",
-                "out_point": null
+                "out_point": 2,
+                "keep": true
         },
         {      
                 "name": "Alex Pallu",
@@ -38,7 +41,8 @@
                 "autoplay": false,
                 "enablePlayPause": false,
                 "className": "portrait",
-                "out_point": null
+                "out_point": 2,
+                "keep": true
         },
         {       
                 "name": "Dragan",
@@ -52,7 +56,7 @@
                 "name": "Baltasar",
                 "sources": ["http://player.vimeo.com/video/57071230_4"],
                 "dimensions": { "width": "40%", "height": "auto" },
-                "position": { "top": "36%", "left": "42%" },
+                "position": { "top": "30%", "left": "42%" },
                 "autoplay": false,
                 "enablePlayPause": false
         },
@@ -62,15 +66,17 @@
                 "dimensions": { "width": "40%", "height": "auto" },
                 "position": { "top": "27%", "left": "12%" },
                 "autoplay": false,
-                "enablePlayPause": false
+                "enablePlayPause": false,
+                "out_point": 5
         },
         {       
                 "name": "Baltasar",
                 "sources": ["http://player.vimeo.com/video/57071230_6"],
                 "dimensions": { "width": "40%", "height": "auto" },
-                "position": { "top": "32%", "left": "46%" },
+                "position": { "top": "30%", "left": "46%" },
                 "autoplay": false,
-                "enablePlayPause": false
+                "enablePlayPause": false,
+                "keep": true
         },
         {       
                 "name": "Dragan",
@@ -78,7 +84,8 @@
                 "dimensions": { "width": "40%", "height": "auto" },
                 "position": { "top": "27%", "left": "14%" },
                 "autoplay": false,
-                "enablePlayPause": false
+                "enablePlayPause": false,
+                "keep": true
         },
         {       
                 "name": "Elvis",
@@ -86,7 +93,8 @@
                 "dimensions": { "width": "40%", "height": "auto" },
                 "position": { "top": "24%", "left": "28%" },
                 "autoplay": false,
-                "enablePlayPause": false
+                "enablePlayPause": false,
+                "out_point": null
         },
         {       
                 "name": "Discussion à la table",
@@ -94,7 +102,8 @@
                 "dimensions": { "width": "40%", "height": "auto" },
                 "position": { "top": "4%", "left": "2%" },
                 "autoplay": false,
-                "enablePlayPause": false
+                "enablePlayPause": false,
+                "out_point": 14
         },
         {       
                 "name": "Discussion à la table",
@@ -102,7 +111,8 @@
                 "dimensions": { "width": "40%", "height": "auto" },
                 "position": { "top": "4%", "left": "24%" },
                 "autoplay": false,
-                "enablePlayPause": false
+                "enablePlayPause": false,
+                "out_point": 12
         },
         {       
                 "name": "Discussion à la table",
@@ -110,7 +120,8 @@
                 "dimensions": { "width": "40%", "height": "auto" },
                 "position": { "top": "4%", "left": "36%" },
                 "autoplay": false,
-                "enablePlayPause": false
+                "enablePlayPause": false,
+                "out_point": null
         },
         {       
                 "name": "Discussion à la table",
@@ -118,63 +129,77 @@
                 "dimensions": { "width": "40%", "height": "auto" },
                 "position": { "top": "4%", "left": "55%" },
                 "autoplay": false,
-                "enablePlayPause": false
+                "enablePlayPause": false,
+                "out_point": 21
         },
         {       
                 "name": "Torture",
                 "sources": ["http://player.vimeo.com/video/57057852_1"],
                 "dimensions": { "width": "40%", "height": "auto" },
-                "position": { "top": "56%", "left": "2%" },
+                "position": { "top": "4%", "left": "2%" },
                 "autoplay": false,
-                "enablePlayPause": false
+                "enablePlayPause": false,
+                "out_point": null,
+                "keep": true
         },
         {       
                 "name": "Torture",
                 "sources": ["http://player.vimeo.com/video/57057852_2"],
                 "dimensions": { "width": "40%", "height": "auto" },
-                "position": { "top": "56%", "left": "12%" },
+                "position": { "top": "4s%", "left": "12%" },
                 "autoplay": false,
-                "enablePlayPause": false
+                "enablePlayPause": false,
+                "out_point": null,
+                "keep": true
         },
         {       
                 "name": "Torture",
                 "sources": ["http://player.vimeo.com/video/57057852_3"],
                 "dimensions": { "width": "40%", "height": "auto" },
-                "position": { "top": "56%", "left": "24%" },
+                "position": { "top": "4%", "left": "24%" },
                 "autoplay": false,
-                "enablePlayPause": false
+                "enablePlayPause": false,
+                "out_point": null,
+                "keep": true
         },
         {       
                 "name": "Torture",
                 "sources": ["http://player.vimeo.com/video/57057852_4"],
                 "dimensions": { "width": "40%", "height": "auto" },
-                "position": { "top": "56%", "left": "36%" },
+                "position": { "top": "4%", "left": "36%" },
                 "autoplay": false,
-                "enablePlayPause": false
+                "enablePlayPause": false,
+                "out_point": null,
+                "keep": true
         },
         {       
                 "name": "Torture",
                 "sources": ["http://player.vimeo.com/video/57057852_5"],
                 "dimensions": { "width": "40%", "height": "auto" },
-                "position": { "top": "56%", "left": "46%" },
+                "position": { "top": "4%", "left": "44%" },
                 "autoplay": false,
-                "enablePlayPause": false
+                "enablePlayPause": false,
+                "out_point": null,
+                "keep": true
         },
         {       
                 "name": "Torture",
                 "sources": ["http://player.vimeo.com/video/57057852_6"],
                 "dimensions": { "width": "40%", "height": "auto" },
-                "position": { "top": "56%", "left": "55%" },
+                "position": { "top": "58%", "left": "55%" },
                 "autoplay": false,
-                "enablePlayPause": false
+                "enablePlayPause": false,
+                "out_point": null,
+                "keep": true
         },
         {       
                 "name": "Cria Cuervos",
                 "sources": ["http://player.vimeo.com/video/57063870-1"],
-                "dimensions": { "width": "40%", "height": "auto" },
-                "position": { "top": "9%", "left": "15%" },
+                "dimensions": { "width": "50%", "height": "auto" },
+                "position": { "top": "6%", "left": "48%" },
                 "autoplay": false,
                 "enablePlayPause": false,
-                "out_point": 6
+                "out_point": null,
+                "keep": true
         }
 ]

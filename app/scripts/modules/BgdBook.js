@@ -59,18 +59,63 @@ function(app, Video, SearchEngine) {
 
   });
 
-  BgdBook.Views.SearchResults = Backbone.LayoutView.extend({
-    
+  /**
+   * InfoPanel View
+   */
+  BgdBook.Views.InfoPanel = Backbone.LayoutView.extend({
+
+      className: "infos",
+      template: "modules/bgd-book/infos",
+
+      initialize: function() {
+
+        // hide at start
+        this.$el.css({opacity: 0});
+
+      },
+
+      afterRender: function() {
+
+        if(this.options.title) {
+          this.$el.find('.title').html(this.options.title);
+        }
+
+        if(this.options.text) {
+          this.$el.find('.body').html(this.options.text);
+        }
+
+      }
+
+  });
+
+
+  /**
+   * SearchResults View
+   * extends InfoPanel View and inserts search results
+   */
+  BgdBook.Views.SearchResults = BgdBook.Views.InfoPanel.extend({
     
     initialize: function() {
 
-      // hide at start
-      this.$el.css({opacity: 0});
+      // calls parent intialize method
+      BgdBook.Views.InfoPanel.prototype.initialize.apply(this, arguments);
+
+    },
+
+    afterRender: function() {
+
+      // calls parent afterRender method
+      BgdBook.Views.InfoPanel.prototype.afterRender.apply(this, arguments);
+
+      if(!SearchEngine.items && SearchEngine.error) {
+        this.$el.find('.body').append('<div><p>' + SearchEngine.error.message + '</p></div>');
+        return;
+      }
 
       var results = SearchEngine.items;
 
       for(var index = 0; index < results.length; index++) {
-        this.$el.append('<div><p><a href="' + results[index].link + '">' + results[index].htmlTitle + '</a></p></div>');
+        this.$el.find('.body').append('<div><p><a href="' + results[index].link + '">' + results[index].htmlTitle + '</a></p></div>');
       }
 
     }
@@ -83,15 +128,15 @@ function(app, Video, SearchEngine) {
     template: "bgd-book",
     id: "bgd-book",
 
-    initialize: function() {
+    currentVideoIndex: null,
+    previousVideo: null,
+    currentVideo: null,
 
-      var videos
-      ,   first_video
+    initialize: function() {
 
       this.$el.css({ 
         width: '100%', 
-        height: '100%', 
-        "-webkit-perspective": '1000px'
+        height: '100%'
       });
 
       $('#module-container').css({opacity: 0});
@@ -109,11 +154,9 @@ function(app, Video, SearchEngine) {
         });
 
         // setting views on Layout - adding true as last argument to append rather than replace
-        this.setView(new Video.Views.Main({model : model, className: model.get('className')}), true);
-      }, this);
+        //this.setView(new Video.Views.Main({model : model, className: model.get('className')}), true);
 
-      // set Search  Results View
-      var srView = this.setView('#search-results', new BgdBook.Views.SearchResults(), true);
+      }, this);
 
       // add layout to the dom
       $('#module-container').empty().append(this.el);
@@ -123,88 +166,94 @@ function(app, Video, SearchEngine) {
 
       $('#module-container').transition({opacity: 1}, 2000);
 
-      // get all video views in Layout (i.e. which model is a Video.Model)
-      videos = this.getViews(function(view) { return view.model instanceof Video.Model; });
+      // play first video
+      this.playNext(0);
+        
 
-      // init all video views behaviors
-      videos.each(function(view, index, videos) {
+    },
 
-        var next = null;
+    playNext: function(index) {
 
-        // do not do anything for last video
-        if(index != videos.length-1) {
-          next = videos[index+1];
-        }
-        else {
-          //next = videos[0];
-        }
+      this.currentVideoIndex = index;
+
+      // SHOW PANELS
+      // -----------
+      
+      // show info panel
+      // hard coded index of video to show this panel after
+      if(this.currentVideoIndex == 4) {
+        this.showInfos();
+      }
+
+      // show credits panel
+      // hard coded index of video to show this panel after
+      if(this.currentVideoIndex == this.collection.models.length - 3) {
+        this.showCredits();
+      }
+
+       // if there is no next video we dont need to setup the mechanism that launches it
+      // but we display the search results
+      if(this.currentVideoIndex > this.collection.models.length - 1) {
+
+        // this.showSearchResults();
+        // return;
+        
+      };
+
+
+
+      // INIT VIDEO
+      // ----------
+
+      var model = this.collection.at(index)
+      ,   vv = this.currentVideo = this.setView(new Video.Views.Main({model : model, className: 'bgd-book-video'}), true)
+
+      vv.render();
+      this.initVideoViewBehavior(vv, index);
+
+      var left_delta = 20
+      ,   top_delta = 20;
+
+      // play next video
+      vv.$el.transition({
+        opacity: 1,
+        left: vv.$el.position().left + (Math.floor(Math.random() * ((left_delta + left_delta + 1)) - left_delta) + 2),
+        top: vv.$el.position().top + (Math.floor(Math.random() * ((top_delta + top_delta + 1)) - top_delta) + 2)
+      }, 1000);
+
+      // PLAY VIDEO
+      vv.popcorn.play();
+
+      if(this.previousVideo)
+        vv.$el.css({"z-index": parseInt(this.previousVideo.$el.css("z-index")) + 1});
+
+      this.previousVideo = this.currentVideo;
+
+    },
+
+    initVideoViewBehavior: function(view, index) {
+
+        var _this = this
 
         // init view - i.e. create popcorn instance
         view.init();
 
-        var get_grid = function() {
-          
-          // positioning videos in a grid
-          var hz_vdo_cnt = Math.ceil(Math.sqrt(videos.length))
-          ,   vt_vdo_cnt = Math.ceil(Math.sqrt(videos.length))
-          ,   hz_delta = this.$el.width()/hz_vdo_cnt
-          ,   vt_delta = this.$el.height()/vt_vdo_cnt
-          ,   w = (100/hz_vdo_cnt) + '%'
-          ,   h = (100/vt_vdo_cnt) + '%'
-          ,   left = hz_delta*(index%hz_vdo_cnt) + (Math.floor(Math.random() * (10 + 10 + 1)) - 20)
-          ,   top = vt_delta * parseInt(index/vt_vdo_cnt) + (Math.floor(Math.random() * (10 + 10 + 1)) - 20)
-
-          return {
-            position: 'absolute',
-            width: w,
-            height: 'auto',
-            top: top,
-            left: left
-          }
-          
-
-        }
-
-        var custom_position = {
+        var styles = {
             position: 'absolute',
             top: view.model.get('position').top,
-            left: view.model.get('position').left
+            left: view.model.get('position').left,
+            "z-index": index
           }
 
         // position view
-        view.$el.css(custom_position);
-        //view.$el.css($.proxy(get_grid, this)());
-
-        view.$el.css({
-          "z-index": index,
-          opacity: 0
-        });
+        view.$el.css(styles);
 
         // set video element dimensions to match containers
+        // add border
         view.$el.find('video').css({
           width: "100%", 
           height: "auto"
         });
-
-        // create layer that will be used to cover video when it finishes playing
-        var overlay = $('<div class="video-overlay" />');
-        overlay.css({
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          background: 'white',
-          opacity: 0
-        });
-        // append overlay
-        view.$el.append(overlay);
-
-        // add border?
-        view.$el.find('video').css({border: "solid 1px black"});
-
-        // hide view as we are showing them sequentially
-        view.$el.hide();
 
         // wrap behavior init in 'canplay' event handler because we need video duration
         view.popcorn.on('canplay', function() {
@@ -212,107 +261,153 @@ function(app, Video, SearchEngine) {
           var slice = null;
           // set random out_point
           view.model.set('out_point', view.model.get('out_point')? view.model.get('out_point') : (slice? slice : view.popcorn.duration()))//Math.random()*view.popcorn.duration())//Math.random()*view.popcorn.duration()
+          
           // define timeupdate handler used to play next video if out_point has been overshot
-          var play_next = function() {
+          var playnext_handler = function() {
 
             var time = null;
 
             // overshooting out_point
             if(this.currentTime() >= view.model.get('out_point')) {
 
-              //console.log(view.model.get('name') + ' : out point : ' + view.model.get('out_point'));
-
               // remove handler
-              this.off('timeupdate', play_next);
-              
-              //view.model.set('out_point', view.model.get('out_point') + slice);//(Math.random()*view.popcorn.duration()-view.model.get('out_point')));
+              this.off('timeupdate', playnext_handler);
 
               if(view.model.get('out_point') > this.duration()) {
                 view.model.set('out_point', slice);
                 time = 0;
               }
 
-              var rotation_delta = 1;
-
-              view.$el.css({
-                "-webkit-backface-visibility": "hidden"
-              });
-
-              
-              view.$el.find('.video-overlay').transition({
-                opacity: 0
-              });
-
-              view.$el.transition({
-                opacity: 0.99,
-                scale: 0.9,
-                rotate3d: '0, 0, 1, ' + (Math.floor(Math.random() * ((rotation_delta + rotation_delta + 1)) - rotation_delta) + 2) + 'deg',
-                //rotate3d: '-1, 12, 0, ' + rotation_delta + 'deg',
-                //rotate: (Math.floor(Math.random() * (rotation_delta + rotation_delta + 1)) - rotation_delta) + 'deg',
-                //rotateZ: '10deg'
-              });
-
-              // if there is no next video we dont need to setup the mechanism that launches it
-              // but we display the search results
-              // and thus we do not pause the video
-              if(!next) {
-
-                // display Search Results View
-                srView.$el.transition({
-                  opacity: 0.99,
-                  rotate3d: '0, 0, 1, ' + 1 + 'deg',
-                  right: "20px"
-                }, 600);
-
-                return;
-                
-              };
-
               view.popcorn.pause(time);
 
-              var left_delta = 20
-              ,   top_delta = 20;
+              var rotation_delta = 1;
 
-              // play next video
-              next.$el.show();
-              next.$el.transition({
-                opacity: 1,
-                left: next.$el.position().left + (Math.floor(Math.random() * ((left_delta + left_delta + 1)) - left_delta) + 2),
-                top: next.$el.position().top + (Math.floor(Math.random() * ((top_delta + top_delta + 1)) - top_delta) + 2)
-              }, 1000);
-              next.popcorn.play();
-              next.$el.css({"z-index": parseInt(view.$el.css("z-index")) + 1});
+              // remove video or whole view
+              if(!view.model.get('keep')) {
 
-              // click on video that has just played
-              view.$el.find('.video-overlay').on('click', function() {
-                console.log('click');
-                $(this).parent().css({'z-index': 1000});
-              });
-              
+                view.$el.transition({
+                  opacity:0,
+                  scale: 0.9,
+                  rotate3d: '0, 0, 1, ' + (Math.floor(Math.random() * ((rotation_delta + rotation_delta + 1)) - rotation_delta) + 2) + 'deg',
+                }, function() { 
+
+                  view.popcorn.destroy();
+                  view.$el.remove();
+
+                });
+
+              }
+              else {
+
+                // show still
+                var still = view.createStill();
+                view.showStill(still, true, {top: 0, left: 0}, function() {
+
+                    view.popcorn.destroy();
+                    view.$el.find('video').remove();
+
+                      view.$el.transition({
+                        duration: 1000,
+                        opacity: 0.99,
+                        scale: 0.9,
+                        rotate3d: '0, 0, 1, ' + (Math.floor(Math.random() * ((rotation_delta + rotation_delta + 1)) - rotation_delta) + 2) + 'deg',
+                      });
+
+                });
+
+              }
+
+              _this.currentVideoIndex++;
+
+              _this.playNext(_this.currentVideoIndex);
+            
             }
-
           }
 
           // make videos start next video on ending
-          view.popcorn.on('timeupdate', play_next);
+          view.popcorn.on('timeupdate', playnext_handler);
 
         });
 
+    },
 
-      }, this);
-        
-      // get first video
-      first_video = videos.first().value()
+    showPanel: function(id, title, text, panelRotate3dParams, delay) {
 
-      // show first video
-      first_video.$el.show();
-      first_video.$el.transition({opacity: 1}, 2000);
-      // play it
-      first_video.popcorn.play();
+      // set Search  Results View
+      var view = this.setView(
+        '#' + id, 
+        new BgdBook.Views.InfoPanel(
+          {
+            title: title,
+            text: text
+          }), true
+      )
+      view.render();
+
+      // display Search Results View
+      view.$el.transition({
+        delay: delay? delay : 0,
+        opacity: 0.99,
+        rotate3d: panelRotate3dParams? panelRotate3dParams : '-1, 0, 0, -4deg'
+      }, 600);
 
     },
 
+    showSearchResults: function(title) {
+
+      // set Search  Results View
+      var view = this.setView('#search-results', new BgdBook.Views.SearchResults({title: "Belgrade / Liens"}), true)
+      view.render();
+
+      // display Search Results View
+      view.$el.transition({
+        opacity: 0.99,
+        rotate3d: '4, -20, 11, 4deg'
+      }, 600);
+
+    },
+
+    showInfos: function() {
+
+      this.showPanel(
+          "infos",
+          "répétitions de \"Belgrade\"",
+          "<p>Images des répétitions de \"Belgrade\" au Théâtre Paul Eluard de Choisy-le-Roi et au Théâtre de Vanves.</p><p>Avec les comédiens Julie Denisse, Vladislav Galard, Alexandre Pallu, Laurent Sauvage.</p><p>Septembre 2012.</p>"
+          , '-1, 0, -2, -2deg'
+          , 4000
+        );
+
+    },
+
+    showCredits: function() {
+
+      this.showPanel(
+          "credits",
+          "\"Belgrade\" d'Angélica Liddell",
+          "<p>traduction Christilla Vasserot</p>"
+          + "<p>Mise en scène <strong>Julien Fisera</strong></o>"
+          + "<p>Avec <strong>Julie Denisse</strong>, <strong>Vladislav Galard</strong>, <strong>Alexandre Pallu</strong>, <strong>Laurent Sauvage</strong></p>"
+          + "<p>Editions Théâtrales / Maison Antoine Vitez</p>"
+          + "<p>Dates de représentation :<br/>"
+          + "<strong>Du 18 au 22 mars 2013</strong> - La Comédie de Saint-Etienne CDN<br/>"
+          + "<strong>Du 28 mai au 1er juin 2013</strong> - Théâtre de Vanves SC<br/>"
+          + "<strong>Septembre 2013</strong> - Festival BITEF Belgrade <br/>"
+          + "<strong>3 octobre 2013</strong> - Le Grand R, Scène nationale de La Roche-sur-Yon<br/>"
+          + "<strong>Octobre</strong> - Reprise au Théâtre de Vanves SC</p>"
+          + "<a href=\"http://www.compagnieespacecommun.com\" target=\"\_blank\">Compagnie Espace commun</a><br/>"
+          + "<a href=\"http://www.thomas-mery.net\" target=\"\_blank\">Thomas Mery</a><br/>"
+          + "<a href=\"http://jeremiescheidler.com\" target=\"\_blank\">Jérémie Scheidler</a><br/>"
+          + "<a href=\"http://www.magnanerie-spectacle.com/la_magnanerie.html\" target=\"\_blank\">La Magnanerie</a><br/>"
+          + "<a href=\"http://www.lacomedie.fr/index.php/fr/les-productions/coproductions/icalrepeat.detail/2013/03/18/181/-/belgrade\" target=\"\_blank\">La Comédie de Saint-Etienne</a><br/>"
+          + "<a href=\"http://www.theatre-vanves.fr/fiche-simple.php?cle=belgrade\" target=\"\_blank\">Le Théâtre de Vanves</a><br/>"
+          + "<a href=\"http://www.bitef.rs/festival/?pg=predstave&jez=en\" target=\"\_blank\">Bitef Festival</a><br/>"
+        , "-1, -1, 1, -1deg");
+
+    }
+
   });
+
+  
 
   BgdBook.destroy = function() {
 

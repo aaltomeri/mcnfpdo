@@ -1,0 +1,100 @@
+@import "../../../bootstrap/less/variables.less";
+@import "../../../bootstrap/less/mixins.less";
+
+#bgd-book {
+
+	.video-pause-effect {-webkit-filter: grayscale(50%);}
+
+	height: 100%;
+	position: relative;
+
+	.bgd-book-video {
+
+		position: absolute;
+		opacity: 0.99;
+		-webkit-backface-visibility : hidden;
+
+		> video,
+		> canvas {
+			border: solid 8px white;
+			.box-shadow(2px 2px 5px #333);
+		}
+
+	}
+
+	#infos,
+	#search-results,
+	#credits {
+
+		position: absolute;
+		font-size: 17px;
+		
+		z-index: 2000;
+
+		perspective: 200px;  /* W3C */
+		-webkit-perspective: 200px; /* Safari & Chrome */
+		-moz-perspective: 200px; /* Firefox */
+		-ms-perspective: 200px; /* Internet Explorer */
+		-o-perspective: 200px; /* Opera */
+
+
+	}
+
+	#infos {
+
+		left: 33%;
+		bottom: 3%;
+		width: 35%;
+		height: auto;
+		z-index: 2010;
+	}
+
+	#credits {
+
+		left: 50px;
+		top: 2%;
+		width: 41%;
+		height: auto;
+
+	}
+
+	#search-results {
+
+		right: 50px;
+		top: 2%;
+		width: 35%;
+		height: 88%;
+
+	}
+
+	.infos {
+
+		padding: 20px;
+		background: black;
+		color: white;
+		border: solid 8px white;
+
+		.box-shadow(2px 2px 5px #333);
+
+		a {
+
+			text-decoration: none;
+			color: #ffa400;
+
+			&:hover{
+
+				color: #fff;
+
+			}
+
+		}
+
+		h3.title {
+
+			margin-top: 0;
+
+		}
+		
+	}
+
+}

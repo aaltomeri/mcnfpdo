@@ -1,45 +1,106 @@
+.clearfix {
+  *zoom: 1;
+}
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.clearfix:after {
+  clear: both;
+}
+.hide-text {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+.input-block-level {
+  display: block;
+  width: 100%;
+  min-height: 30px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
 #bgd-book {
+  height: 100%;
+  position: relative;
+}
+#bgd-book .video-pause-effect {
+  -webkit-filter: grayscale(50%);
+}
+#bgd-book .bgd-book-video {
+  position: absolute;
+  opacity: 0.99;
+  -webkit-backface-visibility: hidden;
+}
+#bgd-book .bgd-book-video > video,
+#bgd-book .bgd-book-video > canvas {
+  border: solid 8px white;
+  -webkit-box-shadow: 2px 2px 5px #333333;
+  -moz-box-shadow: 2px 2px 5px #333333;
+  box-shadow: 2px 2px 5px #333333;
+}
+#bgd-book #infos,
+#bgd-book #search-results,
+#bgd-book #credits {
+  position: absolute;
+  font-size: 17px;
+  z-index: 2000;
+  perspective: 200px;
+  /* W3C */
 
-	height: 100%;
-	position: relative;
+  -webkit-perspective: 200px;
+  /* Safari & Chrome */
+
+  -moz-perspective: 200px;
+  /* Firefox */
+
+  -ms-perspective: 200px;
+  /* Internet Explorer */
+
+  -o-perspective: 200px;
+  /* Opera */
 
 }
-
+#bgd-book #infos {
+  left: 33%;
+  bottom: 3%;
+  width: 35%;
+  height: auto;
+  z-index: 2010;
+}
+#bgd-book #credits {
+  left: 50px;
+  top: 2%;
+  width: 41%;
+  height: auto;
+}
 #bgd-book #search-results {
-
-	position: absolute;
-	right: 10px;
-	top: 2%;
-	width: 35%;
-	height: 88%;
-
-	z-index: 2000;
-
-	font-size: 17px;
-
+  right: 50px;
+  top: 2%;
+  width: 35%;
+  height: 88%;
 }
-
-#bgd-book #search-results a {
-
-	text-decoration: none;
-	color: #ae3d00;
-
+#bgd-book .infos {
+  padding: 20px;
+  background: black;
+  color: white;
+  border: solid 8px white;
+  -webkit-box-shadow: 2px 2px 5px #333333;
+  -moz-box-shadow: 2px 2px 5px #333333;
+  box-shadow: 2px 2px 5px #333333;
 }
-
-#bgd-book #search-results > div {
-
-	padding: 20px;
-	background: black;
-	color: white;
-	border: solid 8px white;
-
+#bgd-book .infos a {
+  text-decoration: none;
+  color: #ffa400;
 }
-
-#bgd-book .portrait {
-
-	float: left;
-	backface-visibility:hidden;
-	-webkit-backface-visibility:hidden; /* Chrome and Safari */
-	-moz-backface-visibility:hidden; /* Firefox */
-
+#bgd-book .infos a:hover {
+  color: #fff;
+}
+#bgd-book .infos h3.title {
+  margin-top: 0;
 }
