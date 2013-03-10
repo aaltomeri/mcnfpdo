@@ -108,14 +108,14 @@
 		"number": "16",
 		"sources": "https://www.youtube.com/watch?v=aj-NJe3CtKY",
 		"mcnfpdo_entries": [
-		
+			"Missionné par son père, Baltasar rencontre des habitants de Belgrade et les interroge sur les rapports qu'ils entretenaient avec l'ancien président."
 		]
 	},
 	{	
 		"number": "17",
 		"sources": null,
 		"mcnfpdo_entries": [
-				"Baltasar se rend pour la première fois au Musée de la Révolution où a été exposée la dépouille de Slobodan Milošević. Il rencontre Dragan, un gardien de musée, chargé d'empêcher les Serbes nostalgiques de déposer des fleurs à l'endroit où le corps de Slobodan Milošević vient d'être exposé."
+				"Baltasar se rend pour la première fois au Musée de la Révolution où a été exposée la dépouille de Slobodan Milošević. Il y rencontre Dragan, un gardien de musée, chargé d'empêcher les Serbes nostalgiques de déposer des fleurs à l'endroit où le corps de Slobodan Milošević vient d'être exposé."
 
 		]
 	},
@@ -144,14 +144,14 @@
 		"number": "21",
 		"sources": "http://www.youtube.com/watch?v=Ppl-7-uiU8I",
 		"mcnfpdo_entries": [
-
+		
 		]
 	},
 	{	
 		"number": "22",
 		"sources": null,
 		"mcnfpdo_entries": [
-
+		"Baltasar apprend la mort de son amie Agnes, restée à Belgrade."
 		]
 	},
 	{	
