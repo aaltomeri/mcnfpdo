@@ -17,7 +17,7 @@
 		"number": "3",
 		"sources": null,
 		"mcnfpdo_entries": [
-			"Promenade le long des quais du Danube"
+			
 		]
 	},
 	{	
@@ -38,7 +38,7 @@
 		"number": "6",
 		"sources": "https://www.youtube.com/watch?v=m3ezD4gqcaY",
 		"mcnfpdo_entries": [
-			"Visite à Agnes : Boulevard Nicolas Tesla"
+			
 		]
 	},
 	{	
@@ -80,7 +80,7 @@
 		"number": "12",
 		"sources": "medias/videos/CORPS_MILOSEVIC_ARRIVE_DE_LA_HAYE.mp4",
 		"mcnfpdo_entries": [
-			"Le corps de Slobodan Milosevic est rapatrié de La Haye"
+			"Le corps de Slobodan Milošević est rapatrié de La Haye."
 		]
 	},
 	{	
