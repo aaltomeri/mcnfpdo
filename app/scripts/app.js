@@ -33,7 +33,9 @@ function($, _, Backbone, Chapters, Sounds) {
 
     chapters: new Backbone.Collection($.parseJSON(Chapters)),
 
-    sounds: new Backbone.Collection($.parseJSON(Sounds))
+    sounds: new Backbone.Collection($.parseJSON(Sounds)),
+
+    muted: false
 
   };
 

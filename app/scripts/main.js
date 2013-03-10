@@ -23,6 +23,23 @@ function(app, Router) {
   $(window).on('resize', function() { 
     app.resizeMain(); 
   });
+
+  // global mute
+  $('#global-mute').on('click', function() {
+
+    if(!app.muted) {
+      $(this).html('SOUND is OFF');
+      _.each(Popcorn.instances, function(instance) { instance.mute(true); });
+      app.muted = true;
+    }
+    else {
+      $(this).html('SOUND is ON');
+      _.each(Popcorn.instances, function(instance) { instance.mute(false); });
+      app.muted = false;
+    }
+
+
+  });
   
   // Trigger the initial route and enable HTML5 History API support, set the
   // root folder to '/' by default.  Change in app.js.
