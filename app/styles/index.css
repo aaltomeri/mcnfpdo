@@ -5295,6 +5295,11 @@ h1 {
 img {
   max-width: none;
 }
+#global-mute {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
 #main {
   position: relative;
   width: 100%;
