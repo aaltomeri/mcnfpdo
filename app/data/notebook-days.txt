@@ -73,14 +73,14 @@
 		"number": "11",
 		"sources": "medias/videos/mort_de_Milosevic_france3.mp4",
 		"mcnfpdo_entries": [
-
+			
 		]
 	},
 	{	
 		"number": "12",
 		"sources": "medias/videos/CORPS_MILOSEVIC_ARRIVE_DE_LA_HAYE.mp4",
 		"mcnfpdo_entries": [
-			"Le corps de Slobodan Milošević est rapatrié de La Haye."
+			"Le corps de Slobodan Milošević est rapatrié de La Haye. Pour le journal serbe "Danas", "il ne reste de lui ni monument ni voie à suivre."
 		]
 	},
 	{	
