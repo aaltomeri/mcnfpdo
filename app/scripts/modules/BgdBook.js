@@ -371,8 +371,8 @@ function(app, Video, SearchEngine) {
 
       this.showPanel(
           "infos",
-          "répétitions de \"Belgrade\"",
-          "<p>Images des répétitions de \"Belgrade\" au Théâtre Paul Eluard de Choisy-le-Roi et au Théâtre de Vanves.</p><p>Avec les comédiens Julie Denisse, Vladislav Galard, Alexandre Pallu, Laurent Sauvage.</p><p>Septembre 2012.</p>"
+          "Répétitions de \"Belgrade\"",
+          "<p>Images des répétitions de la pièce \"Belgrade\".</p><p>Avec les comédiens Julie Denisse, Vladislav Galard, Alexandre Pallu, Laurent Sauvage.</p><p>Septembre 2012.</p>"
           , '-1, 0, -2, -2deg'
           , 4000
         );
@@ -385,9 +385,9 @@ function(app, Video, SearchEngine) {
           "credits",
           "\"Belgrade\" d'Angélica Liddell",
           "<p>traduction Christilla Vasserot</p>"
-          + "<p>Mise en scène <strong>Julien Fisera</strong></o>"
+          + "<p>Mise en scène <strong>Julien Fišera</strong></o>"
           + "<p>Avec <strong>Julie Denisse</strong>, <strong>Vladislav Galard</strong>, <strong>Alexandre Pallu</strong>, <strong>Laurent Sauvage</strong></p>"
-          + "<p>Editions Théâtrales / Maison Antoine Vitez</p>"
+          + "<p>Editions Théâtrales / Maison Antoine Vitez (2010)</p>"
           + "<p>Dates de représentation :<br/>"
           + "<strong>Du 18 au 22 mars 2013</strong> - La Comédie de Saint-Etienne CDN<br/>"
           + "<strong>Du 28 mai au 1er juin 2013</strong> - Théâtre de Vanves SC<br/>"
