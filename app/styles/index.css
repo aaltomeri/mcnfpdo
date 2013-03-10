@@ -5255,7 +5255,7 @@ a.badge:focus {
   position: fixed;
 }
 .video-pause-effect {
-  -webkit-filter: blur(6px) grayscale(40%) contrast(120%);
+  -webkit-filter: blur(6px) grayscale(40%) contrast(110%);
 }
 .no-filter {
   -webkit-filter: none;
