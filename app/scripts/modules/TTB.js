@@ -23,7 +23,7 @@ function(app, Video, Soundtrack) {
     var video_model = new Video.Model({
 
       name: 'TTB',
-      sources: ['medias/videos/ttb.mp4', 'medias/videos/ttb.webm'],
+      sources: [ 'medias/videos/ttb.webm', 'medias/videos/ttb.mp4'],
       dimensions: { width: '100%', height: '100%' },
       //sources: ['http://player.vimeo.com/video/56203539'],
       //dimensions: { width: '1280px', height: '720px' }

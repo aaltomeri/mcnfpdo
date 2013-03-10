@@ -29,7 +29,7 @@ function(app, Video, Soundtrack) {
     // video info for this module
     var video_model = new Video.Model({
       name: 'Intro',
-      sources: ['medias/videos/intro.mp4'],
+      sources: ['medias/videos/intro.webm', 'medias/videos/intro.mp4'],
       dimensions: { width: '100%', height: '100%' },
       //sources: ['http://player.vimeo.com/video/56203539'],
       //dimensions: { width: '1280px', height: '720px' }
