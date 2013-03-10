@@ -220,7 +220,7 @@ function(app) {
      * @param position object with top and left properties
      * @return void
      */
-    showStill: function(c, position) {
+    showStill: function(c, effect, position, callback) {
 
       var $c = $(c)
 
@@ -231,7 +231,7 @@ function(app) {
       $c.attr('id', this.popcorn.id);
       this.still = $c;
 
-      if(typeof(position) == "undefined")
+      if(typeof(position) == "undefined" || !position)
         position = {
           top: 0, 
           left: this.$el.width()/2 - $c.get(0).width/2
@@ -245,12 +245,14 @@ function(app) {
 
       });
 
-      // add filters
-      $c.addClass('video-pause-effect');
+      if(effect) {
+        // add filters
+        $c.addClass('video-pause-effect');
+      }
 
       this.$el.append($c);
 
-      $c.transition({opacity: 1, duration: 500});
+      $c.transition({opacity: 1, duration: 500}, callback);
 
     },
 
