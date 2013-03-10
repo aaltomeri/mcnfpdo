@@ -1,7 +1,7 @@
 [
 	{ 
         "name": "Intro Soundtrack",
-        "url": "medias/soundtracks/intro.mp3",
+        "url": [ "medias/soundtracks/intro.ogg", "medias/soundtracks/intro.mp3"],
         "offset": 1,
         "start": 22,
         "fade_in_duration": 10,
@@ -10,7 +10,7 @@
     },
     { 
         "name": "TTB Soundtrack",
-        "url": "medias/soundtracks/ttb.mp3" 
+        "url": ["medias/soundtracks/ttb.ogg", "medias/soundtracks/ttb.mp3"]
     },
     { 
 		"name": "Ada Ciganlija",
