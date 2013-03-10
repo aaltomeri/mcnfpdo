@@ -101,42 +101,43 @@
 		"number": "15",
 		"sources": "medias/videos/Gran_Marcha_2006_Los_Angeles.mp4",
 		"mcnfpdo_entries": [
-			"Baltasar arrive à <a href=\"#BgdMap\">Belgrade</a>"
+			"Baltasar met les pieds pour la première fois à <a href=\"#BgdMap\">Belgrade</a>. Il retrouve à l'hôtel Agnes, une amie, ancienne reporter de guerre de retour du Kosovo."
 		]
 	},
 	{	
 		"number": "16",
 		"sources": "https://www.youtube.com/watch?v=aj-NJe3CtKY",
 		"mcnfpdo_entries": [
-			"Baltasar se rend pour la première fois au Musée de la Révolution pour voir la dépouille de Slobodan Milošević."
+		
 		]
 	},
 	{	
 		"number": "17",
 		"sources": null,
 		"mcnfpdo_entries": [
-			"Baltasar se rend à nouveau au Musée de la Révolution."
+				"Baltasar se rend pour la première fois au Musée de la Révolution où a été exposée la dépouille de Slobodan Milošević. Il rencontre Dragan, un gardien de musée, chargé d'empêcher les Serbes nostalgiques de déposer des fleurs à l'endroit où le corps de Slobodan Milošević vient d'être exposé."
+
 		]
 	},
 	{	
 		"number": "18",
 		"sources": "medias/videos/FIN_ENTERREMENT_MILOSEVIC.mp4",
 		"mcnfpdo_entries": [
-			"Enterrement de Slobodan Milosevic"
+			"Un cortège emportant la dépouille de Slobodan Milošević part du Parlement à Belgrade et s'achève à Pozarevać, ville natale de l'ancien président. Au même moment, les opposants invitent à un rassemblement avec ce SMS: "Serbie 18/03 à 15 heures. Place de la République. Le printemps arrive avec trois jours d'avance. Venez nous rejoindre pour souhaiter tous ensemble qu'un autre Milošević n'apparaisse plus jamais. Signe de reconnaissance: ballon. Faire suivre.""
 		]
 	},
 	{	
 		"number": "19",
 		"sources": null,
 		"mcnfpdo_entries": [
-			"Baltasar se fait séquestrer par Željko."
+			"Baltasar se rend à nouveau au Musée de la Révolution où il retrouve Dragan qui lui présente son neveu Jovan. Baltasar se fait kidnapper et séquestrer par Željko, un ancien militaire, partisan du régime de Milošević. Ce dernier lui laissera la vie sauve."
 		]
 	},
 	{	
 		"number": "20",
 		"sources": null,
 		"mcnfpdo_entries": [
-			"Baltasar rentre en Espagne."
+			"Baltasar prend la décision de rentrer en Espagne. Il abandonne derrière lui ses 'carnets de Belgrade'."
 		]
 	},
 	{	
@@ -199,7 +200,7 @@
 		"number": "29",
 		"sources": "http://www.youtube.com/watch?v=AzuXaOvuJtU",
 		"mcnfpdo_entries": [
-			"Baltasar fait la connaissance de Borislav."
+			"Baltasar fait en Espagne la connaissance de Borislav, le frère de son ancien tortionnaire Željko."
 		]
 	},
 	{	
