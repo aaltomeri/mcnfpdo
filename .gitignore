@@ -5,6 +5,7 @@ dist
 *.webm
 *.mp4
 *.mp3
+*.ogg
 *.sublime-workspace
 *.sublime-project
 .sass-cache
