@@ -101,7 +101,7 @@
 			"Lat": 44.810758,
 			"Lng": 20.455136
 		},
-		"vimeo_id": null
+		"vimeo_id": 61473179
 	},
 	{	
 		"name": "Colleur d'affiches",
@@ -109,7 +109,7 @@
 			"Lat": 44.811276,
 			"Lng": 20.454524
 		},
-		"vimeo_id": null
+		"vimeo_id": 61473182
 	},
 	{	
 		"name": "Trg Republike: flashmob",
@@ -117,7 +117,7 @@
 			"Lat": 44.816398,
 			"Lng": 20.460286
 		},
-		"vimeo_id": null
+		"vimeo_id": 61473183
 	},
 	{	
 		"name": "Danube Savane (Casino)",
@@ -133,7 +133,7 @@
 			"Lat": 44.788133,
 			"Lng": 20.45181
 		},
-		"vimeo_id": null
+		"vimeo_id": 61473389
 	},
 	{	
 		"name": "Escalier extérieur à Novi Beograd",
@@ -141,7 +141,7 @@
 			"Lat": 44.804303,
 			"Lng": 20.379873
 		},
-		"vimeo_id": null
+		"vimeo_id": 61473390
 	},
 	{	
 		"name": "Par la fenètre à Molerova",
@@ -149,7 +149,7 @@
 			"Lat": 44.804296,
 			"Lng": 20.475596
 		},
-		"vimeo_id": null
+		"vimeo_id": 61478880
 	},
 	{	
 		"name": "Café Plato avec étudiants",
@@ -157,7 +157,7 @@
 			"Lat": 44.818148,
 			"Lng": 20.457835
 		},
-		"vimeo_id": null
+		"vimeo_id": 61480159
 	},
 	{	
 		"name": "Marché avec fontaine",
@@ -165,7 +165,7 @@
 			"Lat": 44.818917,
 			"Lng": 20.467424
 		},
-		"vimeo_id": null
+		"vimeo_id": 61483977
 	},
 	{	
 		"name": "Gare (bar timelapse)",
@@ -173,7 +173,7 @@
 			"Lat": 44.808288,
 			"Lng": 20.457299
 		},
-		"vimeo_id": null
+		"vimeo_id": 61478883
 	},
 	{	
 		"name": "Dans la gare de Belgrade: vieux sur banc",
@@ -333,7 +333,7 @@
 			"Lat": 44.796706,
 			"Lng": 20.446134
 		},
-		"vimeo_id": null
+		"vimeo_id": 61483979
 	},
 	{	
 		"name": "Tondeur de pelouse au bord de l'eau (Casino)",
