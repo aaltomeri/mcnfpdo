@@ -151,7 +151,7 @@ function(app) {
         // create google maps Marker
         var mrkr = new google.maps.Marker({
           animation: google.maps.Animation.DROP,
-          title: place.get('name')
+          title: ""//place.get('name')
         });
 
         // delayed Marker placement for a nice visual effect on arrival
