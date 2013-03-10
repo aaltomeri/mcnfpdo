@@ -57,7 +57,7 @@ function(app, Video, Soundtrack) {
 
       // show still
       var still = video_view.createStill();
-      video_view.showStill(still);
+      video_view.showStill(still, true);
 
       if(!Intro.soundtrack.popcorn.paused() && video_view.popcorn.currentTime() > Intro.soundtrack.model.get('start'))
         Intro.soundtrack.pause(500);
