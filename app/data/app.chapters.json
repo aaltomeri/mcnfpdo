@@ -55,8 +55,8 @@
         "soundtrack_mode": "linear" 
     },
     { 
-    	"name": "WarTrauma",
-    	"title": "Traumatisme de guerre",
+    	"name": "BgdVoices",
+    	"title": "Les voix de Belgrade",
     	"start": "32", "end": "37",
     	"soundtrack": ["Sur Le Marché"],
         "soundtrack_mode": "linear" 

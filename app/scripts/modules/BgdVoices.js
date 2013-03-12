@@ -2,20 +2,29 @@
 define([
   // Application.
   "app",
+  "Howler",
+  "Howl",
 
   // Css
-  "css!../../styles/war-trauma.css"
+  "css!../../styles/bgd-voices.css"
 ],
 
 // Map dependencies from above array.
-function(app) {
+function(app, Howler, Howl) {
 
   // Create a new module.
   var WarTrauma = app.module();
 
   WarTrauma.init = function() {
 
-    console.log('WarTrauma INIT');
+    console.log('BgdVoices INIT');
+
+    // var sound = new Howl({
+    //   urls: app.sounds.at(0).get('url')
+    // }).play();
+
+
+    console.log(app.sounds.at(0).get('url'))
 
     var layout = new WarTrauma.Views.Layout();
 
