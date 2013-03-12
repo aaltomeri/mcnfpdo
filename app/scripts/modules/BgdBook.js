@@ -10,18 +10,15 @@ define([
 // Map dependencies from above array.
 function(app, Video, SearchEngine) {
 
-  console.log(SearchEngine);
-
   // Create a new module.
-  var BgdBook = app.module();
+  var BgdBook = app.module()
+  ,   layout
 
   BgdBook.init = function() {
 
     console.log('BgdBook INIT');
 
     BgdBook.soundtrack.pause();
-
-    var layout;
 
     var videos = new BgdBook.Collection();
 
