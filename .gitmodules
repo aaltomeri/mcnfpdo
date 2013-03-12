@@ -4,3 +4,6 @@
 [submodule "app/scripts/vendor/buzz"]
 	path = app/scripts/vendor/buzz
 	url = git@github.com:thomasmery/buzz.git
+[submodule "app/scripts/vendor/howler"]
+	path = app/scripts/vendor/howler
+	url = git@github.com:mostlygeek/howler.js.git

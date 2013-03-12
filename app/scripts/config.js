@@ -18,7 +18,9 @@ require.config({
     backbone: "libs/backbone",
     popcorn: "vendor/popcorn-complete",
     transit: "vendor/jquery.transit",
-    buzz: "vendor/buzz/buzz", 
+    buzz: "vendor/buzz/buzz",
+    Howler: "vendor/howler/howler",
+    Howl: "vendor/howler/howler"
   },
 
   map: {
