@@ -1,5 +1,5 @@
 /*
- * popcorn.js version c492f16
+ * popcorn.js version 82c80e3
  * http://popcornjs.org
  *
  * Copyright 2011, Mozilla Foundation
@@ -100,7 +100,7 @@
   };
 
   //  Popcorn API version, automatically inserted via build system.
-  Popcorn.version = "c492f16";
+  Popcorn.version = "82c80e3";
 
   //  Boolean flag allowing a client to determine if Popcorn can be supported
   Popcorn.isSupported = true;
@@ -2332,18 +2332,18 @@
   var rparams = /\?/,
   //  XHR Setup object
   setup = {
+    ajax: null,
     url: "",
     data: "",
     dataType: "",
     success: Popcorn.nop,
     type: "GET",
     async: true,
-    xhr: function() {
-      return new global.XMLHttpRequest();
-    }
+    contentType: "application/x-www-form-urlencoded; charset=UTF-8"
   };
 
   Popcorn.xhr = function( options ) {
+    var settings;
 
     options.dataType = options.dataType && options.dataType.toLowerCase() || null;
 
@@ -2358,10 +2358,12 @@
       return;
     }
 
-    var settings = Popcorn.extend( {}, setup, options );
+    //  Merge the "setup" defaults and custom "options"
+    //  into a new plain object.
+    settings = Popcorn.extend( {}, setup, options );
 
     //  Create new XMLHttpRequest object
-    settings.ajax  = settings.xhr();
+    settings.ajax = new XMLHttpRequest();
 
     if ( settings.ajax ) {
 
@@ -2374,8 +2376,16 @@
         settings.data = null;
       }
 
-
+      //  Open the request
       settings.ajax.open( settings.type, settings.url, settings.async );
+
+      //  For POST, set the content-type request header
+      if ( settings.type === "POST" ) {
+        settings.ajax.setRequestHeader(
+          "Content-Type", settings.contentType
+        );
+      }
+
       settings.ajax.send( settings.data || null );
 
       return Popcorn.xhr.httpData( settings );
@@ -4250,8 +4260,8 @@
 
       // Parse out the start and duration, if specified
       var fragments = temporalRegex.exec( aSrc ),
-          start = fragments[ 1 ],
-          duration = fragments [ 2 ];
+          start = +fragments[ 1 ],
+          duration = +fragments[ 2 ];
 
       player = new NullPlayer({
         currentTime: start,
@@ -5908,11 +5918,15 @@
       },
       playerReady = false,
       catchRoguePauseEvent = false,
+      catchRoguePlayEvent = false,
       mediaReady = false,
       loopedPlay = false,
       player,
       playerPaused = true,
       mediaReadyCallbacks = [],
+      playerState = -1,
+      bufferedInterval,
+      lastLoadedFraction = 0,
       currentTimeInterval,
       timeUpdateInterval,
       firstPlay = true;
@@ -5930,6 +5944,14 @@
     }
 
     function onPlayerReady( event ) {
+      var onMuted = function() {
+        if ( player.isMuted() ) {
+          // force an initial play on the video, to remove autostart on initial seekTo.
+          player.playVideo();
+        } else {
+          setTimeout( onMuted, 0 );
+        }
+      };
       playerReady = true;
       // XXX: this should really live in cued below, but doesn't work.
 
@@ -5937,8 +5959,8 @@
       // sound to leak out. Muting before to prevent this.
       player.mute();
 
-      // force an initial play on the video, to remove autostart on initial seekTo.
-      player.playVideo();
+      // ensure we are muted.
+      onMuted();
     }
 
     function getDuration() {
@@ -6005,10 +6027,6 @@
     function onPlayerStateChange( event ) {
       switch( event.data ) {
 
-        // unstarted
-        case -1:
-          break;
-
         // ended
         case YT.PlayerState.ENDED:
           onEnded();
@@ -6024,10 +6042,16 @@
             // fake ready event
             firstPlay = false;
 
+            addMediaReadyCallback(function() {
+              bufferedInterval = setInterval( monitorBuffered, 50 );
+            });
+
             // Set initial paused state
             if( impl.autoplay || !impl.paused ) {
               impl.paused = false;
-              addMediaReadyCallback( function() { onPlay(); } );
+              addMediaReadyCallback(function() {
+                onPlay();
+              });
             } else {
               // if a pause happens while seeking, ensure we catch it.
               // in youtube seeks fire pause events, and we don't want to listen to that.
@@ -6062,6 +6086,9 @@
             // We can't easily determine canplaythrough, but will send anyway.
             impl.readyState = self.HAVE_ENOUGH_DATA;
             self.dispatchEvent( "canplaythrough" );
+          } else if ( catchRoguePlayEvent ) {
+            catchRoguePlayEvent = false;
+            player.pauseVideo();
           } else {
             onPlay();
           }
@@ -6089,6 +6116,13 @@
           // XXX: cued doesn't seem to fire reliably, bug in youtube api?
           break;
       }
+
+      if ( event.data !== YT.PlayerState.BUFFERING &&
+           playerState === YT.PlayerState.BUFFERING ) {
+        onProgress();
+      }
+
+      playerState = event.data;
     }
 
     function destroyPlayer() {
@@ -6096,6 +6130,7 @@
         return;
       }
       clearInterval( currentTimeInterval );
+      clearInterval( bufferedInterval );
       player.stopVideo();
       player.clearVideo();
 
@@ -6204,6 +6239,20 @@
       }
     }
 
+    function monitorBuffered() {
+      var fraction = player.getVideoLoadedFraction();
+
+      if ( lastLoadedFraction !== fraction ) {
+        lastLoadedFraction = fraction;
+
+        onProgress();
+
+        if ( fraction >= 1 ) {
+          clearInterval( bufferedInterval );
+        }
+      }
+    }
+
     function getCurrentTime() {
       return impl.currentTime;
     }
@@ -6253,6 +6302,7 @@
       timeUpdateInterval = setInterval( onTimeUpdate,
                                         self._util.TIMEUPDATE_MS );
       impl.paused = false;
+
       if( playerPaused ) {
         playerPaused = false;
 
@@ -6263,6 +6313,10 @@
         }
         self.dispatchEvent( "playing" );
       }
+    }
+
+    function onProgress() {
+      self.dispatchEvent( "progress" );
     }
 
     self.play = function() {
@@ -6303,6 +6357,8 @@
       } else {
         impl.ended = true;
         onPause();
+        // YouTube will fire a Playing State change after the video has ended, causing it to loop.
+        catchRoguePlayEvent = true;
         self.dispatchEvent( "timeupdate" );
         self.dispatchEvent( "ended" );
       }
@@ -6455,6 +6511,45 @@
       error: {
         get: function() {
           return impl.error;
+        }
+      },
+
+      buffered: {
+        get: function () {
+          var timeRanges = {
+            start: function( index ) {
+              if ( index === 0 ) {
+                return 0;
+              }
+
+              //throw fake DOMException/INDEX_SIZE_ERR
+              throw "INDEX_SIZE_ERR: DOM Exception 1";
+            },
+            end: function( index ) {
+              var duration;
+              if ( index === 0 ) {
+                duration = getDuration();
+                if ( !duration ) {
+                  return 0;
+                }
+
+                return duration * player.getVideoLoadedFraction();
+              }
+
+              //throw fake DOMException/INDEX_SIZE_ERR
+              throw "INDEX_SIZE_ERR: DOM Exception 1";
+            }
+          };
+
+          Object.defineProperties( timeRanges, {
+            length: {
+              get: function() {
+                return 1;
+              }
+            }
+          });
+
+          return timeRanges;
         }
       }
     });
