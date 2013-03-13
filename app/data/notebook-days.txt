@@ -99,7 +99,7 @@
 	},
 	{	
 		"number": "15",
-		"sources": "medias/videos/Gran_Marcha_2006_Los_Angeles.mp4",
+		"sources": "https://www.youtube.com/watch?v=HRQ3l9tlt9Y",
 		"mcnfpdo_entries": [
 			"Baltasar met les pieds pour la première fois à <a href=\"#BgdMap\">Belgrade</a>. Il retrouve à l'hôtel Agnes, une amie, ancienne reporter de guerre de retour du Kosovo."
 		]
