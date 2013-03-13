@@ -5289,6 +5289,24 @@ select,
 textarea {
   font-family: 'Open Sans Condensed', sans-serif;
 }
+button,
+.btn {
+  background: rgba(0, 0, 0, 0.1);
+  border: none;
+  border-radius: 0;
+  color: white;
+  border-color: black;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  text-shadow: none;
+  letter-spacing: 1.1px;
+}
+button:hover,
+.btn:hover {
+  background: rgba(0, 0, 0, 0.3);
+  color: #ccc;
+}
 h1 {
   margin: 0;
 }
