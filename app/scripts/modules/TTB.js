@@ -333,7 +333,13 @@ function(app, Video, Soundtrack) {
 
         if(chapter = vv.model.getChapterByTime(vp.currentTime())) {
 
-          if(app.router.routes[chapter.name]) {
+          // find out if the chapter name is present in any of the routes
+          // not 100% bullet proof but close enough for now
+          var chapterExists = _.find(app.router.routes, function(route, key) { 
+            return key.toLowerCase().indexOf(chapter.name.toLowerCase()) != -1; 
+          });
+
+          if(chapterExists) {
             // go to chapter
             app.trigger('goto', chapter.name);
           }
