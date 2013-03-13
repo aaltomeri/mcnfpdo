@@ -312,7 +312,7 @@ function(app, Video) {
         entriesView.scrollTo(top);
 
         var date = currentDay.get('number') + '-mars-2006';
-        history.pushState({},"","/#Notebook/goto/"+date);
+        history.pushState({},"","#Notebook/goto/"+date);
 
         if(sources) {
 
