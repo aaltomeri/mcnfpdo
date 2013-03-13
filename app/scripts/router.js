@@ -24,7 +24,7 @@ function(app, Intro, TTB, Soundtrack) {
       "BgdMap": "bgdMap",
       "BgdBook": "bgdBook",
       "News": "news",
-      "Notebook": "notebook",
+      "Notebook(/:action)(/:date)": "notebook",
       "Tesla": "tesla",
       "Mail": "mail",
       "History": "history",
@@ -79,9 +79,9 @@ function(app, Intro, TTB, Soundtrack) {
 
     },
 
-    notebook: function() {
+    notebook: function(action, date) {
 
-      this.moduleLauncher('Notebook');
+      this.moduleLauncher('Notebook', action, {date: date});
 
     },
     
@@ -133,7 +133,7 @@ function(app, Intro, TTB, Soundtrack) {
 
     },
 
-    moduleLauncher: function(moduleName) {
+    moduleLauncher: function(moduleName, action, options) {
 
       // init TTB
       this.ttb('pause', moduleName);
@@ -141,7 +141,7 @@ function(app, Intro, TTB, Soundtrack) {
       TTB.MainView.prepareStageForModule();
 
       var module_path = "modules/" + moduleName
-          ,   _load_module = function() {
+          ,   _load_module = function(action, options) {
 
                 try {
                   // requiring the module AND calling its init method in the callback
@@ -173,7 +173,7 @@ function(app, Intro, TTB, Soundtrack) {
 
                     module.soundtrack.play();
 
-                    module.init(); 
+                    module.init(action, options); 
 
                   });
                 }
@@ -182,7 +182,7 @@ function(app, Intro, TTB, Soundtrack) {
                 }
               }
 
-      _load_module();
+      _load_module(action, options);
 
     }
 
