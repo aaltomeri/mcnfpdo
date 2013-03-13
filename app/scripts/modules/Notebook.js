@@ -13,15 +13,31 @@ function(app, Video) {
   // Create a new module.
   var Notebook = app.module();
 
-  Notebook.init = function() {
+  Notebook.init = function(action, options) {
 
-    console.log('Notebook INIT');
+    //console.log('Notebook INIT');
 
     var layout
     ,   days = new Notebook.Days();
 
     days.on('Notebook:Days:entries_ready', function() {
+
+      var number
+      ,   model
+
       layout = new Notebook.Views.Layout({collection: this});
+
+      if((action && action == 'goto') && (options && options.date)) {
+
+        number = options.date.split('-')[0];
+        model = this.at(number-1);
+
+        if(model) {
+          this.setCurrentDay(model);
+        }
+
+      }
+
     });
 
     days.fetchData();
@@ -44,7 +60,8 @@ function(app, Video) {
 
     fetchData: function() {
 
-      var _this = this;
+      var _this = this
+      ,   wiki_request
       $.get('data/notebook-days.txt').done(
 
         function(data) { 
@@ -53,7 +70,10 @@ function(app, Video) {
 
           // global scope callback for wikipedia data
           //Popcorn.getScript( "//fr.wikipedia.org/w/api.php?action=parse&props=text&redirects&page=Mars_2006&format=json&callback=NoteBookParseWikiData");
-          $.getJSON('//fr.wikipedia.org/w/api.php?action=parse&format=json&callback=?', {page:'Mars_2006', prop:'text|sections', uselang:'fr'}, $.proxy(_this.parseWikiData, _this));
+          wiki_request = $.getJSON('//fr.wikipedia.org/w/api.php?action=parse&format=json&callback=?', {page:'Mars_2006', prop:'text|sections', uselang:'fr'}, $.proxy(_this.parseWikiData, _this));
+        
+          wiki_request.fail(function() { window.location.reload(); })
+
         }
       );
 
@@ -143,7 +163,7 @@ function(app, Video) {
   Notebook.Views.Day = Backbone.LayoutView.extend({
 
     template: 'modules/notebook/calendar-day',
-    tagName: 'li',
+    tagName: 'td',
 
     events: {
 
@@ -162,7 +182,7 @@ function(app, Video) {
     onClickHandler: function(e) {
 
       e.preventDefault();
-
+      
       this.model.collection.setCurrentDay(this.model);
 
     },
@@ -178,17 +198,55 @@ function(app, Video) {
   // Calendar View
   Notebook.Views.Calendar = Backbone.LayoutView.extend({
 
-    tagName: 'ul',
+    tagName: 'table',
 
     initialize: function() {
 
     },
 
-    beforeRender: function() {
+    afterRender: function() {
 
-      this.collection.each(function(model) {
+      var view = this
+      ,   day_view = null
+      ,   date = null
+      ,   wd = 0
+      ,   row_id = 0
+      ,   row_str = ''
+      ,   $row = null
+      ,   week_days = ["Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi","Dimanche"];
 
-        this.insertView(new Notebook.Views.Day({model: model}));
+      // first row represents the day of the week
+      row_str = '<tr>';
+      for(var _wd = 0; _wd < 7; _wd++) {
+        date = new Date(2006, 2, _wd+1);
+        row_str += '<td>' + week_days[date.getDay()] + '</td>'
+      }
+      row_str += '</tr>';
+
+      this.$el.append(row_str);
+
+      this.collection.each(function(model) {  
+
+        date = new Date(2006, 2, model.get('number'));
+
+        if(wd%7 == 0) {// beginning of the week
+
+          row_str = '<tr id="calendar-row-'+ row_id + '" />';
+          view.$el.append(row_str);
+          $row = $('#calendar-row-'+row_id);
+
+          // increment row id
+          row_id++;
+
+          // reset week day
+          wd = 0;
+
+        }
+
+        day_view = this.insertView('#' + $row.get(0).id, new Notebook.Views.Day({model: model})).render();
+
+        // increment week day
+        wd++;
 
       }, this);
 
@@ -224,7 +282,7 @@ function(app, Video) {
 
       // setting Calendar and Entries views on layout here to pass it the main collection (days)
       // does not seem to work in the views object directly
-      calendarView = this.setView("#calendar", new Notebook.Views.Calendar({ collection: this.collection }));
+      calendarView = this.setView("#calendar .body", new Notebook.Views.Calendar({ collection: this.collection }));
       entriesView = this.setView("#entries", new Notebook.Views.Entries({ collection: this.collection }));
 
 
@@ -252,6 +310,9 @@ function(app, Video) {
         ,   youtube_force_html5_param = ""
 
         entriesView.scrollTo(top);
+
+        var date = currentDay.get('number') + '-mars-2006';
+        history.pushState({},"","/#Notebook/goto/"+date);
 
         if(sources) {
 

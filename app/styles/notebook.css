@@ -5,6 +5,12 @@
 
 }
 
+#notebook a:visited {
+
+	color:#a63005 !important;
+
+}
+
 /** Entries **/
 
 #notebook #entries {
@@ -12,7 +18,7 @@
 	position: relative;
 	float: left;
 	background: black;
-	opacity: 0.7;
+	background: rgba(0, 0, 0, 0.7);
 	padding: 10px 10px 0 10px;
 	width: 40%;
 	text-align: left;
@@ -30,7 +36,7 @@
 
 #notebook #entries a {
 
-	color: #ccb65c;
+	color: #d2c18a;
 	text-decoration: none;
 
 }
@@ -50,51 +56,86 @@
 
 #notebook #entries ul li {
 
-	list-style: none;
-	margin-bottom: 10px;
+	font-size: 16px;
+	line-height: 26px;
 
+	list-style: none;
+
+	margin-bottom: 16px;
+	padding-bottom: 16px;
+
+	border-bottom: solid 1px #d2c18a;
+
+}
+
+#notebook #entries ul li > a:first-child,
+#notebook #entries blockquote p > a:first-child {
+
+	font-size: 24px;
+	font-weight: bold;
+}
+
+#notebook #entries blockquote {
+	border: none;
 }
 
 /** Calendar **/
 
 #notebook #calendar {
 	
-	float: right;
-	width: 55%;
+	float: left;
+	width: 50%;
 	text-align: left;
 
-	margin-top: 20px;
+	margin-left: 3%;
+	margin-top: 0px;
 
 }
 
-#notebook #calendar ul {
+#notebook #calendar table {
 
 	margin: 0;
 	padding: 0;
+	border-spacing: 1px;
+	border-collapse: separate;
 
 }
 
-#notebook #calendar ul li {
+#notebook #calendar table tbody tr:first-child td {
 
-	list-style: none;
-	display: inline-block;
+	font-weight: normal;
+	font-size: 16px;
 
-	margin: 5px 5px 5px 0px;
+}
+
+#notebook #calendar table td {
+
+	width: 30px;
+
+	padding: 5px 5px 5px 0px;
 
 	font-size: 20px;
 	width: 7%;
+	vertical-align: middle;
 	text-align: center;
 
+	background: rgba(0, 0, 0, 0.1);
 }
 
-#notebook #calendar ul li a {
+#notebook #calendar table td a {
 	color: inherit;
 	text-decoration: none;
 }
 
+#notebook #calendar table td a:hover {
 
-#notebook #calendar ul li.important {
-	color: #ccb65c;
+	text-decoration: underline;
+
+}
+
+
+#notebook #calendar table td.important {
+	color: #d2c18a;
 	font-weight: bold;
 }
 
@@ -102,9 +143,10 @@
 
 #notebook #notebook-video {
 
-	position: absolute;
-	bottom: 18%;
-	right: 50px;
+	position: relative;
+	float: left;
+	margin-left: 3%;
+	margin-top: 30px;
 	background: rgba(0,0,0,0.1);
 
 	width: 50%;
