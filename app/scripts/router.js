@@ -26,7 +26,7 @@ function(app, Intro, TTB, Soundtrack) {
       "News": "news",
       "Notebook(/:action)(/:date)": "notebook",
       "Tesla": "tesla",
-      "Mail": "mail",
+      "BriefAnDenVater": "mail",
       "History": "history",
       "Tabloid": "tabloid",
       "BgdVoices": "bgdVoices"
@@ -99,7 +99,7 @@ function(app, Intro, TTB, Soundtrack) {
 
     mail: function() {
 
-      this.moduleLauncher('Mail');
+      this.moduleLauncher('BriefAnDenVater');
 
     }, 
     

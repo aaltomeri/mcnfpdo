@@ -34,7 +34,7 @@ function(app, Video, Soundtrack) {
         { name: "BgdMap",title: "Belgrade Ville", start: 17, end: 23, description: "Baltasar s'est promené dans Belgrade" },
         { name: "BgdBook", title: "Belgrade d'Angélica Liddell", start: 27, end: 33, description: "Belgrade, la pièce d'Angélica Liddell, monté par Julien Fisera. Première le 18 mars à la Comédié de Sant Etienne" },
         { name: "Notebook", title: "Carnet de notes", start: 37, end: 43, description: "Mars 2006, Baltasar est à Belgrade. C'est l'enterrement de Milosevic. Quelques notes mais surtout d'autres choses se passent ailleurs." },
-        { name: "Mail", title: "Très cher père", start: 46, end: 52, description: "" },
+        { name: "BriefAnDenVater", title: "Très cher père", start: 46, end: 52, description: "Baltasar est venu à Belgrade pour son père. Ils ont des rapports compliqués." },
         { name: "Tabloid",title: "Belgrade +", start: 54, end: 61, description: "Petites promenades du côté obscur" },
         { name: "News", title: "Belgrade Live", start: 62, end: 67, description: "Belgrade en direct" },
         { name: "Tesla",title: "Inconscient collectif", start: 69, end: 75, description: "La Serbie, ah oui ... Nicolas Tesla etc." },

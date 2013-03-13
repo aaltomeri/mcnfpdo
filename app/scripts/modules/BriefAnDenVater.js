@@ -12,32 +12,32 @@ define([
 function(app, Soundtrack) {
 
   // Create a new module.
-  var Mail = app.module(),
+  var BriefAnDenVater = app.module(),
   layout;
 
-  Mail.init = function() {
+  BriefAnDenVater.init = function() {
 
-    console.log('Mail INIT');
+    console.log('BriefAnDenVater INIT');
 
-    layout = new Mail.Views.Layout();
+    layout = new BriefAnDenVater.Views.Layout();
 
   }
 
   // Default Model.
-  Mail.Model = Backbone.Model.extend({
+  BriefAnDenVater.Model = Backbone.Model.extend({
   
   });
 
   // Default Collection.
-  Mail.Collection = Backbone.Collection.extend({
-    model: Mail.Model
+  BriefAnDenVater.Collection = Backbone.Collection.extend({
+    model: BriefAnDenVater.Model
   });
 
 
   /**
    * View for displaying slices of the Kafka letter
    */
-  Mail.Views.Brief = Backbone.LayoutView.extend({
+  BriefAnDenVater.Views.Brief = Backbone.LayoutView.extend({
 
     /**
      * the letter image source
@@ -408,7 +408,7 @@ function(app, Soundtrack) {
 
 
   // Default View.
-  Mail.Views.Layout = Backbone.Layout.extend({
+  BriefAnDenVater.Views.Layout = Backbone.Layout.extend({
 
     template: "mail",
 
@@ -421,7 +421,7 @@ function(app, Soundtrack) {
       // add layout to the dom
       $('#module-container').empty().append(this.el);
 
-      this.brief = this.setView(new Mail.Views.Brief({id: 'brief'}));
+      this.brief = this.setView(new BriefAnDenVater.Views.Brief({id: 'brief'}));
 
       
 
@@ -434,10 +434,10 @@ function(app, Soundtrack) {
 
   });
 
-  Mail.destroy = function() {
+  BriefAnDenVater.destroy = function() {
 
-    console.log('Mail destroy');
-    console.log('Mail layout? ' + layout);
+    console.log('BriefAnDenVater destroy');
+    console.log('BriefAnDenVater layout? ' + layout);
 
     layout.brief.soundtrack.pause();
     layout.brief.soundtrack.remove();
@@ -445,6 +445,6 @@ function(app, Soundtrack) {
   }
 
   // Return the module for AMD compliance.
-  return Mail;
+  return BriefAnDenVater;
 
 });
