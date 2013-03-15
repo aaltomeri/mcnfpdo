@@ -28,7 +28,7 @@ function(app, Intro, TTB, Soundtrack) {
       "Tesla": "tesla",
       "BriefAnDenVater": "mail",
       "History": "history",
-      "Tabloid": "tabloid",
+      "BgdPlus": "bgdPlus",
       "BgdVoices": "bgdVoices"
 
     },
@@ -103,9 +103,9 @@ function(app, Intro, TTB, Soundtrack) {
 
     }, 
     
-    tabloid: function() {
+    bgdPlus: function() {
 
-      this.moduleLauncher('Tabloid');
+      this.moduleLauncher('BgdPlus');
 
     },
 

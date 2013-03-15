@@ -27,7 +27,7 @@
         "soundtrack_mode": "linear" 
     },
     { 
-    	"name": "Tabloid",
+    	"name": "BgdPlus",
     	"title": "Belgrade Trash",
     	"start": "86", "end": "92",
     	"soundtrack": ["Bar Coco"],

@@ -35,7 +35,7 @@ function(app, Video, Soundtrack) {
         { name: "BgdBook", title: "Belgrade d'Angélica Liddell", start: 27, end: 33, description: "Belgrade, la pièce d'Angélica Liddell, monté par Julien Fisera. Première le 18 mars à la Comédié de Sant Etienne" },
         { name: "Notebook", title: "Carnet de notes", start: 37, end: 43, description: "Mars 2006, Baltasar est à Belgrade. C'est l'enterrement de Milosevic. Quelques notes mais surtout d'autres choses se passent ailleurs." },
         { name: "BriefAnDenVater", title: "Très cher père", start: 46, end: 52, description: "Baltasar est venu à Belgrade pour son père. Ils ont des rapports compliqués." },
-        { name: "Tabloid",title: "Belgrade +", start: 54, end: 61, description: "Petites promenades du côté obscur" },
+        { name: "BgdPlus",title: "Belgrade +", start: 54, end: 61, description: "Petites promenades du côté obscur" },
         { name: "News", title: "Belgrade Live", start: 62, end: 67, description: "Belgrade en direct" },
         { name: "Tesla",title: "Inconscient collectif", start: 69, end: 75, description: "La Serbie, ah oui ... Nicolas Tesla etc." },
         { name: "History",title: "Histoire serbe", start: 77, end: 83, description: "Mais dans les faits ? Qu'est ce qui s'est passé ? Comment est ce qu'on peut expliquer ?" },
@@ -293,7 +293,7 @@ function(app, Video, Soundtrack) {
             vv.showOverlay('<p>Mon corps ne fait pas d\'ombre</p><p>Un projet de Julien Fišera, Jérémie Scheidler et Thomas Mery</p>'
               + '<p class="infos">Baltasar: Vladislav Galard<br /> Musique: Thomas Mery & Jérôme Berg<br/>Images: Jérémie Scheidler</p>'
               + '<p class="infos">Appuyez sur la barre espace ou cliquez dans l\'écran pour explorer à nouveau les différents chapitres. Vous pouvez également choisir de vous rendre directement à un des chapitres en cliquant sur un des liens ci-dessous</p>'
-              + '<p class="infos"><a href="#BgdMap">Belgrade Ville</a> - <a href="#BgdBook">Belgrade d\'Angélica Liddell</a> - <a href="#Notebook">Carnet de notes</a> - <a href="#BriefAnDenVater">Très cher père</a> - <a href="#Tabloid">Belgrade +</a> - <a href="#News">Actualités</a> - <a href="#Tesla">Inconcient collectif</a> - <a href="#History">Histoire Serbe</a> - <a href="#BgdVoices">Les voix de Belgrade</a></p>'
+              + '<p class="infos"><a href="#BgdMap">Belgrade Ville</a> - <a href="#BgdBook">Belgrade d\'Angélica Liddell</a> - <a href="#Notebook">Carnet de notes</a> - <a href="#BriefAnDenVater">Très cher père</a> - <a href="#BgdPlus">Belgrade +</a> - <a href="#News">Actualités</a> - <a href="#Tesla">Inconcient collectif</a> - <a href="#History">Histoire Serbe</a> - <a href="#BgdVoices">Les voix de Belgrade</a></p>'
             , { opacity: 0.8, background: "rgba(0,0,0,0.6)" } );
             hideIntroInfo = false;
             creditsDisplayed = true;
