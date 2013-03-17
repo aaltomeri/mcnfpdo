@@ -48,6 +48,7 @@ function(app) {
       ,   time = this.model.get('time')
       ,   autoplay = this.model.get('autoplay')
       ,   enablePlayPause = this.model.get('enablePlayPause')
+      ,   loop = this.model.get('loop')
 
       // adjust video container dimensions if provided
       if(dimensions) {
@@ -59,8 +60,13 @@ function(app) {
         this.$el.empty();
       }
 
+
       // Popcorn instantiation
       this.popcorn = Popcorn.smart(this.el, this.model.attributes.sources);
+
+      if(loop) {
+        this.popcorn.loop(true);
+      }
 
       // adjust video element dimensions if provided
       if(dimensions) {
@@ -91,6 +97,24 @@ function(app) {
 
       // enable PLAY / PAUSE
       if(enablePlayPause) this.enablePlayPause();
+
+    },
+
+    /**
+     * wrapper for popcorn play
+     */
+    play: function(time) {
+
+      this.popcorn.play(time);
+
+    },
+
+    /**
+     * wrapper for popcorn pause
+     */
+    pause: function() {
+
+      this.popcorn.pause();
 
     },
 
