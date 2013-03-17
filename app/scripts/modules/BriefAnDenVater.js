@@ -1,4 +1,4 @@
-// News module
+// BriefAnDenVater module
 define([
   // Application.
   "app",
@@ -81,6 +81,10 @@ function(app, Soundtrack) {
      */
     soundtrack: null,
 
+    raf: null,
+    timeout: null,
+    reading: false,
+
     initialize: function() {
 
       this.soundtrack = new Soundtrack.View({
@@ -90,6 +94,22 @@ function(app, Soundtrack) {
       this.soundtrack.popcorn.loop(false);
 
     },
+
+    read: function() {
+
+      this.soundtrack.play(); 
+
+    },
+
+    pause: function() {
+
+      clearTimeout(this.timeout);
+      this.soundtrack.pause();
+      this.reading = false;
+
+    },
+
+
 
     init_sliced_brief: function(a) {
 
@@ -176,6 +196,8 @@ function(app, Soundtrack) {
 
         var time_intvl;
 
+        view.reading = true;
+
         function _startAnimation() {
 
           time_intvl = Math.ceil((view.soundtrack.popcorn.duration() / view.brief_slices_data.length) * 1000);
@@ -197,7 +219,7 @@ function(app, Soundtrack) {
 
         function _animateSlice() {
           
-          setTimeout(function() {
+          view.timeout = setTimeout(function() {
 
             var index = parseInt(view.brief_slice_current_index) + 1
             ,   slices_on_page = cols*max_lines
@@ -248,7 +270,7 @@ function(app, Soundtrack) {
 
               view.brief_slice_current_index++;
 
-              requestAnimationFrame(_animateSlice);
+              view.raf = requestAnimationFrame(_animateSlice);
 
             }
 
@@ -359,10 +381,23 @@ function(app, Soundtrack) {
       // add layout to the dom
       $('#module-container').empty().append(this.el);
 
-      brief_view = this.brief = this.setView("#brief", new BriefAnDenVater.Views.Brief());
+      brief_view = this.brief = this.setView("#badv-brief", new BriefAnDenVater.Views.Brief());
 
       // render layout
       this.render();
+
+      // toggle button
+      $('#badv-toggle').click($.proxy(function() {
+
+        if(brief_view.reading) {
+          brief_view.pause();
+          $('#badv-toggle').html('Reprendre la lecture');
+        }
+        else {
+          brief_view.read();
+          $('#badv-toggle').html('Arrêter la lecture');
+        }
+      }, brief_view));
 
       $('#module-container').transition({opacity: 1}, 2000);
 

@@ -23,12 +23,12 @@ function(app, Intro, TTB, Soundtrack) {
 
       "BgdMap": "bgdMap",
       "BgdBook": "bgdBook",
-      "News": "news",
       "Notebook(/:action)(/:date)": "notebook",
-      "Tesla": "tesla",
       "BriefAnDenVater": "mail",
+      "Tesla": "tesla",
       "History": "history",
       "BgdPlus": "bgdPlus",
+      "BgdDirect": "bgdDirect",
       "BgdVoices": "bgdVoices"
 
     },
@@ -109,9 +109,9 @@ function(app, Intro, TTB, Soundtrack) {
 
     },
 
-    news: function() {
+    bgdDirect: function() {
 
-      this.moduleLauncher('News');
+      this.moduleLauncher('BgdDirect');
 
     },
 

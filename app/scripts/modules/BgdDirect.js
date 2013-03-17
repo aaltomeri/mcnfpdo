@@ -1,25 +1,25 @@
-// News module
+// BgdDirect module
 define([
   // Application.
   "app",
 
   // Css
-  "css!../../styles/news.css"
+  "css!../../styles/bgd-direct.css"
 ],
 
 // Map dependencies from above array.
 function(app) {
 
   // Create a new module.
-  var News = app.module(Backbone.Events);
+  var BgdDirect = app.module(Backbone.Events);
 
-  News.init = function() {
+  BgdDirect.init = function() {
 
     console.log('NEWS INIT');
 
-    News.queries = new Array();
+    BgdDirect.queries = new Array();
 
-    var NewsItemDisplayInterval = 6000
+    var BgdDirectItemDisplayInterval = 6000
     ,   EncounterDisplayInterval = 10000
     ,   layout
     ,   audiostreams
@@ -27,27 +27,27 @@ function(app) {
     ,   twittersearches
     ,   encounters;
 
-    layout = new News.Views.Layout();
+    layout = new BgdDirect.Views.Layout();
 
-    audiostreams = new News.AudioStreams();
+    audiostreams = new BgdDirect.AudioStreams();
     audiostreams.on('reset', function() {
 
       // set AudioStream View
       layout.audiostreamView = layout.setView('#audiostream', 
-        new News.Views.AudioStream({model: this.at(0), collection: this})).render();
+        new BgdDirect.Views.AudioStream({model: this.at(0), collection: this})).render();
 
     });
     audiostreams.fetchData();
 
-    rssfeeds = new News.RssFeeds();
+    rssfeeds = new BgdDirect.RssFeeds();
     rssfeeds.on('reset', function() {
 
-      twittersearches = new News.TwitterSearches();
+      twittersearches = new BgdDirect.TwitterSearches();
       twittersearches.on('reset', function() {
-        console.log(News.queries); 
-        $.when.apply(null, News.queries).done(function() { 
-          console.log('All News Items Fetched'); 
-          News.trigger('News:NewsItemsFetched');
+        console.log(BgdDirect.queries); 
+        $.when.apply(null, BgdDirect.queries).done(function() { 
+          console.log('All BgdDirect Items Fetched'); 
+          BgdDirect.trigger('BgdDirect:BgdDirectItemsFetched');
         });
       });
       twittersearches.fetchData();
@@ -56,28 +56,28 @@ function(app) {
     rssfeeds.fetchData();
 
     /**
-     * News Items management
+     * BgdDirect Items management
      *
-     * we allow for automatically adding a News Item to the collection when it is created
+     * we allow for automatically adding a BgdDirect Item to the collection when it is created
      * this is done by triggering a module wide event when a model is initialized
      * 
      */
     
-    // every time a NewsItem is created it is added to the NewsItemsCollection
-    News.newsItems = new News.NewsItemsCollection();
+    // every time a BgdDirectItem is created it is added to the BgdDirectItemsCollection
+    BgdDirect.newsItems = new BgdDirect.BgdDirectItemsCollection();
 
-    News.on('News:NewsItem:created', function(model) {
+    BgdDirect.on('BgdDirect:BgdDirectItem:created', function(model) {
 
       // add newsItem to collection
-      News.newsItems.add(model);
+      BgdDirect.newsItems.add(model);
 
     });
 
-    // every time a NewsItem is added to the collection it is added to the view
-    News.newsItems.on('add', function(model) {
+    // every time a BgdDirectItem is added to the collection it is added to the view
+    BgdDirect.newsItems.on('add', function(model) {
 
       // create
-      var newsItemView = new News.Views.NewsItemView({model: model});
+      var newsItemView = new BgdDirect.Views.BgdDirectItemView({model: model});
       layout.newsItemsView.insertView(newsItemView);
 
       newsItemView.render();
@@ -85,19 +85,19 @@ function(app) {
     });
 
     // show New Item when it is set as current in its collecction
-    News.newsItems.on('change:currentNewsItem', function() {
+    BgdDirect.newsItems.on('change:currentBgdDirectItem', function() {
       layout.newsItemsView.showCurrentItem();
     });
 
-    // set NewsItemsView collection
-    layout.newsItemsView.collection = News.newsItems;
+    // set BgdDirectItemsView collection
+    layout.newsItemsView.collection = BgdDirect.newsItems;
 
-    // show first News Item abd start the display cycle
-    News.on('News:NewsItemsFetched', function() {
+    // show first BgdDirect Item abd start the display cycle
+    BgdDirect.on('BgdDirect:BgdDirectItemsFetched', function() {
 
-      News.newsItems.rdm();
+      BgdDirect.newsItems.rdm();
 
-      setInterval(function() { News.newsItems.rdm(); }, NewsItemDisplayInterval);
+      setInterval(function() { BgdDirect.newsItems.rdm(); }, BgdDirectItemDisplayInterval);
 
     });
 
@@ -105,10 +105,10 @@ function(app) {
     // Encounters //
     ////////////////
 
-    encounters = new News.Encounters();
+    encounters = new BgdDirect.Encounters();
     encounters.on('reset', function() {
       // set Encounters View
-      layout.encountersView = layout.setView('#encounters', new News.Views.EncountersView({ collection: this }));
+      layout.encountersView = layout.setView('#encounters', new BgdDirect.Views.EncountersView({ collection: this }));
       layout.encountersView.render();
 
       this.rdm();
@@ -125,17 +125,17 @@ function(app) {
   }
 
   // Default Model.
-  News.Model = Backbone.Model.extend({
+  BgdDirect.Model = Backbone.Model.extend({
   
   });
 
   // AudioStream Model
-  News.AudioStream = News.Model.extend({
+  BgdDirect.AudioStream = BgdDirect.Model.extend({
 
   });
 
   // RssFeed Model
-  News.RssFeed = News.Model.extend({
+  BgdDirect.RssFeed = BgdDirect.Model.extend({
 
     initialize: function() {
 
@@ -154,12 +154,12 @@ function(app) {
 
             console.log(data);
 
-            // loop through entries and create a NewsItem for each
+            // loop through entries and create a BgdDirectItem for each
             // this would need to be refined to accomodate different feeds
             // with different attribute names for title, text and date
             $.each(data.responseData.feed.entries, function (i, e) {
 
-              var newsItem = new News.NewsItem({
+              var newsItem = new BgdDirect.BgdDirectItem({
                 title: e.title,
                 text: e.contentSnippet,
                 date: e.publishedDate? e.publishedDate : e.pubDate,
@@ -174,14 +174,14 @@ function(app) {
         }
       });
 
-      News.queries.push(query);
+      BgdDirect.queries.push(query);
 
     }
 
   });
 
   // Twitter Search Model
-  News.TwitterSearch = News.Model.extend({
+  BgdDirect.TwitterSearch = BgdDirect.Model.extend({
 
     initialize: function() {
 
@@ -198,10 +198,10 @@ function(app) {
 
             //console.log(data);
 
-            // loop through entries and create a NewsItem for each
+            // loop through entries and create a BgdDirectItem for each
             $.each(data.results, function (i, e) {
 
-              var newsItem = new News.NewsItem({
+              var newsItem = new BgdDirect.BgdDirectItem({
                 title: '@' + e.from_user,
                 text: e.text,
                 date: e.created_at,
@@ -214,35 +214,35 @@ function(app) {
 
       });
 
-      News.queries.push(query);
+      BgdDirect.queries.push(query);
 
     }
 
   });
 
-  // NewsItem Model
-  News.NewsItem = News.Model.extend({
+  // BgdDirectItem Model
+  BgdDirect.BgdDirectItem = BgdDirect.Model.extend({
     initialize: function() {
 
-      //console.log('NewsItem created : ' + this.get('type'));
+      //console.log('BgdDirectItem created : ' + this.get('type'));
       
-      // say to the module eco-system that a News Item is born
-      News.trigger('News:NewsItem:created', this);
+      // say to the module eco-system that a BgdDirect Item is born
+      BgdDirect.trigger('BgdDirect:BgdDirectItem:created', this);
 
     }
   });
 
 
-  News.Encounter = News.Model.extend({
+  BgdDirect.Encounter = BgdDirect.Model.extend({
     initialize: function() {}
   });
 
 
   // Default Collection
-  // Mother of all data sources collection for the News Module
-  News.Collection = Backbone.Collection.extend({
+  // Mother of all data sources collection for the BgdDirect Module
+  BgdDirect.Collection = Backbone.Collection.extend({
     
-    model: News.Model,
+    model: BgdDirect.Model,
     currentStream: 0,
 
     // fetch data for this collection
@@ -252,10 +252,10 @@ function(app) {
       var _this = this;
 
       if(typeof this.type == "undefined") {
-        throw "News Collection must have a type to be able to fetch data"
+        throw "BgdDirect Collection must have a type to be able to fetch data"
       }
 
-      $.get('data/news-'+this.type+'.txt').done(
+      $.get('data/bgd-direct-'+this.type+'.txt').done(
 
         function(data) { 
 
@@ -269,28 +269,28 @@ function(app) {
   });
 
   // AudioStreams Collection
-  News.AudioStreams = News.Collection.extend({
+  BgdDirect.AudioStreams = BgdDirect.Collection.extend({
     type: "audiostreams",
-    model: News.AudioStream
+    model: BgdDirect.AudioStream
   });
 
   // RSS Feeds Collection
-  News.RssFeeds = News.Collection.extend({
+  BgdDirect.RssFeeds = BgdDirect.Collection.extend({
     type: "rss-feeds",
-    model: News.RssFeed
+    model: BgdDirect.RssFeed
   })
 
   // Twitter Searches Collection
-  News.TwitterSearches = News.Collection.extend({
+  BgdDirect.TwitterSearches = BgdDirect.Collection.extend({
     type: "twitter-searches",
-    model: News.TwitterSearch
+    model: BgdDirect.TwitterSearch
   })
 
    // Belgrade Encounters Collection
-  News.Encounters = News.Collection.extend({
+  BgdDirect.Encounters = BgdDirect.Collection.extend({
 
     type: "encounters",
-    model: News.Encounter,
+    model: BgdDirect.Encounter,
 
     currentItem: null,
     currentItemIndex: -1,
@@ -309,35 +309,35 @@ function(app) {
 
   })
 
-  // News Items Collection
-  News.NewsItemsCollection = Backbone.Collection.extend({
+  // BgdDirect Items Collection
+  BgdDirect.BgdDirectItemsCollection = Backbone.Collection.extend({
     
-    model: News.NewsItem,
-    currentNewsItem: null,
-    currentNewsItemIndex: -1,
+    model: BgdDirect.BgdDirectItem,
+    currentBgdDirectItem: null,
+    currentBgdDirectItemIndex: -1,
 
-    setCurrentNewsItem: function(model) {
-      this.currentNewsItem = model;
-      this.trigger('change:currentNewsItem', model);
+    setCurrentBgdDirectItem: function(model) {
+      this.currentBgdDirectItem = model;
+      this.trigger('change:currentBgdDirectItem', model);
     },
 
     next: function() {
 
-      if(this.currentNewsItemIndex > this.models.length-2) {
-        this.currentNewsItemIndex = -1;
+      if(this.currentBgdDirectItemIndex > this.models.length-2) {
+        this.currentBgdDirectItemIndex = -1;
       }
 
-      this.currentNewsItemIndex++;
-      this.currentNewsItem = this.at(this.currentNewsItemIndex);
-      this.trigger('change:currentNewsItem', this.currentNewsItem);
+      this.currentBgdDirectItemIndex++;
+      this.currentBgdDirectItem = this.at(this.currentBgdDirectItemIndex);
+      this.trigger('change:currentBgdDirectItem', this.currentBgdDirectItem);
 
     },
 
     rdm: function() {
 
-      this.currentNewsItemIndex = Math.floor(Math.random()*this.models.length);
-      this.currentNewsItem = this.at(this.currentNewsItemIndex);
-      this.trigger('change:currentNewsItem', this.currentNewsItem);
+      this.currentBgdDirectItemIndex = Math.floor(Math.random()*this.models.length);
+      this.currentBgdDirectItem = this.at(this.currentBgdDirectItemIndex);
+      this.trigger('change:currentBgdDirectItem', this.currentBgdDirectItem);
 
     }
 
@@ -351,7 +351,7 @@ function(app) {
   // AudioStream View //
   //////////////////////
   // this is just a Html Audio Element
-  News.Views.AudioStream = Backbone.LayoutView.extend({
+  BgdDirect.Views.AudioStream = Backbone.LayoutView.extend({
 
     popcorn: null,
 
@@ -423,8 +423,8 @@ function(app) {
 
   });
 
-  // News Items View
-  News.Views.NewsItemsView = Backbone.LayoutView.extend({
+  // BgdDirect Items View
+  BgdDirect.Views.BgdDirectItemsView = Backbone.LayoutView.extend({
 
     tagName: 'ul',
 
@@ -436,7 +436,7 @@ function(app) {
 
       var items = this.$el.find('li').not('.current')
       ,   previousItem = this.$el.find('li.current')
-      ,   currentItem = this.$el.find('li#news-item-' + this.collection.currentNewsItem.cid)
+      ,   currentItem = this.$el.find('li#news-item-' + this.collection.currentBgdDirectItem.cid)
 
       if(previousItem.length) {
         previousItem.transition({left: previousItem.width() + 'px'});
@@ -454,10 +454,10 @@ function(app) {
 
   });
 
-  // News Item View
-  News.Views.NewsItemView = Backbone.LayoutView.extend({
+  // BgdDirect Item View
+  BgdDirect.Views.BgdDirectItemView = Backbone.LayoutView.extend({
     tagName: 'li',
-    template: 'modules/news/news-item',
+    template: 'modules/bgd-direct/news-item',
 
     initialize: function() {
       this.$el.attr('id', "news-item-" + this.model.cid);
@@ -471,7 +471,7 @@ function(app) {
   });
 
   // Belgrade Encounters View
-  News.Views.EncountersView = Backbone.LayoutView.extend({
+  BgdDirect.Views.EncountersView = Backbone.LayoutView.extend({
 
     tagName: 'ul',
 
@@ -479,7 +479,7 @@ function(app) {
 
       this.collection.each(function(model) {
 
-        this.insertView(new News.Views.EncounterView({model: model}));
+        this.insertView(new BgdDirect.Views.EncounterView({model: model}));
 
       }, this);
 
@@ -509,10 +509,10 @@ function(app) {
   })
 
   // Belgrade Encounter View
-  News.Views.EncounterView = Backbone.LayoutView.extend({
+  BgdDirect.Views.EncounterView = Backbone.LayoutView.extend({
 
     tagName: 'li',
-    template: 'modules/news/encounter',
+    template: 'modules/bgd-direct/encounter',
 
     initialize: function() {
       this.$el.attr('id', "encounter-" + this.model.cid);
@@ -526,9 +526,9 @@ function(app) {
   })
 
   // Default View.
-  News.Views.Layout = Backbone.Layout.extend({
+  BgdDirect.Views.Layout = Backbone.Layout.extend({
 
-    template: "news",
+    template: "bgd-direct",
 
     webcams: [
       'http://www.mondo.rs/traffic_cams/1357146725/29.jpg',
@@ -556,8 +556,8 @@ function(app) {
       // add layout to the dom
       $('#module-container').empty().append(this.el);
 
-      // set News Items View
-      this.newsItemsView = this.setView('#news-items', new News.Views.NewsItemsView());
+      // set BgdDirect Items View
+      this.newsItemsView = this.setView('#news-items', new BgdDirect.Views.BgdDirectItemsView());
 
       // render layout
       this.render();
@@ -623,13 +623,13 @@ function(app) {
 
   });
 
-  News.destroy = function() {
+  BgdDirect.destroy = function() {
 
-    console.log('News destroy');
+    console.log('BgdDirect destroy');
 
   }
 
   // Return the module for AMD compliance.
-  return News;
+  return BgdDirect;
 
 });

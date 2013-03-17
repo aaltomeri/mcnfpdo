@@ -1,4 +1,4 @@
-// News module
+// History module
 define([
   // Application.
   "app",

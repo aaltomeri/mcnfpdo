@@ -36,7 +36,7 @@ function(app, Video, Soundtrack) {
         { name: "Notebook", title: "Carnet de notes", start: 37, end: 43, description: "Mars 2006, Baltasar est à Belgrade. C'est l'enterrement de Milosevic. Quelques notes mais surtout d'autres choses se passent ailleurs." },
         { name: "BriefAnDenVater", title: "Très cher père", start: 46, end: 52, description: "Baltasar est venu à Belgrade pour son père. Ils ont des rapports compliqués." },
         { name: "BgdPlus",title: "Belgrade +", start: 54, end: 61, description: "Petites promenades du côté obscur" },
-        { name: "News", title: "Belgrade Live", start: 62, end: 67, description: "Belgrade en direct" },
+        { name: "BgdDirect", title: "Belgrade Direct", start: 62, end: 67, description: "Belgrade en direct" },
         { name: "Tesla",title: "Inconscient collectif", start: 69, end: 75, description: "La Serbie, ah oui ... Nicolas Tesla etc." },
         { name: "History",title: "Histoire serbe", start: 77, end: 83, description: "Mais dans les faits ? Qu'est ce qui s'est passé ? Comment est ce qu'on peut expliquer ?" },
         { name: "BgdVoices", title: "Les voix de Belgrade", start: 85, end: 90, description: "Tous parlent, ou pensent, tous marchent ..." },

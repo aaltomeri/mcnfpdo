@@ -34,7 +34,7 @@
         "soundtrack_mode": "linear" 
     },
     { 
-    	"name": "News",
+    	"name": "BgdDirect",
     	"title": "Actualités",
     	"start": "79", "end": "84",
     	"soundtrack": ["Ada Ciganlija"],

@@ -1,4 +1,4 @@
-// News module
+// CollectiveUnconscious module
 define([
   // Application.
   "app",

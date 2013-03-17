@@ -1,4 +1,4 @@
-// News module
+// BgdVoices module
 define([
   // Application.
   "app",

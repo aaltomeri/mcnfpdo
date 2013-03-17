@@ -1,4 +1,4 @@
-// News module
+// BgdPlus module
 define([
   // Application.
   "app",
