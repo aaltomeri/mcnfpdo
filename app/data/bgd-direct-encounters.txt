@@ -11,7 +11,7 @@
 		"title": "Se faire révoquer",
 		"date": "Sat, 16 Apr 2011 19:41:07 +0000",
 		"text": "Pour ne pas être mobilisé, M. s’enferme seul pendant 3 semaines dans un appartement bruyant surplombant l’autoroute. Il passe ses journées seul, à lire Dostoïevski et à fumer méthodiquement son stock de marijuana. Convoqué, il est considéré comme fou et se fait révoquer."
-	},
+	},	
 
 	{ 	
 		"source": "Chronique de Belgrade",
@@ -157,7 +157,7 @@
 		"source": "Chronique de Belgrade",
 		"title": "Le temps à Belgrade",
 		"date": "Sat, 21 Apr 2012 19:41:00 +0000",
-		"text": "Etre unqiuement dans l’instant, dit P., c'est un des effets directs de la guerre."
+		"text": "Etre uniquement dans l’instant, dit P., c'est un des effets directs de la guerre."
 	},
 
 	{ 	
