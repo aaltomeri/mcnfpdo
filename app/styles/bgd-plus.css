@@ -27,13 +27,17 @@
 #bgd-plus .search-button {
   bottom: 2%;
   left: 0;
-  font-size: 24px;
+  font-size: 20px;
   line-height: 24px;
+  padding: 10px;
   cursor: pointer;
   text-decoration: none;
+  color: #eb431b;
+  font-weight: normal;
+  text-transform: uppercase;
 }
 #bgd-plus .search-button:hover {
-  color: #ffea00;
+  color: #ff6a00;
 }
 #bgd-plus .time {
   bottom: 11%;
