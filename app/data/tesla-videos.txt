@@ -61,7 +61,7 @@
              "dimensions": {},
              "position": {},
              "in_point": 40,
-             "out_point": 45
+             "out_point": 48
         },
         {
              "name": "Youth Day 1962 in Mostar : Tito and The Relay of Youth (Stafeta Relay)",
