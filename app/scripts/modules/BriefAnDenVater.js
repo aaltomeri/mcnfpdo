@@ -5,15 +5,17 @@ define([
 
   "modules/Soundtrack",
 
-    "css!../../styles/mail.css"
+    "css!../../styles/brief-an-den-vater.css"
 ],
 
 // Map dependencies from above array.
 function(app, Soundtrack) {
 
   // Create a new module.
-  var BriefAnDenVater = app.module(),
-  layout;
+  var BriefAnDenVater = app.module()
+  ,   layout
+  ,   brief_view
+
 
   BriefAnDenVater.init = function() {
 
@@ -116,9 +118,6 @@ function(app, Soundtrack) {
       ,   delta_dx = 20
       ,   delta_dy = 20
 
-      // this.$el.append(this.brief_image);
-      // return;
-
       for(var row_index = 0; row_index < rows; row_index++) {
 
         this.brief_slices[row_index] = new Array();
@@ -148,8 +147,8 @@ function(app, Soundtrack) {
             o_slice_h: o_slice_h,
             d_slice_w: d_slice_w,
             d_slice_h: d_slice_h,
-            ox: ox,// + (Math.floor(Math.random() * (delta_ox*2)) - delta_ox),
-            oy: oy, //row_index*slice_h,// + (Math.floor(Math.random() * (delta_oy*2)) - delta_oy),
+            ox: ox,
+            oy: oy,
             dx: col_index*d_slice_w + (Math.floor(Math.random() * (delta_dx)) - delta_dx) + offset_dx,
             dy: dy
           } 
@@ -164,13 +163,9 @@ function(app, Soundtrack) {
 
       for(var i = 0; i < view.brief_slices_data.length; i++){
         view.drawSlice(i);
-        //view.animateSlice(i);
       }
 
-      //return;
-
       var time = new Date;
-      console.log((time.getTime()-start_time.getTime())/1000);
 
       view.soundtrack.play();
       
@@ -202,99 +197,64 @@ function(app, Soundtrack) {
 
         function _animateSlice() {
           
+          setTimeout(function() {
 
-                 
-              setTimeout(function() {
+            var index = parseInt(view.brief_slice_current_index) + 1
+            ,   slices_on_page = cols*max_lines
+            ,   page = Math.ceil(index/slices_on_page)
+            ,   index_on_page = index - slices_on_page*(page-1)
+            ,   index_to_be_deleted = (slices_on_page*(page-1)) - index_on_page
+            ,   to_be_deleted_slice = $(view.brief_slices[index_to_be_deleted])
+            ,   index_to_be_faded = view.brief_slice_current_index - slices_on_page
+            ,   to_be_faded_slice = $(view.brief_slices[index_to_be_faded])
 
-                var index = parseInt(view.brief_slice_current_index) + 1
-                ,   slices_on_page = cols*max_lines
-                ,   page = Math.ceil(index/slices_on_page)
-                ,   index_on_page = index - slices_on_page*(page-1)
-                ,   index_to_be_deleted = (slices_on_page*(page-1)) - index_on_page
-                ,   to_be_deleted_slice = $(view.brief_slices[index_to_be_deleted])
-                ,   index_to_be_faded = view.brief_slice_current_index - slices_on_page
-                ,   to_be_faded_slice = $(view.brief_slices[index_to_be_faded])
+            if(view.brief_slice_current_index < view.brief_slices_data.length) {
+              
+              // modify previous slices on previous page
+              if(current_page != page) {
 
-                if(view.brief_slice_current_index < view.brief_slices_data.length) {
-                  
-                  //delete old slices
-                  if(page > 1) {
+                current_page = page;
 
-                    // console.log("page:" + page);
-                    // console.log("showing:" + index);
-                    // console.log("deleting: " + index_to_be_deleted);
-                    // console.log('----');
+                if(page > 1) {
 
-                    // to_be_deleted_slice.transition({
-                    //   opacity: 0
-                    // }, time_intvl, 'in', function() { to_be_deleted_slice.remove() });
-                  
-                    //to_be_deleted_slice.remove();
+                  var i = index - 1
+                  ,   slice
+                  ,   delay
+                  ,   delay_factor
+                  ,   delay_base = time_intvl * 0.5
+                  ,   bottom_limit = i - slices_on_page
 
-                    // to_be_faded_slice.css({ 
-                    //   //transformOrigin: to_be_faded_slice.width() + 'px 0px',
-                    //   //"z-index": 2000
-                    // });
+                  while(i > bottom_limit) {
 
-                    // to_be_faded_slice.transition({
-                    //   opacity: 0,
-                    //   //scale: [0, 1],
-                    //   //left: view.$el.width()
-                    // }, time_intvl, 'out', function() { to_be_faded_slice.remove() });
+                    slice = $(view.brief_slices[i]);
+
+                    delay_factor = ((slices_on_page*(page-1))-i)
+                    delay = delay_base * delay_factor * Math.random();
+
+                    slice.transition({opacity: 0, delay: delay}, time_intvl, function() { slice.remove() });
+
+                    i--;
 
                   }
-
-
-                  // modify previous slices on previous page
-                  if(current_page != page) {
-
-                    //console.log(page + " :: " + current_page);
-
-                    current_page = page;
-
-                    if(page > 1) {
-
-                      var i = index - 1
-                      ,   slice
-                      ,   delay
-                      ,   delay_factor
-                      ,   delay_base = time_intvl * 0.5
-                      ,   bottom_limit = i - slices_on_page
-
-                      while(i > bottom_limit) {
-
-                        slice = $(view.brief_slices[i]);
-
-                        delay_factor = ((slices_on_page*(page-1))-i)
-                        delay = delay_base * delay_factor * Math.random();
-
-                        slice.transition({opacity: 0, delay: delay}, time_intvl, function() { slice.remove() });
-
-                        i--;
-
-                      }
-
-                    }
-
-                  }
-
-                  if(view.brief_slice_current_index < view.brief_slices_data.length) {
-                    // insert slice
-                    view.animateSlice(view.brief_slice_current_index, time_intvl);
-                  } 
-
-                  view.brief_slice_current_index++;
-
-                  requestAnimationFrame(_animateSlice);
 
                 }
 
-              }, view.brief_slice_current_index? time_intvl : 0);
+              }
 
+              if(view.brief_slice_current_index < view.brief_slices_data.length) {
+                // insert slice
+                view.animateSlice(view.brief_slice_current_index, time_intvl);
+              } 
+
+              view.brief_slice_current_index++;
+
+              requestAnimationFrame(_animateSlice);
+
+            }
+
+          }, view.brief_slice_current_index? time_intvl : 0);
 
         }
-
-        
 
       });
 
@@ -326,26 +286,19 @@ function(app, Soundtrack) {
        this.$el.append($container);
 
       $c.css({
-        //x: -d_slice_w,
-        //scale: [0, 1],
         width: d_slice_w,
         height: d_slice_h
 
       })
 
        $container.css({
-        top: dy,// - (Math.floor(Math.random() * (40)) - 20),
-        left: dx,// - 1000,// - (Math.floor(Math.random() * (100)) - 200),
+        top: dy,
+        left: dx,
         "z-index": index,
         opacity: 0,
         width: d_slice_w,
         height: d_slice_h,
-        //scale: [0,1],
-        //transformOrigin: '0px 0px'
         "-webkit-box-shadow": "5px 5px 5px rgba(0, 0, 0, 0.4)",
-        //"-webkit-transform": "rotateX(180deg)"
-        //"-webkit-transform": "scale(0.95, 0.95)"
-        //"-webkit-transform": "rotate("+(Math.floor(Math.random() * (6)) - 3) + "deg)"
       })
 
       this.brief_slices[index] = $container;
@@ -354,7 +307,6 @@ function(app, Soundtrack) {
                        Math.floor(255-42.5*Math.random()*10) + ',0)';
 
       var di = ctx.drawImage(this.brief_image, ox, oy, o_slice_w, o_slice_h, 0, 0, o_slice_w, o_slice_h);
-      //ctx.fillRect(0, 0, o_slice_w, o_slice_h);
       
 
     },
@@ -376,21 +328,7 @@ function(app, Soundtrack) {
 
       $container.transition({
         opacity: 1,
-        //top: dy,
-        //left: dx,
-        //width: d_slice_w,
-        //scale: [1, 1],
-        //rotateX: '0deg',
-        //"-webkit-transform":" translateZ(0)"
-        //scale: 0.9
-        //rotate: (Math.floor(Math.random() * (6)) - 3) + 'deg'
       }, time_intvl, 'linear');
-
-      // $c.transition({
-      //   //x: 0,
-      //   //scale: [1, 1]
-      // }, time_intvl, 'linear');
-
     },
 
     afterRender: function() {
@@ -410,7 +348,7 @@ function(app, Soundtrack) {
   // Default View.
   BriefAnDenVater.Views.Layout = Backbone.Layout.extend({
 
-    template: "mail",
+    template: "brief-an-den-vater",
 
     initialize: function() {
 
@@ -421,9 +359,7 @@ function(app, Soundtrack) {
       // add layout to the dom
       $('#module-container').empty().append(this.el);
 
-      this.brief = this.setView(new BriefAnDenVater.Views.Brief({id: 'brief'}));
-
-      
+      brief_view = this.brief = this.setView("#brief", new BriefAnDenVater.Views.Brief());
 
       // render layout
       this.render();
@@ -437,10 +373,9 @@ function(app, Soundtrack) {
   BriefAnDenVater.destroy = function() {
 
     console.log('BriefAnDenVater destroy');
-    console.log('BriefAnDenVater layout? ' + layout);
 
-    layout.brief.soundtrack.pause();
-    layout.brief.soundtrack.remove();
+    brief_view.soundtrack.pause();
+    brief_view.soundtrack.remove();
 
   }
 
