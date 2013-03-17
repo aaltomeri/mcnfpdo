@@ -54,24 +54,24 @@ function(app, Video) {
       { display: "models", q: "+serbian +models +girls -indoor -flying -space -pig -eve -kosovo -land -occupied" },
       { display: "nightlife", q: "nightlife -live +party +girls" },
       { display: "atmosphere", q: "atmosphere -live" },
-      { display: "life", q: "life -live -apartment -house -rent" },
-      { display: "today", q: "today -live-apartment -house -rent -cabin" },
-      { display: "party", q: "party -live -politics -serbian -opposition" },
-      { display: "crazy", q: "crazy -live" },
-      { display: "trash", q: "trash -live -music -heller" },
-      { display: "music", q: "music -live" },
-      { display: "gaypride", q: "gaypride" },
-      { display: "underground", q: "underground -live"},
-      { display: "turbofolk", q: "turbofolk -live"},
-      { display: "girls", q: "girls -live"},
-      { display: "mafia", q: "mafia -live"},
-      { display: "nights", q: "nights -live"},
-      { display: "celebs", q: "celebs -live"},
-      { display: "people", q: "people -live"},
-      { display: "tabloid", q: "tabloid -live"},
-      { display: "dirty", q: "dirty -live"},
-      { display: "scandal", q: "scandal -live"},
-      { display: "politics", q: "politics -live"}
+      { display: "life", q: "life -live -apartment -house -rent -asimo -robot" },
+      { display: "today", q: "today -live-apartment -house -rent -cabin -asimo -robot" },
+      { display: "party", q: "party -live -politics -serbian -opposition -asimo -robot" },
+      { display: "crazy", q: "crazy -live -asimo -robot"},
+      { display: "trash", q: "trash -live -music -heller -asimo -robot"},
+      { display: "music", q: "music -live -asimo -robot"},
+      { display: "gaypride", q: "gaypride -asimo -robot"},
+      { display: "underground", q: "underground -live -asimo -robot"},
+      { display: "turbofolk", q: "turbofolk -live -asimo -robot"},
+      { display: "girls", q: "girls -live -asimo -robot"},
+      { display: "mafia", q: "mafia -live -asimo -robot"},
+      { display: "nights", q: "nights -live -asimo -robot"},
+      { display: "celebs", q: "celebs -live -asimo -robot"},
+      { display: "people", q: "people -live -asimo -robot"},
+      { display: "tabloid", q: "tabloid -live -asimo -robot"},
+      { display: "dirty", q: "dirty -live -asimo -robot"},
+      { display: "scandal", q: "scandal -live -asimo -robot"},
+      { display: "politics", q: "politics -live -asimo -robot"}
 
     ],
     search_term: null,
@@ -201,7 +201,7 @@ function(app, Video) {
 
       this.$search_term.fadeOut(100);
       this.$search_term.html(search_term.display);
-      this.$search_term.fadeIn(100);
+      this.$search_term.fadeIn(200);
 
     },
 
