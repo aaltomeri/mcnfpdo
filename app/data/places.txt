@@ -29,7 +29,7 @@
 			"Lat": 44.797246,
 			"Lng": 20.446338
 		},
-		"vimeo_id": null
+		"vimeo_id": 62076786
 	},
 	{	
 		"name": "Sava Centar",
@@ -37,7 +37,7 @@
 			"Lat": 44.809441,
 			"Lng": 20.431442
 		},
-		"vimeo_id": null
+		"vimeo_id": 62076791
 	},
 	{	
 		"name": "Bus Novi Beograd (73)",
@@ -61,7 +61,7 @@
 			"Lat": 44.805441,
 			"Lng": 20.477984
 		},
-		"vimeo_id": null
+		"vimeo_id": 62077659
 	},
 	{	
 		"name": "Auberge Karadjordjeva",
@@ -69,7 +69,7 @@
 			"Lat": 44.801373,
 			"Lng": 20.476036
 		},
-		"vimeo_id": null
+		"vimeo_id": 62076790
 	},
 	{	
 		"name": "Bateau Sava à Ada",
@@ -77,7 +77,7 @@
 			"Lat": 44.793927,
 			"Lng": 20.406028
 		},
-		"vimeo_id": null
+		"vimeo_id": 62077438
 	},
 	{	
 		"name": "Atelier Zika",
@@ -181,7 +181,7 @@
 			"Lat": 44.808985,
 			"Lng": 20.455448
 		},
-		"vimeo_id": null
+		"vimeo_id": 62077439
 	},
 	{	
 		"name": "Hotel Beograd de nuit",
