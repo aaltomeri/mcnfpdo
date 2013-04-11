@@ -13,23 +13,55 @@ define([
 function(app) {
 
   // Create a new module.
-  var BgdMap = app.module();
+  var BgdMap = app.module()
+  ,   layout
+  ,   places
 
-  BgdMap.init = function() {
+  BgdMap.init = function(action, start_index) {
+
+    BgdMap.start_index = start_index;
 
     // poll for google.maps.version to see if it's actually loaded
     if(typeof google.maps.version === 'undefined') {
       console.log("Google Maps NOT loaded");
-      setTimeout(BgdMap.init, 10);
+      setTimeout(function() { BgdMap.init(action, start_index)}, 10);
       return;
     }
 
     console.log("Google Maps loaded: " + google.maps.version);
 
-    var places = new BgdMap.Collection();
-    var layout = new BgdMap.Views.Layout({collection: places});
+    places = new BgdMap.Collection();
+    layout = new BgdMap.Views.Layout({collection: places});
 
-    places.on('reset', function() { layout.createMap() });
+    places.on('reset', function() {
+
+      var self = this;
+
+      // function that looks for an existing (i.e. with a vimeo id) random video in collection
+      function setRdmVideo() {
+
+        BgdMap.start_index = Math.floor(Math.random()*self.models.length-1);
+
+        // search for a place with a video
+        if(!self.at(BgdMap.start_index).get('vimeo_id'))
+          setRdmVideo();
+
+      }
+
+      // set random video id if given video does not exist
+      if(BgdMap.start_index) {
+
+        // out of bounds OR no vimeo id
+        if(BgdMap.start_index > this.models.length-1 || !this.at(BgdMap.start_index).get('vimeo_id'))
+          setRdmVideo();
+      
+      }
+
+
+      layout.createMap();
+
+    });
+
     places.fetchData();
 
   };
@@ -134,6 +166,10 @@ function(app) {
       this.createPlaces(this.collection.models);
       this.initInfoWindow();
 
+      // open info window if param has been passed to module
+      if(BgdMap.start_index)
+        this.infoWindow.open(this.map, this.collection.at(BgdMap.start_index).mrkr);
+
       $('#module-container').transition({opacity: 1}, 2000);
 
     },
@@ -147,6 +183,10 @@ function(app) {
       var count = 0;
 
       this.collection.each( function (place) {
+
+        // deal with missing videos
+        if(place.get('vimeo_id') === null)
+          return;
 
         // create google maps Marker
         var mrkr = new google.maps.Marker({
@@ -205,31 +245,30 @@ function(app) {
           
           var vw_content = this.getContent()
           , _iw = this
-          , _player = this.player
-          , src = 'http://player.vimeo.com/video/' + this.anchor.place.get('vimeo_id');
+          , place = this.anchor.place
+          , src = 'http://player.vimeo.com/video/' + place.get('vimeo_id');
 
           // playe exists
           // destroy it and remove the vimeo iframe
           // note: I tried to change src for an existing player but did not succeed so I tear down and rebuild
           // this is working for this case at least  
-          if(typeof this.player == 'object') {
+          if(typeof layout.player == 'object') {
 
-            this.player.destroy();
-
-            if($(vw_content).find('iframe').length) {
-              $(vw_content).find('iframe').remove();
-            }
+            layout.destroyPlayer();
 
           }
 
-          this.player = Popcorn.smart(vw_content, src);
-          this.player.autoplay(true);
+          layout.player = Popcorn.smart(vw_content, src);
+          layout.player.autoplay(true);
 
-          this.player.on('ended', function() { 
+          layout.player.on('ended', function() { 
             _iw.close();
+            layout.destroyPlayer();
+            layout.map.setZoom(13);
           });
 
-          this.player.on('canplay', function() {
+          layout.player.on('canplay', function() {
+
             // ANALYTICS
             _gaq.push(['_trackEvent', 'Vidéos', 'View', place.get('name')]);
 
@@ -250,11 +289,33 @@ function(app) {
 
           });
 
-          google.maps.event.addListener(this, 'closeclick', function() {
-            //map.setZoom(13);
-          });
+          if(!view.infoWindow.initialized) {
+
+            google.maps.event.addListener(this, 'closeclick', function() {
+              layout.map.setZoom(13);
+              layout.destroyPlayer();
+            });
+
+            view.infoWindow.initialized = true;
+
+          }
+
 
       });
+
+    },
+
+    destroyPlayer: function() {
+
+      if(!this.player)
+        return;
+
+      this.player.destroy();
+      delete this.player;
+
+      if($(this.infoWindow.getContent()).find('iframe').length) {
+        $(this.infoWindow.getContent()).find('iframe').remove();
+      }
 
     }
 
@@ -262,6 +323,7 @@ function(app) {
 
   BgdMap.destroy = function() {
 
+    layout.destroyPlayer();
     console.log('BgdMap destroy');
 
   }
