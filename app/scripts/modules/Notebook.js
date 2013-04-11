@@ -15,7 +15,7 @@ function(app, Video) {
 
   Notebook.init = function(action, options) {
 
-    //console.log('Notebook INIT');
+    console.log('Notebook INIT');
 
     var layout
     ,   days = new Notebook.Days();
@@ -65,6 +65,7 @@ function(app, Video) {
       $.get('data/notebook-days.txt').done(
 
         function(data) { 
+
 
           _this.reset($.parseJSON(data));
 
@@ -219,16 +220,22 @@ function(app, Video) {
       // first row represents the day of the week
       row_str = '<tr>';
       for(var _wd = 0; _wd < 7; _wd++) {
-        date = new Date(2006, 2, _wd+1);
-        row_str += '<td>' + week_days[date.getDay()] + '</td>'
+        date = new Date(2006, 2, _wd);
+        row_str += '<td>' + week_days[_wd] + '</td>'
       }
       row_str += '</tr>';
 
       this.$el.append(row_str);
 
-      this.collection.each(function(model) {  
+      // dirty hack to push first day under the right day of the week
+      var days_array = this.collection.toArray();
+      days_array.unshift(null);
+      days_array.unshift(null);
 
-        date = new Date(2006, 2, model.get('number'));
+      _.each(days_array, function(model) {  
+
+        if(model)
+          date = new Date(2006, 2, model.get('number'));
 
         if(wd%7 == 0) {// beginning of the week
 
@@ -244,7 +251,10 @@ function(app, Video) {
 
         }
 
-        day_view = this.insertView('#' + $row.get(0).id, new Notebook.Views.Day({model: model})).render();
+        if(model)
+          day_view = this.insertView('#' + $row.get(0).id, new Notebook.Views.Day({model: model})).render();
+        else
+          $row.append('<td></td>');
 
         // increment week day
         wd++;
@@ -322,7 +332,7 @@ function(app, Video) {
 
               // if youtube url we want html5
               if(sources.search(/youtube/) != -1) {
-                youtube_force_html5_param = "&html5=1";
+                //youtube_force_html5_param = "&html5=1";
               }
 
               // we need an array in any case
