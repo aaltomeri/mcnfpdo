@@ -29,12 +29,12 @@ function(app, Router) {
   $('#global-mute').on('click', function() {
 
     if(!app.muted) {
-      $(this).html('SOUND is OFF');
+      $(this).find('i').toggleClass('icon-volume-off icon-volume-up');
       _.each(Popcorn.instances, function(instance) { instance.mute(true); });
       app.muted = true;
     }
     else {
-      $(this).html('SOUND is ON');
+      $(this).find('i').toggleClass('icon-volume-off icon-volume-up');
       _.each(Popcorn.instances, function(instance) { instance.mute(false); });
       app.muted = false;
     }
