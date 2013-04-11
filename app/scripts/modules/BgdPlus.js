@@ -60,16 +60,15 @@ function(app, Video) {
       { display: "crazy", q: "crazy -live -asimo -robot"},
       { display: "trash", q: "trash -live -music -heller -asimo -robot"},
       { display: "music", q: "music -live -asimo -robot"},
-      { display: "gaypride", q: "gaypride -asimo -robot"},
+      // { display: "gaypride", q: "gaypride -asimo -robot"},
       { display: "underground", q: "underground -live -asimo -robot"},
       { display: "turbofolk", q: "turbofolk -live -asimo -robot"},
       { display: "girls", q: "girls -live -asimo -robot"},
       { display: "mafia", q: "mafia -live -asimo -robot"},
       { display: "nights", q: "nights -live -asimo -robot"},
-      { display: "celebs", q: "celebs -live -asimo -robot"},
       { display: "people", q: "people -live -asimo -robot"},
       { display: "tabloid", q: "tabloid -live -asimo -robot"},
-      { display: "dirty", q: "dirty -live -asimo -robot"},
+      { display: "dirty", q: "dirty -live -asimo -robot -dolly"},
       { display: "scandal", q: "scandal -live -asimo -robot"},
       { display: "politics", q: "politics -live -asimo -robot"}
 
@@ -230,7 +229,7 @@ function(app, Video) {
 
           // force html5 video for youtube
           if(source.search(/youtube/) != -1) {
-            source += "&html5=1";
+            //source += "&html5=1";
           }
 
           // add modified source
