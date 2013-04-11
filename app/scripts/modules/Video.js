@@ -145,6 +145,8 @@ function(app) {
 
     enablePlayPause: function() {
 
+      this.$el.parent().parent().css({"z-index": 100});
+
       // by clicking on video
       this._enablePlayPauseByClicking();
 
@@ -155,6 +157,8 @@ function(app) {
 
     disablePlayPause: function() {
 
+      this.$el.parent().parent().css({"z-index": 1});
+
       this._disablePlayPauseByClicking();
       this._disablePlayPauseByPressingKey();
 
@@ -164,14 +168,17 @@ function(app) {
 
         var trigger_event = app.isiPad? 'touchstart' : 'click';
 
-        $('#main').on(trigger_event, $.proxy(this._togglePlayPause, this));
+        this.$el.parent().on(trigger_event, $.proxy(
+            this._clickHandler, this
+          )
+        );
 
     },
     
     _disablePlayPauseByClicking: function() {
 
         var trigger_event = app.isiPad? 'touchstart' : 'click';
-        $('#main').off(trigger_event, this._togglePlayPause);
+        this.$el.parent().off(trigger_event, this._togglePlayPause);
 
     },
 
@@ -184,6 +191,12 @@ function(app) {
     _disablePlayPauseByPressingKey: function() {
 
       $('body').off('keydown', this._keydownHandler);
+
+    },
+
+    _clickHandler: function(e) {
+
+      this._togglePlayPause();
 
     },
 
@@ -201,7 +214,7 @@ function(app) {
     _togglePlayPause: function() {
 
       var vp = this.popcorn;
-
+      
       if(vp.paused()) {
         vp.play();
       }
