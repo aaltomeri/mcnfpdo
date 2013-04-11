@@ -10,14 +10,14 @@ define([
 function(app) {
 
   // Create a new module.
-  var History = app.module();
+  var History = app.module()
+  ,   layout
 
   History.init = function() {
 
     console.log('History INIT');
 
-    var layout
-    ,   wiki_entries = new History.WikiEntries();
+    var wiki_entries = new History.WikiEntries();
 
     // create layout after entries list has been loaded and Collection has been populated
     wiki_entries.on('reset', function() {
@@ -38,14 +38,21 @@ function(app) {
 
       view.render();
 
-      //view.$el.hide();
+      // var _l = Math.random() * 20 + 10 //(Math.random() > .5)? layout.$el.width() : -view.$el.width()-20
+      // ,   _t = Math.random() * 20 + 40 //(Math.random() > .5)? layout.$el.height() : -view.$el.height()-20
 
-      var _l = Math.random() * 20 + 10 //(Math.random() > .5)? layout.$el.width() : -view.$el.width()-20
-      ,   _t = Math.random() * 20 + 40 //(Math.random() > .5)? layout.$el.height() : -view.$el.height()-20
+      var _l = Math.ceil(Math.random() * (layout.$el.width() - view.$el.width()))
+      ,   _t = Math.round(Math.random() * (layout.$el.height() - view.$el.height()));
 
       view.$el.css({
+        opacity: 0,
         left: _l,
         top: _t
+      });
+
+      view.$el.transition({
+          opacity: 1,
+          duration: 200
       });
 
     });
@@ -53,7 +60,7 @@ function(app) {
     // done with all wikipedia requests
     wiki_entries.on('History:WikiEntries:all_requests_done', function() {
 
-      layout.$el.find('.loading').remove();
+      layout.$el.find('.loading').fadeOut(500, function() { $(this).remove() });
 
       layout.getViews(function(view, index) {
 
@@ -74,6 +81,7 @@ function(app) {
         }, 
         function() { 
           view.enabled = true; 
+          view.$el.addClass('wiki-entry-effects');
         });
 
       });
@@ -112,6 +120,8 @@ function(app) {
 
               setTimeout(function() {
 
+
+
                 // add Promise returned by the fetch method to array
                 wiki_requests.push(_this.fetchWikiData(model));
 
@@ -132,9 +142,6 @@ function(app) {
               }, 500 * index);
 
           });
-          
-         
-          
 
         }
       );
@@ -152,6 +159,9 @@ function(app) {
           redirects: 1
         }
       );
+
+      // display
+      layout.$el.find('.loading').html('Chargement de la fiche Wikipedia pour : <span class="term">'+model.get('name')+'</span>');
 
       _this.trigger('History:WikiEntries:request_start', { model: model });
 
@@ -229,7 +239,13 @@ function(app) {
         stack: ".wiki-entry",
         containment: "parent",
         distance : 0,
-        delay: 0
+        delay: 0,
+        start: function(event, ui) {
+          //$('.wiki-entry').toggleClass('wiki-entry-effects');
+        },
+        stop: function(event, ui) {
+          //$('.wiki-entry').toggleClass('wiki-entry-effects');
+        }
       });
 
     },
@@ -247,11 +263,16 @@ function(app) {
         this.$btn_show_entry.addClass('icon-circle-arrow-down');
         this.$btn_show_entry.removeClass('icon-circle-arrow-up');
 
+
       }
       else {
 
+        // mark as read
+        this.$el.addClass('entry-read');
+
         // ANALYTICS
         _gaq.push(['_trackEvent', 'History', 'View', this.model.get('name')]);
+
         this.$text.show();
         this.$btn_show_entry.removeClass('icon-circle-arrow-down');
         this.$btn_show_entry.addClass('icon-circle-arrow-up');
@@ -262,6 +283,7 @@ function(app) {
 
     afterRender: function() {
 
+      this.$header = this.$el.find('.header');
       this.$text = this.$el.find('.text');
       this.$btn_show_entry = this.$el.find('.btn-show-entry');
 
