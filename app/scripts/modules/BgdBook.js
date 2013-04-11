@@ -147,7 +147,8 @@ function(app, Video, SearchEngine) {
         // becomes medias/videos/57062884.mp4
         var sources = model.get('sources');
         _.each(sources, function(el, index, list) { 
-          sources[index] = el.replace('http://player.vimeo.com/video/','medias/videos/') + '.mp4';
+          sources[0] = el.replace('http://player.vimeo.com/video/','medias/videos/') + '.webm';
+          sources[1] = el.replace('http://player.vimeo.com/video/','medias/videos/') + '.mp4';
         });
 
         // setting views on Layout - adding true as last argument to append rather than replace
