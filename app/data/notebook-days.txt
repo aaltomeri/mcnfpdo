@@ -3,14 +3,14 @@
 		"number": "1",
 		"sources": "https://www.youtube.com/watch?v=YM_tyfbqY3A",
 		"mcnfpdo_entries": [
-			
+			"<a href=\"http://fr.wikipedia.com//wiki/Irak\" title=\"Irak\" target=\"_blank\">Irak</a>&nbsp;: Coup de théâtre au procès de <a href=\"http://fr.wikipedia.com//wiki/Saddam_Hussein\" title=\"Saddam Hussein\" target=\"_blank\">Saddam Hussein</a>. L'ancien président déchu reconnaît être le seul responsable du massacre de 148 villageois <a href=\"http://fr.wikipedia.com//wiki/Chiites\" title=\"Chiites\" class=\"mw-redirect\" target=\"_blank\">chiites</a> et de la destruction de leurs vergers, ordonnée à la suite d'une attaque du cortège présidentiel en <a href=\"http://fr.wikipedia.com//wiki/1982\" title=\"1982\" target=\"_blank\">1982</a> à <a href=\"http://fr.wikipedia.com//wiki/Douja%C3%AFl\" title=\"Doujaïl\" target=\"_blank\">Doujaïl</a>, au nord de <a href=\"http://fr.wikipedia.com//wiki/Bagdad\" title=\"Bagdad\" target=\"_blank\">Bagdad</a>&nbsp;: «&nbsp;J'ai signé l'ordre du conseil du commandement de la révolution, la plus haute instance du pays&nbsp;»."
 		]
 	},
 	{	
 		"number": "2",
 		"sources": "https://www.youtube.com/watch?v=0CeSsesCr54",
 		"mcnfpdo_entries": [
-
+			"<a href=\"http://fr.wikipedia.com//wiki/Russie\" title=\"Russie\" target=\"_blank\">Russie</a>&nbsp;: La Justice russe annonce qu'elle a transmis aux autorités britanniques une demande d'extradition de l'homme d'affaires russe <a href=\"http://fr.wikipedia.com//wiki/Boris_Berezovsky_(homme_d%27affaires)\" title=\"Boris Berezovsky (homme d'affaires)\" target=\"_blank\">Boris Berezovski</a>, qui a obtenu le statut de réfugié au <a href=\"http://fr.wikipedia.com//wiki/Royaume-Uni\" title=\"Royaume-Uni\" target=\"_blank\">Royaume-Uni</a> en <a href=\"http://fr.wikipedia.com//wiki/2003\" title=\"2003\" target=\"_blank\">2003</a>, en raison de nouvelles accusations criminelles contre lui. L'homme d'affaires russe avait déclaré dans la presse fin janvier qu'il préparait «&nbsp;une prise de pouvoir par la force&nbsp;» en Russie. Le Secrétaire britannique au <a href=\"http://fr.wikipedia.com//wiki/Foreign_Office\" title=\"Foreign Office\" class=\"mw-redirect\" target=\"_blank\">Foreign Office</a>, <a href=\"http://fr.wikipedia.com//wiki/Jack_Straw_(leader_rebelle)\" title=\"Jack Straw (leader rebelle)\" target=\"_blank\">Jack Straw</a>, a indiqué à M. Berezovski que le gouvernement britannique pourrait revoir son statut de réfugié à tout moment en raison de ses propos sur le renversement du gouvernement d'un État souverain."
 		]
 	},
 	{	
@@ -29,9 +29,12 @@
 	},
 	{	
 		"number": "5",
-		"sources": "medias/videos/Al_Zawahiri_menace_la_France.mp4",
+		"sources": [
+			"medias/videos/Al_Zawahiri_menace_la_France.mp4",
+			"medias/videos/Al_Zawahiri_menace_la_France.webm"
+		],
 		"mcnfpdo_entries": [
-
+			"<a href=\"http://fr.wikipedia.com//wiki/Qatar\" title=\"Qatar\" target=\"_blank\">Qatar</a>&nbsp;: dans un enregistrement vidéo diffusé ce jour par <a href=\"http://fr.wikipedia.com//wiki/Al-Jezira\" title=\"Al-Jezira\" class=\"mw-redirect\" target=\"_blank\">Al-Jezira</a>, le numéro deux d'<a href=\"http://fr.wikipedia.com//wiki/Al-Qa%C3%AFda\" title=\"Al-Qaïda\" target=\"_blank\">Al-Qaïda</a>, l'<a href=\"http://fr.wikipedia.com//wiki/%C3%89gypte\" title=\"Égypte\" target=\"_blank\">Égyptien</a> <a href=\"http://fr.wikipedia.com//wiki/Ayman_al-Zawahri\" title=\"Ayman al-Zawahri\" class=\"mw-redirect\" target=\"_blank\">Ayman al-Zawahri</a>, coiffé d'un turban noir, critique la publication des <a href=\"http://fr.wikipedia.com//wiki/Caricatures_de_Mahomet_du_journal_Jyllands-Posten\" title=\"Caricatures de Mahomet du journal Jyllands-Posten\" target=\"_blank\">caricatures de Mahomet</a> dans plusieurs journaux européens déclarant que «&nbsp;les insultes contre le <a href=\"http://fr.wikipedia.com//wiki/Mahomet\" title=\"Mahomet\" target=\"_blank\">prophète Mahomet</a> ne sont pas le résultat de la liberté d'opinion&nbsp;» ou ajoutant encore que «&nbsp;ce qui est sacré a changé dans cette culture&nbsp;». [<span><a href=\"http://fr.wikipedia.com///fr.wikinews.org/wiki/Nouvelle_vid%C3%A9o_d%27Ayman_al-Zawahri\" class=\"extiw\" title=\"n:Nouvelle vidéo d'Ayman al-Zawahri\" target=\"_blank\">voir sur Wikinews</a></span>]"
 		]
 	},
 	{	
@@ -52,14 +55,14 @@
 		"number": "8",
 		"sources": "https://www.youtube.com/watch?v=QKhXuwyn8iU",
 		"mcnfpdo_entries": [
-
+			"<a href=\"http://fr.wikipedia.com//wiki/Cour_internationale_de_justice\" title=\"Cour internationale de justice\" target=\"_blank\">Justice internationale</a>&nbsp;: la <a href=\"http://fr.wikipedia.com//wiki/Serbie-et-Mont%C3%A9n%C3%A9gro\" title=\"Serbie-et-Monténégro\" target=\"_blank\">Serbie-et-Monténégro</a>, accusée par la <a href=\"http://fr.wikipedia.com//wiki/Bosnie-Herz%C3%A9govine\" title=\"Bosnie-Herzégovine\" target=\"_blank\">Bosnie</a> de <a href=\"http://fr.wikipedia.com//wiki/G%C3%A9nocide\" title=\"Génocide\" target=\"_blank\">génocide</a> devant la <a href=\"http://fr.wikipedia.com//wiki/Cour_internationale_de_justice\" title=\"Cour internationale de justice\" target=\"_blank\">Cour internationale de justice</a> (CIJ), entame sa plaidoirie en s’interrogeant sur la compétence de la Cour et sur la qualification du crime, lors d’une audience devant la plus haute instance judiciaire des <a href=\"http://fr.wikipedia.com//wiki/Organisation_des_Nations_unies\" title=\"Organisation des Nations unies\" target=\"_blank\">Nations unies</a>. Durant la guerre en Bosnie (<a href=\"http://fr.wikipedia.com//wiki/1992\" title=\"1992\" target=\"_blank\">1992</a>-<a href=\"http://fr.wikipedia.com//wiki/1995\" title=\"1995\" target=\"_blank\">1995</a>), la présidence musulmane bosniaque a accusé le régime de <a href=\"http://fr.wikipedia.com//wiki/Belgrade\" title=\"Belgrade\" target=\"_blank\">Belgrade</a> d’avoir tué, violé, torturé, kidnappé, détenu illégalement et exterminé des citoyens de Bosnie-Herzégovine, des accusations contestées par Belgrade."
 		]
 	},
 	{	
 		"number": "9",
 		"sources": "http://www.youtube.com/watch?v=P31RzaYp-Kg",
 		"mcnfpdo_entries": [
-
+			"<a href=\"http://fr.wikipedia.com//wiki/Irak\" title=\"Irak\" target=\"_blank\">Irak</a>&nbsp;: l'<a href=\"http://fr.wikipedia.com//wiki/Arm%C3%A9e_am%C3%A9ricaine\" title=\"Armée américaine\" class=\"mw-redirect\" target=\"_blank\">armée américaine</a> annonce la fermeture prochaine de la <a href=\"http://fr.wikipedia.com//wiki/Prison_d%27Abu_Ghraib\" title=\"Prison d'Abu Ghraib\" class=\"mw-redirect\" target=\"_blank\">prison d'Abu Ghraib</a>, près de <a href=\"http://fr.wikipedia.com//wiki/Bagdad\" title=\"Bagdad\" target=\"_blank\">Bagdad</a>, en Irak, tristement célèbre depuis la publication en <a href=\"http://fr.wikipedia.com//wiki/2003\" title=\"2003\" target=\"_blank\">2003</a> de photographies montrant des soldats américains infligeant des sévices à des détenus, et qui avait déjà servi de centre de <a href=\"http://fr.wikipedia.com//wiki/Torture\" title=\"Torture\" target=\"_blank\">torture</a> sous le régime de <a href=\"http://fr.wikipedia.com//wiki/Saddam_Hussein\" title=\"Saddam Hussein\" target=\"_blank\">Saddam Hussein</a>. Les 4&nbsp;500 prisonniers qui y sont enfermés devraient être transférés vers d'autres centres de détention en Irak, dans un délai de un à trois mois."
 		]
 	},
 	{	
@@ -71,30 +74,36 @@
 	},
 	{	
 		"number": "11",
-		"sources": "medias/videos/mort_de_Milosevic_france3.mp4",
+		"sources": [
+			"medias/videos/mort_de_Milosevic_france3.mp4",
+			"medias/videos/mort_de_Milosevic_france3.webm"
+		],
 		"mcnfpdo_entries": [
-			
+			"<a href=\"http://fr.wikipedia.com//wiki/Serbie-et-Mont%C3%A9n%C3%A9gro\" title=\"Serbie-et-Monténégro\" target=\"_blank\">Serbie-et-Monténégro</a>&nbsp;: mort dans sa cellule de la prison de <a href=\"http://fr.wikipedia.com//wiki/La_Haye\" title=\"La Haye\" target=\"_blank\">La Haye</a>, où il comparaissait devant le <a href=\"http://fr.wikipedia.com//wiki/Tribunal_p%C3%A9nal_international_pour_l%27ex-Yougoslavie\" title=\"Tribunal pénal international pour l'ex-Yougoslavie\" target=\"_blank\">Tribunal pénal international pour l'ex-Yougoslavie</a>, depuis <a href=\"http://fr.wikipedia.com//wiki/F%C3%A9vrier_2002\" title=\"Février 2002\" target=\"_blank\">février 2002</a>, inculpé de plus de soixante chefs d'accusation, pour <a href=\"http://fr.wikipedia.com//wiki/G%C3%A9nocide\" title=\"Génocide\" target=\"_blank\">génocide</a> et <a href=\"http://fr.wikipedia.com//wiki/Crimes_de_guerre\" title=\"Crimes de guerre\" class=\"mw-redirect\" target=\"_blank\">crimes de guerre</a> commis pendant les guerres des <a href=\"http://fr.wikipedia.com//wiki/Balkans\" title=\"Balkans\" target=\"_blank\">Balkans</a>, de l'ancien président de <a href=\"http://fr.wikipedia.com//wiki/Serbie-et-Mont%C3%A9n%C3%A9gro\" title=\"Serbie-et-Monténégro\" target=\"_blank\">Serbie</a> et de la <a href=\"http://fr.wikipedia.com//wiki/R%C3%A9publique_f%C3%A9d%C3%A9rale_de_Yougoslavie\" title=\"République fédérale de Yougoslavie\" target=\"_blank\">République fédérale de Yougoslavie</a> <a href=\"http://fr.wikipedia.com//wiki/Slobodan_Milo%C5%A1evic\" title=\"Slobodan Miloševic\" class=\"mw-redirect\" target=\"_blank\">Slobodan Miloševic</a> (64 ans). On ignore à cette heure les causes de son décès, mais on sait que l'ex-président serbe souffrait de problèmes de santé à répétition qui avaient retardé son procès."
 		]
 	},
 	{	
 		"number": "12",
-		"sources": "medias/videos/CORPS_MILOSEVIC_ARRIVE_DE_LA_HAYE.mp4",
+		"sources": [
+			"medias/videos/CORPS_MILOSEVIC_ARRIVE_DE_LA_HAYE.mp4",
+			"medias/videos/CORPS_MILOSEVIC_ARRIVE_DE_LA_HAYE.webm"
+		],
 		"mcnfpdo_entries": [
-			"Le corps de Slobodan Milošević est rapatrié de La Haye. Pour le journal serbe \"Danas\", \"il ne reste de lui ni monument ni voie à suivre."
+			"Le corps de <a href=\"/#BgdMap/open/48\">Slobodan Milošević</a> est rapatrié de La Haye. Pour le journal serbe \"Danas\", \"il ne reste de lui ni monument ni voie à suivre."
 		]
 	},
 	{	
 		"number": "13",
-		"sources": null,
+		"sources": "http://www.youtube.com/watch?v=AzuXaOvuJtU",
 		"mcnfpdo_entries": [
-
+			"Baltasar fait en Espagne la connaissance de Borislav, le frère de son ancien tortionnaire Željko."
 		]
 	},
 	{	
 		"number": "14",
-		"sources": null,
+		"sources": "http://www.youtube.com/watch?v=Ppl-7-uiU8I",
 		"mcnfpdo_entries": [
-
+			
 		]
 	},
 	{	
@@ -121,7 +130,10 @@
 	},
 	{	
 		"number": "18",
-		"sources": "medias/videos/FIN_ENTERREMENT_MILOSEVIC.mp4",
+		"sources": [
+			"medias/videos/FIN_ENTERREMENT_MILOSEVIC.mp4",
+			"medias/videos/FIN_ENTERREMENT_MILOSEVIC.webm"
+		],
 		"mcnfpdo_entries": [
 			"Un cortège emportant la dépouille de Slobodan Milošević part du Parlement à Belgrade et s'achève à Pozarevać, ville natale de l'ancien président. Au même moment, les opposants invitent à un rassemblement avec ce SMS: \"Serbie 18/03 à 15 heures. Place de la République. Le printemps arrive avec trois jours d'avance. Venez nous rejoindre pour souhaiter tous ensemble qu'un autre Milošević n'apparaisse plus jamais. Signe de reconnaissance: ballon. Faire suivre.\""
 		]
@@ -142,7 +154,7 @@
 	},
 	{	
 		"number": "21",
-		"sources": "http://www.youtube.com/watch?v=Ppl-7-uiU8I",
+		"sources": null,
 		"mcnfpdo_entries": [
 		
 		]
@@ -170,7 +182,10 @@
 	},
 	{	
 		"number": "25",
-		"sources": "medias/videos/Gran_Marcha_2006_Los_Angeles.mp4",
+		"sources": [
+			"medias/videos/Gran_Marcha_2006_Los_Angeles.mp4",
+			"medias/videos/Gran_Marcha_2006_Los_Angeles.webm"
+		],
 		"mcnfpdo_entries": [
 
 		]
@@ -198,9 +213,9 @@
 	},
 	{	
 		"number": "29",
-		"sources": "http://www.youtube.com/watch?v=AzuXaOvuJtU",
+		"sources": null,
 		"mcnfpdo_entries": [
-			"Baltasar fait en Espagne la connaissance de Borislav, le frère de son ancien tortionnaire Željko."
+
 		]
 	},
 	{	

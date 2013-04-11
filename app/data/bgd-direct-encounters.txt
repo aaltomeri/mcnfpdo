@@ -24,7 +24,7 @@
 		"source": "Chronique de Belgrade",
 		"title": "Les bombes",
 		"date": "Wed, 13 Apr 2011 11:26:47 +0000",
-		"text": "Je suis arrivé hier à minuit, après un voyage en train long de 27 H. Dont 17 dans le même train : Munich, Innsbruck, Ljubljana, Zagreb, Belgrade. B. m'accueille et je découvre au centre-ville deux énormes bâtiments éventrés. Je soupire: \"Ah, la guerre...\". A quoi il répond: \"Non, c'est vous, c'est l'OTAN.\" Mon désarroi ne fait que comemencer."
+		"text": "Je suis arrivé hier à minuit, après un voyage en train long de 27 H. Dont 17 dans le même train : Munich, Innsbruck, Ljubljana, Zagreb, Belgrade. B. m'accueille et je découvre au centre-ville deux énormes bâtiments éventrés. Je soupire: \"Ah, la guerre...\". A quoi il répond: \"Non, c'est vous, c'est l'OTAN.\" Mon désarroi ne fait que commencer."
 	},
 
 	{ 	

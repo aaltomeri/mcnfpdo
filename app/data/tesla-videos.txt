@@ -1,6 +1,25 @@
 [       
         {
+             "name": "Serbie, Yougoslavie, Tesla, Bond and more... ",
+             "slug": "serbie-yougoslavie-tesla-bond-and-more",
+             "sources": "http://www.youtube.com/watch?v=g2n0RcVfHWk",
+             "dimensions": {},
+             "position": {},
+             "in_point": 7,
+             "out_point": 12
+        },
+        {
+             "name": "Zdravko Colic Eurovision 1973 Song Contest",
+             "slug": "zdravko-colic-eurovision-1973-song-contest",
+             "sources": "http://www.youtube.com/watch?v=Q-2oYPDX6bk",
+             "dimensions": {},
+             "position": {},
+             "in_point": 30,
+             "out_point": 61
+        },
+        {
              "name": "Yugoslavia : Europe's Hidden Treasure (1986)",
+             "slug": "yugoslavia-europes-hidden-treasure-1986",
              "sources": "http://www.youtube.com/watch?v=0RRnCnO1Y2c",
              "dimensions": {},
              "position": {},
@@ -9,14 +28,16 @@
         },
         {
              "name": "Modern Marvels : Nikola Tesla",
+             "slug": "modern-marvels-nikola-tesla",
              "sources": "http://www.youtube.com/watch?v=qdPoOAVAuFQ",
              "dimensions": {},
              "position": {},
              "in_point": 1026,
-             "out_point": 1148
+             "out_point": 1066
         },
         {
              "name": "Lost Ligntning : The Missing Secrets of Nikola Tesla",
+             "slug": "lost-ligntning-the-missing-secrets-of-nikola-tesla",
              "sources": "http://www.youtube.com/watch?v=BaB_Yx7hpJs",
              "dimensions": {},
              "position": {},
@@ -25,6 +46,7 @@
         },
         {
              "name": "Dusko Popov : Inspiration for James Bond Character",
+             "slug": "dusko-popov-inspiration-for-james-bond-character",
              "sources": "http://www.youtube.com/watch?v=fvZyy-_gXvE",
              "dimensions": {},
              "position": {},
@@ -33,6 +55,7 @@
         },
         {
              "name": "James Bond First Adaptation : Casino Royal (1954)",
+             "slug": "james-bond-first-adaptation-casino-royal-1954",
              "sources": "http://www.youtube.com/watch?v=5bBnVDj5SkA",
              "dimensions": {},
              "position": {},
@@ -41,6 +64,7 @@
         },
         {
              "name": "Arkan & Svetlana 'Ceca' Velickovic Wedding (19 February 1995)",
+             "slug": "arkan-&-svetlana-ceca-velickovic-wedding-19-february-1995",
              "sources": "http://www.youtube.com/watch?v=pypwd0-Fp_E",
              "dimensions": {},
              "position": {},
@@ -49,6 +73,7 @@
         },
         {
              "name": "Srdjan Dragojevic's 'The Parade' (2011)",
+             "slug": "srdjan-dragojevics-the-parade-2011",
              "sources": "http://www.youtube.com/watch?v=6FnzNPfngzg",
              "dimensions": {},
              "position": {},
@@ -57,6 +82,7 @@
         },
         {
              "name": "Assassination of Archduke Franz Ferdinand in Sarajevo (June 28 1914)",
+             "slug": "assassination-of-archduke-franz-ferdinand-in-sarajevo-june-28-1914",
              "sources": "http://www.youtube.com/watch?v=HLruVJHIgCM",
              "dimensions": {},
              "position": {},
@@ -65,6 +91,7 @@
         },
         {
              "name": "Youth Day 1962 in Mostar : Tito and The Relay of Youth (Stafeta Relay)",
+             "slug": "youth-day-1962-in-mostar-tito-and-the-relay-of-youth-stafeta-relay",
              "sources": "https://www.youtube.com/watch?v=Nq6B4rLSpJY",
              "dimensions": {},
              "position": {},
@@ -73,6 +100,7 @@
         },
         {
              "name": "1977 Relay of Youth : Tito is offered the Stafeta in Belgrade",
+             "slug": "1977-relay-of-youth-tito-is-offered-the-stafeta-in-belgrade",
              "sources": "https://www.youtube.com/watch?v=XAJZF7rJXG0",
              "dimensions": {},
              "position": {},
@@ -81,6 +109,7 @@
         },
         {
              "name": "Tito's Secret Space Program",
+             "slug": "titos-secret-space-program",
              "sources": "http://www.youtube.com/watch?v=EfJiNPZ38kY",
              "dimensions": {},
              "position": {},
@@ -90,6 +119,7 @@
         },
         {
              "name": "Yugoslavia VS Czech Republic (November 10 1996)",
+             "slug": "yugoslavia-vs-czech-republic-november-10-1996",
              "sources": "http://www.youtube.com/watch?v=ulq8i6sqHRo",
              "dimensions": {},
              "position": {},
@@ -97,15 +127,8 @@
              "out_point": 22
         },
         {
-             "name": "Zdravko Colic Eurovision 1973 Song Contest",
-             "sources": "http://www.youtube.com/watch?v=Q-2oYPDX6bk",
-             "dimensions": {},
-             "position": {},
-             "in_point": 34,
-             "out_point": 80
-        },
-        {
              "name": "Dayton Agreement signed in Paris : 14 December 1995",
+             "slug": "dayton-agreement-signed-in-paris-14-december-1995",
              "sources": "http://www.youtube.com/watch?v=PwKhT1vSrqw",
              "dimensions": {},
              "position": {},
@@ -114,6 +137,7 @@
         },
         {
              "name": "Jacques Tourneur's 'Cat People' (1942)",
+             "slug": "jacques-tourneurs-cat-people-1942",
              "sources": "http://www.youtube.com/watch?v=zfbGJrAVWUo",
              "dimensions": {},
              "position": {},
@@ -122,6 +146,7 @@
         },
         {
              "name": "Theo Angelopoulos' 'Ulysses' Gaze' : Concert Scene (1995)",
+             "slug": "theo-angelopoulos-ulysses-gaze-concert-scene-1995",
              "sources": "http://www.youtube.com/watch?v=KJyjJIb4p0M",
              "dimensions": {},
              "position": {},

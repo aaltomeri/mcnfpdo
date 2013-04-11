@@ -1,6 +1,6 @@
 [
 	{
-		"name": "Milosevic",
+		"name": "Slobodan Milosevic",
 		"url": ""
 	},
 	{
@@ -16,7 +16,7 @@
 		"url": ""
 	},
 	{
-		"name": "Vukovic",
+		"name": "Vuk Karadzic",
 		"url": ""
 	},
 	{
@@ -69,6 +69,38 @@
 	},
 	{
 		"name": "Armée française d'Orient",
+		"url": ""
+	},
+	{
+		"name": "Saint Sava",
+		"url": ""
+	},
+	{
+		"name": "Diaspora Serbe",
+		"url": ""
+	},
+	{
+		"name": "République fédérative socialiste de Yougoslavie",
+		"url": ""
+	},
+	{
+		"name": "Boris Tadic",
+		"url": ""
+	},
+	{
+		"name": "Stefan Uros IV Dusan",
+		"url": ""
+	},
+	{
+		"name": "Gamzigrad",
+		"url": ""
+	},
+	{
+		"name": "Karadorde",
+		"url": ""
+	},
+	{
+		"name": "Tribunal Penal International pour Ex-Yougoslavie",
 		"url": ""
 	}
 ]

@@ -14,38 +14,38 @@
     },
     { 
 		"name": "Ada Ciganlija",
-		"url": "medias/soundtracks/Mcnfpdo_AdaCiganlija.mp3" 
+		"url": ["medias/soundtracks/Mcnfpdo_AdaCiganlija.mp3", "medias/soundtracks/Mcnfpdo_AdaCiganlija.ogg"] 
 	},
     { 
     	"name": "Bar Coco",
-    	"url": "medias/soundtracks/Mcnfpdo_BarCoco.mp3" 
+    	"url": ["medias/soundtracks/Mcnfpdo_BarCoco.mp3", "medias/soundtracks/Mcnfpdo_BarCoco.ogg"] 
     },
     { 
     	"name": "Cour Novi Beograd",
-    	"url": "medias/soundtracks/Mcnfpdo_CourNoviBeograd.mp3" 
+    	"url": ["medias/soundtracks/Mcnfpdo_CourNoviBeograd.mp3", "medias/soundtracks/Mcnfpdo_CourNoviBeograd.ogg"] 
     },
     { 
     	"name": "Enfants Après Pluie",
-    	"url": "medias/soundtracks/Mcnfpdo_EnfantsApresPluie.mp3" 
+    	"url": ["medias/soundtracks/Mcnfpdo_EnfantsApresPluie.mp3", "medias/soundtracks/Mcnfpdo_EnfantsApresPluie.ogg"] 
     },
     { 
     	"name": "Gare Abandonnée",
-    	"url": "medias/soundtracks/Mcnfpdo_GareAbandonnee.mp3" 
+    	"url": ["medias/soundtracks/Mcnfpdo_GareAbandonnee.mp3", "medias/soundtracks/Mcnfpdo_GareAbandonnee.ogg"] 
     },
     { 
     	"name": "Gare Train",
-    	"url": "medias/soundtracks/Mcnfpdo_GareTrain.mp3" 
+    	"url": ["medias/soundtracks/Mcnfpdo_GareTrain.mp3", "medias/soundtracks/Mcnfpdo_GareTrain.ogg"] 
     },
     { 
     	"name": "Kafka",
-    	"url": "medias/soundtracks/Mcnfpdo_Kafka.mp3" 
+    	"url": ["medias/soundtracks/Mcnfpdo_Kafka.mp3", "medias/soundtracks/Mcnfpdo_Kafka.ogg"] 
     },
     { 
     	"name": "Messe Paques",
-    	"url": "medias/soundtracks/Mcnfpdo_MessePaques.mp3" 
+    	"url": ["medias/soundtracks/Mcnfpdo_MessePaques.mp3", "medias/soundtracks/Mcnfpdo_MessePaques.ogg"] 
     },
     { 
     	"name": "Sur Le Marché",
-    	"url": "medias/soundtracks/Mcnfpdo_SurLeMarche.mp3" 
+    	"url": ["medias/soundtracks/Mcnfpdo_SurLeMarche.ogg"] 
    }
 ]
