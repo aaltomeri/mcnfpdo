@@ -230,6 +230,8 @@ function(app) {
           });
 
           this.player.on('canplay', function() {
+            // ANALYTICS
+            _gaq.push(['_trackEvent', 'Vidéos', 'View', place.get('name')]);
 
             var setVisited = function() { 
               // set marker to 'visited' after 2 seconds

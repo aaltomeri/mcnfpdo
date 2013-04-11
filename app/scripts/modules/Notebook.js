@@ -135,6 +135,7 @@ function(app, Video) {
     setCurrentDay: function(model) {
       this.currentDay = model;
       this.trigger('change:currentDay');
+       _gaq.push(['_trackEvent', 'Notebook', 'Navigation', "day: " + model.get('number')]);
     }
 
   });

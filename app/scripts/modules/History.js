@@ -250,6 +250,8 @@ function(app) {
       }
       else {
 
+        // ANALYTICS
+        _gaq.push(['_trackEvent', 'History', 'View', this.model.get('name')]);
         this.$text.show();
         this.$btn_show_entry.removeClass('icon-circle-arrow-down');
         this.$btn_show_entry.addClass('icon-circle-arrow-up');

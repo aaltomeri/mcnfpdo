@@ -91,6 +91,25 @@ function(app, Soundtrack) {
         model: app.sounds.find(function(model) { return model.get('name') == "Kafka" })
       });
 
+
+      // ANALYTICS - how far have we gone
+      var slice_time = 20
+      ,   tracking_time = 0
+
+      this.soundtrack.popcorn.on('timeupdate', function() {
+
+        if(
+          (Math.round(this.currentTime())%slice_time == 0) 
+          && (tracking_time == Math.round(this.currentTime()))
+        ) {
+
+
+          _gaq.push(['_trackEvent', 'BriefAnDenVater', 'Navigation', "section: " + Math.ceil(this.currentTime()/slice_time + 1)]);
+
+        }
+
+      });
+
       this.soundtrack.popcorn.loop(false);
 
     },

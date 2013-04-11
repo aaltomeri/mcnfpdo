@@ -44,6 +44,12 @@ function(app, Intro, TTB, Soundtrack) {
 
       $('#main-container').css({"z-index": 1});
 
+      // ANALYTICS
+      _gaq.push(['_trackEvent', 'TTB', 'Navigation', "command: " + command]);
+      _gaq.push(['_trackEvent', 'TTB', 'Navigation', "time or chapter: " + time]);
+
+      _gaq.push(['_trackPageview', 'TTB/#' + time]);
+
       //if current Chapter exists, call its destroy method
       if(typeof TTB.model !== "undefined" && TTB.model.get('currentChapter')) {
 

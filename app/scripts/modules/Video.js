@@ -98,6 +98,9 @@ function(app) {
       // enable PLAY / PAUSE
       if(enablePlayPause) this.enablePlayPause();
 
+      // ANALYTICS
+      _gaq.push(['_trackEvent', 'Vidéos', 'View', this.model.get('name')]);
+
     },
 
     /**
