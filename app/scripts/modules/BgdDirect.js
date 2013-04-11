@@ -53,10 +53,11 @@ function(app) {
 
       twittersearches = new BgdDirect.TwitterSearches();
       twittersearches.on('reset', function() {
-        console.log(BgdDirect.queries); 
+
         $.when.apply(null, BgdDirect.queries).done(function() { 
-          console.log('All BgdDirect Items Fetched'); 
+
           BgdDirect.trigger('BgdDirect:BgdDirectItemsFetched');
+
         });
       });
       twittersearches.fetchData();
