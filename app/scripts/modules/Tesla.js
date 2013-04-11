@@ -2,7 +2,8 @@
 define([
   // Application.
   "app",
-  "modules/Video"
+  "modules/Video",
+  "css!../../styles/uc.css"
 ],
 
 // Map dependencies from above array.
@@ -12,7 +13,7 @@ function(app, Video) {
   var Tesla = app.module()
   ,   layout
 
-  Tesla.init = function() {
+  Tesla.init = function(action, slug) {
 
     console.log('Tesla INIT');
 
@@ -36,7 +37,7 @@ function(app, Video) {
 
           // force html5 video for youtube
           if(source.search(/youtube/) != -1) {
-            source += "&html5=1";
+            //source += "&html5=1";
           }
 
           // add modified source
@@ -49,8 +50,21 @@ function(app, Video) {
 
       });
 
-      layout = new Tesla.Views.Layout({ collection: this });
+      // default video if param passed
+      if(action && action == "goto" && slug) {
 
+         var model = this.find(function(model, index, a) {
+          if(model.get('slug') == slug)
+            return true;
+        });
+
+         var start_index = this.indexOf(model);
+         // as first video is triggered by a playNext we set the index at the desired index - 1
+         this.currentVideoIndex = start_index-1;
+
+      }
+
+      layout = new Tesla.Views.Layout({ collection: this });
 
     });
 
@@ -96,7 +110,7 @@ function(app, Video) {
 
     },
 
-     getNext: function() {
+    getNext: function() {
 
       this.currentVideoIndex++;
 
@@ -116,6 +130,7 @@ function(app, Video) {
   Tesla.Views.Layout = Backbone.Layout.extend({
 
     template: "tesla",
+    id: "uc",
     vv: null,// Video View
 
     initialize: function() {
@@ -129,8 +144,6 @@ function(app, Video) {
       // add layout to the dom
       $('#module-container').empty().append(this.el);
 
-      this.playNext();
-
       // render layout
       this.render();
 
@@ -138,30 +151,56 @@ function(app, Video) {
        * All dynamically added elements must be added after render since render load a template and replaces $el.html with it
        */
       
-      // next button for debugging
-      var next_bt = $('<button>NEXT</button>');
-      next_bt.css({position: "absolute", top: 0, left: 0, "z-index": 200})
-      this.$el.append(next_bt);
+      this.playNext();
+      
+      // previous button
+      var next_bt = $('#uc-controls-previous');
+      next_bt.on('click', function() { layout.playPrevious(); });
 
-      next_bt.on('click', function() { layout.playNext(); });
+      // next button
+      var previous_bt = $('#uc-controls-next');
+      previous_bt.on('click', function() { layout.playNext(); });
 
       $('#module-container').transition({opacity: 1}, 2000);
 
     },
 
-    playNext: function(in_point, out_point) {
+    playNext: function() {
+
+      var model = this.collection.getNext();
+
+      if(model)
+        this.play(model);
+
+    },
+
+    playPrevious: function(in_point, out_point) {
+
+      var model = this.collection.getPrevious();
+      
+      if(model)
+        this.play(model);
+
+    },
+
+    play: function(model, in_point, out_point) {
 
       // create Video View and set its first Video Model to be the first model in collection (created from list of videos loaded at startup)
-      var model = this.collection.getNext(),
-          in_point = model.get('in_point')? model.get('in_point') : 0,
+      var in_point = model.get('in_point')? model.get('in_point') : 0,
           out_point = model.get('out_point'),
           vv = this.vv,
           controller = this
 
+      // browser history
+      history.pushState({},"","#Tesla/goto/"+model.get('slug'));
+
+      $('#uc-video-title').html(model.get('name'));
+
       //Video View has not been set yet
       if(!vv) {
         
-        vv = this.vv = this.setView(new Video.Views.Main({model : model }));
+        vv = this.vv = this.setView("#uc-video", new Video.Views.Main({model : model }));
+        vv.render();
 
         // for debugging
         window.tv = vv.popcorn;
