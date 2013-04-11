@@ -19,6 +19,11 @@ function(app, Video, Soundtrack) {
 
   TTB.init = function(command, time) {
 
+    // we have swapped the depth in Intro to access the link on overlay
+    // revert to see something ...
+    $('#main-container').css({ "z-index": 0});
+    $('#module-container').css({ "z-index": 1});
+
     // video info for this module
     var video_model = new Video.Model({
 
@@ -29,6 +34,7 @@ function(app, Video, Soundtrack) {
       //dimensions: { width: '1280px', height: '720px' }
       time: time,
       autoplay: (command === 'play')? true : false,
+      loop: true,
       enablePlayPause: true,
       chapters: [
         { name: "BgdMap",title: "Belgrade Ville", start: 17, end: 23, description: "Baltasar s'est promené dans Belgrade" },
@@ -159,7 +165,9 @@ function(app, Video, Soundtrack) {
     prepareStageForModule: function() {
 
       this.disablePlayPause();
-      this.enableBackToTtb();
+
+      if(!app.isiPad)
+        this.enableBackToTtb();
 
     },
 
@@ -205,14 +213,19 @@ function(app, Video, Soundtrack) {
         throw "This handler needs an event data 'key' property";
 
       if(e.which == e.data.key) {
-        this._backToTtb();
+        this._backToTtb(e);
       }
 
     },
 
-    _backToTtb: function() {
+    _backToTtb: function(e) {
 
       var vv = this.vv;
+
+      // prevent the click event to bubble up to #main 
+      // even though at the time of the click on the button the play/pause mechanisem on #main was disabled
+      // it got re-enabled before the end of the bubbling phase
+      e.stopPropagation();
 
       // go to end of current chapter
       app.trigger('goto', 'TTB/play/' + vv.model.get('currentChapter').end);
@@ -224,16 +237,20 @@ function(app, Video, Soundtrack) {
 
     // wrapper around the Video View method of the same name
     enablePlayPause: function() {
+
       if(this.vv) {
         this.vv.enablePlayPause();
       }
+      
     },
 
     // wrapper around the Video View method of the same name
     disablePlayPause: function() {
+
       if(this.vv) {
         this.vv.disablePlayPause();
       }
+
     },
 
     initBehaviors: function() {
@@ -244,7 +261,8 @@ function(app, Video, Soundtrack) {
       ,   chapter
       ,   showIntroInfo = true
       ,   hideIntroInfo = true
-      ,   creditsDisplayed;
+      ,   credits1Displayed
+      ,   credits2Displayed
 
 
       vv.popcorn.on('canplay', function() {
@@ -256,7 +274,7 @@ function(app, Video, Soundtrack) {
 
           var chapter = vv.model.getChapterByTime(this.currentTime());
 
-          if(this.currentTime() < 15 && showIntroInfo) {
+          if(this.currentTime() < 8 && showIntroInfo) {
 
             // show still
             var still = vv.createStill();
@@ -267,11 +285,12 @@ function(app, Video, Soundtrack) {
               + '<p class="infos">Ensuite,<br/>pour explorer chaque chapitre,<br />appuyez sur la barre espace<br/>ou cliquez dans l\'écran<br/>lorsque le titre du chapitre apparaît</p>'
               , {background: "transparent", opacity: 0.8 }
             );
+
             showIntroInfo = false;
 
           }
 
-          if(this.currentTime() > 15 && hideIntroInfo) {
+          if(this.currentTime() > 8 && this.currentTime() < 9 && hideIntroInfo) {
             vv.hideOverlay();
             hideIntroInfo = false;
           }
@@ -284,6 +303,7 @@ function(app, Video, Soundtrack) {
               //+ '<br />'+chapter.description+'</p>'
               , { opacity: 0.8, background: 'transparent'}
             );
+             
             setTimeout(function() { vv.hideOverlay(); }, 3000);
 
           }
@@ -302,17 +322,49 @@ function(app, Video, Soundtrack) {
               + '</p>'
               + '<p class="infos"><span class="small">Un grand merci à : Emilija Andrejevic - Branimir Pipal - Zivomir Popovic - Marin Marovic - Mirjana Slavkovic, Musée d\'Histoire Yougoslave de Belgrade - Philippe Le Moine, Institut Français de Belgrade - Milica Zivadinovic, Centre Culturel de Serbie à Paris - Jasmina Nikolic - Sloga Press - Hôtel Cambrai - Alexandre Pallu - Grégoire Tachnakian  - Chantal Rameau - Cécile Fišera - Caroline Guiela Nguyen - Victor Leclère - Philippe Dubois - Simone Guiela - Emma Monier</span></p>'
             , { opacity: 0.8, background: "rgba(0,0,0,0.6)" } );
-            hideIntroInfo = false;
-            creditsDisplayed = true;
+
+            _this.disablePlayPause();
+            credits1Displayed = true;
 
             $('#main-container').css({"z-index": 3});
 
           }
 
-           if(this.currentTime() < 95 && creditsDisplayed) {
+          // show end credits
+          if(this.currentTime() > 110 && !credits2Displayed) {
+
+            vv.showOverlay('<p><strong>Mon corps ne fait pas d\'ombre</strong></p>'
+              + '<p class="infos">Un projet de <strong>Julien Fišera, Jérémie Scheidler et Thomas Mery</strong></p>'
+              + '<p class="infos">Vous pouvez maintenant vous rendre directement à un des chapitres<br/>en cliquant sur un des liens ci-dessous</p>'
+              + '<p class="infos">'
+              + '<a href="#BgdMap">Belgrade Ville</a>'
+              + ' - <a href="#BgdBook">Belgrade d\'Angélica Liddell</a>'
+              + ' - <a href="#Notebook">Carnet de notes</a>'
+              + ' - <a href="#BriefAnDenVater">Très cher père</a>'
+              + ' - <a href="#BgdPlus">Belgrade +</a>'
+              + ' - <a href="#BgdDirect">Belgrade Direct</a>'
+              + ' - <a href="#Tesla">Inconcient collectif</a>'
+              + ' - <a href="#History">Histoire Serbe</a>'
+              + ' - <a href="#BgdVoices">Les voix de Belgrade</a>'
+              + '</p>'
+            , { opacity: 0.8, background: "rgba(0,0,0,0.6)" } );
+
+            credits2Displayed = true;
+ 
+            hideIntroInfo = true;
+            showIntroInfo = false;
+
+            _this.enablePlayPause();
+
+            $('#main-container').css({"z-index": 3});
+
+          }
+
+           if(this.currentTime() < 95 && credits1Displayed) {
 
               // reset creditsDisplayed to show them each time we reach the end
-              creditsDisplayed = false;
+              credits1Displayed = false;
+              credits2Displayed = false;
 
            }
 
@@ -326,17 +378,19 @@ function(app, Video, Soundtrack) {
         // hide still image
         vv.hideStill();
 
-        if(TTB.soundtrack.popcorn.paused())
+        if(TTB.soundtrack.popcorn.paused()) {
           TTB.soundtrack.play(TTB.soundtrack.popcorn.currentTime(), 2000);
-      })
+        }
+
+      });
 
       // when PAUSING the video ...
       // setup mechanism to launch a module on pause
       this.vv.popcorn.on('pause', function() {
 
-        // show still
-        var still = vv.createStill();
-        vv.showStill(still, true);
+        vv.hideOverlay();
+
+        
 
         if(chapter = vv.model.getChapterByTime(vp.currentTime())) {
 
@@ -355,7 +409,9 @@ function(app, Video, Soundtrack) {
             setTimeout(function() { vv.hideOverlay(); }, 2000);
           }
 
-          TTB.soundtrack.pause(7000);
+          // show still
+          var still = vv.createStill();
+          vv.showStill(still, true);
 
         }
         else {
