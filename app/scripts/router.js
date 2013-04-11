@@ -35,6 +35,11 @@ function(app, Intro, TTB, Soundtrack) {
 
     index: function() {
 
+      // jump to Belgrade Map if iPad
+      if(app.isiPad) {
+        window.location.replace('/#BgdMap');
+      }
+
       // here we call the init function that we have defined for the module
       Intro.init();
 
@@ -43,6 +48,10 @@ function(app, Intro, TTB, Soundtrack) {
     ttb: function(command, time) {
 
       $('#main-container').css({"z-index": 1});
+
+      if(app.isiPad) {
+        app.trigger('goto', 'BgdMap');
+      }
 
       // ANALYTICS
       _gaq.push(['_trackEvent', 'TTB', 'Navigation', "command: " + command]);
