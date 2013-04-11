@@ -100,9 +100,14 @@ function(app, Video, Soundtrack) {
       ,   vv = this.vv
       ,   vp = vv.popcorn;
       
+      $('#main-container').css({ "z-index": 1});
+      $('#module-container').css({ "z-index": 0});
+
       vv.showOverlay(
         '<p><strong>Mon corps ne fait pas d\'ombre</strong></p>'
         + '<p>appuyez sur la barre espace<br />ou cliquez dans l\'écran</p>'
+        + '<p class="infos small"><a href="/#TTB">accéder directement aux chapitres</a><br/>'
+        + '<a href="/blog">Pour en savoir plus</a></p>'
       );
 
       // PLAY

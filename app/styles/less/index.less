@@ -14,6 +14,7 @@
 
 html * {
 	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
 
@@ -39,7 +40,22 @@ body {
 	font-family: 'Open Sans Condensed', sans-serif;
 	letter-spacing: 1.1px;
 	font-weight: 300;
+	color: white;
 	//font-family: 'Open Sans', sans-serif;
+}
+
+a {
+
+	color: white;
+	text-transform: uppercase;
+
+	&:hover {
+
+		color: inherit;
+		font-style: italic;
+
+	}
+
 }
 
 input,
@@ -59,6 +75,8 @@ button, .btn {
 		text-shadow: none;
 		letter-spacing: 1.1px;
 
+		cursor: pointer;
+
 		&:hover {
 			background: rgba(0,0,0,0.3);
 			color: #ccc;
@@ -75,20 +93,30 @@ img {
 	max-width: none;
 }
 
-#global-mute {
-	position: absolute;
-	right: 10px;
-	bottom: 10px;
+#main-menu {
+
+	width: 85%;
+	margin: auto;
+	padding: 0px 4px;
+	position: relative;
+	top: 10px;
+
+	text-transform: uppercase;
+
+	#global-mute {}
+	
 }
+
 
 #main {
 	position: relative;
-	width: 100%;
+	width: 90%;
 	height: 90%;
 	margin: auto;
 }
 
 #main-container {
+
 	position: absolute;
 	z-index: 1;
 	top: 0;
@@ -100,6 +128,7 @@ img {
 }
 
 #module-container {
+	
 	position: absolute;
 	z-index: 2;
 	top: 0;
@@ -153,15 +182,13 @@ img {
 
 	    .infos {
 
-	    	font-size: 0.7em;
+	    	font-size: 0.6em;
 	    	line-height: 1.4em;
-
-	    	font-style: italic; 
 
 	    	.small {
 
-				font-size: 0.5em;
-		    	line-height: 1em;
+				font-size: 0.8em;
+		    	line-height: 0.4em;
 
 	    	}
 
@@ -195,8 +222,8 @@ img {
 
 	    	&.BgdPlus {
 
-	    		top: 330px;
-		    	left: -400px;
+	    		top: 163px;
+		    	left: -10px;
 
 	    	}
 

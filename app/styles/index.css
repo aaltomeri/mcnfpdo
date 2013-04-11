@@ -5262,6 +5262,7 @@ a.badge:focus {
 }
 html * {
   -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 html,
@@ -5282,6 +5283,15 @@ body {
   font-family: 'Open Sans Condensed', sans-serif;
   letter-spacing: 1.1px;
   font-weight: 300;
+  color: white;
+}
+a {
+  color: white;
+  text-transform: uppercase;
+}
+a:hover {
+  color: inherit;
+  font-style: italic;
 }
 input,
 button,
@@ -5301,6 +5311,7 @@ button,
   box-shadow: none;
   text-shadow: none;
   letter-spacing: 1.1px;
+  cursor: pointer;
 }
 button:hover,
 .btn:hover {
@@ -5313,14 +5324,17 @@ h1 {
 img {
   max-width: none;
 }
-#global-mute {
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
+#main-menu {
+  width: 85%;
+  margin: auto;
+  padding: 0px 4px;
+  position: relative;
+  top: 10px;
+  text-transform: uppercase;
 }
 #main {
   position: relative;
-  width: 100%;
+  width: 90%;
   height: 90%;
   margin: auto;
 }
@@ -5370,13 +5384,12 @@ img {
   margin-bottom: 60px;
 }
 .video .overlay .text .infos {
-  font-size: 0.7em;
+  font-size: 0.6em;
   line-height: 1.4em;
-  font-style: italic;
 }
 .video .overlay .text .infos .small {
-  font-size: 0.5em;
-  line-height: 1em;
+  font-size: 0.8em;
+  line-height: 0.4em;
 }
 .video .overlay .text .chapter-title {
   position: relative;
@@ -5395,8 +5408,8 @@ img {
   left: -300px;
 }
 .video .overlay .text .chapter-title.BgdPlus {
-  top: 330px;
-  left: -400px;
+  top: 163px;
+  left: -10px;
 }
 .video .overlay .text .chapter-title.BgdDirect {
   top: -170px;

@@ -289,11 +289,18 @@ function(app, Video, Soundtrack) {
           }
 
           // show end credits
-          if(this.currentTime() > 95 && !creditsDisplayed) {
-            vv.showOverlay('<p>Mon corps ne fait pas d\'ombre</p><p>Un projet de Julien Fišera, Jérémie Scheidler et Thomas Mery</p>'
-              + '<p class="infos">Baltasar: Vladislav Galard<br /> Musique: Thomas Mery & Jérôme Berg<br/>Images: Jérémie Scheidler</p>'
-              + '<p class="infos">Appuyez sur la barre espace ou cliquez dans l\'écran pour explorer à nouveau les différents chapitres. Vous pouvez également choisir de vous rendre directement à un des chapitres en cliquant sur un des liens ci-dessous</p>'
-              + '<p class="infos"><a href="#BgdMap">Belgrade Ville</a> - <a href="#BgdBook">Belgrade d\'Angélica Liddell</a> - <a href="#Notebook">Carnet de notes</a> - <a href="#BriefAnDenVater">Très cher père</a> - <a href="#BgdPlus">Belgrade +</a> - <a href="#News">Actualités</a> - <a href="#Tesla">Inconcient collectif</a> - <a href="#History">Histoire Serbe</a> - <a href="#BgdVoices">Les voix de Belgrade</a></p>'
+          if(this.currentTime() > 95 && !credits1Displayed) {
+
+            vv.showOverlay('<p><strong>Mon corps ne fait pas d\'ombre</strong></p>'
+              + '<p class="infos">Un projet de <br/><strong>Julien Fišera, Jérémie Scheidler et Thomas Mery</strong></p>'
+              + '<p class="infos">'
+              + 'Images: <strong>Jérémie Scheidler</strong> - '
+              + 'Recherche : <strong>Julien Fišera</strong> - '
+              + 'Musique: <strong>Thomas Mery & Jérôme Berg</strong> - '
+              + 'Développement: <strong>Thomas Mery</strong> - '
+              + 'Baltasar: <strong>Vladislav Galard</strong>'
+              + '</p>'
+              + '<p class="infos"><span class="small">Un grand merci à : Emilija Andrejevic - Branimir Pipal - Zivomir Popovic - Marin Marovic - Mirjana Slavkovic, Musée d\'Histoire Yougoslave de Belgrade - Philippe Le Moine, Institut Français de Belgrade - Milica Zivadinovic, Centre Culturel de Serbie à Paris - Jasmina Nikolic - Sloga Press - Hôtel Cambrai - Alexandre Pallu - Grégoire Tachnakian  - Chantal Rameau - Cécile Fišera - Caroline Guiela Nguyen - Victor Leclère - Philippe Dubois - Simone Guiela - Emma Monier</span></p>'
             , { opacity: 0.8, background: "rgba(0,0,0,0.6)" } );
             hideIntroInfo = false;
             creditsDisplayed = true;
