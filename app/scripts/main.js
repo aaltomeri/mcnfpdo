@@ -13,6 +13,14 @@ function(app, Router) {
   app.router = new Router();
 
   app.resizeMain();
+
+  app.debug = function() {
+    console.log('--------------------------');
+    console.log('Popcorn instances: ' + Popcorn.instances.length);
+    console.log(Popcorn.instances);
+    console.log('--------------------------');
+  }
+
   app.on('goto', function(data) {
     Backbone.history.navigate('#' + data, true);
   });
