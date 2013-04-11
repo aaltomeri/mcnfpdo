@@ -12,12 +12,13 @@ function(app, Router) {
   // navigation from this instance.
   app.router = new Router();
 
+  app.resizeMain();
   app.on('goto', function(data) {
     Backbone.history.navigate('#' + data, true);
   });
 
   app.on('module:ttb:ready', function(module) {
-    app.resizeMain();
+    //app.resizeMain();
   });
 
   $(window).on('resize', function() { 
