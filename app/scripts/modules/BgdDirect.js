@@ -32,9 +32,18 @@ function(app) {
     audiostreams = new BgdDirect.AudioStreams();
     audiostreams.on('reset', function() {
 
-      // set AudioStream View
-      layout.audiostreamView = layout.setView('#audiostream', 
-        new BgdDirect.Views.AudioStream({model: this.at(0), collection: this})).render();
+      var stream_index = Math.floor(Math.random()*this.models.length);
+
+      this.currentStream = stream_index;
+
+      // do not show radio for FF as it does not support playing mp3 feeds
+      if(!$.browser.mozilla) {
+
+        // set AudioStream View
+        layout.audiostreamView = layout.setView('#audiostream', 
+          new BgdDirect.Views.AudioStream({start_stream_index: stream_index, model: this.at(stream_index), collection: this})).render();
+      
+      }
 
     });
     audiostreams.fetchData();
