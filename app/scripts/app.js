@@ -115,22 +115,29 @@ function($, _, Backbone, Chapters, Sounds) {
      */
     resizeMain: function() {
 
-      var video_container   = $('#main-container video')
-      ,   video_el          = video_container.get(0)
-      ,   module_container  = $('#module-container')
-      ,   video_w           = video_el.videoWidth? video_el.videoWidth : this.mainVideo_defaultWidth
-      ,   video_h           = video_el.videoHeight? video_el.videoHeight : this.mainVideo_defaultHeight
-      ,   video_wRatio      = video_h/video_w 
-      ,   video_hRatio      = video_w/video_h
-      ,   video_container_w = video_container.width()
-      ,   video_container_h = video_container.height()
-      ,   w = Math.round(video_container_h * video_hRatio)
-      ,   h = Math.round(video_container_w * video_wRatio)
+      // var video_container   = $('#main-container video')
+      // ,   video_el          = video_container.get(0)
+      // ,   module_container  = $('#module-container')
+      // ,   video_w           = video_el.videoWidth? video_el.videoWidth : this.mainVideo_defaultWidth
+      // ,   video_h           = video_el.videoHeight? video_el.videoHeight : this.mainVideo_defaultHeight
+      // ,   video_wRatio      = video_h/video_w 
+      // ,   video_hRatio      = video_w/video_h
+      // ,   video_container_w = video_container.width()
+      // ,   video_container_h = video_container.height()
+      // ,   w = Math.round(video_container_h * video_hRatio)
+      // ,   h = Math.round(video_container_w * video_wRatio)
 
-      if($('body').height() < $('body').width())
-        $('#main').width($('body').height()*0.9 * video_hRatio);
-      else
-      $('#main').height($('body').width()*0.9 * video_wRatio);
+
+      var main = $('#main')
+      ,   main_w = main.width()
+      ,   size_ratio = this.mainVideo_defaultHeight / this.mainVideo_defaultWidth
+
+      main.height(main_w * size_ratio);
+
+      // if($('body').height() < $('body').width())
+      //   $('#main').width($('body').height()*0.9 * video_hRatio);
+      // else
+      // $('#main').height($('body').width()*0.9 * video_wRatio);
 
     },
 
