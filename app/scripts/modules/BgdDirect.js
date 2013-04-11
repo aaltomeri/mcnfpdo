@@ -118,7 +118,7 @@ function(app) {
     encounters = new BgdDirect.Encounters();
     encounters.on('reset', function() {
       // set Encounters View
-      layout.encountersView = layout.setView('#encounters', new BgdDirect.Views.EncountersView({ collection: this }));
+      layout.encountersView = layout.setView('#encounters .body', new BgdDirect.Views.EncountersView({ collection: this }));
       layout.encountersView.render();
 
       this.rdm();
@@ -162,16 +162,14 @@ function(app) {
             model.set('entries', data.responseData.feed.entries);
             model.trigger('feed:received');
 
-            console.log(data);
-
             // loop through entries and create a BgdDirectItem for each
             // this would need to be refined to accomodate different feeds
             // with different attribute names for title, text and date
             $.each(data.responseData.feed.entries, function (i, e) {
-
               var newsItem = new BgdDirect.BgdDirectItem({
                 title: e.title,
                 text: e.contentSnippet,
+                link: e.link,
                 date: e.publishedDate? e.publishedDate : e.pubDate,
                 source: data.responseData.feed.title,
                 type: 'Rss Feed Entry'
@@ -198,7 +196,7 @@ function(app) {
       var model = this
       ,   term = this.get('term');
 
-      var query = $.getJSON('http://search.twitter.com/search.json?q='+ encodeURIComponent(term) +'&amp;rpp=10&amp;callback=?',
+      var query = $.getJSON('http://search.twitter.com/search.json?q='+ encodeURIComponent(term) +'&amp;include_entities=1&amp;rpp=10&amp;callback=?',
         function (data) {
 
           if (data.results) {
@@ -211,9 +209,12 @@ function(app) {
             // loop through entries and create a BgdDirectItem for each
             $.each(data.results, function (i, e) {
 
+              //console.log(e);
+
               var newsItem = new BgdDirect.BgdDirectItem({
                 title: '@' + e.from_user,
                 text: e.text,
+                link: e.entities.urls.length? e.entities.urls[0].expanded_url : "http://www.twitter.com/"+e.from_user,
                 date: e.created_at,
                 source: "Twitter",
                 type: "Tweet"
@@ -304,6 +305,7 @@ function(app) {
 
     currentItem: null,
     currentItemIndex: -1,
+    items_array: [],
 
     setCurrentItem: function(model) {
       this.currentItem = model;
@@ -314,6 +316,9 @@ function(app) {
 
       this.currentItemIndex = Math.floor(Math.random()*this.models.length);
       this.setCurrentItem(this.at(this.currentItemIndex));
+
+      if(this.items_array.indexOf(this.currentItemIndex) == -1)
+        this.items_array.push(this.currentItemIndex);
 
     }
 
@@ -380,22 +385,34 @@ function(app) {
 
       });
 
+      this.popcorn.on('play', function() {
+
+        view.$el.find('button.play-pause-radio').html("Eteindre la radio");
+
+      });
+
+      this.popcorn.on('pause', function() {
+
+          view.$el.find('button.play-pause-radio').html("Allumer la radio");
+
+      });
+
       this.model.on('change:url', this.change, this);
 
-      this.$el.append('<button class="play-pause-radio">Play/Pause</button>');
-      this.$el.append('<button class="change-radio">Change Radio</button>');
+      this.$el.append('<button class="play-pause-radio"></button>');
+      this.$el.append('<button class="change-radio">Changer de station</button>');
       this.infos = $('<div class="infos"></div>');
       this.$el.append(this.infos);
 
       this.$el.find('button.play-pause-radio').on('click', function() {
-          
+        
         view.popcorn.paused()? view.popcorn.play() : view.popcorn.pause();
 
       });
 
       this.$el.find('button.change-radio').on('click', function() {
 
-        view.collection.currentStream++;
+        view.collection.currentStream = Math.floor(Math.random()*view.collection.models.length);
 
         var nextStream = view.collection.at(view.collection.currentStream);
 
@@ -567,10 +584,13 @@ function(app) {
       $('#module-container').empty().append(this.el);
 
       // set BgdDirect Items View
-      this.newsItemsView = this.setView('#news-items', new BgdDirect.Views.BgdDirectItemsView());
+      this.newsItemsView = this.setView('#news-items .body', new BgdDirect.Views.BgdDirectItemsView());
 
       // render layout
       this.render();
+
+      // add today's date in Belgrade
+      $('#bgd-direct-date').html(Date());
 
       $('#module-container').transition({opacity: 1}, 2000);
 
@@ -605,7 +625,10 @@ function(app) {
         var rdm = Math.round(Math.random()*100000)
         ,   _webcam_url = webcam_url + '?' + rdm;
 
-        if(rdm > 90000)
+        // add today's date in Belgrade
+        $('#bgd-direct-date').html(Date());
+
+        if(rdm > 50000)
           webcam_url = getWebcam();
 
         try {
@@ -627,7 +650,7 @@ function(app) {
       $('#webcam > img').attr('src', webcam_url);
 
 
-     setInterval(updateWebcam, 10000);
+     setInterval(updateWebcam, 4000);
 
     }
 
