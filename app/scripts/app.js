@@ -28,6 +28,14 @@ function($, _, Backbone, Chapters, Sounds) {
     // iPad Detection
     isiPad: navigator.userAgent.match(/iPad/i) != null,
 
+    isPhone: function() {
+
+      if( /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent) ) {
+       return true;
+      }
+
+    },
+
     mainVideo_defaultWidth: 640,
     mainVideo_defaultHeight: 360,
 
