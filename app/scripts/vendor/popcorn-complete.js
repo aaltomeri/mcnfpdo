@@ -6134,11 +6134,22 @@
       player.stopVideo();
       player.clearVideo();
 
-      parent.removeChild( elem );
+      if ( elem.parentNode ) {
+        parent.removeChild( elem );
+      }
       elem = document.createElement( "div" );
     }
 
     function changeSrc( aSrc ) {
+
+      if ( !aSrc ) {
+        impl.src = aSrc;
+        if( playerReady ) {
+          destroyPlayer();
+        }
+        return;
+      }
+
       if( !self._canPlaySrc( aSrc ) ) {
         impl.error = {
           name: "MediaError",
@@ -6227,7 +6238,17 @@
     }
 
     function monitorCurrentTime() {
-      var playerTime = player.getCurrentTime();
+      var playerTime;
+
+      if ( !parent.parentNode || !impl.src ) {
+        if( playerReady ) {
+          destroyPlayer();
+        }
+        return;
+      }
+
+      playerTime = player.getCurrentTime();
+
       if ( !impl.seeking ) {
         impl.currentTime = playerTime;
         if ( ABS( impl.currentTime - playerTime ) > CURRENT_TIME_MONITOR_MS ) {
@@ -6240,7 +6261,16 @@
     }
 
     function monitorBuffered() {
-      var fraction = player.getVideoLoadedFraction();
+      var fraction;
+
+      if ( !parent.parentNode || !impl.src ) {
+        if( playerReady ) {
+          destroyPlayer();
+        }
+        return;
+      }
+
+      fraction = player.getVideoLoadedFraction();
 
       if ( lastLoadedFraction !== fraction ) {
         lastLoadedFraction = fraction;
@@ -6403,7 +6433,7 @@
           return impl.src;
         },
         set: function( aSrc ) {
-          if( aSrc && aSrc !== impl.src ) {
+          if( aSrc !== impl.src ) {
             changeSrc( aSrc );
           }
         }
@@ -6575,8 +6605,7 @@
   };
   Popcorn.HTMLYouTubeVideoElement._canPlaySrc = HTMLYouTubeVideoElement.prototype._canPlaySrc;
 
-}( Popcorn, window, document ));
-// PLUGIN: Code
+}( Popcorn, window, document ));// PLUGIN: Code
 
 (function ( Popcorn ) {
 
