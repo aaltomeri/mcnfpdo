@@ -162,6 +162,21 @@ function(app, Video, SearchEngine) {
       // render layout
       this.render();
 
+      // toggle button
+      // currentVideo acts as a remote for the whole process
+      // since its timeupdate controls moving to the next video
+      // probably not bullet proof but you know ... we've got to get this out
+      $('#bgd-book-toggle').html('Pause');
+      $('#bgd-book-toggle').click($.proxy(function(){
+        var pc = layout.currentVideo.popcorn;
+        if(!pc.paused()) {
+          pc.pause();
+        }
+        else {
+          pc.play();
+        }
+      }, layout));
+
       $('#module-container').transition({opacity: 1}, 2000);
 
       // play first video
@@ -198,8 +213,6 @@ function(app, Video, SearchEngine) {
         
       };
 
-
-
       // INIT VIDEO
       // ----------
 
@@ -222,6 +235,20 @@ function(app, Video, SearchEngine) {
       // PLAY VIDEO
       vv.popcorn.play();
 
+      // events
+      vv.popcorn.on('play', function() {
+
+          $('#bgd-book-toggle').html('Pause');
+
+      });
+      
+      vv.popcorn.on('pause', function() {
+
+          $('#bgd-book-toggle').html('play');
+
+      });
+
+      // push to background
       if(this.previousVideo)
         vv.$el.css({"z-index": parseInt(this.previousVideo.$el.css("z-index")) + 1});
 
@@ -232,6 +259,8 @@ function(app, Video, SearchEngine) {
     initVideoViewBehavior: function(view, index) {
 
         var _this = this
+
+        this.currentVideoView = view;
 
         // init view - i.e. create popcorn instance
         view.init();
