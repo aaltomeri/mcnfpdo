@@ -257,7 +257,7 @@ function(app, Video, SearchEngine) {
 
           var slice = null;
           // set random out_point
-          view.model.set('out_point', view.model.get('out_point')? view.model.get('out_point') : (slice? slice : view.popcorn.duration()))//Math.random()*view.popcorn.duration())//Math.random()*view.popcorn.duration()
+          view.model.set('out_point', view.model.get('out_point')? view.model.get('out_point') : (slice? slice : view.popcorn.duration()));
           
           // define timeupdate handler used to play next video if out_point has been overshot
           var playnext_handler = function() {
