@@ -78,7 +78,7 @@ function(app, Video, Howler, Howl) {
       // voice does not exist
       if(!voice) {
         voice = this.current_voice = this.voices_map[index] = new Howl({
-          urls: ['medias/bgd-voices/bgd-voice-' + index_str_formatted + '.ogg']
+          urls: ['medias/bgd-voices/bgd-voice-' + index_str_formatted + '.ogg', 'medias/bgd-voices/bgd-voice-' + index_str_formatted + '.mp3']
         });
         this.voices_array.push(voice);
       }
