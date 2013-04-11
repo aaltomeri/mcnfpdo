@@ -21,11 +21,11 @@ function(app, Intro, TTB, Soundtrack) {
 
       "TTB(/:command)(/:time)": "ttb",
 
-      "BgdMap": "bgdMap",
+      "BgdMap(/:action)(/:index)": "bgdMap",
       "BgdBook": "bgdBook",
       "Notebook(/:action)(/:date)": "notebook",
       "BriefAnDenVater": "mail",
-      "Tesla": "tesla",
+      "Tesla(/:command)(/:time)": "tesla",
       "History": "history",
       "BgdPlus": "bgdPlus",
       "BgdDirect": "bgdDirect",
@@ -70,7 +70,7 @@ function(app, Intro, TTB, Soundtrack) {
                 try {
                   require([module_path], function(module) {
 
-                    module.soundtrack.pause();
+                    module.soundtrack.remove();
 
                     if(_.isFunction(module.destroy)) module.destroy();
                     
@@ -106,9 +106,9 @@ function(app, Intro, TTB, Soundtrack) {
 
     },
 
-    bgdMap: function() {
+    bgdMap: function(action, index) {
 
-      this.moduleLauncher('BgdMap');
+      this.moduleLauncher('BgdMap', action, index);
 
     },
 
@@ -130,9 +130,9 @@ function(app, Intro, TTB, Soundtrack) {
 
     },
 
-    tesla: function() {
+    tesla: function(action, slug) {
 
-      this.moduleLauncher('Tesla');
+      this.moduleLauncher('Tesla', action, slug);
 
     },
 
@@ -150,10 +150,15 @@ function(app, Intro, TTB, Soundtrack) {
 
     moduleLauncher: function(moduleName, action, options) {
 
+
       // init TTB
       this.ttb('pause', moduleName);
+     
+      //app.debug();
             
       TTB.MainView.prepareStageForModule();
+      
+      TTB.soundtrack.pause(7000);
 
       var module_path = "modules/" + moduleName
           ,   _load_module = function(action, options) {
