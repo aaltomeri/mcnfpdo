@@ -103,6 +103,7 @@ function(app, Soundtrack) {
           && (tracking_time == Math.round(this.currentTime()))
         ) {
 
+          tracking_time = tracking_time + slice_time;
 
           _gaq.push(['_trackEvent', 'BriefAnDenVater', 'Navigation', "section: " + Math.ceil(this.currentTime()/slice_time + 1)]);
 
@@ -427,8 +428,7 @@ function(app, Soundtrack) {
   BriefAnDenVater.destroy = function() {
 
     console.log('BriefAnDenVater destroy');
-
-    brief_view.soundtrack.pause();
+    
     brief_view.soundtrack.remove();
 
   }
