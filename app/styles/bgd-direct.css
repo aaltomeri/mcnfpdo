@@ -15,9 +15,9 @@
   bottom: 5%;
   left: 0;
   background: rgba(0, 0, 0, 0.5);
-  padding: 20px;
-  font-size: 36px;
-  line-height: 46px;
+  padding: 0.5em;
+  font-size: 2.250em;
+  line-height: 1em;
 }
 #news-items .header .small,
 #encounters .header .small {
@@ -39,8 +39,8 @@
   position: absolute;
   list-style: none;
   display: none;
-  font-size: 36px;
-  line-height: 36px;
+  font-size: 2.250em;
+  line-height: 1.3em;
   text-align: left;
   width: 100%;
 }
@@ -57,8 +57,8 @@
 }
 #news-items .body ul li .infos,
 #encounters .body ul li .infos {
-  font-size: 26px;
-  line-height: 34px;
+  font-size: 0.7em;
+  line-height: 1.2em;
   margin-bottom: 14px;
 }
 #news-items .body ul li .infos .source,
@@ -72,8 +72,8 @@
 }
 #news-items .body ul li .text,
 #encounters .body ul li .text {
-  font-size: 30px;
-  line-height: 40px;
+  font-size: 0.833em;
+  line-height: 1.3em;
   text-align: justify;
 }
 #news-items {

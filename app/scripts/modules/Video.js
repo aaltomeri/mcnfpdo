@@ -168,6 +168,9 @@ function(app) {
 
         var trigger_event = app.isiPad? 'touchstart' : 'click';
 
+        // make sure we only have on handler registered
+        this.$el.parent().off(trigger_event);
+
         this.$el.parent().on(trigger_event, $.proxy(
             this._clickHandler, this
           )
@@ -183,6 +186,9 @@ function(app) {
     },
 
     _enablePlayPauseByPressingKey: function(key) {
+
+      // make sure we only have on handler registered
+      $('body').off('keydown');
 
       $('body').on('keydown', {key: key}, $.proxy(this._keydownHandler, this));
 
@@ -216,9 +222,11 @@ function(app) {
       var vp = this.popcorn;
       
       if(vp.paused()) {
+        console.log('vp.play();')
         vp.play();
       }
       else {
+        console.log('vp.pause();')
         vp.pause();
       }
 

@@ -12,6 +12,18 @@
 .video-pause-effect {-webkit-filter: blur(6px) grayscale(40%) contrast(110%);}
 .no-filter {-webkit-filter: none;}
 
+h1 {
+
+	font-size: 1.6em;
+	
+}
+
+h2, h3 {
+
+	font-size: 1.4em;
+
+}
+
 html * {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -29,7 +41,8 @@ html, body {
 }
 
 body {
-
+	
+	font-size: 100%;
 	display: table-cell;
 	width: 100%;
 	vertical-align: middle;
@@ -50,13 +63,16 @@ a {
 	text-transform: uppercase;
 
 	&:hover {
-
+		
+		text-decoration: none;
 		color: inherit;
-		font-style: italic;
+		font-weight: bold;
 
 	}
 
 }
+
+ul li { list-style : none; }
 
 input,
 button,
@@ -66,13 +82,14 @@ textarea {
 }
 
 button, .btn {
-		background: rgba(0,0,0,0.1);
+		background: rgba(0,0,0,0.5);
 		border: none;
 		border-radius: 0;
 		color: white;
 		border-color: black;
 		.box-shadow(none);
 		text-shadow: none;
+		font-size: 1em;
 		letter-spacing: 1.1px;
 
 		cursor: pointer;
@@ -95,7 +112,7 @@ img {
 
 #main-menu {
 
-	width: 85%;
+	width: 90%;
 	margin: auto;
 	padding: 0px 4px;
 	position: relative;
@@ -149,8 +166,8 @@ img {
 
 	.text {
 
-	font-size: 34px;
-	line-height: 44px;
+	font-size: 2.125em;
+	line-height: 1em;
 
     display: table-cell;
     vertical-align: middle;
@@ -176,19 +193,19 @@ img {
 
 	    > p {
 
-	    	margin-bottom: 60px;
+	    	margin-bottom: 48px;
 
 	    }
 
 	    .infos {
 
-	    	font-size: 0.6em;
+	    	font-size: 0.8em;
 	    	line-height: 1.4em;
 
-	    	.small {
+	    	&.small {
 
-				font-size: 0.8em;
-		    	line-height: 0.4em;
+				font-size: 0.6em;
+		    	line-height: 1.2em;
 
 	    	}
 
@@ -199,6 +216,18 @@ img {
 	    	position: relative;
 	    	top: -100px;
 	    	left: -100px;
+
+	    	line-height: 24px;
+
+			cursor: pointer;
+
+	    	.infos {
+
+				font-size: 0.6em;
+				padding-left: 50px;
+				text-transform: lowercase;
+
+	    	}
 
 	    	&.Notebook {
 
@@ -255,6 +284,31 @@ img {
 
 	    }
 
+	    ul.chapters-menu {
+
+			li {
+				font-size: 0.9em;
+				line-height: 1.2em;
+			}
+
+	    }
+
 	}
+
+}
+
+#module-container .chapter-title {
+
+	position: absolute;
+	z-index: 2000;	
+	bottom: 10%;
+	left: 0;
+
+	font-size: 2.5em;
+	line-height: 1em;
+	color: white;
+	background: rgba(0, 0, 0, 0.5); 
+
+	padding: 0.5em;
 
 }

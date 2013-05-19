@@ -95,6 +95,9 @@ function(app, Video) {
         $(this).attr('target', '_blank');
       });
 
+      // remove Edit links
+      $text.find('.mw-editsection').remove();
+
       // add infos  to days models
       this.each(function(model) {
 

@@ -150,7 +150,6 @@ function(app, Intro, TTB, Soundtrack) {
 
     moduleLauncher: function(moduleName, action, options) {
 
-
       // init TTB
       this.ttb('pause', moduleName);
      
@@ -159,6 +158,8 @@ function(app, Intro, TTB, Soundtrack) {
       TTB.MainView.prepareStageForModule();
       
       TTB.soundtrack.pause(7000);
+
+      TTB.inChapter = true;
 
       var module_path = "modules/" + moduleName
           ,   _load_module = function(action, options) {

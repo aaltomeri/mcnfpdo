@@ -3,10 +3,13 @@
 #bgd-voices-toggle {
   position: absolute;
   z-index: 2;
-  font-size: 44px;
-  line-height: 44px;
+}
+#bgd-voices-text,
+#bgd-voices-title {
   color: white;
   background: rgba(0, 0, 0, 0.5);
+  font-size: 2.25em;
+  line-height: 1.8em;
   padding: 20px;
 }
 #bgd-voices-video {
@@ -27,8 +30,6 @@
   top: 10px;
   left: 10px;
   z-index: 20;
-  font-size: 14px;
-  line-height: 24px;
   padding: 10px;
   cursor: pointer;
   background: rgba(0, 0, 0, 0.2);

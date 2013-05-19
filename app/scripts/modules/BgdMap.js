@@ -160,8 +160,10 @@ function(app) {
         ]
       }
 
+      $('#bgd-map').css({width: "100%", height: "100%"});
+      
       // create map
-      this.map = new google.maps.Map(this.el, mapOptions);
+      this.map = new google.maps.Map($('#bgd-map').get(0), mapOptions);
 
       this.createPlaces(this.collection.models);
       this.initInfoWindow();
@@ -182,7 +184,7 @@ function(app) {
       
       var count = 0;
 
-      this.collection.each( function (place) {
+      this.collection.each( function (place, index) {
 
         // deal with missing videos
         if(place.get('vimeo_id') === null)
@@ -191,7 +193,8 @@ function(app) {
         // create google maps Marker
         var mrkr = new google.maps.Marker({
           animation: google.maps.Animation.DROP,
-          title: ""//place.get('name')
+          title: "",//place.get('name')
+          index: index
         });
 
         // delayed Marker placement for a nice visual effect on arrival
@@ -224,6 +227,7 @@ function(app) {
           // opening the window
           // see below for initialization code (in domready callback)
           _this.infoWindow.open(_this.map, this);
+          history.pushState({},"","#BgdMap/goto/"+mrkr.index);
 
         });
 

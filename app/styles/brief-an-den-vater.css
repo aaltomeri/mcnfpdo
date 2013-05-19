@@ -16,17 +16,7 @@
 
 #badv-title {
 
-	position: absolute;
-	z-index: 2000;	
-	bottom: 10%;
-	left: 0;
-
-	font-size: 44px;
-	line-height: 44px;
-	color: white;
-	background: rgba(0, 0, 0, 0.5); 
-
-	padding: 20px;
+	
 
 }
 

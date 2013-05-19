@@ -130,9 +130,26 @@ function($, _, Backbone, Chapters, Sounds) {
 
       var main = $('#main')
       ,   main_w = main.width()
+      ,   main_h = main.height()
       ,   size_ratio = this.mainVideo_defaultHeight / this.mainVideo_defaultWidth
 
       main.height(main_w * size_ratio);
+
+      // adjust font size
+      $('body').css({"font-size": main_w/1500*100 + '%'});
+
+      // set overlays size
+      if($('.overlay').length)
+        $('.overlay').css({
+          width: "100%",
+          height: "100%"
+        });
+
+      if($('.video canvas').length)
+        $('.video canvas').css({
+          width: "100%",
+          height: "100%"
+        });
 
       // if($('body').height() < $('body').width())
       //   $('#main').width($('body').height()*0.9 * video_hRatio);

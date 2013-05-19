@@ -103,12 +103,33 @@ function(app, Video, Soundtrack) {
       $('#main-container').css({ "z-index": 1});
       $('#module-container').css({ "z-index": 0});
 
-      vv.showOverlay(
-        '<p><strong>Mon corps ne fait pas d\'ombre</strong></p>'
-        + '<p>appuyez sur la barre espace<br />ou cliquez dans l\'écran</p>'
-        + '<p class="infos small"><a href="/#TTB">accéder directement aux chapitres</a><br/>'
-        + '<a href="/blog">Pour en savoir plus</a></p>'
-      );
+
+      vp.on('canplay', function() {
+
+          console.log(this.currentTime());
+
+          // do not show intro carton
+          // if we are starting somewhere after the beginning
+          if(this.currentTime() > 0)
+            return;
+
+          // show still
+          var still = vv.createStill()
+          ,   template = 'intro'
+
+          vv.showStill(still, true);
+
+          $.get('templates/'+template+'.html', function(data) {
+            vv.showOverlay(
+              data,
+              {
+                background: "transparent", 
+                opacity: 0.8 
+              }
+            );
+          });
+
+      });
 
       // PLAY
       vp.on('play', function() {

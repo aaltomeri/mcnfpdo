@@ -24,6 +24,9 @@ function(app, Video, Soundtrack) {
     $('#main-container').css({ "z-index": 0});
     $('#module-container').css({ "z-index": 1});
 
+    // switch skip-intro to back to intro link
+    $('#skip-intro-link').attr('href', '/').html('intro');
+
     // video info for this module
     var video_model = new Video.Model({
 
@@ -37,15 +40,15 @@ function(app, Video, Soundtrack) {
       loop: true,
       enablePlayPause: true,
       chapters: [
-        { name: "BgdMap",title: "Belgrade Ville", start: 17, end: 23, description: "Baltasar s'est promené dans Belgrade" },
-        { name: "BgdBook", title: "Belgrade d'Angélica Liddell", start: 27, end: 33, description: "Belgrade, la pièce d'Angélica Liddell, monté par Julien Fisera. Première le 18 mars à la Comédié de Sant Etienne" },
-        { name: "Notebook", title: "Carnet de notes", start: 37, end: 43, description: "Mars 2006, Baltasar est à Belgrade. C'est l'enterrement de Milosevic. Quelques notes mais surtout d'autres choses se passent ailleurs." },
-        { name: "BriefAnDenVater", title: "Très cher père", start: 46, end: 52, description: "Baltasar est venu à Belgrade pour son père. Ils ont des rapports compliqués." },
-        { name: "BgdPlus",title: "Belgrade +", start: 54, end: 61, description: "Petites promenades du côté obscur" },
-        { name: "BgdDirect", title: "Belgrade Direct", start: 62, end: 67, description: "Belgrade en direct" },
-        { name: "Tesla",title: "Inconscient collectif", start: 69, end: 75, description: "La Serbie, ah oui ... Nicolas Tesla etc." },
-        { name: "History",title: "Histoire serbe", start: 77, end: 83, description: "Mais dans les faits ? Qu'est ce qui s'est passé ? Comment est ce qu'on peut expliquer ?" },
-        { name: "BgdVoices", title: "Les voix de Belgrade", start: 85, end: 90, description: "Tous parlent, ou pensent, tous marchent ..." },
+        { name: "BgdMap",title: "1/ Belgrade Ville", start: 17, end: 23, description: "Baltasar s'est promené dans Belgrade" },
+        { name: "BgdBook", title: "2/ Répéter Belgrade", start: 27, end: 33, description: "Belgrade, la pièce d'Angélica Liddell, monté par Julien Fisera. Première le 18 mars à la Comédié de Sant Etienne" },
+        { name: "Notebook", title: "3/ Carnet de notes", start: 37, end: 43, description: "Mars 2006, Baltasar est à Belgrade. C'est l'enterrement de Milosevic. Quelques notes mais surtout d'autres choses se passent ailleurs." },
+        { name: "BriefAnDenVater", title: "4/ Très cher père", start: 46, end: 52, description: "Baltasar est venu à Belgrade pour son père. Ils ont des rapports compliqués." },
+        { name: "BgdPlus",title: "5/ Belgrade +", start: 54, end: 61, description: "Petites promenades du côté obscur" },
+        { name: "BgdDirect", title: "6/ Belgrade Direct", start: 62, end: 67, description: "Belgrade en direct" },
+        { name: "Tesla",title: "7/ Made in Serbia", start: 69, end: 75, description: "La Serbie, ah oui ... Nicolas Tesla etc." },
+        { name: "History",title: "8/ Histoire serbe", start: 77, end: 83, description: "Mais dans les faits ? Qu'est ce qui s'est passé ? Comment est ce qu'on peut expliquer ?" },
+        { name: "BgdVoices", title: "9/ Voix de Belgrade", start: 85, end: 90, description: "Tous parlent, ou pensent, tous marchent ..." },
       ]
 
     });
@@ -68,6 +71,9 @@ function(app, Video, Soundtrack) {
       return;
 
     }
+    
+    // Set TTB model to be used throughout the application
+    TTB.model = video_model;
 
     ////////////////
     // video view //
@@ -77,10 +83,9 @@ function(app, Video, Soundtrack) {
     // actual main view for this module
     ttb_view = TTB.MainView = new TTB.Views.Main({ 
       video_view: video_view,
+      model: video_model
     });
-
-    // Set TTB model to be used throughout the application
-    TTB.model = video_model;
+      
 
     ////////////////
     // Soundtrack //
@@ -265,114 +270,136 @@ function(app, Video, Soundtrack) {
       ,   credits2Displayed
 
 
-      vv.popcorn.on('canplay', function() {
+      // START
+      vp.on('canplay', function() {
 
+          console.log(this.currentTime());
+
+          // do not show intro carton
+          // if we are starting somewhere after the beginning
+          if(this.currentTime() > 0)
+            return;
+
+          // show still
+          var still = vv.createStill()
+          ,   template = 'ttb_intro'
+
+          vv.showStill(still, true);
+
+          $.get('templates/'+template+'.html', function(data) {
+            vv.showOverlay(
+              data,
+              {
+                background: "transparent", 
+                opacity: 0.8 
+              }
+            );
+          });
 
       });
 
-      vv.popcorn.on('timeupdate', function() {
+      // SHOW CHAPTER NAME
+      _.each(this.model.get('chapters'), function(chapter) {
 
-          var chapter = vv.model.getChapterByTime(this.currentTime());
+          var start = chapter.start
+          ,   end = chapter.end
 
-          if(this.currentTime() < 8 && showIntroInfo) {
+          vp.code({
 
-            // show still
-            var still = vv.createStill();
-            vv.showStill(still, true);
+            start: start,
+            end: end,
 
-            vv.showOverlay(
-              '<p>Pour commencer<br />appuyez sur la barre espace<br/>ou cliquez dans l\'écran</p>'
-              + '<p class="infos">Ensuite,<br/>pour explorer chaque chapitre,<br />appuyez sur la barre espace<br/>ou cliquez dans l\'écran<br/>lorsque le titre du chapitre apparaît</p>'
-              , {background: "transparent", opacity: 0.8 }
-            );
+            onStart: function(options) {
 
-            showIntroInfo = false;
+              vv.currentChapter = chapter;
 
-          }
+              vv.showOverlay(
+                  '<p class="chapter-title ' + chapter.name + '">' + chapter.title + '<br/>'
+                + '<span class="infos">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cliquez pour entrer</span></p>', 
+                { opacity: 0.8, background: 'transparent' }
+              );
 
-          if(this.currentTime() > 8 && this.currentTime() < 9 && hideIntroInfo) {
-            vv.hideOverlay();
-            hideIntroInfo = false;
-          }
+              // hide overlay if we got directly to a chapter
+              if(TTB.inChapter)
+                vv.hideOverlay(); 
+                  
+            },
 
-          // show chapter name
-          if(chapter && vv.currentChapter != chapter) {
+            onEnd: function() {
 
-            vv.currentChapter = chapter;
-            vv.showOverlay('<p class="chapter-title '+ chapter.name +'">'+chapter.title+'</p>'
-              //+ '<br />'+chapter.description+'</p>'
-              , { opacity: 0.8, background: 'transparent'}
-            );
-             
-            setTimeout(function() { vv.hideOverlay(); }, 3000);
+              vv.hideOverlay(); 
 
-          }
+            }
 
-          // show end credits
-          if(this.currentTime() > 95 && !credits1Displayed) {
+          });
 
-            vv.showOverlay('<p><strong>Mon corps ne fait pas d\'ombre</strong></p>'
-              + '<p class="infos">Un projet de <br/><strong>Julien Fišera, Jérémie Scheidler et Thomas Mery</strong></p>'
-              + '<p class="infos">'
-              + 'Images: <strong>Jérémie Scheidler</strong> - '
-              + 'Recherche : <strong>Julien Fišera</strong> - '
-              + 'Musique: <strong>Thomas Mery & Jérôme Berg</strong> - '
-              + 'Développement: <strong>Thomas Mery</strong> - '
-              + 'Baltasar: <strong>Vladislav Galard</strong>'
-              + '</p>'
-              + '<p class="infos"><span class="small">Un grand merci à : Emilija Andrejevic - Branimir Pipal - Zivomir Popovic - Marin Marovic - Mirjana Slavkovic, Musée d\'Histoire Yougoslave de Belgrade - Philippe Le Moine, Institut Français de Belgrade - Milica Zivadinovic, Centre Culturel de Serbie à Paris - Jasmina Nikolic - Sloga Press - Hôtel Cambrai - Alexandre Pallu - Grégoire Tachnakian  - Chantal Rameau - Cécile Fišera - Caroline Guiela Nguyen - Victor Leclère - Philippe Dubois - Simone Guiela - Emma Monier</span></p>'
-            , { opacity: 0.8, background: "rgba(0,0,0,0.6)" } );
+      });
 
-            _this.disablePlayPause();
-            credits1Displayed = true;
+      // END CREDITS
+      vp.code({
 
-            $('#main-container').css({"z-index": 3});
+        start: 95,
+        end: 110,
+        onStart: function() {
 
-          }
+          var template = 'end_credits_1'
 
-          // show end credits
-          if(this.currentTime() > 110 && !credits2Displayed) {
+          $.get('templates/'+template+'.html', 
+            function(data) {
+              vv.showOverlay(data, { background: "transparent", opacity: 0.8 } );
+          });
 
-            vv.showOverlay('<p><strong>Mon corps ne fait pas d\'ombre</strong></p>'
-              + '<p class="infos">Un projet de <strong>Julien Fišera, Jérémie Scheidler et Thomas Mery</strong></p>'
-              + '<p class="infos">Vous pouvez maintenant vous rendre directement à un des chapitres<br/>en cliquant sur un des liens ci-dessous</p>'
-              + '<p class="infos">'
-              + '<a href="#BgdMap">Belgrade Ville</a>'
-              + ' - <a href="#BgdBook">Belgrade d\'Angélica Liddell</a>'
-              + ' - <a href="#Notebook">Carnet de notes</a>'
-              + ' - <a href="#BriefAnDenVater">Très cher père</a>'
-              + ' - <a href="#BgdPlus">Belgrade +</a>'
-              + ' - <a href="#BgdDirect">Belgrade Direct</a>'
-              + ' - <a href="#Tesla">Inconcient collectif</a>'
-              + ' - <a href="#History">Histoire Serbe</a>'
-              + ' - <a href="#BgdVoices">Les voix de Belgrade</a>'
-              + '</p>'
-            , { opacity: 0.8, background: "rgba(0,0,0,0.6)" } );
+          _this.disablePlayPause();
 
-            credits2Displayed = true;
- 
-            hideIntroInfo = true;
-            showIntroInfo = false;
+        },
 
-            _this.enablePlayPause();
+        onEnd: function() {
 
-            $('#main-container').css({"z-index": 3});
+            vv.hideOverlay(); 
 
-          }
+        }
 
-           if(this.currentTime() < 95 && credits1Displayed) {
+      });
 
-              // reset creditsDisplayed to show them each time we reach the end
-              credits1Displayed = false;
-              credits2Displayed = false;
+      vp.code({
 
-           }
+        start: 110,
+        end: 120,
+        onStart: function() {
+
+          var template = 'end_credits_2'
+
+          $.get('templates/'+template+'.html', 
+            function(data) {
+              vv.showOverlay(data, { background: "transparent", opacity: 0.8 } );
+          });
+
+          // allow click on links in chapters menu
+          $('#main-container').css({"z-index": 3});
+
+          vv.popcorn.pause();
+          //_this.enablePlayPause();
+
+        },
+
+        onEnd: function() {
+
+        }
+
+      });
+
+
+      vp.on('timeupdate', function() {
 
       });
 
        // when PLAYING the video ...
-      vv.popcorn.on('play', function() {
+      vp.on('play', function() {
         
+        console.log('play');
+        
+        TTB.inChapter = false;
+
         vv.hideOverlay();
 
         // hide still image
@@ -384,13 +411,11 @@ function(app, Video, Soundtrack) {
 
       });
 
-      // when PAUSING the video ...
+      // when PAUSING the video
       // setup mechanism to launch a module on pause
       this.vv.popcorn.on('pause', function() {
 
         vv.hideOverlay();
-
-        
 
         if(chapter = vv.model.getChapterByTime(vp.currentTime())) {
 
@@ -418,27 +443,26 @@ function(app, Video, Soundtrack) {
 
           // do not pause when outside of a chapter
           //this.play();
+          return;
 
-          // get next chapter
+          //get next chapter
           chapter = vv.model.getChapterNextByTime(vp.currentTime());
 
           // abort if no chapter has been found
           if(!chapter) {
 
-            app.trigger('goto', 'TTB');
+            //app.trigger('goto', 'TTB');
 
             return;
 
           }
 
-          // show some feedback that no action is possible at this time
-          vv.showOverlay('<p>Prochain chapitre<br /><strong>'+ chapter.title +'</strong></p>'
-            + '<p class="infos">'+ chapter.description +'</p>'
-            + '<p class="infos">Pour explorer chaque chapitre<br />appuyez sur la barre espace<br />ou cliquez dans l\'écran<br />lorsque son titre apparaît</p>'
-            , {background: "transparent", opacity: 0.8 }
+          //show some feedback that no action is possible at this time
+          vv.showOverlay('<p>Prochain chapitre<br /><strong>'+ chapter.title +'</strong></p>', 
+            {background: "transparent", opacity: 0.8 }
           );
 
-          // setTimeout(function() { vv.hideOverlay(); }, 1000);
+          setTimeout(function() { vv.hideOverlay(); vp.play();}, 1000);
 
         }
 
