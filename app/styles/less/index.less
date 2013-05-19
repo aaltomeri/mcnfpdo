@@ -82,23 +82,33 @@ textarea {
 }
 
 button, .btn {
-		background: rgba(0,0,0,0.5);
-		border: none;
-		border-radius: 0;
-		color: white;
-		border-color: black;
-		.box-shadow(none);
-		text-shadow: none;
-		font-size: 1em;
-		letter-spacing: 1.1px;
+	background: rgba(0,0,0,0.5);
+	border: none;
+	border-radius: 0;
+	color: white;
+	border-color: black;
+	.box-shadow(none);
+	text-shadow: none;
+	font-size: 1em;
+	letter-spacing: 1.1px;
 
-		cursor: pointer;
+	cursor: pointer;
 
-		&:hover {
-			background: rgba(0,0,0,0.3);
-			color: #ccc;
-		};
-	}
+	&:hover {
+		background: rgba(0,0,0,0.3);
+		color: #ccc;
+	};
+}
+
+#back-to-ttb {
+
+	position: absolute;
+	bottom: 30px;
+	right: 0px;
+	opacity: 0;
+	z-index: 1000;
+
+}
 
 h1 {
 	margin: 0;
