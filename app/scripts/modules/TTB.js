@@ -155,14 +155,6 @@ function(app, Video, Soundtrack) {
         ,   vv = this.vv
         ,   bt = this.back_to_ttb_button =  $('<button class="btn" id="back-to-ttb">Poursuivre l\'exploration</button>');
 
-        // append home button
-        bt.css({ 
-          position: 'absolute', 
-          bottom: '10px', 
-          right: '10px',
-          opacity: 0,
-          "z-index": 1000
-        });
         $('#main').append(bt);
 
     },
