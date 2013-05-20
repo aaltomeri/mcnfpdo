@@ -1,16 +1,16 @@
-#uc {
+#MadeInSerbia {
   background: rgba(0, 0, 0, 0.8);
 }
-#uc-video {
+#MadeInSerbia-video {
   width: 100%;
   height: 100%;
 }
-#uc-video .video {
+#MadeInSerbia-video .video {
   width: 100%;
   height: 100%;
 }
-#uc-controls,
-#uc-video-title {
+#MadeInSerbia-controls,
+#MadeInSerbia-video-title {
   position: absolute;
   z-index: 100;
   font-size: 44px;
@@ -19,20 +19,20 @@
   background: rgba(0, 0, 0, 0.5);
   padding: 20px;
 }
-#uc-controls {
+#MadeInSerbia-controls {
   top: 0;
   left: 0;
   width: 100%;
   background: transparent;
 }
-#uc-controls > button {
+#MadeInSerbia-controls > button {
   font-size: 64px;
   line-height: auto;
   color: white;
   background: rgba(0, 0, 0, 0.5);
   padding: 20px;
 }
-#uc-video-title {
+#MadeInSerbia-video-title {
   bottom: 10%;
   left: 0;
 }

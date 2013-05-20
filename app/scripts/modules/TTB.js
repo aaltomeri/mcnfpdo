@@ -40,15 +40,21 @@ function(app, Video, Soundtrack) {
       loop: true,
       enablePlayPause: true,
       chapters: [
-        { name: "BgdMap",title: "1/ Belgrade Ville", start: 17, end: 23, description: "Baltasar s'est promené dans Belgrade" },
-        { name: "BgdBook", title: "2/ Répéter Belgrade", start: 27, end: 33, description: "Belgrade, la pièce d'Angélica Liddell, monté par Julien Fisera. Première le 18 mars à la Comédié de Sant Etienne" },
-        { name: "Notebook", title: "3/ Carnet de notes", start: 37, end: 43, description: "Mars 2006, Baltasar est à Belgrade. C'est l'enterrement de Milosevic. Quelques notes mais surtout d'autres choses se passent ailleurs." },
-        { name: "BriefAnDenVater", title: "4/ Très cher père", start: 46, end: 52, description: "Baltasar est venu à Belgrade pour son père. Ils ont des rapports compliqués." },
-        { name: "BgdPlus",title: "5/ Belgrade +", start: 54, end: 61, description: "Petites promenades du côté obscur" },
-        { name: "BgdDirect", title: "6/ Belgrade Direct", start: 62, end: 67, description: "Belgrade en direct" },
-        { name: "Tesla",title: "7/ Made in Serbia", start: 69, end: 75, description: "La Serbie, ah oui ... Nicolas Tesla etc." },
-        { name: "History",title: "8/ Histoire serbe", start: 77, end: 83, description: "Mais dans les faits ? Qu'est ce qui s'est passé ? Comment est ce qu'on peut expliquer ?" },
-        { name: "BgdVoices", title: "9/ Voix de Belgrade", start: 85, end: 90, description: "Tous parlent, ou pensent, tous marchent ..." },
+        { name: "BelgradeVille",title: "1/ Belgrade Ville", start: 17, end: 23, description: "Baltasar s'est promené dans Belgrade" },
+        { name: "RepeterBelgrade", title: "2/ Répéter Belgrade", start: 27, end: 33, description: "Belgrade, la pièce d'Angélica Liddell, monté par Julien Fisera. Première le 18 mars à la Comédié de Sant Etienne" },
+        { name: "CarnetDeNotes", title: "3/ Carnet de notes", start: 37, end: 43, description: "Mars 2006, Baltasar est à Belgrade. C'est l'enterrement de Milosevic. Quelques notes mais surtout d'autres choses se passent ailleurs." },
+        { name: "TresCherPere", title: "4/ Très cher père", start: 46, end: 52, description: "Baltasar est venu à Belgrade pour son père. Ils ont des rapports compliqués." },
+        { name: "BelgradePlus",title: "5/ Belgrade +", start: 54, end: 61, description: "Petites promenades du côté obscur" },
+        { name: "BelgradeDirect", title: "6/ Belgrade Direct", start: 62, end: 67, description: "Belgrade en direct" },
+        { name: "MadeInSerbia",title: "7/ Made in Serbia", start: 69, end: 75, description: "La Serbie, ah oui ... Nicolas MadeInSerbia etc." },
+        { name: "HistoireSerbe",title: "8/ Histoire serbe", start: 77, end: 83, description: "Mais dans les faits ? Qu'est ce qui s'est passé ? Comment est ce qu'on peut expliquer ?" },
+        { name: "VoixDeBelgrade", title: "9/ Voix de Belgrade", start: 85, end: 90, description: "Tous parlent, ou pensent, tous marchent ..." },
+      ],
+      buttons: [
+        {type: 'info', text: '?', over_text: 'en savoir plus', visible: true },
+        {type: 'twitter-share', text: 't', over_text: 'partager sur twitter', visible: true },
+        {type: 'facebook-share', text: 'f', over_text: 'partager sur facebook', visible: true },
+        {type: 'back-to-ttb', text: 'Poursuivre l\'exploration', visible: !app.isiPad },
       ]
 
     });
@@ -139,8 +145,6 @@ function(app, Video, Soundtrack) {
       var still = vv.createStill();
       vv.showStill(still, true);
 
-      this.createBacktoTtbButton();
-
       this.initBehaviors();
 
       TTB.started = true;
@@ -149,13 +153,171 @@ function(app, Video, Soundtrack) {
 
     },
 
-    createBacktoTtbButton: function() {
+    createButton: function(button_o) {
 
         var v = this
         ,   vv = this.vv
-        ,   bt = this.back_to_ttb_button =  $('<button class="btn" id="back-to-ttb">Poursuivre l\'exploration</button>');
+        ,   $bt =  $('<button class="btn btn-tool" ></button>')
 
-        $('#main').append(bt);
+        $bt.attr('id', button_o.type+'-btn');
+        $bt.html(button_o.text);
+        $bt.data('type', button_o.type);
+        $bt.data('over-text', button_o.over_text);
+        $bt.data('text', button_o.text);
+
+        $bt.on('mouseenter', $.proxy(this.buttonsEnterHandler, this));
+        $bt.on('mouseleave', $.proxy(this.buttonsLeaveHandler, this));
+        $bt.on('click', $.proxy(this.buttonsClickHandler, this));
+
+        $('#main').append($bt);
+
+        return $bt;
+
+    },
+
+    createButtons: function() {
+
+      var buttons = this.model.get('buttons')
+
+      _.each(buttons, $.proxy(function(button) {
+
+          var $bt 
+
+          if(!button.visible)
+            return;
+
+          $bt = this.createButton(button);
+
+          $bt.transition({opacity: 1});
+
+        }
+        , this)
+      );
+
+    },
+
+    destroyButtons: function() {
+
+      var buttons = this.model.get('buttons');
+
+      _.each(buttons, $.proxy(function(button) {
+
+          var $bt = $('#main').find('#' + button.type + '-btn')
+
+          $bt.transition({opacity: 0}, function() {
+                $bt.remove();
+            });
+
+          $bt.off('mouseenter', this.buttonsEnterHandler);
+          $bt.off('mouseleave', this.buttonsLeaveHandler);
+          $bt.off('click', this.buttonsClickHandler);
+
+        }
+        , this)
+      );
+
+    },
+
+    buttonsEnterHandler: function(e) {
+
+      $bt = $(e.target)
+
+      $bt.html($bt.data('over-text'));
+
+      switch($bt.data('type')) {
+
+        case 'info':
+            this.showInfoPanel();
+            break;
+
+      }
+
+    },
+
+    buttonsLeaveHandler: function(e) {
+
+      $bt = $(e.target)
+
+      $bt.html($bt.data('text'));
+
+      switch($bt.data('type')) {
+
+        case 'info':
+            this.hideInfoPanel();
+            break;
+
+        default:
+          break;
+
+      }
+
+    },
+
+    buttonsClickHandler: function(e) {
+
+        var $bt = $(e.target)
+
+        switch($bt.data('type')) {
+
+          case 'info':
+            break;
+
+          case 'back-to-ttb':
+            this._backToTtb();
+            break;
+
+          case 'twitter-share':
+            var share_url = 'http://api.addthis.com/oexchange/0.8/forward/twitter/offer?'
+            + 'url=' + encodeURIComponent(window.location.href)
+            + '&text=' + app.title + " | " + encodeURIComponent(this.vv.currentChapter.title)
+            + '&pubid=' + window.addthis_config.pubid
+            console.log(share_url);
+            window.open(share_url);
+            
+            break;
+
+          case 'facebook-share':
+            var share_url = 'http://api.addthis.com/oexchange/0.8/forward/facebook/offer?'
+            + 'url=' + window.location.href
+            + '&title=' + app.title + " | " + encodeURIComponent(this.vv.currentChapter.title)
+            + '&description=' + app.title + " | " + encodeURIComponent(this.vv.currentChapter.title)
+            + '&pubid=' + window.addthis_config.pubid
+
+            window.open(share_url);
+            
+            break;
+
+        }
+
+    },
+
+    toggleInfoPanel: function() {
+
+      if($('#chapter-info-panel').is(':visible'))
+        this.hideInfoPanel();
+      else
+        this.showInfoPanel();
+
+    },
+
+    showInfoPanel: function() {
+
+      var $panel = $('#chapter-info-panel')
+
+      $panel.html($('#chapter-info-'+this.vv.currentChapter.name).html());
+
+      //$panel.show();
+      $panel.transition({opacity: 0.9});
+
+    },
+
+    hideInfoPanel: function() {
+
+      var $panel = $('#chapter-info-panel')
+
+      $panel.transition({opacity: 0}, function() { 
+        //$panel.hide(); 
+      });
 
     },
 
@@ -163,42 +325,20 @@ function(app, Video, Soundtrack) {
 
       this.disablePlayPause();
 
+      this.createButtons();
+
       if(!app.isiPad)
         this.enableBackToTtb();
 
     },
 
-    showBackToTtbButton: function() {
-
-      this.back_to_ttb_button.transition({opacity: 1});
-
-    },
-
-    hideBackToTtbButton: function() {
-
-      this.back_to_ttb_button.transition({opacity: 0});
-
-    },
-
     enableBackToTtb: function(key) {
-
-      var bt = this.back_to_ttb_button;
-
-      this.showBackToTtbButton();
-
-      bt.on('click', $.proxy(this._backToTtb, this));
 
       $('body').on('keydown', {key: 32}, $.proxy(this._keydownHandler, this));
 
     },
 
     disableBackToTtb: function() {
-
-      var bt = this.back_to_ttb_button;
-
-      this.hideBackToTtbButton();
-
-      bt.off('click', this._backToTtb);
       
       $('body').off('keydown', this._keydownHandler);
 
@@ -210,24 +350,26 @@ function(app, Video, Soundtrack) {
         throw "This handler needs an event data 'key' property";
 
       if(e.which == e.data.key) {
-        this._backToTtb(e);
+        this._backToTtb( );
       }
 
     },
 
-    _backToTtb: function(e) {
+    _backToTtb: function() {
 
       var vv = this.vv;
 
       // prevent the click event to bubble up to #main 
       // even though at the time of the click on the button the play/pause mechanisem on #main was disabled
       // it got re-enabled before the end of the bubbling phase
-      e.stopPropagation();
+      // e.stopPropagation();
 
       // go to end of current chapter
       app.trigger('goto', 'TTB/play/' + vv.model.get('currentChapter').end);
-
-      this.disableBackToTtb();
+      
+      this.destroyButtons();
+      this.hideInfoPanel();
+      this.disableBackToTtb(); 
       this.enablePlayPause();
 
     },
@@ -264,8 +406,6 @@ function(app, Video, Soundtrack) {
 
       // START
       vp.on('canplay', function() {
-
-          console.log(this.currentTime());
 
           // do not show intro carton
           // if we are starting somewhere after the beginning
@@ -366,11 +506,12 @@ function(app, Video, Soundtrack) {
               vv.showOverlay(data, { background: "transparent", opacity: 0.8 } );
           });
 
+          vv.popcorn.pause();
+           _this.disablePlayPause();
+
           // allow click on links in chapters menu
           $('#main-container').css({"z-index": 3});
 
-          vv.popcorn.pause();
-          //_this.enablePlayPause();
 
         },
 

@@ -1,4 +1,4 @@
-// BgdVoices module
+// VoixDeBelgrade module
 define([
   // Application.
   "app",
@@ -7,39 +7,39 @@ define([
   "Howl",
 
   // Css
-  "css!../../styles/bgd-voices.css"
+  "css!../../styles/VoixDeBelgrade.css"
 ],
 
 // Map dependencies from above array.
 function(app, Video, Howler, Howl) {
 
   // Create a new module.
-  var BgdVoices = app.module()
+  var VoixDeBelgrade = app.module()
   ,   layout
   ,   voices
   ,   voices_view
 
-  BgdVoices.init = function() {
+  VoixDeBelgrade.init = function() {
 
-    console.log('BgdVoices INIT');
+    console.log('VoixDeBelgrade INIT');
 
-    layout = new BgdVoices.Views.Layout();
+    layout = new VoixDeBelgrade.Views.Layout();
 
   }
 
   // Default Model.
-  BgdVoices.Model = Backbone.Model.extend({
+  VoixDeBelgrade.Model = Backbone.Model.extend({
   
   });
 
   // Default Collection.
-  BgdVoices.Collection = Backbone.Collection.extend({
-    model: BgdVoices.Model
+  VoixDeBelgrade.Collection = Backbone.Collection.extend({
+    model: VoixDeBelgrade.Model
   });
 
 
   // Voices - a view to rule them all
-  BgdVoices.Views.Voices = Backbone.LayoutView.extend({
+  VoixDeBelgrade.Views.Voices = Backbone.LayoutView.extend({
 
     voices_count: 90,
     current_voice: null,
@@ -48,7 +48,7 @@ function(app, Video, Howler, Howl) {
     voices_map: [],
     voices_array: [],
     min_timeout: 0.5,
-    max_timeout: 4,
+    max_timeout: 3,
     timeout_ID: null,
     speaking: false,
     voice_w: 100,
@@ -68,7 +68,7 @@ function(app, Video, Howler, Howl) {
       ,   fadeIn_time = this.speaking? Math.round(Math.random()*1000) : 4000
       ,   fadeOut_time = _.random(2,10)*1000
       ,   $voice_visual = voice? $("#voice-"+index) : $('<div class="voice-visual" id="voice-'+index+'"></div>')
-      ,   rdm_opacity = _.random(0.2,1)      
+      ,   rdm_opacity = _.random(0.5,1)      
       ,   voice_w = this.voice_w
       ,   area = this.area
       ,   voice_h = this.voice_h
@@ -78,7 +78,7 @@ function(app, Video, Howler, Howl) {
       // voice does not exist
       if(!voice) {
         voice = this.current_voice = this.voices_map[index] = new Howl({
-          urls: ['medias/bgd-voices/bgd-voice-' + index_str_formatted + '.ogg', 'medias/bgd-voices/bgd-voice-' + index_str_formatted + '.mp3']
+          urls: ['medias/VoixDeBelgrade/bgd-voice-' + index_str_formatted + '.ogg', 'medias/VoixDeBelgrade/bgd-voice-' + index_str_formatted + '.mp3']
         });
         this.voices_array.push(voice);
       }
@@ -140,9 +140,9 @@ function(app, Video, Howler, Howl) {
   });
 
   // Default View.
-  BgdVoices.Views.Layout = Backbone.Layout.extend({
+  VoixDeBelgrade.Views.Layout = Backbone.Layout.extend({
 
-    template: "bgd-voices",
+    template: "VoixDeBelgrade",
 
     initialize: function() {
 
@@ -162,34 +162,34 @@ function(app, Video, Howler, Howl) {
       //  // video info for this module
       var video_model = new Video.Model({
 
-        name: 'BgdVoices',
-        sources: [ 'medias/videos/BgdVoices.webm', 'medias/videos/BgdVoices.mp4'],
+        name: 'VoixDeBelgrade',
+        sources: [ 'medias/videos/VoixDeBelgrade.webm', 'medias/videos/VoixDeBelgrade.mp4'],
         dimensions: { width: '100%', height: '100%' },
         autoplay: true,
         enablePlayPause: false,
         loop: true
 
       });
-      this.vv = this.setView("#bgd-voices-video", new Video.Views.Main({model: video_model}));
+      this.vv = this.setView("#VoixDeBelgrade-video", new Video.Views.Main({model: video_model}));
 
       // voices view - global to module
-      voices_view = this.setView("#bgd-voices-voices", new BgdVoices.Views.Voices());
+      voices_view = this.setView("#VoixDeBelgrade-voices", new VoixDeBelgrade.Views.Voices());
 
 
       // render layout
       this.render();
 
       // toggle button
-      $('#bgd-voices-toggle').html('Faire taire les voix');
-      $('#bgd-voices-toggle').click($.proxy(function(){
+      $('#VoixDeBelgrade-toggle').html('Faire taire les voix');
+      $('#VoixDeBelgrade-toggle').click($.proxy(function(){
 
         if(voices_view.speaking) {
           voices_view.stop();
-          $('#bgd-voices-toggle').html('Entendre les voix');
+          $('#VoixDeBelgrade-toggle').html('Entendre les voix');
         }
         else {
           voices_view.speak(voices_view.next_index);
-          $('#bgd-voices-toggle').html('Faire taire les voix');
+          $('#VoixDeBelgrade-toggle').html('Faire taire les voix');
         }
       }, voices_view));
 
@@ -202,9 +202,9 @@ function(app, Video, Howler, Howl) {
 
   });
 
-  BgdVoices.destroy = function() {
+  VoixDeBelgrade.destroy = function() {
 
-    console.log('BgdVoices destroy');
+    console.log('VoixDeBelgrade destroy');
     voices_view.stop();
     voices_view.voices_array = null;
     voices_view.voices_map = null;
@@ -213,6 +213,6 @@ function(app, Video, Howler, Howl) {
   }
 
   // Return the module for AMD compliance.
-  return BgdVoices;
+  return VoixDeBelgrade;
 
 });

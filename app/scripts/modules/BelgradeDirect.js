@@ -1,25 +1,25 @@
-// BgdDirect module
+// BelgradeDirect module
 define([
   // Application.
   "app",
 
   // Css
-  "css!../../styles/bgd-direct.css"
+  "css!../../styles/BelgradeDirect.css"
 ],
 
 // Map dependencies from above array.
 function(app) {
 
   // Create a new module.
-  var BgdDirect = app.module(Backbone.Events);
+  var BelgradeDirect = app.module(Backbone.Events);
 
-  BgdDirect.init = function() {
+  BelgradeDirect.init = function() {
 
     console.log('NEWS INIT');
 
-    BgdDirect.queries = new Array();
+    BelgradeDirect.queries = new Array();
 
-    var BgdDirectItemDisplayInterval = 6000
+    var BelgradeDirectItemDisplayInterval = 6000
     ,   EncounterDisplayInterval = 10000
     ,   layout
     ,   audiostreams
@@ -27,9 +27,9 @@ function(app) {
     ,   twittersearches
     ,   encounters;
 
-    layout = new BgdDirect.Views.Layout();
+    layout = new BelgradeDirect.Views.Layout();
 
-    audiostreams = new BgdDirect.AudioStreams();
+    audiostreams = new BelgradeDirect.AudioStreams();
     audiostreams.on('reset', function() {
 
       var stream_index = Math.floor(Math.random()*this.models.length);
@@ -41,22 +41,22 @@ function(app) {
 
         // set AudioStream View
         layout.audiostreamView = layout.setView('#audiostream', 
-          new BgdDirect.Views.AudioStream({start_stream_index: stream_index, model: this.at(stream_index), collection: this})).render();
+          new BelgradeDirect.Views.AudioStream({start_stream_index: stream_index, model: this.at(stream_index), collection: this})).render();
       
       }
 
     });
     audiostreams.fetchData();
 
-    rssfeeds = new BgdDirect.RssFeeds();
+    rssfeeds = new BelgradeDirect.RssFeeds();
     rssfeeds.on('reset', function() {
 
-      twittersearches = new BgdDirect.TwitterSearches();
+      twittersearches = new BelgradeDirect.TwitterSearches();
       twittersearches.on('reset', function() {
 
-        $.when.apply(null, BgdDirect.queries).done(function() { 
+        $.when.apply(null, BelgradeDirect.queries).done(function() { 
 
-          BgdDirect.trigger('BgdDirect:BgdDirectItemsFetched');
+          BelgradeDirect.trigger('BelgradeDirect:BelgradeDirectItemsFetched');
 
         });
       });
@@ -66,28 +66,28 @@ function(app) {
     rssfeeds.fetchData();
 
     /**
-     * BgdDirect Items management
+     * BelgradeDirect Items management
      *
-     * we allow for automatically adding a BgdDirect Item to the collection when it is created
+     * we allow for automatically adding a BelgradeDirect Item to the collection when it is created
      * this is done by triggering a module wide event when a model is initialized
      * 
      */
     
-    // every time a BgdDirectItem is created it is added to the BgdDirectItemsCollection
-    BgdDirect.newsItems = new BgdDirect.BgdDirectItemsCollection();
+    // every time a BelgradeDirectItem is created it is added to the BelgradeDirectItemsCollection
+    BelgradeDirect.newsItems = new BelgradeDirect.BelgradeDirectItemsCollection();
 
-    BgdDirect.on('BgdDirect:BgdDirectItem:created', function(model) {
+    BelgradeDirect.on('BelgradeDirect:BelgradeDirectItem:created', function(model) {
 
       // add newsItem to collection
-      BgdDirect.newsItems.add(model);
+      BelgradeDirect.newsItems.add(model);
 
     });
 
-    // every time a BgdDirectItem is added to the collection it is added to the view
-    BgdDirect.newsItems.on('add', function(model) {
+    // every time a BelgradeDirectItem is added to the collection it is added to the view
+    BelgradeDirect.newsItems.on('add', function(model) {
 
       // create
-      var newsItemView = new BgdDirect.Views.BgdDirectItemView({model: model});
+      var newsItemView = new BelgradeDirect.Views.BelgradeDirectItemView({model: model});
       layout.newsItemsView.insertView(newsItemView);
 
       newsItemView.render();
@@ -95,19 +95,19 @@ function(app) {
     });
 
     // show New Item when it is set as current in its collecction
-    BgdDirect.newsItems.on('change:currentBgdDirectItem', function() {
+    BelgradeDirect.newsItems.on('change:currentBelgradeDirectItem', function() {
       layout.newsItemsView.showCurrentItem();
     });
 
-    // set BgdDirectItemsView collection
-    layout.newsItemsView.collection = BgdDirect.newsItems;
+    // set BelgradeDirectItemsView collection
+    layout.newsItemsView.collection = BelgradeDirect.newsItems;
 
-    // show first BgdDirect Item abd start the display cycle
-    BgdDirect.on('BgdDirect:BgdDirectItemsFetched', function() {
+    // show first BelgradeDirect Item abd start the display cycle
+    BelgradeDirect.on('BelgradeDirect:BelgradeDirectItemsFetched', function() {
 
-      BgdDirect.newsItems.rdm();
+      BelgradeDirect.newsItems.rdm();
 
-      setInterval(function() { BgdDirect.newsItems.rdm(); }, BgdDirectItemDisplayInterval);
+      setInterval(function() { BelgradeDirect.newsItems.rdm(); }, BelgradeDirectItemDisplayInterval);
 
     });
 
@@ -115,10 +115,10 @@ function(app) {
     // Encounters //
     ////////////////
 
-    encounters = new BgdDirect.Encounters();
+    encounters = new BelgradeDirect.Encounters();
     encounters.on('reset', function() {
       // set Encounters View
-      layout.encountersView = layout.setView('#encounters .body', new BgdDirect.Views.EncountersView({ collection: this }));
+      layout.encountersView = layout.setView('#encounters .body', new BelgradeDirect.Views.EncountersView({ collection: this }));
       layout.encountersView.render();
 
       this.rdm();
@@ -135,17 +135,17 @@ function(app) {
   }
 
   // Default Model.
-  BgdDirect.Model = Backbone.Model.extend({
+  BelgradeDirect.Model = Backbone.Model.extend({
   
   });
 
   // AudioStream Model
-  BgdDirect.AudioStream = BgdDirect.Model.extend({
+  BelgradeDirect.AudioStream = BelgradeDirect.Model.extend({
 
   });
 
   // RssFeed Model
-  BgdDirect.RssFeed = BgdDirect.Model.extend({
+  BelgradeDirect.RssFeed = BelgradeDirect.Model.extend({
 
     initialize: function() {
 
@@ -162,11 +162,11 @@ function(app) {
             model.set('entries', data.responseData.feed.entries);
             model.trigger('feed:received');
 
-            // loop through entries and create a BgdDirectItem for each
+            // loop through entries and create a BelgradeDirectItem for each
             // this would need to be refined to accomodate different feeds
             // with different attribute names for title, text and date
             $.each(data.responseData.feed.entries, function (i, e) {
-              var newsItem = new BgdDirect.BgdDirectItem({
+              var newsItem = new BelgradeDirect.BelgradeDirectItem({
                 title: e.title,
                 text: e.contentSnippet,
                 link: e.link,
@@ -182,14 +182,14 @@ function(app) {
         }
       });
 
-      BgdDirect.queries.push(query);
+      BelgradeDirect.queries.push(query);
 
     }
 
   });
 
   // Twitter Search Model
-  BgdDirect.TwitterSearch = BgdDirect.Model.extend({
+  BelgradeDirect.TwitterSearch = BelgradeDirect.Model.extend({
 
     initialize: function() {
 
@@ -206,12 +206,12 @@ function(app) {
 
             //console.log(data);
 
-            // loop through entries and create a BgdDirectItem for each
+            // loop through entries and create a BelgradeDirectItem for each
             $.each(data.results, function (i, e) {
 
               //console.log(e);
 
-              var newsItem = new BgdDirect.BgdDirectItem({
+              var newsItem = new BelgradeDirect.BelgradeDirectItem({
                 title: '@' + e.from_user,
                 text: e.text,
                 link: e.entities.urls.length? e.entities.urls[0].expanded_url : "http://www.twitter.com/"+e.from_user,
@@ -225,35 +225,35 @@ function(app) {
 
       });
 
-      BgdDirect.queries.push(query);
+      BelgradeDirect.queries.push(query);
 
     }
 
   });
 
-  // BgdDirectItem Model
-  BgdDirect.BgdDirectItem = BgdDirect.Model.extend({
+  // BelgradeDirectItem Model
+  BelgradeDirect.BelgradeDirectItem = BelgradeDirect.Model.extend({
     initialize: function() {
 
-      //console.log('BgdDirectItem created : ' + this.get('type'));
+      //console.log('BelgradeDirectItem created : ' + this.get('type'));
       
-      // say to the module eco-system that a BgdDirect Item is born
-      BgdDirect.trigger('BgdDirect:BgdDirectItem:created', this);
+      // say to the module eco-system that a BelgradeDirect Item is born
+      BelgradeDirect.trigger('BelgradeDirect:BelgradeDirectItem:created', this);
 
     }
   });
 
 
-  BgdDirect.Encounter = BgdDirect.Model.extend({
+  BelgradeDirect.Encounter = BelgradeDirect.Model.extend({
     initialize: function() {}
   });
 
 
   // Default Collection
-  // Mother of all data sources collection for the BgdDirect Module
-  BgdDirect.Collection = Backbone.Collection.extend({
+  // Mother of all data sources collection for the BelgradeDirect Module
+  BelgradeDirect.Collection = Backbone.Collection.extend({
     
-    model: BgdDirect.Model,
+    model: BelgradeDirect.Model,
     currentStream: 0,
 
     // fetch data for this collection
@@ -263,10 +263,10 @@ function(app) {
       var _this = this;
 
       if(typeof this.type == "undefined") {
-        throw "BgdDirect Collection must have a type to be able to fetch data"
+        throw "BelgradeDirect Collection must have a type to be able to fetch data"
       }
 
-      $.get('data/bgd-direct-'+this.type+'.txt').done(
+      $.get('data/BelgradeDirect-'+this.type+'.txt').done(
 
         function(data) { 
 
@@ -280,28 +280,28 @@ function(app) {
   });
 
   // AudioStreams Collection
-  BgdDirect.AudioStreams = BgdDirect.Collection.extend({
+  BelgradeDirect.AudioStreams = BelgradeDirect.Collection.extend({
     type: "audiostreams",
-    model: BgdDirect.AudioStream
+    model: BelgradeDirect.AudioStream
   });
 
   // RSS Feeds Collection
-  BgdDirect.RssFeeds = BgdDirect.Collection.extend({
+  BelgradeDirect.RssFeeds = BelgradeDirect.Collection.extend({
     type: "rss-feeds",
-    model: BgdDirect.RssFeed
+    model: BelgradeDirect.RssFeed
   })
 
   // Twitter Searches Collection
-  BgdDirect.TwitterSearches = BgdDirect.Collection.extend({
+  BelgradeDirect.TwitterSearches = BelgradeDirect.Collection.extend({
     type: "twitter-searches",
-    model: BgdDirect.TwitterSearch
+    model: BelgradeDirect.TwitterSearch
   })
 
    // Belgrade Encounters Collection
-  BgdDirect.Encounters = BgdDirect.Collection.extend({
+  BelgradeDirect.Encounters = BelgradeDirect.Collection.extend({
 
     type: "encounters",
-    model: BgdDirect.Encounter,
+    model: BelgradeDirect.Encounter,
 
     currentItem: null,
     currentItemIndex: -1,
@@ -324,35 +324,35 @@ function(app) {
 
   })
 
-  // BgdDirect Items Collection
-  BgdDirect.BgdDirectItemsCollection = Backbone.Collection.extend({
+  // BelgradeDirect Items Collection
+  BelgradeDirect.BelgradeDirectItemsCollection = Backbone.Collection.extend({
     
-    model: BgdDirect.BgdDirectItem,
-    currentBgdDirectItem: null,
-    currentBgdDirectItemIndex: -1,
+    model: BelgradeDirect.BelgradeDirectItem,
+    currentBelgradeDirectItem: null,
+    currentBelgradeDirectItemIndex: -1,
 
-    setCurrentBgdDirectItem: function(model) {
-      this.currentBgdDirectItem = model;
-      this.trigger('change:currentBgdDirectItem', model);
+    setCurrentBelgradeDirectItem: function(model) {
+      this.currentBelgradeDirectItem = model;
+      this.trigger('change:currentBelgradeDirectItem', model);
     },
 
     next: function() {
 
-      if(this.currentBgdDirectItemIndex > this.models.length-2) {
-        this.currentBgdDirectItemIndex = -1;
+      if(this.currentBelgradeDirectItemIndex > this.models.length-2) {
+        this.currentBelgradeDirectItemIndex = -1;
       }
 
-      this.currentBgdDirectItemIndex++;
-      this.currentBgdDirectItem = this.at(this.currentBgdDirectItemIndex);
-      this.trigger('change:currentBgdDirectItem', this.currentBgdDirectItem);
+      this.currentBelgradeDirectItemIndex++;
+      this.currentBelgradeDirectItem = this.at(this.currentBelgradeDirectItemIndex);
+      this.trigger('change:currentBelgradeDirectItem', this.currentBelgradeDirectItem);
 
     },
 
     rdm: function() {
 
-      this.currentBgdDirectItemIndex = Math.floor(Math.random()*this.models.length);
-      this.currentBgdDirectItem = this.at(this.currentBgdDirectItemIndex);
-      this.trigger('change:currentBgdDirectItem', this.currentBgdDirectItem);
+      this.currentBelgradeDirectItemIndex = Math.floor(Math.random()*this.models.length);
+      this.currentBelgradeDirectItem = this.at(this.currentBelgradeDirectItemIndex);
+      this.trigger('change:currentBelgradeDirectItem', this.currentBelgradeDirectItem);
 
     }
 
@@ -366,7 +366,7 @@ function(app) {
   // AudioStream View //
   //////////////////////
   // this is just a Html Audio Element
-  BgdDirect.Views.AudioStream = Backbone.LayoutView.extend({
+  BelgradeDirect.Views.AudioStream = Backbone.LayoutView.extend({
 
     popcorn: null,
 
@@ -450,8 +450,8 @@ function(app) {
 
   });
 
-  // BgdDirect Items View
-  BgdDirect.Views.BgdDirectItemsView = Backbone.LayoutView.extend({
+  // BelgradeDirect Items View
+  BelgradeDirect.Views.BelgradeDirectItemsView = Backbone.LayoutView.extend({
 
     tagName: 'ul',
 
@@ -463,7 +463,7 @@ function(app) {
 
       var items = this.$el.find('li').not('.current')
       ,   previousItem = this.$el.find('li.current')
-      ,   currentItem = this.$el.find('li#news-item-' + this.collection.currentBgdDirectItem.cid)
+      ,   currentItem = this.$el.find('li#news-item-' + this.collection.currentBelgradeDirectItem.cid)
 
       if(previousItem.length) {
         previousItem.transition({left: previousItem.width() + 'px'});
@@ -481,10 +481,10 @@ function(app) {
 
   });
 
-  // BgdDirect Item View
-  BgdDirect.Views.BgdDirectItemView = Backbone.LayoutView.extend({
+  // BelgradeDirect Item View
+  BelgradeDirect.Views.BelgradeDirectItemView = Backbone.LayoutView.extend({
     tagName: 'li',
-    template: 'modules/bgd-direct/news-item',
+    template: 'modules/BelgradeDirect/news-item',
 
     initialize: function() {
       this.$el.attr('id', "news-item-" + this.model.cid);
@@ -498,7 +498,7 @@ function(app) {
   });
 
   // Belgrade Encounters View
-  BgdDirect.Views.EncountersView = Backbone.LayoutView.extend({
+  BelgradeDirect.Views.EncountersView = Backbone.LayoutView.extend({
 
     tagName: 'ul',
 
@@ -506,7 +506,7 @@ function(app) {
 
       this.collection.each(function(model) {
 
-        this.insertView(new BgdDirect.Views.EncounterView({model: model}));
+        this.insertView(new BelgradeDirect.Views.EncounterView({model: model}));
 
       }, this);
 
@@ -536,10 +536,10 @@ function(app) {
   })
 
   // Belgrade Encounter View
-  BgdDirect.Views.EncounterView = Backbone.LayoutView.extend({
+  BelgradeDirect.Views.EncounterView = Backbone.LayoutView.extend({
 
     tagName: 'li',
-    template: 'modules/bgd-direct/encounter',
+    template: 'modules/BelgradeDirect/encounter',
 
     initialize: function() {
       this.$el.attr('id', "encounter-" + this.model.cid);
@@ -553,9 +553,9 @@ function(app) {
   })
 
   // Default View.
-  BgdDirect.Views.Layout = Backbone.Layout.extend({
+  BelgradeDirect.Views.Layout = Backbone.Layout.extend({
 
-    template: "bgd-direct",
+    template: "BelgradeDirect",
 
     webcams: [
       'http://www.mondo.rs/traffic_cams/1357146725/29.jpg',
@@ -583,14 +583,14 @@ function(app) {
       // add layout to the dom
       $('#module-container').empty().append(this.el);
 
-      // set BgdDirect Items View
-      this.newsItemsView = this.setView('#news-items .body', new BgdDirect.Views.BgdDirectItemsView());
+      // set BelgradeDirect Items View
+      this.newsItemsView = this.setView('#news-items .body', new BelgradeDirect.Views.BelgradeDirectItemsView());
 
       // render layout
       this.render();
 
       // add today's date in Belgrade
-      $('#bgd-direct-date').html(Date());
+      $('#BelgradeDirect-date').html(Date());
 
       $('#module-container').transition({opacity: 1}, 2000);
 
@@ -626,7 +626,7 @@ function(app) {
         ,   _webcam_url = webcam_url + '?' + rdm;
 
         // add today's date in Belgrade
-        $('#bgd-direct-date').html(Date());
+        $('#BelgradeDirect-date').html(Date());
 
         if(rdm > 50000)
           webcam_url = getWebcam();
@@ -656,13 +656,13 @@ function(app) {
 
   });
 
-  BgdDirect.destroy = function() {
+  BelgradeDirect.destroy = function() {
 
-    console.log('BgdDirect destroy');
+    console.log('BelgradeDirect destroy');
 
   }
 
   // Return the module for AMD compliance.
-  return BgdDirect;
+  return BelgradeDirect;
 
 });

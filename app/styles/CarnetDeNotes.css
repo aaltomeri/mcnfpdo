@@ -1,11 +1,11 @@
-#notebook {
+#CarnetDeNotes {
 
 	height: 100%;
 	position: relative;
 
 }
 
-#notebook a:visited {
+#CarnetDeNotes a:visited {
 
 	color:#a63005 !important;
 
@@ -13,7 +13,7 @@
 
 /** Entries **/
 
-#notebook #entries {
+#CarnetDeNotes #entries {
 
 	position: relative;
 	float: left;
@@ -28,33 +28,33 @@
 
 }
 
-#notebook #entries > div {
+#CarnetDeNotes #entries > div {
 
 	position: relative;
 
 }
 
-#notebook #entries a {
+#CarnetDeNotes #entries a {
 
 	color: #d2c18a;
 	text-decoration: none;
 
 }
 
-#notebook #entries h3 {
+#CarnetDeNotes #entries h3 {
 
 	margin: 5px;
 
 }
 
-#notebook #entries ul {
+#CarnetDeNotes #entries ul {
 
 	margin: 20px;
 	padding: 0;
 
 }
 
-#notebook #entries ul li {
+#CarnetDeNotes #entries ul li {
 
 	font-size: 1.2em;
 	line-height: 1.4em;
@@ -68,20 +68,20 @@
 
 }
 
-#notebook #entries ul li > a:first-child,
-#notebook #entries blockquote p > a:first-child {
+#CarnetDeNotes #entries ul li > a:first-child,
+#CarnetDeNotes #entries blockquote p > a:first-child {
 
 	font-size: 1.1em;
 	font-weight: bold;
 }
 
-#notebook #entries blockquote {
+#CarnetDeNotes #entries blockquote {
 	border: none;
 }
 
 /** Calendar **/
 
-#notebook #calendar {
+#CarnetDeNotes #calendar {
 	
 	float: left;
 	width: 50%;
@@ -92,7 +92,7 @@
 
 }
 
-#notebook #calendar table {
+#CarnetDeNotes #calendar table {
 
 	margin: 0;
 	padding: 0;
@@ -101,14 +101,14 @@
 
 }
 
-#notebook #calendar table tbody tr:first-child td {
+#CarnetDeNotes #calendar table tbody tr:first-child td {
 
 	font-weight: normal;
 	font-size: 1em;
 
 }
 
-#notebook #calendar table td {
+#CarnetDeNotes #calendar table td {
 
 	width: 30px;
 
@@ -122,26 +122,26 @@
 	background: rgba(0, 0, 0, 0.1);
 }
 
-#notebook #calendar table td a {
+#CarnetDeNotes #calendar table td a {
 	color: inherit;
 	text-decoration: none;
 }
 
-#notebook #calendar table td a:hover {
+#CarnetDeNotes #calendar table td a:hover {
 
 	text-decoration: underline;
 
 }
 
 
-#notebook #calendar table td.important {
+#CarnetDeNotes #calendar table td.important {
 	color: #d2c18a;
 	font-weight: bold;
 }
 
 /** Video **/
 
-#notebook #notebook-video {
+#CarnetDeNotes #CarnetDeNotes-video {
 
 	position: relative;
 	float: left;
@@ -154,7 +154,7 @@
 	
 }
 
-#notebook #notebook-video video {
+#CarnetDeNotes #CarnetDeNotes-video video {
 	background: #000;
 }
 

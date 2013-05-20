@@ -1,45 +1,45 @@
-// BriefAnDenVater module
+// TresCherPere module
 define([
   // Application.
   "app",
 
   "modules/Soundtrack",
 
-    "css!../../styles/brief-an-den-vater.css"
+    "css!../../styles/TresCherPere.css"
 ],
 
 // Map dependencies from above array.
 function(app, Soundtrack) {
 
   // Create a new module.
-  var BriefAnDenVater = app.module()
+  var TresCherPere = app.module()
   ,   layout
   ,   brief_view
 
 
-  BriefAnDenVater.init = function() {
+  TresCherPere.init = function() {
 
-    console.log('BriefAnDenVater INIT');
+    console.log('TresCherPere INIT');
 
-    layout = new BriefAnDenVater.Views.Layout();
+    layout = new TresCherPere.Views.Layout();
 
   }
 
   // Default Model.
-  BriefAnDenVater.Model = Backbone.Model.extend({
+  TresCherPere.Model = Backbone.Model.extend({
   
   });
 
   // Default Collection.
-  BriefAnDenVater.Collection = Backbone.Collection.extend({
-    model: BriefAnDenVater.Model
+  TresCherPere.Collection = Backbone.Collection.extend({
+    model: TresCherPere.Model
   });
 
 
   /**
    * View for displaying slices of the Kafka letter
    */
-  BriefAnDenVater.Views.Brief = Backbone.LayoutView.extend({
+  TresCherPere.Views.Brief = Backbone.LayoutView.extend({
 
     /**
      * the letter image source
@@ -105,7 +105,7 @@ function(app, Soundtrack) {
 
           tracking_time = tracking_time + slice_time;
 
-          _gaq.push(['_trackEvent', 'BriefAnDenVater', 'Navigation', "section: " + Math.ceil(this.currentTime()/slice_time + 1)]);
+          _gaq.push(['_trackEvent', 'TresCherPere', 'Navigation', "section: " + Math.ceil(this.currentTime()/slice_time + 1)]);
 
         }
 
@@ -388,9 +388,9 @@ function(app, Soundtrack) {
 
 
   // Default View.
-  BriefAnDenVater.Views.Layout = Backbone.Layout.extend({
+  TresCherPere.Views.Layout = Backbone.Layout.extend({
 
-    template: "brief-an-den-vater",
+    template: "TresCherPere",
 
     initialize: function() {
 
@@ -401,7 +401,7 @@ function(app, Soundtrack) {
       // add layout to the dom
       $('#module-container').empty().append(this.el);
 
-      brief_view = this.brief = this.setView("#badv-brief", new BriefAnDenVater.Views.Brief());
+      brief_view = this.brief = this.setView("#badv-brief", new TresCherPere.Views.Brief());
 
       // render layout
       this.render();
@@ -425,15 +425,15 @@ function(app, Soundtrack) {
 
   });
 
-  BriefAnDenVater.destroy = function() {
+  TresCherPere.destroy = function() {
 
-    console.log('BriefAnDenVater destroy');
+    console.log('TresCherPere destroy');
     
     brief_view.soundtrack.remove();
 
   }
 
   // Return the module for AMD compliance.
-  return BriefAnDenVater;
+  return TresCherPere;
 
 });

@@ -1,9 +1,9 @@
-// Notebook module
+// CarnetDeNotes module
 define([
   // Application.
   "app",
   "modules/Video",
-  "css!../../styles/notebook.css"
+  "css!../../styles/CarnetDeNotes.css"
 
 ],
 
@@ -11,21 +11,21 @@ define([
 function(app, Video) {
 
   // Create a new module.
-  var Notebook = app.module();
+  var CarnetDeNotes = app.module();
 
-  Notebook.init = function(action, options) {
+  CarnetDeNotes.init = function(action, options) {
 
-    console.log('Notebook INIT');
+    console.log('CarnetDeNotes INIT');
 
     var layout
-    ,   days = new Notebook.Days();
+    ,   days = new CarnetDeNotes.Days();
 
-    days.on('Notebook:Days:entries_ready', function() {
+    days.on('CarnetDeNotes:Days:entries_ready', function() {
 
       var number
       ,   model
 
-      layout = new Notebook.Views.Layout({collection: this});
+      layout = new CarnetDeNotes.Views.Layout({collection: this});
 
       if((action && action == 'goto') && (options && options.date)) {
 
@@ -45,14 +45,14 @@ function(app, Video) {
   }
 
   // Default Model.
-  Notebook.Day = Backbone.Model.extend({
+  CarnetDeNotes.Day = Backbone.Model.extend({
   
   });
 
   // Default Collection.
-  Notebook.Days = Backbone.Collection.extend({
+  CarnetDeNotes.Days = Backbone.Collection.extend({
     
-    model: Notebook.Day,
+    model: CarnetDeNotes.Day,
     wikiData: null,
     wikiText: null,
     currentDay: null,
@@ -62,7 +62,7 @@ function(app, Video) {
 
       var _this = this
       ,   wiki_request
-      $.get('data/notebook-days.txt').done(
+      $.get('data/CarnetDeNotes-days.txt').done(
 
         function(data) { 
 
@@ -70,7 +70,7 @@ function(app, Video) {
           _this.reset($.parseJSON(data));
 
           // global scope callback for wikipedia data
-          //Popcorn.getScript( "//fr.wikipedia.org/w/api.php?action=parse&props=text&redirects&page=Mars_2006&format=json&callback=NoteBookParseWikiData");
+          //Popcorn.getScript( "//fr.wikipedia.org/w/api.php?action=parse&props=text&redirects&page=Mars_2006&format=json&callback=CarnetDeNotesParseWikiData");
           wiki_request = $.getJSON('//fr.wikipedia.org/w/api.php?action=parse&format=json&callback=?', {page:'Mars_2006', prop:'text|sections', uselang:'fr'}, $.proxy(_this.parseWikiData, _this));
         
           wiki_request.fail(function() { window.location.reload(); })
@@ -132,20 +132,20 @@ function(app, Video) {
 
       });
 
-      this.trigger('Notebook:Days:entries_ready', this);
+      this.trigger('CarnetDeNotes:Days:entries_ready', this);
 
     },
 
     setCurrentDay: function(model) {
       this.currentDay = model;
       this.trigger('change:currentDay');
-       _gaq.push(['_trackEvent', 'Notebook', 'Navigation', "day: " + model.get('number')]);
+       _gaq.push(['_trackEvent', 'CarnetDeNotes', 'Navigation', "day: " + model.get('number')]);
     }
 
   });
 
   // Wikipedia Entries View
-  Notebook.Views.Entries = Backbone.LayoutView.extend({
+  CarnetDeNotes.Views.Entries = Backbone.LayoutView.extend({
 
     initialize: function() {
 
@@ -165,9 +165,9 @@ function(app, Video) {
   });
 
   // Day View
-  Notebook.Views.Day = Backbone.LayoutView.extend({
+  CarnetDeNotes.Views.Day = Backbone.LayoutView.extend({
 
-    template: 'modules/notebook/calendar-day',
+    template: 'modules/CarnetDeNotes/calendar-day',
     tagName: 'td',
 
     events: {
@@ -201,7 +201,7 @@ function(app, Video) {
   });
 
   // Calendar View
-  Notebook.Views.Calendar = Backbone.LayoutView.extend({
+  CarnetDeNotes.Views.Calendar = Backbone.LayoutView.extend({
 
     tagName: 'table',
 
@@ -255,7 +255,7 @@ function(app, Video) {
         }
 
         if(model)
-          day_view = this.insertView('#' + $row.get(0).id, new Notebook.Views.Day({model: model})).render();
+          day_view = this.insertView('#' + $row.get(0).id, new CarnetDeNotes.Views.Day({model: model})).render();
         else
           $row.append('<td></td>');
 
@@ -270,9 +270,9 @@ function(app, Video) {
   });
 
   // Default View.
-  Notebook.Views.Layout = Backbone.Layout.extend({
+  CarnetDeNotes.Views.Layout = Backbone.Layout.extend({
 
-    template: "notebook",
+    template: "CarnetDeNotes",
 
     views: {},
 
@@ -296,15 +296,15 @@ function(app, Video) {
 
       // setting Calendar and Entries views on layout here to pass it the main collection (days)
       // does not seem to work in the views object directly
-      calendarView = this.setView("#calendar .body", new Notebook.Views.Calendar({ collection: this.collection }));
-      entriesView = this.setView("#entries", new Notebook.Views.Entries({ collection: this.collection }));
+      calendarView = this.setView("#calendar .body", new CarnetDeNotes.Views.Calendar({ collection: this.collection }));
+      entriesView = this.setView("#entries", new CarnetDeNotes.Views.Entries({ collection: this.collection }));
 
 
-      this.videoView = this.setView("#notebook-video", new Video.Views.Main());
+      this.videoView = this.setView("#CarnetDeNotes-video", new Video.Views.Main());
 
       this.videoView.model = new Video.Model({
 
-        name: 'Notebook-video',
+        name: 'CarnetDeNotes-video',
         //sources: ['https://www.youtube.com/watch?v=XAJZF7rJXG0'],
         dimensions: { width: '100%', height: '100%' },
         autoplay: true,
@@ -326,7 +326,7 @@ function(app, Video) {
         entriesView.scrollTo(top);
 
         var date = currentDay.get('number') + '-mars-2006';
-        history.pushState({},"","#Notebook/goto/"+date);
+        history.pushState({},"","#CarnetDeNotes/goto/"+date);
 
         if(sources) {
 
@@ -371,13 +371,13 @@ function(app, Video) {
 
   });
 
-  Notebook.destroy = function() {
+  CarnetDeNotes.destroy = function() {
 
-    console.log('Notebook destroy');
+    console.log('CarnetDeNotes destroy');
 
   }
 
   // Return the module for AMD compliance.
-  return Notebook;
+  return CarnetDeNotes;
 
 });

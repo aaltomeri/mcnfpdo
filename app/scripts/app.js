@@ -25,6 +25,8 @@ function($, _, Backbone, Chapters, Sounds) {
     // The root path to run the application.
     root: "/",
 
+    title: "Mon corps ne fait pas d'ombre | Un projet de Julien Fišera, Jérémie Scheidler et Thomas Mery",
+
     // iPad Detection
     isiPad: navigator.userAgent.match(/iPad/i) != null,
 

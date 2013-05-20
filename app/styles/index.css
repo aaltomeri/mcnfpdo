@@ -5254,6 +5254,9 @@ a.badge:focus {
 .affix {
   position: fixed;
 }
+#chapters-infos {
+  display: none;
+}
 .video-pause-effect {
   -webkit-filter: blur(6px) grayscale(40%) contrast(110%);
 }
@@ -5328,15 +5331,42 @@ button,
 }
 button:hover,
 .btn:hover {
-  background: rgba(0, 0, 0, 0.3);
-  color: #ccc;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
 }
-#back-to-ttb {
+.btn-tool {
   position: absolute;
-  bottom: 30px;
-  right: 0px;
   opacity: 0;
   z-index: 1000;
+  right: -1px;
+}
+#info-btn {
+  top: 0px;
+}
+#twitter-share-btn {
+  top: 40px;
+}
+#facebook-share-btn {
+  top: 70px;
+}
+#back-to-ttb-btn {
+  bottom: 30px;
+}
+#chapter-info-panel {
+  display: block;
+  opacity: 0;
+  z-index: 1000;
+  position: absolute;
+  top: 20%;
+  right: -1px;
+  background: rgba(0, 0, 0, 0.9);
+  padding: 20px 30px 20px 20px;
+  font-size: 1em;
+  line-height: 1.4em;
+  z-index: 10;
+  height: 50%;
+  width: 22%;
+  text-align: left;
 }
 h1 {
   margin: 0;
@@ -5423,30 +5453,30 @@ img {
   padding-left: 50px;
   text-transform: lowercase;
 }
-.video .overlay .text .chapter-title.Notebook {
+.video .overlay .text .chapter-title.CarnetDeNotes {
   top: -100px;
   left: 170px;
 }
-.video .overlay .text .chapter-title.BgdBook {
+.video .overlay .text .chapter-title.RepeterBelgrade {
   top: -60px;
 }
-.video .overlay .text .chapter-title.BriefAnDenVater {
+.video .overlay .text .chapter-title.TresCherPere {
   top: 130px;
   left: -300px;
 }
-.video .overlay .text .chapter-title.BgdPlus {
+.video .overlay .text .chapter-title.BelgradePlus {
   top: 163px;
   left: -10px;
 }
-.video .overlay .text .chapter-title.BgdDirect {
+.video .overlay .text .chapter-title.BelgradeDirect {
   top: -170px;
   left: 300px;
 }
-.video .overlay .text .chapter-title.History {
+.video .overlay .text .chapter-title.HistoireSerbe {
   top: 40px;
   left: -180px;
 }
-.video .overlay .text .chapter-title.BgdVoices {
+.video .overlay .text .chapter-title.VoixDeBelgrade {
   top: -120px;
   left: -260px;
 }

@@ -1,27 +1,27 @@
-// BgdPlus module
+// BelgradePlus module
 define([
   // Application.
   "app",
   "modules/Video",
-  "css!../../styles/bgd-plus.css"
+  "css!../../styles/BelgradePlus.css"
 ],
 
 // Map dependencies from above array.
 function(app, Video) {
 
   // Create a new module.
-  var BgdPlus = app.module()
+  var BelgradePlus = app.module()
   ,   layout
 
-  BgdPlus.init = function() {
+  BelgradePlus.init = function() {
 
-    console.log('BgdPlus INIT');
+    console.log('BelgradePlus INIT');
 
-    BgdPlus.soundtrack.pause();
+    BelgradePlus.soundtrack.pause();
 
-    var videos = new BgdPlus.Collection();
+    var videos = new BelgradePlus.Collection();
 
-    layout = new BgdPlus.Views.Layout( {collection: videos });
+    layout = new BelgradePlus.Views.Layout( {collection: videos });
 
     videos.on('reset', function() {
 
@@ -41,17 +41,17 @@ function(app, Video) {
   }
 
   // Default Model.
-  BgdPlus.Model = Backbone.Model.extend({
+  BelgradePlus.Model = Backbone.Model.extend({
   
   });
 
   // Default Collection.
-  BgdPlus.Collection = Backbone.Collection.extend({
+  BelgradePlus.Collection = Backbone.Collection.extend({
     
     model: Video.Model,
     search_terms: [
 
-      { display: "models", q: "+serbian +models +girls -indoor -flying -space -pig -eve -kosovo -land -occupied" },
+      { display: "models", q: "serbian +models +girls -indoor -flying -space -pig -eve -kosovo -land -occupied" },
       { display: "nightlife", q: "nightlife -live +party +girls" },
       { display: "atmosphere", q: "atmosphere -live" },
       { display: "life", q: "life -live -apartment -house -rent -asimo -robot" },
@@ -103,8 +103,8 @@ function(app, Video) {
                 v:2, 
                 alt:'json-in-script', 
                 format:'5',
-                vq: "+belgrade +" + _this.search_term.q,
-                "start-index": Math.floor(Math.random() * 20),
+                q: "belgrade " + _this.search_term.q,
+                "start-index": Math.ceil(Math.random() * 20),
                 "max-results": 2
               }, 
               $.proxy(_this.parseYoutubeData, _this)
@@ -130,7 +130,7 @@ function(app, Video) {
 
       this.data_fetched = true;
 
-      // console.log(data);
+      console.log(data);
 
       // turning entries into an array of mcnfpdo Videos
       // same model than other modules use
@@ -159,10 +159,10 @@ function(app, Video) {
   });
 
   // Default View.
-  BgdPlus.Views.Layout = Backbone.Layout.extend({
+  BelgradePlus.Views.Layout = Backbone.Layout.extend({
 
-    template: "bgd-plus",
-    id: "bgd-plus",
+    template: "BelgradePlus",
+    id: "BelgradePlus",
     n_videos_played_in_set: 0,
 
     initialize: function() {
@@ -430,7 +430,7 @@ function(app, Video) {
 
   });
 
-  BgdPlus.destroy = function() {
+  BelgradePlus.destroy = function() {
 
     //console.log('Belgrade+ destroy');
 
@@ -441,6 +441,6 @@ function(app, Video) {
   }
 
   // Return the module for AMD compliance.
-  return BgdPlus;
+  return BelgradePlus;
 
 });

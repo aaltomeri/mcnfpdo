@@ -1,25 +1,3 @@
-#history .loading {
-
-
-  position: absolute;
-  z-index: 100;
-  font-size: 2.250em;
-  line-height: 1.8em;
-  color: white;
-  background: rgba(0, 0, 0, 0.5);
-  padding: 20px;
-  bottom: 5%;
-  left: 0;
-
-}
-
-#history .loading .term {
-
-  font-weight: bold;
-  color: #d12b22;
-
-}
-
 .wiki-entry {
   color: #000;
   position: absolute !important;
@@ -28,16 +6,13 @@
   border: solid 2px #333;
   top: 10px;
   left: 0;
-}
-
-.wiki-entry-effects {
-
   -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
   -moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
-
 }
-
+.wiki-entry a {
+  color: #000;
+}
 .wiki-entry h2 {
   margin: 10px 0;
 }
@@ -46,26 +21,15 @@
   padding: 10px;
   background: #272731;
   color: #dccfc8;
-  border-bottom: #d12b22 solid 1px;
 }
-
-.wiki-entry.entry-read > header { 
-
-  background: #4b4b5d;
-
-}
-
 .wiki-entry > section {
   display: none;
   position: relative;
-  background: white;
   height: 400px;
   overflow: auto;
-  padding: 20px 14px 0;
+  padding: 0 14px;
   word-wrap: break-word;
-  overflow-x: hidden;
 }
-
 .wiki-entry .handle:hover {
   cursor: move;
 }

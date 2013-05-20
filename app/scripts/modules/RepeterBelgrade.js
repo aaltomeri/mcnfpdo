@@ -1,4 +1,4 @@
-// BgdBook module
+// RepeterBelgrade module
 define([
   // Application.
   "app",
@@ -11,19 +11,19 @@ define([
 function(app, Video, SearchEngine) {
 
   // Create a new module.
-  var BgdBook = app.module()
+  var RepeterBelgrade = app.module()
   ,   layout
 
-  BgdBook.init = function() {
+  RepeterBelgrade.init = function() {
 
-    console.log('BgdBook INIT');
+    console.log('RepeterBelgrade INIT');
 
-    BgdBook.soundtrack.pause();
+    RepeterBelgrade.soundtrack.pause();
 
-    var videos = new BgdBook.Collection();
+    var videos = new RepeterBelgrade.Collection();
 
     videos.on('reset', function() {
-      layout = new BgdBook.Views.Layout({ collection: this });
+      layout = new RepeterBelgrade.Views.Layout({ collection: this });
     });
 
     videos.fetchData();
@@ -31,19 +31,19 @@ function(app, Video, SearchEngine) {
   }
 
   // Default Model.
-  BgdBook.Model = Backbone.Model.extend({
+  RepeterBelgrade.Model = Backbone.Model.extend({
 
   });
 
   // Default Collection.
-  BgdBook.Collection = Backbone.Collection.extend({
+  RepeterBelgrade.Collection = Backbone.Collection.extend({
 
     model: Video.Model,
 
     fetchData: function() {
 
       var _this = this;
-      $.get('data/bgdbook-videos.txt').done(
+      $.get('data/RepeterBelgrade-videos.txt').done(
 
         function(data) { 
 
@@ -59,7 +59,7 @@ function(app, Video, SearchEngine) {
   /**
    * InfoPanel View
    */
-  BgdBook.Views.InfoPanel = Backbone.LayoutView.extend({
+  RepeterBelgrade.Views.InfoPanel = Backbone.LayoutView.extend({
 
       className: "infos",
       template: "modules/bgd-book/infos",
@@ -90,19 +90,19 @@ function(app, Video, SearchEngine) {
    * SearchResults View
    * extends InfoPanel View and inserts search results
    */
-  BgdBook.Views.SearchResults = BgdBook.Views.InfoPanel.extend({
+  RepeterBelgrade.Views.SearchResults = RepeterBelgrade.Views.InfoPanel.extend({
     
     initialize: function() {
 
       // calls parent intialize method
-      BgdBook.Views.InfoPanel.prototype.initialize.apply(this, arguments);
+      RepeterBelgrade.Views.InfoPanel.prototype.initialize.apply(this, arguments);
 
     },
 
     afterRender: function() {
 
       // calls parent afterRender method
-      BgdBook.Views.InfoPanel.prototype.afterRender.apply(this, arguments);
+      RepeterBelgrade.Views.InfoPanel.prototype.afterRender.apply(this, arguments);
 
       if(!SearchEngine.items && SearchEngine.error) {
         this.$el.find('.body').append('<div><p>' + SearchEngine.error.message + '</p></div>');
@@ -120,7 +120,7 @@ function(app, Video, SearchEngine) {
   });
 
   // Default View.
-  BgdBook.Views.Layout = Backbone.Layout.extend({
+  RepeterBelgrade.Views.Layout = Backbone.Layout.extend({
 
     template: "bgd-book",
     id: "bgd-book",
@@ -363,7 +363,7 @@ function(app, Video, SearchEngine) {
       // set Search  Results View
       var view = this.setView(
         '#' + id, 
-        new BgdBook.Views.InfoPanel(
+        new RepeterBelgrade.Views.InfoPanel(
           {
             title: title,
             text: text
@@ -383,7 +383,7 @@ function(app, Video, SearchEngine) {
     showSearchResults: function(title) {
 
       // set Search  Results View
-      var view = this.setView('#search-results', new BgdBook.Views.SearchResults({title: "Belgrade / Liens"}), true)
+      var view = this.setView('#search-results', new RepeterBelgrade.Views.SearchResults({title: "Belgrade / Liens"}), true)
       view.render();
 
       // display Search Results View
@@ -436,13 +436,13 @@ function(app, Video, SearchEngine) {
 
   
 
-  BgdBook.destroy = function() {
+  RepeterBelgrade.destroy = function() {
 
-    console.log('BgdBook destroy');
+    console.log('RepeterBelgrade destroy');
 
   }
 
   // Return the module for AMD compliance.
-  return BgdBook;
+  return RepeterBelgrade;
 
 });

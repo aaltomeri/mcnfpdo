@@ -1,4 +1,4 @@
-// BgdMap module
+// BelgradeVille module
 define([
 
   // Application.
@@ -13,25 +13,25 @@ define([
 function(app) {
 
   // Create a new module.
-  var BgdMap = app.module()
+  var BelgradeVille = app.module()
   ,   layout
   ,   places
 
-  BgdMap.init = function(action, start_index) {
+  BelgradeVille.init = function(action, start_index) {
 
-    BgdMap.start_index = start_index;
+    BelgradeVille.start_index = start_index;
 
     // poll for google.maps.version to see if it's actually loaded
     if(typeof google.maps.version === 'undefined') {
       console.log("Google Maps NOT loaded");
-      setTimeout(function() { BgdMap.init(action, start_index)}, 10);
+      setTimeout(function() { BelgradeVille.init(action, start_index)}, 10);
       return;
     }
 
     console.log("Google Maps loaded: " + google.maps.version);
 
-    places = new BgdMap.Collection();
-    layout = new BgdMap.Views.Layout({collection: places});
+    places = new BelgradeVille.Collection();
+    layout = new BelgradeVille.Views.Layout({collection: places});
 
     places.on('reset', function() {
 
@@ -40,19 +40,19 @@ function(app) {
       // function that looks for an existing (i.e. with a vimeo id) random video in collection
       function setRdmVideo() {
 
-        BgdMap.start_index = Math.floor(Math.random()*self.models.length-1);
+        BelgradeVille.start_index = Math.floor(Math.random()*self.models.length-1);
 
         // search for a place with a video
-        if(!self.at(BgdMap.start_index).get('vimeo_id'))
+        if(!self.at(BelgradeVille.start_index).get('vimeo_id'))
           setRdmVideo();
 
       }
 
       // set random video id if given video does not exist
-      if(BgdMap.start_index) {
+      if(BelgradeVille.start_index) {
 
         // out of bounds OR no vimeo id
-        if(BgdMap.start_index > this.models.length-1 || !this.at(BgdMap.start_index).get('vimeo_id'))
+        if(BelgradeVille.start_index > this.models.length-1 || !this.at(BelgradeVille.start_index).get('vimeo_id'))
           setRdmVideo();
       
       }
@@ -72,14 +72,14 @@ function(app) {
   ,   icon_image_missing = 'images/mapicons_missing/video.png'
 
   // Default Model.
-  BgdMap.Model = Backbone.Model.extend({
+  BelgradeVille.Model = Backbone.Model.extend({
   
   });
 
   // Default Collection.
-  BgdMap.Collection = Backbone.Collection.extend({
+  BelgradeVille.Collection = Backbone.Collection.extend({
     
-    model: BgdMap.Model,
+    model: BelgradeVille.Model,
 
     fetchData: function() {
 
@@ -95,14 +95,14 @@ function(app) {
   });
 
   // Info Window Content View
-  BgdMap.Views.IwContent = Backbone.LayoutView.extend({
+  BelgradeVille.Views.IwContent = Backbone.LayoutView.extend({
     template: "modules/bgd-map/iw_content",
     className: "iw_content",
 
   });
 
   // Default View.
-  BgdMap.Views.Layout = Backbone.Layout.extend({
+  BelgradeVille.Views.Layout = Backbone.Layout.extend({
 
     template: "bgd-map",
 
@@ -120,7 +120,7 @@ function(app) {
 
       // create infoWindow
       // only one info window will be used as we never are displaying more than one
-      var iw_content_view = new BgdMap.Views.IwContent();
+      var iw_content_view = new BelgradeVille.Views.IwContent();
 
       iw_content_view.render();
 
@@ -169,8 +169,8 @@ function(app) {
       this.initInfoWindow();
 
       // open info window if param has been passed to module
-      if(BgdMap.start_index)
-        this.infoWindow.open(this.map, this.collection.at(BgdMap.start_index).mrkr);
+      if(BelgradeVille.start_index)
+        this.infoWindow.open(this.map, this.collection.at(BelgradeVille.start_index).mrkr);
 
       $('#module-container').transition({opacity: 1}, 2000);
 
@@ -227,7 +227,7 @@ function(app) {
           // opening the window
           // see below for initialization code (in domready callback)
           _this.infoWindow.open(_this.map, this);
-          history.pushState({},"","#BgdMap/goto/"+mrkr.index);
+          history.pushState({},"","#BelgradeVille/goto/"+mrkr.index);
 
         });
 
@@ -325,14 +325,14 @@ function(app) {
 
   });
 
-  BgdMap.destroy = function() {
+  BelgradeVille.destroy = function() {
 
     layout.destroyPlayer();
-    console.log('BgdMap destroy');
+    console.log('BelgradeVille destroy');
 
   }
 
   // Return the module for AMD compliance.
-  return BgdMap;
+  return BelgradeVille;
 
 });

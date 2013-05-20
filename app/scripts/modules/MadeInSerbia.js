@@ -1,23 +1,23 @@
-// CollectiveUnconscious module
+// MadeInSerbia module
 define([
   // Application.
   "app",
   "modules/Video",
-  "css!../../styles/uc.css"
+  "css!../../styles/MadeInSerbia.css"
 ],
 
 // Map dependencies from above array.
 function(app, Video) {
 
   // Create a new module.
-  var Tesla = app.module()
+  var MadeInSerbia = app.module()
   ,   layout
 
-  Tesla.init = function(action, slug) {
+  MadeInSerbia.init = function(action, slug) {
 
-    console.log('Tesla INIT');
+    console.log('MadeInSerbia INIT');
 
-    var videos = new Tesla.Collection();
+    var videos = new MadeInSerbia.Collection();
 
     videos.on('reset', function() {
 
@@ -64,7 +64,7 @@ function(app, Video) {
 
       }
 
-      layout = new Tesla.Views.Layout({ collection: this });
+      layout = new MadeInSerbia.Views.Layout({ collection: this });
 
     });
 
@@ -73,12 +73,12 @@ function(app, Video) {
   }
 
   // Default Model.
-  Tesla.Model = Backbone.Model.extend({
+  MadeInSerbia.Model = Backbone.Model.extend({
   
   });
 
   // Default Collection.
-  Tesla.Collection = Backbone.Collection.extend({
+  MadeInSerbia.Collection = Backbone.Collection.extend({
 
     model: Video.Model,
     currentVideoIndex: -1,
@@ -86,7 +86,7 @@ function(app, Video) {
     fetchData: function() {
 
       var _this = this;
-      $.get('data/tesla-videos.txt').done(
+      $.get('data/MadeInSerbia-videos.txt').done(
 
         function(data) { 
 
@@ -127,10 +127,10 @@ function(app, Video) {
   });
 
   // Default View.
-  Tesla.Views.Layout = Backbone.Layout.extend({
+  MadeInSerbia.Views.Layout = Backbone.Layout.extend({
 
-    template: "tesla",
-    id: "uc",
+    template: "MadeInSerbia",
+    id: "MadeInSerbia",
     vv: null,// Video View
 
     initialize: function() {
@@ -154,11 +154,11 @@ function(app, Video) {
       this.playNext();
       
       // previous button
-      var next_bt = $('#uc-controls-previous');
+      var next_bt = $('#MadeInSerbia-controls-previous');
       next_bt.on('click', function() { layout.playPrevious(); });
 
       // next button
-      var previous_bt = $('#uc-controls-next');
+      var previous_bt = $('#MadeInSerbia-controls-next');
       previous_bt.on('click', function() { layout.playNext(); });
 
       $('#module-container').transition({opacity: 1}, 2000);
@@ -192,14 +192,14 @@ function(app, Video) {
           controller = this
 
       // browser history
-      history.pushState({},"","#Tesla/goto/"+model.get('slug'));
+      history.pushState({},"","#MadeInSerbia/goto/"+model.get('slug'));
 
-      $('#uc-video-title').html(model.get('name'));
+      $('#MadeInSerbia-video-title').html(model.get('name'));
 
       //Video View has not been set yet
       if(!vv) {
         
-        vv = this.vv = this.setView("#uc-video", new Video.Views.Main({model : model }));
+        vv = this.vv = this.setView("#MadeInSerbia-video", new Video.Views.Main({model : model }));
         vv.render();
 
         // for debugging
@@ -234,15 +234,15 @@ function(app, Video) {
 
   });
 
-  Tesla.destroy = function() {
+  MadeInSerbia.destroy = function() {
 
-    console.log('Tesla destroy');
+    console.log('MadeInSerbia destroy');
 
     layout.vv.remove();
 
   }
 
   // Return the module for AMD compliance.
-  return Tesla;
+  return MadeInSerbia;
 
 });

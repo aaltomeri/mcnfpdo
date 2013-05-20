@@ -181,7 +181,11 @@ function(app) {
     _disablePlayPauseByClicking: function() {
 
         var trigger_event = app.isiPad? 'touchstart' : 'click';
-        this.$el.parent().off(trigger_event, this._togglePlayPause);
+
+        // unregister all handlers as we do not need to be more specific
+        // and as handler has been registered through $.proxy being more accurate means refactoring in _enablePlayPauseByClicking
+        // to get a reference to the proxied function
+        this.$el.parent().off(trigger_event);
 
     },
 
@@ -222,11 +226,9 @@ function(app) {
       var vp = this.popcorn;
       
       if(vp.paused()) {
-        console.log('vp.play();')
         vp.play();
       }
       else {
-        console.log('vp.pause();')
         vp.pause();
       }
 

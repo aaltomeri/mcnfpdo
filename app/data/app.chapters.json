@@ -1,61 +1,61 @@
 [
 	{ 
-		"name": "Notebook",
+		"name": "CarnetDeNotes",
 		"title": "Carnet de notes",
 		"start": "66", "end": "72",
 		"soundtrack": ["Ada Ciganlija"],
 		"soundtrack_mode": "linear"
 	},
     { 
-    	"name": "BgdBook",
-    	"title": "Belgrade par Angélica Liddell",
+    	"name": "RepeterBelgrade",
+    	"title": "Répéter Belgrade",
     	"start": "73", "end": "77",
     	"soundtrack": ["Gare Abandonnée"],
         "soundtrack_mode": "linear" 
     },
     { 
-    	"name": "BgdMap",
+    	"name": "BelgradeVille",
     	"title": "Belgrade Ville",
     	"start": "22", "end": "27",
     	"soundtrack": ["Cour Novi Beograd"]
     },
     { 
-    	"name": "BriefAnDenVater",
+    	"name": "TresCherPere",
     	"title": "Lettres du père",
     	"start": "58", "end": "63",
     	"soundtrack": ["Enfants Après Pluie"],
         "soundtrack_mode": "linear" 
     },
     { 
-    	"name": "BgdPlus",
+    	"name": "BelgradePlus",
     	"title": "Belgrade Trash",
     	"start": "86", "end": "92",
     	"soundtrack": ["Bar Coco"],
         "soundtrack_mode": "linear" 
     },
     { 
-    	"name": "BgdDirect",
+    	"name": "BelgradeDirect",
     	"title": "Actualités",
     	"start": "79", "end": "84",
     	"soundtrack": ["Ada Ciganlija"],
         "soundtrack_mode": "linear" 
     },
     { 
-    	"name": "Tesla",
+    	"name": "MadeInSerbia",
     	"title": "Insconscient collectif",
     	"start": "40", "end": "48",
     	"soundtrack": ["Gare Train"],
         "soundtrack_mode": "linear" 
     },
     { 
-    	"name": "History",
+    	"name": "HistoireSerbe",
     	"title": "Histoire Serbe",
     	"start": "49", "end": "56",
     	"soundtrack": ["Messe Paques"],
         "soundtrack_mode": "linear" 
     },
     { 
-    	"name": "BgdVoices",
+    	"name": "VoixDeBelgrade",
     	"title": "Les voix de Belgrade",
     	"start": "32", "end": "37",
     	"soundtrack": ["Sur Le Marché"],
