@@ -1,7 +1,7 @@
 #audiostream {
   position: absolute;
-  top: 4px;
-  right: 0px;
+  top: 0px;
+  right: 130px;
   z-index: 10;
 }
 #news-items,
@@ -40,7 +40,7 @@
   list-style: none;
   display: none;
   font-size: 2.250em;
-  line-height: 2em;
+  line-height: 1.3em;
   text-align: left;
   width: 100%;
 }
@@ -54,6 +54,7 @@
 #encounters .body ul li .title {
   font-weight: bold;
   text-transform: uppercase;
+  line-height: 1.1em;
 }
 #news-items .body ul li .infos,
 #encounters .body ul li .infos {

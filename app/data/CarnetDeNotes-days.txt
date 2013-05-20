@@ -89,7 +89,7 @@
 			"medias/videos/CORPS_MILOSEVIC_ARRIVE_DE_LA_HAYE.webm"
 		],
 		"mcnfpdo_entries": [
-			"Le corps de <a href=\"/#BgdMap/open/48\">Slobodan Milošević</a> est rapatrié de La Haye. Pour le journal serbe \"Danas\", \"il ne reste de lui ni monument ni voie à suivre."
+			"Le corps de <a href=\"/#BelgradeVille/open/48\">Slobodan Milošević</a> est rapatrié de La Haye. Pour le journal serbe \"Danas\", \"il ne reste de lui ni monument ni voie à suivre."
 		]
 	},
 	{	

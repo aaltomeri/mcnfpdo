@@ -21,15 +21,15 @@ function(app, Intro, TTB, Soundtrack) {
 
       "TTB(/:command)(/:time)": "ttb",
 
-      "BgdMap(/:action)(/:index)": "bgdMap",
-      "BgdBook": "bgdBook",
-      "Notebook(/:action)(/:date)": "notebook",
-      "BriefAnDenVater": "mail",
-      "Tesla(/:command)(/:time)": "tesla",
-      "History": "history",
-      "BgdPlus": "bgdPlus",
-      "BgdDirect": "bgdDirect",
-      "BgdVoices": "bgdVoices"
+      "BelgradeVille(/:action)(/:index)": "BelgradeVille",
+      "RepeterBelgrade": "RepeterBelgrade",
+      "CarnetDeNotes(/:action)(/:date)": "CarnetDeNotes",
+      "TresCherPere": "TresCherPere",
+      "MadeInSerbia(/:command)(/:time)": "MadeInSerbia",
+      "HistoireSerbe": "HistoireSerbe",
+      "BelgradePlus": "BelgradePlus",
+      "BelgradeDirect": "BelgradeDirect",
+      "VoixDeBelgrade": "VoixDeBelgrade"
 
     },
 
@@ -37,7 +37,7 @@ function(app, Intro, TTB, Soundtrack) {
 
       // jump to Belgrade Map if iPad
       if(app.isiPad) {
-        window.location.replace('/#BgdMap');
+        window.location.replace('/#BelgradeVille');
       }
 
       // here we call the init function that we have defined for the module
@@ -50,7 +50,7 @@ function(app, Intro, TTB, Soundtrack) {
       $('#main-container').css({"z-index": 1});
 
       if(app.isiPad) {
-        app.trigger('goto', 'BgdMap');
+        app.trigger('goto', 'BelgradeVille');
       }
 
       // ANALYTICS
@@ -94,57 +94,57 @@ function(app, Intro, TTB, Soundtrack) {
 
     },
 
-    notebook: function(action, date) {
+    CarnetDeNotes: function(action, date) {
 
-      this.moduleLauncher('Notebook', action, {date: date});
+      this.moduleLauncher('CarnetDeNotes', action, {date: date});
 
     },
     
-    bgdBook: function() {
+    RepeterBelgrade: function() {
 
-      this.moduleLauncher('BgdBook');
-
-    },
-
-    bgdMap: function(action, index) {
-
-      this.moduleLauncher('BgdMap', action, index);
+      this.moduleLauncher('RepeterBelgrade');
 
     },
 
-    mail: function() {
+    BelgradeVille: function(action, index) {
 
-      this.moduleLauncher('BriefAnDenVater');
+      this.moduleLauncher('BelgradeVille', action, index);
+
+    },
+
+    TresCherPere: function() {
+
+      this.moduleLauncher('TresCherPere');
 
     }, 
     
-    bgdPlus: function() {
+    BelgradePlus: function() {
 
-      this.moduleLauncher('BgdPlus');
-
-    },
-
-    bgdDirect: function() {
-
-      this.moduleLauncher('BgdDirect');
+      this.moduleLauncher('BelgradePlus');
 
     },
 
-    tesla: function(action, slug) {
+    BelgradeDirect: function() {
 
-      this.moduleLauncher('Tesla', action, slug);
-
-    },
-
-    history: function() {
-
-      this.moduleLauncher('History');
+      this.moduleLauncher('BelgradeDirect');
 
     },
 
-    bgdVoices: function() {
+    MadeInSerbia: function(action, slug) {
 
-      this.moduleLauncher('BgdVoices');
+      this.moduleLauncher('MadeInSerbia', action, slug);
+
+    },
+
+    HistoireSerbe: function() {
+
+      this.moduleLauncher('HistoireSerbe');
+
+    },
+
+    VoixDeBelgrade: function() {
+
+      this.moduleLauncher('VoixDeBelgrade');
 
     },
 

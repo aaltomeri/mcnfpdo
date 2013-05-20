@@ -1,7 +1,7 @@
-#bgd-plus .search-banner,
-#bgd-plus .search-button,
-#bgd-plus .time,
-#bgd-plus .video-name {
+#BelgradePlus .search-banner,
+#BelgradePlus .search-button,
+#BelgradePlus .time,
+#BelgradePlus .video-name {
   position: absolute;
   z-index: 100;
   font-size: 44px;
@@ -10,21 +10,21 @@
   background: rgba(0, 0, 0, 0.5);
   padding: 20px;
 }
-#bgd-plus .video-name {
+#BelgradePlus .video-name {
   bottom: 30%;
   left: 0;
   min-height: 60px;
 }
-#bgd-plus .search-banner {
+#BelgradePlus .search-banner {
   bottom: 16%;
   left: 0;
 }
-#bgd-plus .search-term {
+#BelgradePlus .search-term {
   color: #ffea00;
   text-transform: uppercase;
   font-weight: bold;
 }
-#bgd-plus .search-button {
+#BelgradePlus .search-button {
   bottom: 2%;
   left: 0;
   font-size: 20px;
@@ -36,10 +36,10 @@
   font-weight: normal;
   text-transform: uppercase;
 }
-#bgd-plus .search-button:hover {
+#BelgradePlus .search-button:hover {
   color: #ff6a00;
 }
-#bgd-plus .time {
+#BelgradePlus .time {
   bottom: 11%;
   right: 10%;
   font-size: 84px;

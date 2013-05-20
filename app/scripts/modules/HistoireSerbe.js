@@ -1,8 +1,8 @@
-// History module
+// HistoireSerbe module
 define([
   // Application.
   "app",
-  "css!../../styles/history.css",
+  "css!../../styles/HistoireSerbe.css",
   "vendor/jquery-ui-1.10.1.custom.min"
 ],
 
@@ -10,30 +10,30 @@ define([
 function(app) {
 
   // Create a new module.
-  var History = app.module()
+  var HistoireSerbe = app.module()
   ,   layout
 
-  History.init = function() {
+  HistoireSerbe.init = function() {
 
-    console.log('History INIT');
+    console.log('HistoireSerbe INIT');
 
-    var wiki_entries = new History.WikiEntries();
+    var wiki_entries = new HistoireSerbe.WikiEntries();
 
     // create layout after entries list has been loaded and Collection has been populated
     wiki_entries.on('reset', function() {
-      layout = new History.Views.Layout({collection: this});
+      layout = new HistoireSerbe.Views.Layout({collection: this});
     });
 
     // starting a wikipedia request
-    wiki_entries.on('History:WikiEntries:request_start', function(data) {
+    wiki_entries.on('HistoireSerbe:WikiEntries:request_start', function(data) {
 
       
     });
 
     // done with the wikipedia request 
-    wiki_entries.on('History:WikiEntries:request_done', function(data) {
+    wiki_entries.on('HistoireSerbe:WikiEntries:request_done', function(data) {
 
-      var view = new History.Views.WikiView({ model: data.model });
+      var view = new HistoireSerbe.Views.WikiView({ model: data.model });
       layout.insertView(view);
 
       view.render();
@@ -58,7 +58,7 @@ function(app) {
     });
 
     // done with all wikipedia requests
-    wiki_entries.on('History:WikiEntries:all_requests_done', function() {
+    wiki_entries.on('HistoireSerbe:WikiEntries:all_requests_done', function() {
 
       layout.$el.find('.loading').fadeOut(500, function() { $(this).remove() });
 
@@ -93,14 +93,14 @@ function(app) {
   }
 
   // Default Model.
-  History.WikiEntry = Backbone.Model.extend({
+  HistoireSerbe.WikiEntry = Backbone.Model.extend({
   
   });
 
   // Collection for Wikipedia Entries
-  History.WikiEntries = Backbone.Collection.extend({
+  HistoireSerbe.WikiEntries = Backbone.Collection.extend({
 
-    model: History.WikiEntry,
+    model: HistoireSerbe.WikiEntry,
     wikiData: null,
 
     fetchData: function() {
@@ -108,7 +108,7 @@ function(app) {
       var _this = this
       ,   wiki_requests = new Array()
 
-      $.get('data/history-wiki-entries.txt').done(
+      $.get('data/HistoireSerbe-wiki-entries.txt').done(
 
         function(data) { 
 
@@ -133,7 +133,7 @@ function(app) {
 
                     console.log('%cALL REQUESTS DONE', "color: orange; font-size: medium");
 
-                    _this.trigger('History:WikiEntries:all_requests_done', _this);
+                    _this.trigger('HistoireSerbe:WikiEntries:all_requests_done', _this);
 
                   });
 
@@ -163,7 +163,7 @@ function(app) {
       // display
       layout.$el.find('.loading').html('Chargement de la fiche Wikipedia pour : <span class="term">'+model.get('name')+'</span>');
 
-      _this.trigger('History:WikiEntries:request_start', { model: model });
+      _this.trigger('HistoireSerbe:WikiEntries:request_start', { model: model });
 
       wiki_request.done(function(data) {
 
@@ -181,7 +181,7 @@ function(app) {
 
         console.log(model.get('name'));
 
-        _this.trigger('History:WikiEntries:request_done', { request: data.title, model: model });
+        _this.trigger('HistoireSerbe:WikiEntries:request_done', { request: data.title, model: model });
 
 
       })
@@ -220,9 +220,9 @@ function(app) {
 
 
   // WikiView
-  History.Views.WikiView = Backbone.LayoutView.extend({
+  HistoireSerbe.Views.WikiView = Backbone.LayoutView.extend({
 
-    template: 'modules/history/wiki-entry',
+    template: 'modules/HistoireSerbe/wiki-entry',
     className: 'wiki-entry',
 
     enabled: false,
@@ -271,7 +271,7 @@ function(app) {
         this.$el.addClass('entry-read');
 
         // ANALYTICS
-        _gaq.push(['_trackEvent', 'History', 'View', this.model.get('name')]);
+        _gaq.push(['_trackEvent', 'HistoireSerbe', 'View', this.model.get('name')]);
 
         this.$text.show();
         this.$btn_show_entry.removeClass('icon-circle-arrow-down');
@@ -298,9 +298,9 @@ function(app) {
   });
 
   // Default View.
-  History.Views.Layout = Backbone.Layout.extend({
+  HistoireSerbe.Views.Layout = Backbone.Layout.extend({
 
-    template: "history",
+    template: "HistoireSerbe",
 
     initialize: function() {
 
@@ -320,13 +320,13 @@ function(app) {
 
   });
 
-  History.destroy = function() {
+  HistoireSerbe.destroy = function() {
 
-    console.log('History destroy');
+    console.log('HistoireSerbe destroy');
 
   }
 
   // Return the module for AMD compliance.
-  return History;
+  return HistoireSerbe;
 
 });

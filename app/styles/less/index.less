@@ -9,6 +9,11 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700&subset=latin,latin-ext);
 //@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&subset=latin,latin-ext);
 
+// hide chapters infos
+#chapters-infos {
+	display: none;
+}
+
 .video-pause-effect {-webkit-filter: blur(6px) grayscale(40%) contrast(110%);}
 .no-filter {-webkit-filter: none;}
 
@@ -95,18 +100,44 @@ button, .btn {
 	cursor: pointer;
 
 	&:hover {
-		background: rgba(0,0,0,0.3);
-		color: #ccc;
+		background: rgba(0,0,0,0.8);
+		color: #fff;
 	};
 }
 
-#back-to-ttb {
+
+.btn-tool {
 
 	position: absolute;
-	bottom: 30px;
-	right: 0px;
 	opacity: 0;
 	z-index: 1000;
+	right: -1px;
+
+}
+
+#info-btn { top: 0px; }
+#twitter-share-btn { top: 40px; }
+#facebook-share-btn { top: 70px; }
+#back-to-ttb-btn { bottom: 30px; }
+
+#chapter-info-panel {
+	
+	display: block;
+	position: absolute;
+	opacity: 0; 
+	z-index: 1000;
+
+	position: absolute;
+	top: 20%;
+	right: -1px;
+	background: rgba(0, 0, 0, 0.9);
+	padding: 20px 30px 20px 20px;
+	font-size: 1em;
+	line-height: 1.4em;
+	z-index: 10;
+	height: 50%;
+	width: 22%;
+	text-align: left;
 
 }
 
@@ -239,53 +270,53 @@ img {
 
 	    	}
 
-	    	&.Notebook {
+	    	&.CarnetDeNotes {
 
 				top: -100px;
 		    	left: 170px;
 
 	    	}
 
-	    	&.BgdBook {
+	    	&.RepeterBelgrade {
 
 				top: -60px;
 
 	    	}
 
-	    	&.BriefAnDenVater {
+	    	&.TresCherPere {
 
 	    		top: 130px;
 		    	left: -300px;
 
 	    	}
 
-	    	&.BgdPlus {
+	    	&.BelgradePlus {
 
 	    		top: 163px;
 		    	left: -10px;
 
 	    	}
 
-	    	&.BgdDirect {
+	    	&.BelgradeDirect {
 
 	    		top: -170px;
 		    	left: 300px;
 
 	    	}
 
-	    	&.Tesla {
+	    	&.MadeInSerbia {
 
 
 	    	}
 
-	    	&.History {
+	    	&.HistoireSerbe {
 
 	    		top: 40px;
 		    	left: -180px;
 
 	    	}
 
-	    	&.BgdVoices {
+	    	&.VoixDeBelgrade {
 
 	    		top: -120px;
 		    	left: -260px;

@@ -1,7 +1,7 @@
 [       
         {
              "name": "Serbie, Yougoslavie, Tesla, Bond and more... ",
-             "slug": "serbie-yougoslavie-tesla-bond-and-more",
+             "slug": "serbie-yougoslavie-MadeInSerbia-bond-and-more",
              "sources": "http://www.youtube.com/watch?v=g2n0RcVfHWk",
              "dimensions": {},
              "position": {},
@@ -28,7 +28,7 @@
         },
         {
              "name": "Modern Marvels : Nikola Tesla",
-             "slug": "modern-marvels-nikola-tesla",
+             "slug": "modern-marvels-nikola-MadeInSerbia",
              "sources": "http://www.youtube.com/watch?v=qdPoOAVAuFQ",
              "dimensions": {},
              "position": {},
@@ -37,7 +37,7 @@
         },
         {
              "name": "Lost Ligntning : The Missing Secrets of Nikola Tesla",
-             "slug": "lost-ligntning-the-missing-secrets-of-nikola-tesla",
+             "slug": "lost-ligntning-the-missing-secrets-of-nikola-MadeInSerbia",
              "sources": "http://www.youtube.com/watch?v=BaB_Yx7hpJs",
              "dimensions": {},
              "position": {},
