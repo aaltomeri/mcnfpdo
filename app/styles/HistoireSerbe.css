@@ -1,3 +1,8 @@
+.loading {
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+}
 .wiki-entry {
   color: #000;
   position: absolute !important;
@@ -26,7 +31,7 @@
   display: none;
   position: relative;
   height: 400px;
-  overflow: auto;
+  overflow-y: auto;
   padding: 0 14px;
   word-wrap: break-word;
 }

@@ -5254,6 +5254,9 @@ a.badge:focus {
 .affix {
   position: fixed;
 }
+html {
+  -webkit-font-smoothing: subpixel-antialiased;
+}
 #chapters-infos {
   display: none;
 }
@@ -5353,18 +5356,18 @@ button:hover,
   bottom: 30px;
 }
 #chapter-info-panel {
-  display: block;
-  opacity: 0;
+  display: none;
+  opacity: 0.9;
   z-index: 1000;
   position: absolute;
   top: 20%;
   right: -1px;
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 0.95);
   padding: 20px 30px 20px 20px;
-  font-size: 1em;
+  font-size: 1.2em;
   line-height: 1.4em;
   z-index: 10;
-  height: 50%;
+  min-height: 50%;
   width: 22%;
   text-align: left;
 }
@@ -5487,7 +5490,7 @@ img {
 #module-container .chapter-title {
   position: absolute;
   z-index: 2000;
-  bottom: 10%;
+  bottom: 13%;
   left: 0;
   font-size: 2.5em;
   line-height: 1em;

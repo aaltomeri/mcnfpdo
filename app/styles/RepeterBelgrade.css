@@ -48,7 +48,8 @@
 #RepeterBelgrade #search-results,
 #RepeterBelgrade #credits {
   position: absolute;
-  font-size: 17px;
+  font-size: 1.1em;
+  line-height: 1.3em;
   z-index: 2000;
   perspective: 200px;
   /* W3C */
@@ -65,6 +66,9 @@
   -o-perspective: 200px;
   /* Opera */
 
+}
+#RepeterBelgrade h3 {
+  line-height: 1.2em;
 }
 #RepeterBelgrade #infos {
   left: 33%;
@@ -86,7 +90,7 @@
   height: 88%;
 }
 #RepeterBelgrade .infos {
-  padding: 20px;
+  padding: 1em;
   background: black;
   color: white;
   border: solid 8px white;
@@ -106,10 +110,13 @@
 }
 #RepeterBelgrade-toggle {
   position: absolute;
-  bottom: 5%;
+  bottom: 30px;
   left: 0;
   background: rgba(0, 0, 0, 0.5);
-  padding: 20px;
-  font-size: 36px;
-  line-height: 46px;
+}
+#RepeterBelgrade-next {
+  position: absolute;
+  bottom: 30px;
+  left: 60px;
+  background: rgba(0, 0, 0, 0.5);
 }

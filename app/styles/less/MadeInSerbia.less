@@ -1,10 +1,10 @@
-#uc {
+#MadeInSerbia {
 
 	background: rgba(0, 0, 0, 0.8);
 
 }
 
-#uc-video {
+#MadeInSerbia-video {
 
 	width: 100%;
 	height: 100%;
@@ -18,45 +18,48 @@
 
 }
 
-#uc-controls,
-#uc-video-title {
+#MadeInSerbia-controls {
 
 	position: absolute;
-	z-index: 100;
-
-	font-size: 44px;
-	line-height: 44px;
-	color: white;
-	background: rgba(0, 0, 0, 0.5); 
-	padding: 20px;
-
-
-}
-
-#uc-controls {
-
-	top: 0;
+	bottom: 0;
 	left: 0;
+	z-index: 100;
 	width: 100%;
+	text-align: center;
+	
+	font-size: 0;
+	
+	
+	> * {
 
-	background: transparent; 
+		display: inline-block;
+		color: white;
+		background: rgba(0, 0, 0, 0.5);
+		padding: 1rem;
+		font-size: 1.5rem !important;
+		line-height: 1rem !important; 
+		vertical-align: middle;
+		
+	}
 
 	> button {
 
-		font-size: 64px;
-		line-height: auto;
 		color: white;
-		background: rgba(0, 0, 0, 0.5);
-		padding: 20px;
+
+		&:hover {
+
+			background: rgba(0, 0, 0, 0.8);
+			
+
+		}
 
 	}
 
 }
 
-#uc-video-title {
+#MadeInSerbia-video-title {
 
-	bottom: 10%;
-	left: 0;
+	
 
 }
 

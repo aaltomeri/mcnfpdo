@@ -5,6 +5,37 @@
 
 }
 
+#CarnetDeNotes > .chapter-title {
+		
+	background: rgba(0, 0, 0, 0.8);
+	bottom: 6%;
+
+}
+
+
+#CarnetDeNotes ::-webkit-scrollbar {
+    width: 12px;
+}
+
+#CarnetDeNotes ::-webkit-scrollbar-track {
+
+    -webkit-border-radius:0px;
+    border-radius:0px;
+    background: rgba(0, 0, 0, 0.2);
+
+}
+
+#CarnetDeNotes ::-webkit-scrollbar-thumb {
+
+    -webkit-border-radius: 0px;
+    border-radius:0px;
+
+    background: #d2c18a;
+
+    max-height: 50px !important;
+
+}
+
 #CarnetDeNotes a:visited {
 
 	color:#a63005 !important;
@@ -22,8 +53,9 @@
 	padding: 10px 10px 0 10px;
 	width: 40%;
 	text-align: left;
-
-	height: 100%;
+	
+	top: -4px;
+	height: 79%;
 	overflow: auto;
 
 }
@@ -54,7 +86,8 @@
 
 }
 
-#CarnetDeNotes #entries ul li {
+#CarnetDeNotes #entries ul li,
+#CarnetDeNotes #entries blockquote p {
 
 	font-size: 1.2em;
 	line-height: 1.4em;
@@ -82,9 +115,11 @@
 /** Calendar **/
 
 #CarnetDeNotes #calendar {
-	
+		
+	position: relative;
+	top: -10px;
 	float: left;
-	width: 50%;
+	width: 52%;
 	text-align: left;
 
 	margin-left: 3%;
@@ -146,11 +181,11 @@
 	position: relative;
 	float: left;
 	margin-left: 3%;
-	margin-top: 30px;
+	margin-top: 0px;
 	background: rgba(0,0,0,0.1);
 
-	width: 50%;
-	height: 50%;
+	width: 52%;
+	height: 44%;
 	
 }
 

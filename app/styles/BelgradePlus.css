@@ -1,11 +1,10 @@
 #BelgradePlus .search-banner,
-#BelgradePlus .search-button,
 #BelgradePlus .time,
 #BelgradePlus .video-name {
   position: absolute;
   z-index: 100;
-  font-size: 44px;
-  line-height: 44px;
+  font-size: 2.250em;
+  line-height: 1em;
   color: white;
   background: rgba(0, 0, 0, 0.5);
   padding: 20px;
@@ -25,19 +24,18 @@
   font-weight: bold;
 }
 #BelgradePlus .search-button {
-  bottom: 2%;
+  position: absolute;
+  bottom: 30px;
   left: 0;
-  font-size: 20px;
-  line-height: 24px;
-  padding: 10px;
   cursor: pointer;
   text-decoration: none;
-  color: #eb431b;
+  color: #ffea00;
   font-weight: normal;
   text-transform: uppercase;
 }
 #BelgradePlus .search-button:hover {
-  color: #ff6a00;
+  color: #dd4800;
+  font-weight: bold;
 }
 #BelgradePlus .time {
   bottom: 11%;
