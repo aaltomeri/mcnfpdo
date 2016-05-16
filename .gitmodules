@@ -1,9 +1,12 @@
 [submodule "bootstrap"]
 	path = bootstrap
 	url = git@github.com:twitter/bootstrap.git
+	ignore = dirty
 [submodule "app/scripts/vendor/buzz"]
 	path = app/scripts/vendor/buzz
 	url = git@github.com:thomasmery/buzz.git
+	ignore = dirty
 [submodule "app/scripts/vendor/howler"]
 	path = app/scripts/vendor/howler
 	url = git@github.com:mostlygeek/howler.js.git
+	ignore = dirty
