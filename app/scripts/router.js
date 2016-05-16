@@ -38,6 +38,7 @@ function(app, Intro, TTB, Soundtrack) {
       // jump to Belgrade Map if iPad
       if(app.isiPad) {
         window.location.replace('/#BelgradeVille');
+        $('.no-ipad').remove();
       }
 
       // here we call the init function that we have defined for the module
@@ -50,7 +51,7 @@ function(app, Intro, TTB, Soundtrack) {
       $('#main-container').css({"z-index": 1});
 
       if(app.isiPad) {
-        app.trigger('goto', 'BelgradeVille');
+        //app.trigger('goto', 'BelgradeVille');
       }
 
       // ANALYTICS
@@ -154,6 +155,12 @@ function(app, Intro, TTB, Soundtrack) {
       this.ttb('pause', moduleName);
      
       //app.debug();
+
+      var chapter = _.find(TTB.model.attributes.chapters, function(chapter) { 
+        return  chapter.name.toLowerCase() == moduleName.toLowerCase();
+      }) 
+
+      TTB.model.set('currentChapter', chapter);
             
       TTB.MainView.prepareStageForModule();
       

@@ -120,8 +120,6 @@ function(app) {
 
               setTimeout(function() {
 
-
-
                 // add Promise returned by the fetch method to array
                 wiki_requests.push(_this.fetchWikiData(model));
 
@@ -131,7 +129,7 @@ function(app) {
 
                    $.when.apply($, wiki_requests).done(function() {
 
-                    console.log('%cALL REQUESTS DONE', "color: orange; font-size: medium");
+                    //console.log('%cALL REQUESTS DONE', "color: orange; font-size: medium");
 
                     _this.trigger('HistoireSerbe:WikiEntries:all_requests_done', _this);
 
@@ -174,12 +172,12 @@ function(app) {
           return;
         }
 
-        var data = _this.parseWikiData(data);
+        var data = _this.parseWikiData(data)
 
         model.set('name', data.title);
         model.set('text', data.text);
 
-        console.log(model.get('name'));
+        //console.log(model.get('name'));
 
         _this.trigger('HistoireSerbe:WikiEntries:request_done', { request: data.title, model: model });
 
@@ -202,6 +200,7 @@ function(app) {
 
       // remove editsection links
       $text.find('.editsection').remove();
+      $text.find('.mw-editsection').remove();
 
       // add wikipedia absolute url for wikipedia links
       // also make link open in another tab/window

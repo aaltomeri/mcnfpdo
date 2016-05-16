@@ -158,6 +158,8 @@ function(app, Video, Soundtrack) {
         var v = this
         ,   vv = this.vv
         ,   $bt =  $('<button class="btn btn-tool" ></button>')
+        ,   enter_event = app.isiPad? 'touchstart' : 'mouseenter'
+        ,   leave_event = app.isiPad? 'touchend' : 'mouseleave'
 
         $bt.attr('id', button_o.type+'-btn');
         $bt.html(button_o.text);
@@ -165,9 +167,14 @@ function(app, Video, Soundtrack) {
         $bt.data('over-text', button_o.over_text);
         $bt.data('text', button_o.text);
 
-        $bt.on('mouseenter', $.proxy(this.buttonsEnterHandler, this));
-        $bt.on('mouseleave', $.proxy(this.buttonsLeaveHandler, this));
         $bt.on('click', $.proxy(this.buttonsClickHandler, this));
+        
+        if(!app.isiPad) {        
+          $bt.on(enter_event, $.proxy(this.buttonsEnterHandler, this));
+          $bt.on(leave_event, $.proxy(this.buttonsLeaveHandler, this));
+        }
+
+        
 
         $('#main').append($bt);
 
@@ -227,7 +234,7 @@ function(app, Video, Soundtrack) {
       switch($bt.data('type')) {
 
         case 'info':
-            this.showInfoPanel();
+              this.showInfoPanel();
             break;
 
       }
@@ -260,6 +267,9 @@ function(app, Video, Soundtrack) {
         switch($bt.data('type')) {
 
           case 'info':
+            if(app.isiPad) {
+              this.toggleInfoPanel();
+            }
             break;
 
           case 'back-to-ttb':
@@ -269,7 +279,7 @@ function(app, Video, Soundtrack) {
           case 'twitter-share':
             var share_url = 'http://api.addthis.com/oexchange/0.8/forward/twitter/offer?'
             + 'url=' + encodeURIComponent(window.location.href)
-            + '&text=' + app.title + " | " + encodeURIComponent(this.vv.currentChapter.title)
+            + '&text=' + app.title + " | " + encodeURIComponent(TTB.model.get('currentChapter').title)
             + '&pubid=' + window.addthis_config.pubid
             console.log(share_url);
             window.open(share_url);
@@ -279,8 +289,8 @@ function(app, Video, Soundtrack) {
           case 'facebook-share':
             var share_url = 'http://api.addthis.com/oexchange/0.8/forward/facebook/offer?'
             + 'url=' + window.location.href
-            + '&title=' + app.title + " | " + encodeURIComponent(this.vv.currentChapter.title)
-            + '&description=' + app.title + " | " + encodeURIComponent(this.vv.currentChapter.title)
+            + '&title=' + app.title + " | " + encodeURIComponent(TTB.model.get('currentChapter').title)
+            + '&description=' + app.title + " | " + encodeURIComponent(TTB.model.get('currentChapter').title)
             + '&pubid=' + window.addthis_config.pubid
 
             window.open(share_url);
@@ -293,10 +303,19 @@ function(app, Video, Soundtrack) {
 
     toggleInfoPanel: function() {
 
-      if($('#chapter-info-panel').is(':visible'))
+      var $bt = $('#info-btn')
+
+      if($('#chapter-info-panel').is(':visible')) {
         this.hideInfoPanel();
-      else
+        if(app.isiPad)
+          $bt.html($bt.data('text'));
+      }
+      else {
         this.showInfoPanel();
+        if(app.isiPad)
+          $bt.html('x');
+      }
+
 
     },
 
@@ -304,10 +323,10 @@ function(app, Video, Soundtrack) {
 
       var $panel = $('#chapter-info-panel')
 
-      $panel.html($('#chapter-info-'+this.vv.currentChapter.name).html());
+      $panel.html($('#chapter-info-'+TTB.model.get('currentChapter').name).html());
 
-      //$panel.show();
-      $panel.transition({opacity: 0.9});
+      $panel.show();
+      //$panel.transition({opacity: 0.9});
 
     },
 
@@ -315,9 +334,8 @@ function(app, Video, Soundtrack) {
 
       var $panel = $('#chapter-info-panel')
 
-      $panel.transition({opacity: 0}, function() { 
-        //$panel.hide(); 
-      });
+      $panel.hide();
+      //$panel.transition({opacity: 0}, function() { });
 
     },
 
@@ -503,11 +521,17 @@ function(app, Video, Soundtrack) {
 
           $.get('templates/'+template+'.html', 
             function(data) {
+
+              // hide still image
+              vv.hideStill();
+
               vv.showOverlay(data, { background: "transparent", opacity: 0.8 } );
+
           });
 
           vv.popcorn.pause();
-           _this.disablePlayPause();
+          _this.disablePlayPause();
+         
 
           // allow click on links in chapters menu
           $('#main-container').css({"z-index": 3});
@@ -522,14 +546,10 @@ function(app, Video, Soundtrack) {
       });
 
 
-      vp.on('timeupdate', function() {
-
-      });
+      vp.on('timeupdate', function() {});
 
        // when PLAYING the video ...
       vp.on('play', function() {
-        
-        console.log('play');
         
         TTB.inChapter = false;
 

@@ -64,6 +64,11 @@ function(app) {
       // Popcorn instantiation
       this.popcorn = Popcorn.smart(this.el, this.model.attributes.sources);
 
+      this.popcorn.options.frameAnimation = true;
+
+      console.log('creating video');
+      console.log(this);
+
       if(loop) {
         this.popcorn.loop(true);
       }

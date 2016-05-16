@@ -162,6 +162,8 @@ function(app) {
 
       $('#bgd-map').css({width: "100%", height: "100%"});
       
+      google.maps.visualRefresh = true;
+
       // create map
       this.map = new google.maps.Map($('#bgd-map').get(0), mapOptions);
 

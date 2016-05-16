@@ -4,7 +4,7 @@ define([
   "app",
   "modules/Video",
   "https://www.googleapis.com/customsearch/v1?key=AIzaSyCZyjGSINj8G5wX1RnCX-si_9xptWYRdnU&cx=011524589172753646057:qnfoalr-ilu&q=belgrade+fisera&lr=lang_fr&callback=define",
-  "css!../../styles/bgd-book.css"
+  "css!../../styles/RepeterBelgrade.css"
 ],
 
 // Map dependencies from above array.
@@ -62,7 +62,7 @@ function(app, Video, SearchEngine) {
   RepeterBelgrade.Views.InfoPanel = Backbone.LayoutView.extend({
 
       className: "infos",
-      template: "modules/bgd-book/infos",
+      template: "modules/RepeterBelgrade/infos",
 
       initialize: function() {
 
@@ -122,8 +122,8 @@ function(app, Video, SearchEngine) {
   // Default View.
   RepeterBelgrade.Views.Layout = Backbone.Layout.extend({
 
-    template: "bgd-book",
-    id: "bgd-book",
+    template: "RepeterBelgrade",
+    id: "RepeterBelgrade",
 
     currentVideoIndex: null,
     previousVideo: null,
@@ -166,16 +166,53 @@ function(app, Video, SearchEngine) {
       // currentVideo acts as a remote for the whole process
       // since its timeupdate controls moving to the next video
       // probably not bullet proof but you know ... we've got to get this out
-      $('#bgd-book-toggle').html('Pause');
-      $('#bgd-book-toggle').click($.proxy(function(){
-        var pc = layout.currentVideo.popcorn;
-        if(!pc.paused()) {
-          pc.pause();
+      $('#RepeterBelgrade-toggle').html('Pause');
+      $('#RepeterBelgrade-toggle').click($.proxy(function(){
+
+          var pc = layout.currentVideo.popcorn;
+
+          if(!pc.paused()) {
+            pc.pause();
+          }
+          else {
+            pc.play();
+          }
+
+        }, layout)
+      );
+
+      $('#RepeterBelgrade-next').click($.proxy(function(){
+
+            var pc = layout.currentVideo.popcorn;
+
+            pc.pause();
+
+            console.log(layout.currentVideo);
+            // show still
+            var view = layout.currentVideo
+            ,   still = view.createStill()
+            ,   rotation_delta = 1
+
+            view.showStill(still, true, {top: 0, left: 0}, function() {
+
+                view.popcorn.destroy();
+                view.$el.find('video').remove();
+
+                  view.$el.transition({
+                    duration: 1000,
+                    opacity: 0.99,
+                    scale: 0.9,
+                    rotate3d: '0, 0, 1, ' + (Math.floor(Math.random() * ((rotation_delta + rotation_delta + 1)) - rotation_delta) + 2) + 'deg',
+                  });
+
+            });
+
+            layout.currentVideoIndex++;
+            layout.playNext(layout.currentVideoIndex);
+
         }
-        else {
-          pc.play();
-        }
-      }, layout));
+        , layout)
+      );
 
       $('#module-container').transition({opacity: 1}, 2000);
 
@@ -186,6 +223,15 @@ function(app, Video, SearchEngine) {
     },
 
     playNext: function(index) {
+
+      if(index > this.collection.models.length-1) {
+        return;
+      }
+
+      if(index > this.collection.models.length-2) {
+        $('#RepeterBelgrade-next').remove();
+      }
+
 
       this.currentVideoIndex = index;
 
@@ -217,7 +263,7 @@ function(app, Video, SearchEngine) {
       // ----------
 
       var model = this.collection.at(index)
-      ,   vv = this.currentVideo = this.setView(new Video.Views.Main({model : model, className: 'bgd-book-video'}), true)
+      ,   vv = this.currentVideo = this.setView(new Video.Views.Main({model : model, className: 'RepeterBelgrade-video'}), true)
 
       vv.render();
       this.initVideoViewBehavior(vv, index);
@@ -238,13 +284,13 @@ function(app, Video, SearchEngine) {
       // events
       vv.popcorn.on('play', function() {
 
-          $('#bgd-book-toggle').html('Pause');
+          $('#RepeterBelgrade-toggle').html('pause');
 
       });
       
       vv.popcorn.on('pause', function() {
 
-          $('#bgd-book-toggle').html('play');
+          $('#RepeterBelgrade-toggle').html('play');
 
       });
 
@@ -398,7 +444,7 @@ function(app, Video, SearchEngine) {
 
       this.showPanel(
           "infos",
-          "Répétitions de \"Belgrade\"",
+          "\"Belgrade\" d'Angélica Liddell",
           "<p>Images des répétitions de la pièce \"Belgrade\".</p><p>Avec les comédiens Julie Denisse, Vladislav Galard, Alexandre Pallu, Laurent Sauvage.</p><p>Septembre 2012.</p>"
           , '-1, 0, -2, -2deg'
           , 4000
