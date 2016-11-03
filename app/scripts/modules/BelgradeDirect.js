@@ -166,9 +166,12 @@ function(app) {
             // this would need to be refined to accomodate different feeds
             // with different attribute names for title, text and date
             $.each(data.responseData.feed.entries, function (i, e) {
+
+              //console.log(e);
+
               var newsItem = new BelgradeDirect.BelgradeDirectItem({
                 title: e.title,
-                text: e.contentSnippet,
+                text: e.contentSnippet.replace(/[….]{0,3}/g,''),
                 link: e.link,
                 date: e.publishedDate? e.publishedDate : e.pubDate,
                 source: data.responseData.feed.title,
@@ -196,6 +199,9 @@ function(app) {
       var model = this
       ,   term = this.get('term');
 
+      // SKIP Twitter search as it needs overhaul due to Twitter AI 1.1 having to be used now
+      return;
+
       var query = $.getJSON('http://search.twitter.com/search.json?q='+ encodeURIComponent(term) +'&amp;include_entities=1&amp;rpp=10&amp;callback=?',
         function (data) {
 
@@ -209,11 +215,9 @@ function(app) {
             // loop through entries and create a BelgradeDirectItem for each
             $.each(data.results, function (i, e) {
 
-              //console.log(e);
-
               var newsItem = new BelgradeDirect.BelgradeDirectItem({
                 title: '@' + e.from_user,
-                text: e.text,
+                text: e.text.replace(/[….]{0,3}/g,''),
                 link: e.entities.urls.length? e.entities.urls[0].expanded_url : "http://www.twitter.com/"+e.from_user,
                 date: e.created_at,
                 source: "Twitter",
@@ -558,15 +562,15 @@ function(app) {
     template: "BelgradeDirect",
 
     webcams: [
-      'http://www.mondo.rs/traffic_cams/1357146725/29.jpg',
-      'http://www.mondo.rs/traffic_cams/30.jpg',
-      'http://www.mondo.rs/traffic_cams/31.jpg',
-      'http://www.mondo.rs/traffic_cams/1357146773/5.jpg',
-      'http://www.mondo.rs/traffic_cams/7.jpg',
-      'http://www.mondo.rs/traffic_cams/10.jpg',
-      'http://www.mondo.rs/traffic_cams/18.jpg',
-      'http://www.mondo.rs/traffic_cams/6.jpg',
-      'http://www.mondo.rs/traffic_cams/11.jpg'
+       'http://services.mondo.rs/traffic_cams/5.jpg',
+      'http://services.mondo.rs/traffic_cams/30.jpg',
+      'http://services.mondo.rs/traffic_cams/31.jpg',
+      'http://services.mondo.rs/traffic_cams/1357146773/5.jpg',
+      'http://services.mondo.rs/traffic_cams/7.jpg',
+      'http://services.mondo.rs/traffic_cams/10.jpg',
+      'http://services.mondo.rs/traffic_cams/18.jpg',
+      'http://services.mondo.rs/traffic_cams/6.jpg',
+      'http://services.mondo.rs/traffic_cams/11.jpg'
     ],
 
      initialize: function() {

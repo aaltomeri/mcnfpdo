@@ -1,0 +1,13 @@
+#main-container,
+#module-container,
+#module-container,
+.no-ie {
+	display:none;
+}
+
+#main {
+
+	width: 40%;
+	height: 50%;
+
+}

@@ -8,6 +8,9 @@ require([
 
 function(app, Router) {
 
+  if($('html').hasClass('lte-ie9'))
+    return;
+
   // Define your master router on the application namespace and trigger all
   // navigation from this instance.
   app.router = new Router();

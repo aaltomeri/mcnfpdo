@@ -27,16 +27,16 @@
              "out_point": 27
         },
         {
-             "name": "Modern Marvels : Nikola Tesla",
+             "name": "Modern Marvels: Nikola Tesla",
              "slug": "modern-marvels-nikola-MadeInSerbia",
-             "sources": "http://www.youtube.com/watch?v=qdPoOAVAuFQ",
+             "sources": "http://www.youtube.com/watch?v=ZfUHLgVIjWI",
              "dimensions": {},
              "position": {},
              "in_point": 1026,
              "out_point": 1066
         },
         {
-             "name": "Lost Ligntning : The Missing Secrets of Nikola Tesla",
+             "name": "Lost Lightning : The Missing Secrets of Nikola Tesla",
              "slug": "lost-ligntning-the-missing-secrets-of-nikola-MadeInSerbia",
              "sources": "http://www.youtube.com/watch?v=BaB_Yx7hpJs",
              "dimensions": {},

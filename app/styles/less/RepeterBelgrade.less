@@ -1,14 +1,14 @@
 @import "../../../bootstrap/less/variables.less";
 @import "../../../bootstrap/less/mixins.less";
 
-#bgd-book {
-
+#RepeterBelgrade {
+	
 	.video-pause-effect {-webkit-filter: grayscale(50%);}
 
 	height: 100%;
 	position: relative;
 
-	.bgd-book-video {
+	.RepeterBelgrade-video {
 
 		position: absolute;
 		opacity: 0.99;
@@ -27,7 +27,8 @@
 	#credits {
 
 		position: absolute;
-		font-size: 17px;
+		font-size: 1.1em;
+		line-height: 1.3em;
 		
 		z-index: 2000;
 
@@ -37,6 +38,12 @@
 		-ms-perspective: 200px; /* Internet Explorer */
 		-o-perspective: 200px; /* Opera */
 
+
+	}
+
+	h3 {
+
+		line-height: 1.2em;
 
 	}
 
@@ -69,7 +76,7 @@
 
 	.infos {
 
-		padding: 20px;
+		padding: 1em;
 		background: black;
 		color: white;
 		border: solid 8px white;
@@ -99,14 +106,20 @@
 
 }
 
-#bgd-book-toggle {
+#RepeterBelgrade-toggle {
 
-		position: absolute;
-	    bottom: 5%;
-	    left: 0;
-	    background: rgba(0,0,0,0.5);
-	    padding: 20px;
-	    font-size: 36px;
-	    line-height: 46px;
+	position: absolute;
+    bottom: 30px;
+    left: 0;
+    background: rgba(0,0,0,0.5);
 
-	}
+}
+
+#RepeterBelgrade-next {
+
+	position: absolute;
+    bottom: 30px;
+    left: 60px;
+    background: rgba(0,0,0,0.5);
+
+}

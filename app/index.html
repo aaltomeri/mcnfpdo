@@ -1,11 +1,9 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!--[if lte IE 9]>     <html class="no-js lte-ie9"> <![endif]--> 
+<!--[if gt IE 9]><!--> <html class="no-js"> <!--<![endif]-->
     <head>
         <meta charset="utf-8"/>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  
         <title>Mon corps ne fait pas d'ombre | Un projet autour de Belgrade par Julien Fišera, Jérémie Scheidler et Thomas Mery</title>
         <meta name="description" content="Un projet autour de Belgrade par Julien Fišera, Jérémie Scheidler et Thomas Mery"/>
         <meta name="viewport" content="width=device-width"/>
@@ -19,28 +17,48 @@
         <meta property="og:image" content="http://www.moncorpsnefaitpasdombre.net/images/mcnfpdo.jpg"/>
         
         <link rel="stylesheet" href="styles/index.css"/>
+
+        <!--[if lte IE 9]><link rel="stylesheet" href="styles/no-ie.css"/><![endif]-->
         
     </head>
     <body>
 
         <!-- Main container. -->
         <div role="main" id="main" class="container">
+
             <div id="main-container"></div>
             <div id="module-container"></div>
             <div id="chapter-info-panel"></div>
+
+             <!--[if lte IE 9]>
+                <p><strong>Mon corps ne fait pas d'ombre</strong> est un projet autour de Belgrade <br/>par Julien Fišera, Thomas Mery, Jérémie Scheidler</p>
+                <p>Nous sommes désolé mais <strong>votre navigateur est un peu ancien</strong> et "Mon corps ne fait pas d'ombre" nécessite un navigateur récent. Vous pouvez vous en procurer un ici : <a href="http://browser-update.org/fr/">http://browser-update.org/fr/</a><br/> Nous recommandons Google Chrome.</p>
+                <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+                <p><a href="/blog" target="_blank">blog</a> | 
+                <a href="http://www.twitter.com/mcnfpdo" target="_blank">twitter</a> |
+                <a href="mailto:info@moncorpsnefaitpasdombre.net"  target="_blank">email</a></p>
+            <![endif]-->
+
         </div>
         
         <div id="main-menu">
-            <div class="pull-left">
-                Mon corps ne fait pas d'ombre est un projet autour de Belgrade par Julien Fišera, Thomas Mery, Jérémie Scheidler
+            <div class="pull-left no-ie">
+                Mon corps ne fait pas d'ombre est un projet autour de Belgrade par 
+                <a href="http://www.compagnieespacecommun.com/" target="_blank">Julien Fišera</a>, 
+                <a href="https://twitter.com/thomasmery" target="_blank">Thomas Mery</a>, 
+                <a href="http://jeremiescheidler.com/" target="_blank">Jérémie Scheidler</a>
             </div>
             <div class="pull-right">
-                <a href="/#TTB" id="skip-intro-link">passez l'intro</a> |
-                <a href="/#TTB/pause/110">les chapitres</a> |
-                <a href="/blog" target="_blank">blog</a> | 
-                <a href="http://www.twitter.com/mcnfpdo" target="_blank">twitter</a> |
-                <a href="mailto:info@moncorpsnefaitpasdombre.net"  target="_blank">email</a>
-                <button id="global-mute"><i class="icon-volume-up icon-white"></i></button>
+                <span class="no-ie">
+                    <span class="no-ipad">
+                        <a href="/#TTB" id="skip-intro-link">passez l'intro</a> |
+                        <a href="/#TTB/pause/110">les chapitres</a> |
+                    </span>
+                    <a href="/blog" target="_blank">blog</a> | 
+                    <a href="http://www.twitter.com/mcnfpdo" target="_blank">twitter</a> |
+                    <a href="mailto:info@moncorpsnefaitpasdombre.net"  target="_blank">email</a>
+                    <button id="global-mute" class="no-ie"><i class="icon-volume-up icon-white"></i></button>
+                </span>
             </div>
         </div>
 
@@ -48,58 +66,52 @@
             
             <div id="chapter-info-BelgradeVille">
                 <h4>Belgrade Ville</h4>
-                <p>A travers Belgrade, le parcours de Baltasar ...</p>
-                <p>Cliquez sur les marqueurs vidéos ... </p>
+                <p>Dans le ville de Belgrade, aujourd'hui, une succession de points de vues qui pourraient être ceux de Baltasar, le héros de la pièce d'Angélica Liddell.</p>
+                <p>Faites vous-même votre parcours, soyez reporter et cliquez sur les marqueurs vidéo.</p>
             </div>
             <div id="chapter-info-RepeterBelgrade">
                 <h4>Répéter Belgrade</h4>
-                <p>La pièce d'Angléica Liddell ...</p>
-                <p>...</p>
+                <p>Les tous premiers jours de répétitions : essais et tentatives autour de la scène d'ouverture. L'œuvre d'Angélica Liddell se présente dans toute sa densité poétique.</p>
+                <p>En cliquant sur la flèche à gauche vous pourrez avancer dans la présentation des différents éléments. Sinon, laissez-vous guider&nbsp;! </p>
             </div>
             <div id="chapter-info-CarnetDeNotes">
                 <h4>Carnet de notes</h4>
-                <p>Mars 2006, Baltasar enquête à Belgrade pour son père</p>
-                <p>Cliquez sur les jours de mars pour découvrir ce qui se passait ce jour là autour du monde, pour certains jours visionnez la vidéo.</p>
+                <p>Enquêtant pour le compte de son père, Baltasar, le héros de la pièce, est envoyé à Belgrade en mars 2006 au moment des funérailles de Milosevic.</p>
+                <p>Cliquez sur les jours du calendrier pour revenir sur ce qu'il se passait dans le monde. Les entrées mêlent la fiction de la pièce à la réalité "objective", telle qu'elle est présentée sur Wikipedia. Certains jours, vous pourrez visionner une vidéo correspondant à une des actualités citées à gauche.</p>
             </div>
             <div id="chapter-info-TresCherPere">
                 <h4>Très cher Père</h4>
-                <p>Baltasar et son père, une évocation des rapports fils/père ...</p>
-                <p>La Lettre de Kafka à son père, manuscrite, découpée, lue ...</p>
+                <p>La pièce d'Angélica Liddell gravite autour des questions père/fils. C'est ce qui réunit finalement chacun des personnages de "Belgrade" ; politique et intime liés.</p>
+                <p>Pour évoquer ce fil rouge, nous avons fait le choix de revenir sur la lettre de Franz Kafka à son père. Une lecture au fil du manuscrit.</p>
             </div>
             <div id="chapter-info-BelgradePlus">
                 <h4>Belgrade Plus</h4>
-                <p>Le côté sombre, Belgrade sur Youtube</p>
-                <p>Regarder les vidéos, relancer une recherche ...</p>
+                <p>En associant le nom de Belgrade à certains mots-clefs, c'est l'aspect cru et quelque peu décadent de la ville qui affleure. Youtube révèle en direct l'inconscient de celui ou celle qui n'a pas encore mis les pieds dans la capitale.</p>
+                <p>Les vidéos sont minutées, mais n'hésitez pas à relancer la recherche.</p>
             </div>
             <div id="chapter-info-BelgradeDirect">
                 <h4>Belgrade Direct</h4>
-                <p>En ce moment à Belgrade en regard des notes prises par Julien ...</p>
-                <p>Vues de Belgrade en direct grâce à différentes webcams, des flux radios en direct de Serbie ...</p>
+                <p>La ville de Belgrade en "live", vue par une sélection de différentes webcams in situ. En regard des notes prises par Julien Fišera lors de ses différents séjours, un flux twitter de différents comptes liés à la ville.</p>
+                <p>Le flux est continu mais n'hésitez pas à changer de chaine de radio captée en direct comme si vous y étiez ! <span style="font-size:0.7em">(non disponible pour firefox)</span></p>
             </div>
             <div id="chapter-info-MadeInSerbia">
                 <h4>Made in Serbia</h4>
-                <p>Petit montage dynamique en provenance de Youtube. La Serbie en clichés.</p>
-                <p>Laissez se dérouler les vidéos ou passer de l'une à l'autre avec les flèches. Youtube peut etre capricieux, il faut parfois laisser un peu de temps avant de pouvoir visionner les vidéos.</p>
+                <p>Montage vidéo dynamique au contenu exclusivement extrait de Youtube. Autrement dit : la Serbie tout en clichés.</p>
+                <p>Laissez défiler les vidéos ou passez de l'une à l'autre avec les flèches. Youtube peut se révéler capricieux, il faut savoir parfois lui laisser le temps...</p>
             </div>
             <div id="chapter-info-HistoireSerbe">
                 <h4>Histoire serbe</h4>
-                <p>Pour ceux qui veulent en découvrir plus, des fiches et des fiches et des fiches</p>
-                <p>Attendez la fin du chargement des données et consulter les fiches</p>
+                <p>Vous découvrirez ici quelques aspects de l'histoire serbe ; des fiches, des fiches et encore des fiches.</p>
+                <p>Attendez la fin du chargement des données et consultez les différentes entrées, empruntées en direct et pour l'occasion à Wikipedia.</p>
             </div>
             <div id="chapter-info-VoixDeBelgrade">
                 <h4>Voix de Belgrade</h4>
-                <p>Fragments de la pièce d'Angélica Liddell</p>
-                <p>Une mosaïque de voix ...</p>
-            </div>
+                <p>Fragments de la pièce d'Angélica Liddell qui n'ont pas trouvé leur place sur le plateau. Une mosaïque de voix qui raconte Belgrade en mars 2006.</p>
+                <p>Une prise de vue de la place de la République au cœur de Belgrade sert de support à un montage sonore aléatoire : laissez-vous emporter.</p>
+            </div
 
         </div>
-
-        <!--[if lt IE 7]>
-            <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
-        <![endif]-->
-
-        <!-- Add your site or application content here -->
-
+        
         <!-- build:js scripts/amd-app.js -->
         <script data-main="/scripts/config" src="/scripts/libs/require.js"></script>
         <!-- endbuild -->
@@ -112,7 +124,7 @@
             s.parentNode.insertBefore(g,s)}(document,'script'));
         </script>
         
-        <!-- AddThis Button BEGIN -->
+        <!-- AddThis Button BEGIN 
         <script type="text/javascript">
             var addthis_config = {
                 pubid: "ra-5199f5ea116b4185",
@@ -121,7 +133,7 @@
             };
         </script>
         <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5199f5ea116b4185"></script>
-        <!-- AddThis Button END -->
+        AddThis Button END -->
 
     </body>
 </html>
