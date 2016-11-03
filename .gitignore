@@ -13,3 +13,4 @@ dist
 components/
 medias/videos
 medias/soundtracks
+node_modules
